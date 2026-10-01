@@ -1,0 +1,103 @@
+:root {
+  --grade-s: #1a7f37;
+  --grade-a: #2f81f7;
+  --grade-b: #6e7781;
+  --grade-c: #d4a72c;
+  --grade-d: #cf222e;
+  --bg: #f6f8fa;
+  --border: #d0d7de;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Pretendard", "Noto Sans KR", sans-serif;
+  background: var(--bg);
+  color: #1f2328;
+}
+
+.site-header {
+  padding: 24px 20px 16px;
+  background: #0d1b2a;
+  color: #fff;
+}
+.site-header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+.site-header .subtitle { margin: 0; color: #c3d2e0; font-size: 0.9rem; }
+
+main { max-width: 1080px; margin: 0 auto; padding: 16px 20px 60px; }
+
+.notice {
+  background: #fff8c5;
+  border: 1px solid #d4a72c;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.controls input, .controls select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+#search-box { flex: 1; min-width: 200px; }
+
+.table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+thead th { background: #f0f3f6; position: sticky; top: 0; cursor: default; }
+tbody tr:hover { background: #f6f8fa; }
+tbody tr { cursor: pointer; }
+
+.grade-badge {
+  display: inline-block;
+  min-width: 22px;
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.grade-S { background: var(--grade-s); }
+.grade-A { background: var(--grade-a); }
+.grade-B { background: var(--grade-b); }
+.grade-C { background: var(--grade-c); }
+.grade-D { background: var(--grade-d); }
+.grade-none { background: #8c959f; }
+
+.pct-cell small { color: #6e7781; display: block; font-size: 0.75rem; }
+
+.method-note {
+  margin-top: 28px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.method-note h2 { font-size: 1rem; margin-top: 0; }
+.method-note li { margin-bottom: 6px; }
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: #6e7781;
+}
+footer a { color: inherit; }

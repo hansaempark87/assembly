@@ -1,0 +1,8 @@
+name = "assembly-dashboard"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "assembly-dashboard"
+database_id = "6363a812-e5dc-4379-bb00-ee47e55ea1c6"

@@ -2,7 +2,10 @@
 
 검증 가능한 의정활동 수치와 상대평가 등급을 공개해, 시민이 의원의 실적을 쉽게 비교하고 의원들이 기록으로 경쟁하도록 만드는 프로젝트입니다.
 
-**현재 단계: 기획.** 서비스명은 가칭이며, 데이터 검증과 평가 기준 확정 후 단계적으로 개발합니다.
+**현재 단계: 개발 1차 버전 배포.** 서비스명은 가칭입니다. Cloudflare Pages + D1으로 전체 실적표·의원 상세 화면을 배포했습니다. 등급은 아직 공식 공개 승인 전 단계입니다.
+
+- 배포 주소: https://assembly-dashboard.pages.dev
+- 소스: [`app/`](app/) — Cloudflare Pages Functions(API) + D1(SQLite) + 정적 HTML/JS
 
 2026-10-01: [1차 데이터 검증](docs/data-validation-2026-10-01.md)을 수행했습니다. 입법·출결 자료의 가용성을 확인했고, 최신 표결 API와 국회 원문 간 누락 사례를 발견해 보완 검증 중입니다.
 
@@ -37,6 +40,31 @@
 | [단계별 진행 계획](docs/roadmap.md) | 단계별 산출물과 완료 기준 |
 | [의사결정 기록](docs/decisions.md) | 사용자 합의와 미확정 사항 |
 
+## 개발 환경
+
+`app/` 아래 Cloudflare Pages 프로젝트가 있습니다.
+
+```
+app/
+  wrangler.toml          # Pages + D1 바인딩 설정
+  migrations/            # D1 스키마·시드·점수 계산 결과 SQL (버전 순서대로 적용)
+  scripts/compute-scores.cjs  # D1에서 뽑은 원자료로 백분위·등급을 계산해 SQL 생성
+  functions/api/         # Pages Functions API (members 목록·상세)
+  public/                # 정적 프론트엔드 (index.html, member.html, css/js)
+```
+
+로컬에서 다시 만들 때:
+
+```
+cd app
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0001_init.sql
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0002_seed_members.sql
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0003_stage1_scores.sql
+npx wrangler pages deploy public --project-name=assembly-dashboard --branch=main
+```
+
+점수를 다시 계산하려면 D1에서 최신 원자료를 JSON으로 뽑아 `scripts/compute-scores.cjs`에 입력하고, 결과 SQL을 새 마이그레이션 파일로 적용합니다. 이 과정은 `score_runs`에 새 행을 추가하므로 과거 산식 결과도 남습니다.
+
 ## 인증정보 관리
 
-API 인증키와 GitHub 인증정보는 문서·소스·커밋·로그에 포함하지 않습니다. 향후 API 연결 시 로컬 환경변수 또는 배포 환경의 비밀값 저장소로 관리합니다. 이 리포지토리에는 실제 인증정보를 저장하지 않았습니다.
+API 인증키와 GitHub 인증정보는 문서·소스·커밋·로그에 포함하지 않습니다. 국회 공공API 수집 스크립트는 로컬 환경변수(`ASSEMBLY_API_KEY`)만 사용하며 이 리포지토리에는 포함하지 않습니다. Cloudflare 배포는 `wrangler login`으로 발급된 로컬 OAuth 토큰을 사용하며 리포지토리에 저장하지 않습니다.

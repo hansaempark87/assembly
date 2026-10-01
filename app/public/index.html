@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>일하는 국회 — 제22대 국회의원 실적 대시보드</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <h1>일하는 국회</h1>
+  <p class="subtitle">제22대 국회의원 실적 대시보드 — 검증 가능한 공식 기록 기반, 시민 투표·평점 없음</p>
+</header>
+
+<main>
+  <section class="notice" id="run-info">불러오는 중…</section>
+
+  <section class="controls">
+    <input type="search" id="search-box" placeholder="이름, 정당, 지역구 검색">
+    <select id="grade-filter">
+      <option value="">전체 등급</option>
+      <option value="S">S</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="ineligible">관찰 기간 부족</option>
+    </select>
+    <select id="sort-key">
+      <option value="rank">종합 순위</option>
+      <option value="legislation_percentile">입법 성과</option>
+      <option value="vote_percentile">표결 참여</option>
+      <option value="attendance_percentile">본회의 출석</option>
+      <option value="name">이름</option>
+    </select>
+  </section>
+
+  <section class="table-wrap">
+    <table id="member-table">
+      <thead>
+        <tr>
+          <th>순위</th>
+          <th>등급</th>
+          <th>이름</th>
+          <th>정당</th>
+          <th>지역구</th>
+          <th>입법 성과</th>
+          <th>표결 참여</th>
+          <th>본회의 출석</th>
+        </tr>
+      </thead>
+      <tbody id="member-tbody">
+        <tr><td colspan="8">불러오는 중…</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="method-note">
+    <h2>이 수치를 읽는 방법</h2>
+    <ul>
+      <li>종합 등급은 <strong>입법 성과 40% · 표결 참여 35% · 본회의 출석 25%</strong>의 백분위 가중합입니다. 위원회 출석은 회의일 연결 검증이 끝나지 않아 1단계 산식에서는 제외했습니다.</li>
+      <li>재임 180일 미만인 의원은 "관찰 기간 부족"으로 표시하고 등급을 매기지 않습니다.</li>
+      <li>입법 성과는 대표발의 중 가결(1.0)·대안반영(0.5)의 재임일수 보정 가중합입니다. 계류 중인 법안은 실패로 보지 않습니다. 공동발의 건수는 참고용입니다.</li>
+      <li>등급·백분위는 설계자의 판단이 들어간 상대적 지표이며, 완전히 객관적인 능력 평가가 아닙니다. 원본 수치를 항상 함께 표시합니다.</li>
+      <li>자세한 산식과 검증 과정은 <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">평가 설계 문서</a>를 참고하세요.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a>, <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a>. 소스: <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a></p>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
