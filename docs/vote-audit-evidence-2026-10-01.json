@@ -40,5 +40,15 @@
   },
   "combinedChecksPassedBills": 1770,
   "remainingReviewBills": 77,
+  "minutesFollowup": {
+    "reviewedAt": "2026-10-01",
+    "termBoundaryRules": [
+      {"date": "2024-12-12", "bills": 2, "member": "조국", "rule": "exclude from denominator", "evidence": "minutes report retirement before agenda"},
+      {"date": "2025-07-23", "bills": 21, "member": "이주희", "rule": "exclude from denominator", "evidence": "not in minutes attendance/vote lists and plenary attendance XLSX marks not applicable"},
+      {"date": "2026-03-12", "bills": 53, "member": "양문석", "rule": "exclude from denominator", "evidence": "minutes report final judgment before agenda"}
+    ],
+    "bill2215128": {"spokenTotal": {"yes": 195, "no": 0, "abstain": 2}, "correctedMemberList": {"yes": 196, "no": 0, "abstain": 1}, "correction": "정춘생 moved from abstain to yes", "rule": "use corrected member list and disclose aggregate inconsistency"},
+    "rulesPendingRegressionTest": 77
+  },
   "finalGradeDatasetApproved": false
 }

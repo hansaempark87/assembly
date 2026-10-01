@@ -1,0 +1,36 @@
+{
+  "checkedOn": "2026-10-01",
+  "scope": "Files listed by the National Assembly attendance datasets for the 22nd Assembly through the latest completed publication",
+  "source": "National Assembly Secretariat open.assembly.go.kr",
+  "files": {"selected": 73, "downloadErrors": 0, "plenary": 23, "standingCommittee": 26, "specialCommittee": 24},
+  "plenary": {
+    "sessions": {"first": 415, "last": 438, "noPlenarySession": 425, "ongoingUnpublishedSession": 439},
+    "sheets": 23, "memberSessionRows": 6857, "meetingDates": 119, "memberMeetingStatusCells": 35511,
+    "recognizedStatusCells": 35502, "notApplicableDashCells": 9,
+    "stateCounts": {"출석": 32425, "결석": 1548, "청가": 1076, "출장": 440, "결석신고서": 13},
+    "recognizedStates": ["출석", "결석", "청가", "출장", "결석신고서"],
+    "sessionStateCountMismatches": 0, "emptyStateCells": 0, "identityUnresolvedRows": 0,
+    "cumulativeCountMismatches": [{"fileSeq": 10001909, "session": 436, "memberCode": "3BC6890E", "name": "김미애", "cumulativeMeetings": 114, "cumulativeStatesSum": 111, "likelyMissingCumulativeTravelCount": 3}],
+    "officialMinutesDateCrosscheck": {"filesMeetingDates": 119, "minutesMeetingDatesForSessions415Through438": 119, "onlyInFiles": 0, "onlyInMinutes": 0, "session425": "no plenary meeting"}
+  },
+  "committee": {
+    "coverage": {"from": "2024-06", "through": "2026-08"},
+    "files": 50, "pages": 428, "textlessPages": 0, "candidateRows": 9285, "parsedRows": 9285,
+    "identityMappedRows": 9285, "identityUnresolvedRows": 0, "uniqueMemberCodes": 320,
+    "dailyStatusCells": 23836, "stateCounts": {"출석": 20984, "결석": 1429, "청가": 1086, "출장": 295, "결석신고서": 42},
+    "dailyStateCountMismatches": 4,
+    "mismatches": [
+      {"fileSeq": 10001933, "month": "2026-07", "type": "standing", "committee": "법제사법위원회", "name": "윤상현", "daily": {"출석": 4, "결석": 3}, "publishedTotal": {"출석": 3, "결석": 4}},
+      {"fileSeq": 10001770, "month": "2025-07", "type": "standing", "committee": "국방위원회", "name": "윤상현", "daily": {"출석": 1, "청가": 1}, "publishedTotal": {"출석": 1, "결석": 1}},
+      {"fileSeq": 10001691, "month": "2025-02", "type": "special", "committee": "윤석열정부의비상계엄선포를통한내란혐의진상규명국정조사특별위원회", "name": "곽규택", "daily": {"출석": 5, "출장": 1}, "publishedTotal": {"출석": 5, "청가": 1}},
+      {"fileSeq": 10001602, "month": "2024-10", "type": "standing", "committee": "외교통일위원회", "name": "이재명", "daily": {"출석": 2}, "publishedTotal": {"출석": 1, "청가": 1}}
+    ],
+    "monthsWithoutListedFile": {"standing": ["2026-06"], "special": ["2024-06", "2025-10"]},
+    "scheduleApiRowsAtCheck": 1870,
+    "emptyMonthScheduleCounts": {"2024-06": {"all": 32, "wholeMeeting": 29, "apparentType": "standing"}, "2025-10": {"all": 52, "wholeMeeting": 51, "apparentType": "standing"}, "2026-06": {"all": 8, "wholeMeeting": 8, "apparentType": "special"}},
+    "emptyMonthContradictionFound": false,
+    "fullIdentityMappingComplete": true,
+    "allCommitteeMeetingCoverageIndependentlyVerified": false
+  },
+  "gradeDatasetApproved": false
+}
