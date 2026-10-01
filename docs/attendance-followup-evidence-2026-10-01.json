@@ -1,0 +1,48 @@
+{
+  "checkedOn": "2026-10-01",
+  "plenary": {
+    "files": 23,
+    "sessions": {"first": 415, "last": 438, "noPlenary": 425, "ongoingUnpublished": 439},
+    "meetingDates": 119,
+    "minutesMeetingDates": 119,
+    "dateSetDifferences": 0,
+    "memberSessionRows": 6857,
+    "memberMeetingCells": 35511,
+    "recognizedStatusCells": 35502,
+    "notApplicableDashCells": 9,
+    "states": {"출석": 32425, "결석": 1548, "청가": 1076, "출장": 440, "결석신고서": 13},
+    "identityMappedRows": 6857,
+    "identityUnresolvedRows": 0,
+    "sessionSubtotalMismatches": 0,
+    "cumulativeMismatches": [{"fileSeq": 10001909, "session": 436, "memberCode": "3BC6890E", "name": "김미애", "cumulativeMeetings": 114, "publishedStateSum": 111, "likelyOmittedTravel": 3}]
+  },
+  "committee": {
+    "files": 50,
+    "standingFiles": 26,
+    "specialFiles": 24,
+    "pages": 428,
+    "textlessPages": 0,
+    "candidateRows": 9285,
+    "parsedRows": 9285,
+    "identityMappedRows": 9285,
+    "identityUnresolvedRows": 0,
+    "uniqueMemberCodes": 320,
+    "dailyStatusCells": 23836,
+    "states": {"출석": 20984, "결석": 1429, "청가": 1086, "출장": 295, "결석신고서": 42},
+    "subtotalMismatches": 4,
+    "monthsWithoutListedFile": {"standing": ["2026-06"], "special": ["2024-06", "2025-10"]},
+    "scheduleCrosscheck": {"apiRows": 1870, "emptyMonthContradictionFound": false},
+    "meetingColumnAndMembershipValidationComplete": false
+  },
+  "voteExceptionRules": {
+    "rulesDefined": 77,
+    "regressionTestComplete": false,
+    "boundaryBills": [
+      {"date": "2024-12-12", "bills": 2, "excludedMember": "조국"},
+      {"date": "2025-07-23", "bills": 21, "excludedMember": "이주희"},
+      {"date": "2026-03-12", "bills": 53, "excludedMember": "양문석"}
+    ],
+    "correctedVoteList": {"billNo": "2215128", "yes": 196, "no": 0, "abstain": 1, "correction": "정춘생 기권에서 찬성"}
+  },
+  "gradeDatasetApproved": false
+}
