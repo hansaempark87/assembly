@@ -1,0 +1,50 @@
+{
+  "checkedOn": "2026-10-01",
+  "scope": "299 current 22nd Assembly members, full re-check with complete bill dataset (19,730 rows, all pages)",
+  "legislation": {
+    "totalBillsAllAges": 19730,
+    "resultCodedBills": 5011,
+    "resultCodeNullBills": 14719,
+    "pendingRateAmongBillsAge180dPlus": "70.4%",
+    "pendingRateAmongBillsAge365dPlus": "66.2%",
+    "multiLeadProposerBills": 214,
+    "currentMemberLeadBillsTotal": 18894,
+    "currentMemberLeadPassedTotal": 683
+  },
+  "tenureCohorts": {
+    "2024-05-30": 278,
+    "2024-12-13": 1,
+    "2025-06-09": 2,
+    "2025-07-23": 1,
+    "2026-01-12": 1,
+    "2026-03-05": 1,
+    "2026-06-04": 14,
+    "2026-08-31": 1
+  },
+  "distributions": {
+    "voteParticipationRate": {
+      "p10": 46.36,
+      "p50": 77.98,
+      "p90": 97.4
+    },
+    "plenaryAttendanceRate": {
+      "p10": 81.51,
+      "p50": 94.12,
+      "p90": 100
+    },
+    "leadWeightedLegislation2024CohortN278": {
+      "p10": 5,
+      "p50": 14,
+      "p90": 31,
+      "max": 98,
+      "zeroCount": 2
+    }
+  },
+  "stage1Formula": {
+    "legislation": 0.4,
+    "voteParticipation": 0.35,
+    "plenaryAttendance": 0.25,
+    "committeeAttendance": 0
+  },
+  "gradeDatasetApproved": false
+}
