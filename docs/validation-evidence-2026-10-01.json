@@ -1,0 +1,52 @@
+{
+  "checkedOn": "2026-10-01",
+  "assemblyTerm": 22,
+  "scope": "availability and selected samples; not a complete member assessment",
+  "source": "National Assembly Secretariat: open.assembly.go.kr and likms.assembly.go.kr",
+  "catalog": {"service": "OPENSRVAPI", "params": {"pIndex": 1, "pSize": 1000}, "reportedTotal": 280, "rows": 280, "uniqueInfIds": 280},
+  "members": {"service": "nwvrqwxyaytdsfvhu", "rows": 299, "uniqueMonaCodes": 299},
+  "bills": {
+    "service": "nzmimeepazxkubdpn",
+    "params": {"AGE": 22, "pIndex": 1, "pSize": 1000},
+    "reportedTotal": 19730,
+    "sampleRows": 1000,
+    "uniqueBillIds": 1000,
+    "statusCounts": {"null": 938, "수정가결": 22, "원안가결": 18, "대안반영폐기": 18, "철회": 4},
+    "rowsWithLeadNotInCurrentRoster": 6,
+    "originalPageCheckedBillNos": ["2221367", "2221376", "2221353"]
+  },
+  "votes": {
+    "totalsService": "ncocpgfiaoituanbr",
+    "individualService": "nojepdqqaweusdfbi",
+    "individualParams": {"AGE": 22, "pIndex": 1, "pSize": 1000, "BILL_ID": "per sample below"},
+    "samples": [
+      {
+        "billNo": "2221432", "billId": "PRC_A2V6V0E9S1C5Z2X0C3U3B3E0O5P0S4", "date": "2026-09-17",
+        "official": {"members": 299, "voted": 204, "yes": 198, "no": 2, "abstain": 4},
+        "individualApi": {"reportedTotal": 283, "rows": 283, "yes": 186, "no": 2, "abstain": 4, "absent": 91},
+        "officialWebLists": {"yes": 198, "no": 2, "abstain": 4},
+        "filteredMissingCode": "QHL3248U", "filteredApiCode": "INFO-200", "filteredRows": 0,
+        "missingMemberPresentInOfficialWebYesList": true
+      },
+      {
+        "billNo": "2221431", "billId": "PRC_U2C6W0N9Q1D5D2V0X3Q1G4J5V5P0H4", "date": "2026-09-17",
+        "official": {"members": 299, "voted": 204, "yes": 154, "no": 49, "abstain": 1},
+        "individualApi": {"reportedTotal": 283, "rows": 283, "yes": 144, "no": 47, "abstain": 1, "absent": 91}
+      },
+      {
+        "billNo": "2221430", "billId": "PRC_V2G6Z0Z9V1L5C2O0A3O0D5X6O9U2F3", "date": "2026-09-17",
+        "official": {"members": 299, "voted": 198, "yes": 157, "no": 37, "abstain": 4},
+        "individualApi": {"reportedTotal": 283, "rows": 283, "yes": 147, "no": 35, "abstain": 4, "absent": 97}
+      },
+      {
+        "billNo": "2205421", "billId": "PRC_M2J4A1L0C3U0C1P7D3Q9B0Y1Y4S1Q8", "date": "2024-11-14",
+        "official": {"members": 300, "voted": 264, "yes": 253, "no": 2, "abstain": 9},
+        "individualApi": {"reportedTotal": 300, "rows": 300, "yes": 253, "no": 2, "abstain": 9, "absent": 36}
+      }
+    ]
+  },
+  "attendance": {
+    "plenary": {"infId": "O4Q5B50011905O18367", "infSeq": 1, "fileSeq": 10001952, "format": "xlsx", "published": "2026-08-31", "meetingDates": ["2026-08-20", "2026-08-26"], "memberRows": 299, "sessionCountFailures": 0, "cumulativeSumFailures": 0, "simpleCurrentIdentityUnresolved": 2},
+    "standingCommittee": {"infId": "OND4F9001191DA18437", "infSeq": 1, "fileSeq": 10001946, "format": "pdf", "published": "2026-09-14", "coverageMonth": "2026-08", "pages": 17, "matchedRows": 356, "arithmeticFailuresInMatchedRows": 0, "fullLayoutVerified": false}
+  }
+}
