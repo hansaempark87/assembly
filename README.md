@@ -49,8 +49,9 @@ app/
   wrangler.toml          # Pages + D1 바인딩 설정
   migrations/            # D1 스키마·시드·점수 계산 결과 SQL (버전 순서대로 적용)
   scripts/compute-scores.cjs  # D1에서 뽑은 원자료로 백분위·등급을 계산해 SQL 생성
-  functions/api/         # Pages Functions API (members 목록·상세)
-  public/                # 정적 프론트엔드 (index.html, member.html, css/js)
+  scripts/recompute-scores.sh # 원자료 재조회 + compute-scores 실행 + D1 반영을 한 번에
+  functions/api/         # Pages Functions API (members 목록·상세·compare)
+  public/                # 정적 프론트엔드 (index.html, member.html, compare.html, css/js)
 ```
 
 로컬에서 다시 만들 때:
@@ -63,7 +64,7 @@ npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0003_stage
 npx wrangler pages deploy public --project-name=assembly-dashboard --branch=main
 ```
 
-점수를 다시 계산하려면 D1에서 최신 원자료를 JSON으로 뽑아 `scripts/compute-scores.cjs`에 입력하고, 결과 SQL을 새 마이그레이션 파일로 적용합니다. 이 과정은 `score_runs`에 새 행을 추가하므로 과거 산식 결과도 남습니다.
+점수를 다시 계산하려면 `bash app/scripts/recompute-scores.sh`를 실행합니다. D1에서 최신 원자료를 JSON으로 뽑아 `compute-scores.cjs`로 백분위·등급을 계산하고, 결과 SQL을 새 마이그레이션 파일로 자동 적용합니다. `score_runs`에 새 행이 추가되므로 과거 산식 결과도 남습니다. 의원·입법·표결·출석의 원자료 자체(members/member_legislation/member_votes/member_attendance 테이블)는 아직 자동 수집기가 없고, 현재는 검증 단계에서 만든 로컬 스크립트로 수동 생성합니다.
 
 ## 인증정보 관리
 

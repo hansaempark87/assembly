@@ -34,6 +34,7 @@
           <p>소속 위원회: ${m.committee ?? '-'}</p>
           <p>재임: ${m.term_start} ~ ${m.term_end ?? '현재'} (${m.tenure_days}일)</p>
           <p><strong>${rankText}</strong></p>
+          <a href="/compare.html?a=${encodeURIComponent(m.id)}" style="font-size:0.85rem;color:#2f81f7;text-decoration:none;">다른 의원과 비교하기 &rarr;</a>
         </div>
 
         <div class="detail-grid">
