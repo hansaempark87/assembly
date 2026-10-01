@@ -1,0 +1,14 @@
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local API responses and logs
+data/raw/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
