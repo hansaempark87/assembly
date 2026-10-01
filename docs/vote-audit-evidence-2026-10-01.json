@@ -1,0 +1,44 @@
+{
+  "checkedOn": "2026-10-01",
+  "scope": "All 1847 bills listed by ncocpgfiaoituanbr AGE=22 at retrieval; not independently verified as every parliamentary voting event",
+  "source": "National Assembly Secretariat: open.assembly.go.kr and likms.assembly.go.kr",
+  "apiAudit": {
+    "completedAtUtc": "2026-10-01T12:04:16.818Z",
+    "bills": 1847, "uniqueBillIds": 1847, "individualRows": 545107,
+    "requestErrors": 0, "incompleteResponses": 0, "duplicateMemberIdBills": 0, "missingIdBills": 0,
+    "voteCountMatches": 1371, "voteCountMismatches": 476,
+    "participantDeficitBills": 475, "distributionOnlyMismatchBills": 1,
+    "officialParticipantCountSum": 407690, "apiParticipantRows": 404395,
+    "apiStates": {"찬성": 388329, "반대": 9726, "기권": 6340, "불참": 140712},
+    "matchingTotalsButMissingTenureRosterRows": 338,
+    "apiAndTenureRosterChecksPassed": 1033,
+    "firstCountMismatchDate": "2026-01-15", "lastCountMismatchDate": "2026-09-17"
+  },
+  "identities": {
+    "currentMembers": 299, "currentHistoryRowsAllTerms": 610,
+    "currentTerm22Rows": 299, "formerTerm22Rows": 22,
+    "term22UniqueMemberCodes": 321, "unparsedTenureRows": 0,
+    "allMemberProfileRows": 3296, "term22CodesNotInAllProfiles": 0,
+    "voteCodesNotInTenureRoster": 0, "apiRowsOutsideInclusiveTenureDates": 0,
+    "currentCommitteeHistoryTerm22Rows": 1696,
+    "plenary438MappedRows": 299, "plenary438UniqueMappedIds": 299, "plenary438UnresolvedRows": 0,
+    "boundaryDates": [
+      {"date": "2024-12-12", "bills": 2, "inclusiveTenureMembers": 300, "officialMembers": 299},
+      {"date": "2025-07-23", "bills": 21, "inclusiveTenureMembers": 298, "officialMembers": 297},
+      {"date": "2026-03-12", "bills": 53, "inclusiveTenureMembers": 296, "officialMembers": 295}
+    ]
+  },
+  "webAudit": {
+    "completedAtUtc": "2026-10-01T12:07:31.685Z",
+    "targetBills": 814, "checkedBills": 814, "errors": 0,
+    "countMatches": 813, "repairChecksPassed": 737, "held": 77,
+    "unresolvedIdentityBills": 0, "duplicateIdentityBills": 0,
+    "conflictsWithApiParticipantBills": 0, "apiParticipantOmissionBills": 0,
+    "recoveredParticipantRowsInPassedBills": 3249, "recoveredUniqueMembers": 16,
+    "remainingTenureBoundaryBills": 76,
+    "remainingCountMismatch": {"billNo": "2215128", "date": "2026-01-29", "official": {"yes": 195, "no": 0, "abstain": 2}, "webAndIndividualApi": {"yes": 196, "no": 0, "abstain": 1}}
+  },
+  "combinedChecksPassedBills": 1770,
+  "remainingReviewBills": 77,
+  "finalGradeDatasetApproved": false
+}

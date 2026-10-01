@@ -6,6 +6,8 @@
 
 ## 1. 주 데이터 소스
 
+[2차 표결·재임 검증 보고서](vote-and-identity-audit-2026-10-01.md)에서 개인 표결 목록 전체 1,847건과 추가 원문 814건을 대조했다. 총계와 신원 검사 통과 1,770건, 재임 경계일·총계 차이로 보류 77건이다. 전체 국회 표결 이벤트 포함 여부·출결 전 기간 검증은 별도 진행한다.
+
 - [열린국회정보 Open API](https://open.assembly.go.kr/portal/openapi/main.do)
 - [공공데이터포털 국회의원 정보 통합 API 안내](https://www.data.go.kr/data/15126133/openapi.do)
 
