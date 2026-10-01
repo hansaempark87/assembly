@@ -58,6 +58,7 @@
     const legA = a.legislation_percentile, legB = b.legislation_percentile;
     const voteA = a.vote_percentile, voteB = b.vote_percentile;
     const attA = a.attendance_percentile, attB = b.attendance_percentile;
+    const comA = a.committee_attendance_percentile, comB = b.committee_attendance_percentile;
     const compA = a.composite_percentile, compB = b.composite_percentile;
 
     result.innerHTML = `
@@ -72,7 +73,8 @@
         ${row('종합 순위', a.eligible ? `${a.rank ?? '-'}위` : '관찰기간 부족', b.eligible ? `${b.rank ?? '-'}위` : '관찰기간 부족', a.eligible && b.eligible && a.rank < b.rank, a.eligible && b.eligible && b.rank < a.rank)}
         ${row('입법 성과 (40%)', `${pctText(legA)} <small>(가결+대안 ${a.lead_passed + a.lead_alternative}/${a.lead_count}건)</small>`, `${pctText(legB)} <small>(가결+대안 ${b.lead_passed + b.lead_alternative}/${b.lead_count}건)</small>`, legA !== null && legB !== null && legA > legB, legA !== null && legB !== null && legB > legA)}
         ${row('표결 참여 (35%)', `${pctText(voteA)} <small>(${a.vote_participated}/${a.vote_eligible}회)</small>`, `${pctText(voteB)} <small>(${b.vote_participated}/${b.vote_eligible}회)</small>`, voteA !== null && voteB !== null && voteA > voteB, voteA !== null && voteB !== null && voteB > voteA)}
-        ${row('본회의 출석 (25%)', `${pctText(attA)} <small>(${a.attendance_present}/${a.attendance_meetings}일)</small>`, `${pctText(attB)} <small>(${b.attendance_present}/${b.attendance_meetings}일)</small>`, attA !== null && attB !== null && attA > attB, attA !== null && attB !== null && attB > attA)}
+        ${row('본회의 출석 (15%)', `${pctText(attA)} <small>(${a.attendance_present}/${a.attendance_meetings}일)</small>`, `${pctText(attB)} <small>(${b.attendance_present}/${b.attendance_meetings}일)</small>`, attA !== null && attB !== null && attA > attB, attA !== null && attB !== null && attB > attA)}
+        ${row('위원회 출석 (10%)', a.committee_meetings_total ? `${pctText(comA)} <small>(${a.committee_present}/${a.committee_meetings_total}회, 월별집계)</small>` : '자료 없음', b.committee_meetings_total ? `${pctText(comB)} <small>(${b.committee_present}/${b.committee_meetings_total}회, 월별집계)</small>` : '자료 없음', comA !== null && comB !== null && comA > comB, comA !== null && comB !== null && comB > comA)}
         ${row('종합 백분위', pctText(compA), pctText(compB), compA !== null && compB !== null && compA > compB, compA !== null && compB !== null && compB > compA)}
       </table>
     `;

@@ -31,6 +31,7 @@
       <option value="legislation_percentile">입법 성과</option>
       <option value="vote_percentile">표결 참여</option>
       <option value="attendance_percentile">본회의 출석</option>
+      <option value="committee_attendance_percentile">위원회 출석</option>
       <option value="name">이름</option>
     </select>
     <a href="/compare.html" class="compare-link">의원 비교 &rarr;</a>
@@ -48,10 +49,11 @@
           <th>입법 성과</th>
           <th>표결 참여</th>
           <th>본회의 출석</th>
+          <th>위원회 출석</th>
         </tr>
       </thead>
       <tbody id="member-tbody">
-        <tr><td colspan="8">불러오는 중…</td></tr>
+        <tr><td colspan="9">불러오는 중…</td></tr>
       </tbody>
     </table>
   </section>
@@ -59,7 +61,7 @@
   <section class="method-note">
     <h2>이 수치를 읽는 방법</h2>
     <ul>
-      <li>종합 등급은 <strong>입법 성과 40% · 표결 참여 35% · 본회의 출석 25%</strong>의 백분위 가중합입니다. 위원회 출석은 회의일 연결 검증이 끝나지 않아 1단계 산식에서는 제외했습니다.</li>
+      <li>종합 등급은 <strong>입법 성과 40% · 표결 참여 35% · 본회의 출석 15% · 위원회 출석 10%</strong>의 백분위 가중합입니다. 위원회 출석은 월별 집계 자료이며 회의일 단위 구조화는 아직 끝나지 않아 본회의 출석보다 비중을 낮게 두었습니다. 자료가 아직 없는 의원은 나머지 세 항목의 비중을 재분배해 계산합니다.</li>
       <li>재임 180일 미만인 의원은 "관찰 기간 부족"으로 표시하고 등급을 매기지 않습니다.</li>
       <li>입법 성과는 대표발의 중 가결(1.0)·대안반영(0.5)의 재임일수 보정 가중합입니다. 계류 중인 법안은 실패로 보지 않습니다. 공동발의 건수는 참고용입니다.</li>
       <li>등급·백분위는 설계자의 판단이 들어간 상대적 지표이며, 완전히 객관적인 능력 평가가 아닙니다. 원본 수치를 항상 함께 표시합니다.</li>

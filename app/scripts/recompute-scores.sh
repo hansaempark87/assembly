@@ -10,8 +10,9 @@ npx wrangler d1 execute assembly-dashboard --remote --command="SELECT id, tenure
 npx wrangler d1 execute assembly-dashboard --remote --command="SELECT member_id, weighted_score FROM member_legislation" --json > tmp/legislation.json
 npx wrangler d1 execute assembly-dashboard --remote --command="SELECT member_id, participation_rate FROM member_votes" --json > tmp/votes.json
 npx wrangler d1 execute assembly-dashboard --remote --command="SELECT member_id, attendance_rate FROM member_attendance" --json > tmp/attendance.json
+npx wrangler d1 execute assembly-dashboard --remote --command="SELECT member_id, attendance_rate FROM member_committee_attendance" --json > tmp/committee.json
 
-node scripts/compute-scores.cjs tmp/members.json tmp/legislation.json tmp/votes.json tmp/attendance.json tmp/scores.sql
+node scripts/compute-scores.cjs tmp/members.json tmp/legislation.json tmp/votes.json tmp/attendance.json tmp/committee.json tmp/scores.sql
 
 STAMP=$(date +%Y%m%d%H%M%S)
 OUT="migrations/9${STAMP}_rescore.sql"

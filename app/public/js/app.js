@@ -29,6 +29,9 @@
         const legRaw = `가결+대안 ${m.lead_passed + m.lead_alternative}/${m.lead_count}건`;
         const voteRaw = `${m.vote_participated}/${m.vote_eligible}회`;
         const attRaw = `${m.attendance_present}/${m.attendance_meetings}일`;
+        const committeeRaw = m.committee_meetings_total
+          ? `${m.committee_present}/${m.committee_meetings_total}회(월별집계)`
+          : '자료 없음';
         return `<tr data-id="${m.id}">
           <td>${rank}</td>
           <td>${gradeBadge(m.grade)}</td>
@@ -38,6 +41,7 @@
           ${pctCell(m.legislation_percentile, legRaw)}
           ${pctCell(m.vote_percentile, voteRaw)}
           ${pctCell(m.attendance_percentile, attRaw)}
+          ${pctCell(m.committee_attendance_percentile, committeeRaw)}
         </tr>`;
       })
       .join('');
@@ -88,7 +92,10 @@
       if (!res.ok) throw new Error(data.error || 'load failed');
       allMembers = data.members;
       runMeta = data.run;
-      runInfo.innerHTML = `산식 버전 <strong>${runMeta.formula_version}</strong> · 입법 ${Math.round(runMeta.legislation_weight * 100)}% · 표결 ${Math.round(runMeta.vote_weight * 100)}% · 본회의 출석 ${Math.round(runMeta.attendance_weight * 100)}% · 최소 재임 ${runMeta.min_tenure_days}일 · 계산일 ${runMeta.created_at.slice(0, 10)} · 위원회 출석은 1단계에서 제외 · <strong>실제 등급 공개 승인 전 단계입니다.</strong>`;
+      const committeePart = runMeta.committee_attendance_weight
+        ? ` · 위원회 출석 ${Math.round(runMeta.committee_attendance_weight * 100)}%(월별 집계, 회의일 구조화 전)`
+        : '';
+      runInfo.innerHTML = `산식 버전 <strong>${runMeta.formula_version}</strong> · 입법 ${Math.round(runMeta.legislation_weight * 100)}% · 표결 ${Math.round(runMeta.vote_weight * 100)}% · 본회의 출석 ${Math.round(runMeta.attendance_weight * 100)}%${committeePart} · 최소 재임 ${runMeta.min_tenure_days}일 · 계산일 ${runMeta.created_at.slice(0, 10)} · <strong>실제 등급 공개 승인 전 단계입니다.</strong>`;
       applyFilters();
     } catch (err) {
       runInfo.textContent = '데이터를 불러오지 못했습니다: ' + err.message;

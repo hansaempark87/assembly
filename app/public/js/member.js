@@ -51,16 +51,24 @@
             <div class="raw">재임 경계일 등 예외 제외: ${m.vote_excluded}건</div>
           </div>
           <div class="metric-box">
-            <h3>본회의 출석 (25%)</h3>
+            <h3>본회의 출석 (15%)</h3>
             <div class="big">${pctText(m.attendance_percentile)}</div>
             <div class="raw">${m.attendance_present} / ${m.attendance_meetings}일 출석 (${m.attendance_rate ? (m.attendance_rate * 100).toFixed(1) : '-'}%)</div>
             <div class="raw">결석 ${m.absent_count}일 · 청가 ${m.leave_count}일 · 출장 ${m.travel_count}일</div>
+          </div>
+          <div class="metric-box">
+            <h3>위원회 출석 (10%)</h3>
+            <div class="big">${pctText(m.committee_attendance_percentile)}</div>
+            ${m.committee_meetings_total
+              ? `<div class="raw">${m.committee_present} / ${m.committee_meetings_total}회 출석 (${m.committee_attendance_rate ? (m.committee_attendance_rate * 100).toFixed(1) : '-'}%) · 월별 집계 ${m.committee_months_covered}개월</div>
+                 <div class="raw">결석 ${m.committee_absent}회 · 청가 ${m.committee_leave}회 · 출장 ${m.committee_travel}회</div>`
+              : `<div class="raw">아직 공개된 월별 출결 자료가 없습니다.</div>`}
           </div>
         </div>
 
         <div class="detail-card">
           <p style="font-size:0.85rem;color:#57606a;">
-            위원회 출석은 회의일·재임 연결 검증이 끝나지 않아 이 산식에 포함되지 않았습니다.
+            위원회 출석은 날짜별이 아닌 월별 집계 자료이며, 아직 회의일 단위로 구조화되지 않았습니다. 그래서 본회의 출석보다 비중을 낮게(10%) 두었습니다.
             등급과 백분위는 설계자가 정한 비중에 따른 상대적 지표이며, 절대적인 의정활동 평가가 아닙니다.
             산식 상세: <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">평가 설계 문서</a>
           </p>

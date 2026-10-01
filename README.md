@@ -15,7 +15,7 @@
 
 [출결·표결 예외 후속 검증](docs/attendance-followup-2026-10-01.md): 본회의 119일을 회의록과 대조하고 위원회 9,285행의 의원 신원을 연결했습니다. 표결 예외 77건의 처리 규칙도 공식 회의록을 근거로 마련했습니다.
 
-[1단계 평가 산식 확정](docs/evaluation-draft.md): 법안 발의 목록 19,730건 전체를 수집해 299명 현직 의원 전수에 입법·표결·출석 지표를 계산했습니다. 위원회 출석을 제외한 입법 성과 40%·표결 참여 35%·본회의 출석 25%를 1단계 산식으로 확정했습니다. 실제 의원 등급은 아직 공개하지 않습니다.
+[2단계 평가 산식 적용](docs/evaluation-draft.md): 위원회 출결 PDF 9,285행을 의원코드에 연결(298/299)해 월별 집계 지표로 추가했습니다. 입법 성과 40%·표결 참여 35%·본회의 출석 15%·위원회 출석 10%로 2단계 산식을 적용했습니다. 위원회 출석은 아직 회의일 단위가 아니라 낮은 비중입니다. 실제 의원 등급은 아직 공개하지 않습니다.
 
 ## 핵심 방향
 
@@ -30,8 +30,8 @@
 | 문서 | 내용 |
 | --- | --- |
 | [서비스 기획](docs/product-plan.md) | 목적, 초기 화면과 기능, 확정 범위 |
-| [상대평가 설계](docs/evaluation-draft.md) | 등급 구간, 1단계 확정 비중, 남은 쟁점 |
-| [1단계 평가 지표 수치](docs/evaluation-metrics-2026-10-01.json) | 299명 전수 입법·표결·출석 지표의 분포 요약 |
+| [상대평가 설계](docs/evaluation-draft.md) | 등급 구간, 2단계 적용 비중, 남은 쟁점 |
+| [1단계 평가 지표 수치](docs/evaluation-metrics-2026-10-01.json) | 299명 전수 입법·표결·출석 지표의 분포 요약 (위원회 추가 전) |
 | [데이터 확보 및 검증 계획](docs/data-plan.md) | 데이터 소스, 확인 현황, 품질 검증 |
 | [1차 데이터 검증 결과](docs/data-validation-2026-10-01.md) | 실조회·원문 대조 결과와 평가 투입 전 해결할 사항 |
 | [2차 표결·재임 검증](docs/vote-and-identity-audit-2026-10-01.md) | 표결 1,847건 대조, 원문 보완, 재임·동명이인 연결 |
@@ -60,11 +60,14 @@ app/
 cd app
 npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0001_init.sql
 npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0002_seed_members.sql
-npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0003_stage1_scores.sql
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0004_committee_attendance.sql
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0005_seed_committee.sql
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0006_scores_committee_column.sql
+npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0007_stage2_scores.sql
 npx wrangler pages deploy public --project-name=assembly-dashboard --branch=main
 ```
 
-점수를 다시 계산하려면 `bash app/scripts/recompute-scores.sh`를 실행합니다. D1에서 최신 원자료를 JSON으로 뽑아 `compute-scores.cjs`로 백분위·등급을 계산하고, 결과 SQL을 새 마이그레이션 파일로 자동 적용합니다. `score_runs`에 새 행이 추가되므로 과거 산식 결과도 남습니다. 의원·입법·표결·출석의 원자료 자체(members/member_legislation/member_votes/member_attendance 테이블)는 아직 자동 수집기가 없고, 현재는 검증 단계에서 만든 로컬 스크립트로 수동 생성합니다.
+점수를 다시 계산하려면 `bash app/scripts/recompute-scores.sh`를 실행합니다. D1에서 최신 원자료를 JSON으로 뽑아 `compute-scores.cjs`로 백분위·등급을 계산하고, 결과 SQL을 새 마이그레이션 파일로 자동 적용합니다. `score_runs`에 새 행이 추가되므로 과거 산식 결과도 남습니다. 의원·입법·표결·출석·위원회 출석의 원자료 자체(members/member_legislation/member_votes/member_attendance/member_committee_attendance 테이블)는 아직 자동 수집기가 없고, 현재는 검증 단계에서 만든 로컬 스크립트로 수동 생성합니다.
 
 ## 인증정보 관리
 
