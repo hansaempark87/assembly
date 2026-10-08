@@ -5,6 +5,7 @@
 **현재 단계: 개발 1차 버전 배포.** 서비스명은 가칭입니다. Cloudflare Pages + D1으로 전체 실적표·의원 상세 화면을 배포했습니다. 등급은 아직 공식 공개 승인 전 단계입니다.
 
 - 배포 주소: https://assembly-dashboard.pages.dev
+- 배포 방식: Cloudflare Pages Git 연동(루트 `app`, 출력 `public`). `main`에 반영되면 실제 사이트로, 다른 브랜치는 미리보기 주소로 자동 배포됩니다.
 - 소스: [`app/`](app/) — Cloudflare Pages Functions(API) + D1(SQLite) + 정적 HTML/JS
 
 2026-10-01: [1차 데이터 검증](docs/data-validation-2026-10-01.md)을 수행했습니다. 입법·출결 자료의 가용성을 확인했고, 최신 표결 API와 국회 원문 간 누락 사례를 발견해 보완 검증 중입니다.
