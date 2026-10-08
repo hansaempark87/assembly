@@ -17,7 +17,7 @@ export async function onRequestGet({ env }) {
       `SELECT
          m.id, m.name, m.hanja_name, m.party, m.district, m.committee,
          m.term_start, m.term_end, m.tenure_days,
-         l.lead_count, l.lead_passed, l.lead_alternative, l.lead_withdrawn, l.lead_rejected, l.lead_pending, l.co_lead_count,
+         l.lead_count, l.lead_passed, l.lead_alternative, l.lead_withdrawn, l.lead_rejected, l.lead_pending, l.co_lead_count, l.weighted_score,
          v.eligible_count as vote_eligible, v.participated_count as vote_participated, v.excluded_count as vote_excluded, v.participation_rate,
          a.meetings_total as attendance_meetings, a.present_count as attendance_present, a.absent_count, a.leave_count, a.travel_count, a.attendance_rate,
          c.months_covered as committee_months_covered, c.meetings_total as committee_meetings_total, c.present_count as committee_present, c.absent_count as committee_absent, c.leave_count as committee_leave, c.travel_count as committee_travel, c.attendance_rate as committee_attendance_rate,

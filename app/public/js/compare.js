@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, topText, gradeBadge, loadMembers, METRICS, stripPlot, memberCombo } = window.NA;
+  const { esc, num, topText, rankText, gradeBadge, loadMembers, METRICS, stripPlot, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
   const result = $('result');
 
@@ -14,7 +14,7 @@
       <div class="who">
         <span class="vs-key ${side}"></span><b><a href="/member.html?id=${encodeURIComponent(m.id)}" style="color:inherit">${esc(m.name)}</a></b>
         <small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small>
-        <small>${m.eligible ? `종합 ${num(m.rank)}위 · ${topText(m.composite_percentile)}` : '관찰 기간 부족 (등급 없음)'} · 재임 ${num(m.tenure_days)}일</small>
+        <small>${m.eligible ? `종합 ${rankText(m, all)} · ${topText(m.composite_percentile)}` : '관찰 기간 부족 (등급 없음)'} · 재임 ${num(m.tenure_days)}일</small>
       </div>
     </div>`;
   }
@@ -28,9 +28,11 @@
   function valueCell(m, mt, side, win) {
     const v = mt.rate(m);
     const p = m[mt.pctKey];
+    const big = mt.headline ? mt.headline(m) : v === null || v === undefined ? '–' : mt.fmt(v);
+    const detail = mt.headline && v !== null && v !== undefined ? `채점 ${mt.fmt(v)} · ${mt.short(m)}` : mt.raw(m);
     return `<div class="cmp-val num ${side === 'b' ? 'right' : ''}">
-      ${v === null || v === undefined ? '–' : esc(mt.fmt(v))}${win === side ? '<span class="win">▲ 우세</span>' : ''}
-      <small>${p === null || p === undefined ? esc(mt.raw(m)) : `${topText(p)} · ${esc(mt.raw(m))}`}</small>
+      ${esc(big)}${win === side ? '<span class="win">▲ 우세</span>' : ''}
+      <small>${p === null || p === undefined ? '' : `${topText(p)} · `}${esc(detail)}</small>
     </div>`;
   }
 

@@ -8,12 +8,22 @@
   const num = (n) => (n === null || n === undefined ? '-' : nf.format(n));
   const pct = (r, d = 1) => (r === null || r === undefined ? '-' : `${(r * 100).toFixed(d)}%`);
 
-  // percentile (higher = better) → "상위 N%"
+  // percentile (higher = better) → "상위 N%" for the top half, "하위 N%" below
+  // the middle, so a weak result never reads as "상위 90%".
   function topText(p) {
     if (p === null || p === undefined) return '산출 안 됨';
     const top = 100 - p;
-    if (top < 1) return '상위 1% 이내';
-    return `상위 ${Math.round(top)}%`;
+    if (top <= 50) return top < 1 ? '상위 1% 이내' : `상위 ${Math.round(top)}%`;
+    return p < 1 ? '하위 1% 이내' : `하위 ${Math.round(p)}%`;
+  }
+
+  const GRADE_BAND = { S: '상위 10% 이내', A: '상위 10~30%', B: '상위 30~70%', C: '하위 10~30%', D: '하위 10% 이내' };
+
+  // "공동 88위" when another member shares the rank
+  function rankText(m, all) {
+    if (!m.eligible || m.rank === null || m.rank === undefined) return null;
+    const shared = all.some((x) => x !== m && x.eligible && x.rank === m.rank);
+    return `${shared ? '공동 ' : ''}${num(m.rank)}위`;
   }
 
   function gradeBadge(grade, cls = '') {
@@ -70,14 +80,17 @@
   const METRICS = [
     {
       key: 'legislation', label: '입법 성과', weightKey: 'legislation_weight', pctKey: 'legislation_percentile',
-      rate: (m) => m.lead_reflected, fmt: (v) => `${num(v)}건`, unit: '건',
+      // Same measure the percentile is computed from: (가결 1 + 대안반영 0.5) per tenure day, shown per year.
+      rate: (m) => (m.weighted_score === null || m.weighted_score === undefined ? null : m.weighted_score * 365),
+      fmt: (v) => `${v.toFixed(1)}점`, unit: '점',
+      headline: (m) => `${num(m.lead_reflected)}건`,
       raw: (m) => `대표발의 ${num(m.lead_count)}건 중 ${num(m.lead_reflected)}건 반영`,
       short: (m) => `반영 ${num(m.lead_reflected)}/${num(m.lead_count)}건`,
       plain: (m) =>
         m.lead_count
           ? `대표발의한 법안 10건 중 약 ${((m.lead_reflected / m.lead_count) * 10).toFixed(1)}건이 법에 반영됐어요.`
           : '대표발의한 법안이 없습니다.',
-      axisNote: '가결 + 대안반영 건수',
+      axisNote: '채점 점수 = (가결 1 + 대안반영 0.5) ÷ 재임 연수',
     },
     {
       key: 'vote', label: '표결 참여', weightKey: 'vote_weight', pctKey: 'vote_percentile',
@@ -179,14 +192,19 @@
       for (const m of sorted) if (Math.abs(opts.value(m) - v) < Math.abs(opts.value(best) - v)) best = m;
       return best;
     };
-    hit.addEventListener('mousemove', (e) => {
+    const show = (e) => {
       const m = nearest(e.clientX);
       const same = rows.filter((r) => opts.value(r) === opts.value(m)).length;
       tip(`<b>${esc(m.name)}</b> · ${esc(m.party || '')}<br>${esc(opts.fmt(opts.value(m)))}${same > 1 ? ` <span style="opacity:.7">(동일 값 ${same}명)</span>` : ''}`, e.clientX, e.clientY);
-    });
-    hit.addEventListener('mouseleave', () => tip(null));
+      return m;
+    };
+    let tapped = null;
+    hit.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') show(e); });
+    hit.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') tip(null); });
     hit.addEventListener('click', (e) => {
       const m = nearest(e.clientX);
+      // touch: first tap previews, a second tap on the same member opens it
+      if (e.pointerType && e.pointerType !== 'mouse' && tapped !== m) { tapped = show(e); return; }
       window.location.href = `/member.html?id=${encodeURIComponent(m.id)}`;
     });
   }
@@ -295,5 +313,5 @@
   } catch (_) { /* storage unavailable */ }
   document.addEventListener('DOMContentLoaded', initTheme);
 
-  window.NA = { esc, num, pct, topText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+  window.NA = { esc, num, pct, topText, GRADE_BAND, rankText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
 })();

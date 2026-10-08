@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, pct, topText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
+  const { esc, num, topText, GRADE_BAND, rankText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
   const content = document.getElementById('content');
   const id = new URLSearchParams(window.location.search).get('id');
 
@@ -62,8 +62,8 @@
       ? `<div class="profile-score">
           ${gradeBadge(m.grade, 'grade-lg')}
           <div>
-            <div class="big num">${num(m.rank)}위 <span class="muted" style="font-size:1rem;font-weight:500">/ ${num(eligible.length)}명</span></div>
-            <div class="sub">종합 ${topText(m.composite_percentile)}${partyRank ? ` · ${esc(m.party)} ${num(party.length)}명 중 ${partyRank}위` : ''}</div>
+            <div class="big num">${rankText(m, all)} <span class="muted" style="font-size:1rem;font-weight:500">/ ${num(eligible.length)}명</span></div>
+            <div class="sub">${esc(m.grade)}등급(${GRADE_BAND[m.grade]}) · 종합 ${topText(m.composite_percentile)}${partyRank ? ` · ${esc(m.party)} ${num(party.length)}명 중 ${partyRank}위` : ''}</div>
           </div>
         </div>`
       : `<div class="profile-score">${gradeBadge(null, 'grade-lg')}<div><div class="big">관찰 기간 부족</div><div class="sub">재임 ${num(m.tenure_days)}일 · ${num(run.min_tenure_days)}일 이상부터 등급 산출</div></div></div>`;
@@ -81,11 +81,12 @@
           <h2 class="card-title">${mt.label} <span class="weight">비중 ${Math.round((run[mt.weightKey] || 0) * 100)}%</span></h2>
         </div>
         <div class="headline">
-          <span class="v num">${v === null || v === undefined ? '–' : mt.fmt(v)}</span>
-          ${p === null || p === undefined ? '' : `<span class="pct">${topText(p)}</span>`}
+          <span class="v num">${mt.headline ? mt.headline(m) : v === null || v === undefined ? '–' : mt.fmt(v)}</span>
+          ${mt.headline && v !== null && v !== undefined ? `<span class="muted">채점 ${mt.fmt(v)}</span>` : ''}
+          ${p === null || p === undefined ? '' : `<span class="pct ${p < 50 ? 'low' : ''}">${topText(p)}</span>`}
         </div>
         <p class="plain">${esc(mt.plain(m))}</p>
-        <div class="card-sub">${mt.axisNote} · 평가 대상 ${num(eligible.length)}명 분포 (점에 마우스를 올리면 의원 확인)</div>
+        <div class="card-sub">${mt.axisNote} · 평가 대상 ${num(eligible.length)}명 분포</div>
         <div class="strip-host" data-key="${mt.key}"></div>
         ${detail(mt.key, m)}
       </section>`;
@@ -111,7 +112,7 @@
       <div class="grid grid-2 section">${cards}</div>
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.created_at.slice(0, 10))} · 등급은 설계자가 정한 비중에 따른 상대 지표이며 정식 공개 승인 전입니다.
-        입법 백분위는 가결·대안반영을 재임일수로 보정해 계산하므로 반영 건수 순서와 다를 수 있습니다.
+        입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.
         <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">산식 문서</a>
       </p>`;
 
