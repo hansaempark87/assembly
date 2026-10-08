@@ -29,12 +29,13 @@ const SCORE_FIELDS = [
 // values and the original D1 values are kept under `raw`.
 export function withScores(row) {
   const s = RUN.scores[row.id] || { status: 'unscored', eligible: 0 };
-  const out = { ...row };
+  // documented corrections to the raw record come first
+  const out = { ...row, ...(s.correct || {}) };
   for (const k of SCORE_FIELDS) out[k] = s[k] ?? null;
   out.eligible = s.eligible || 0;
   if (s.scored) {
     out.raw = {};
-    for (const k of Object.keys(s.scored)) out.raw[k] = row[k];
+    for (const k of Object.keys(s.scored)) out.raw[k] = k in (s.correct || {}) ? s.correct[k] : row[k];
     Object.assign(out, s.scored);
   }
   out.roles = RUN.roles.filter((r) => r.member_id === row.id);

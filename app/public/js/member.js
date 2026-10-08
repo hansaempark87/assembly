@@ -39,7 +39,7 @@
     }
     if (!m.committee_meetings_total) return '';
     return `
-      <div class="card-sub" style="margin:14px 0 8px">위원회 ${num(m.committee_meetings_total)}회 출결 · 월별 집계 ${num(m.committee_months_covered)}개월</div>
+      <div class="card-sub" style="margin:14px 0 8px">위원회 ${num(m.committee_meetings_total)}회 출결</div>
       ${stackedBar([
         { label: '출석', value: m.committee_present, color: 'var(--s-blue)' },
         { label: '출장', value: m.committee_travel, color: 'var(--s-aqua)' },
@@ -135,9 +135,9 @@
       </section>
       <div class="grid grid-2 section">${cards}</div>
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
-        기준일 ${esc(run.created_at.slice(0, 10))} · 등급은 설계자가 정한 비중에 따른 상대 지표이며 정식 공개 승인 전입니다.
+        기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
         입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.
-        <a href="/method">평가 방법</a>
+        <a href="/method">평가 방법</a> · <a href="/notes">데이터 처리 기준</a>
       </p>`;
 
     content.querySelectorAll('.strip-host').forEach((el) => {

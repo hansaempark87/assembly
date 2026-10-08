@@ -42,7 +42,7 @@ ASSEMBLY_API_KEY=... ./scripts/fetch-role-sources.sh tmp/sources
 python3 scripts/role-adjust.py --roles data/member-roles.json --members <D1 원자료 /api/members JSON> \
   --audit ../docs/vote-audit-results-2026-10-01.csv --files ../docs/attendance-audit-files-2026-10-01.csv \
   --votes tmp/sources/votes --att tmp/sources/att --out data/role-adjustments.json
-node scripts/compute-scores-stage3.cjs <D1 원자료 JSON> data/member-roles.json data/role-adjustments.json lib/score-run.js
+node scripts/compute-scores-stage3.cjs <D1 원자료 JSON> data/member-roles.json data/role-adjustments.json data/data-corrections.json lib/score-run.js
 ```
 
 ## 5. 결과

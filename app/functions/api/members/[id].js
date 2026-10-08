@@ -6,5 +6,5 @@ export async function onRequestGet({ env, params }) {
   if (!row) return Response.json({ error: 'member not found' }, { status: 404 });
   const { results } = await env.DB.prepare('SELECT id FROM members').all();
   const totalEligibleMembers = results.filter((r) => withScores(r).eligible).length;
-  return Response.json({ run, gradeDatasetApproved: false, totalEligibleMembers, member: withScores(row) });
+  return Response.json({ run, gradeDatasetApproved: true, totalEligibleMembers, member: withScores(row) });
 }
