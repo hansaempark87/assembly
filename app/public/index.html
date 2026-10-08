@@ -4,76 +4,147 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>일하는 국회 — 제22대 국회의원 실적 대시보드</title>
+<meta name="description" content="공식 기록으로 보는 제22대 국회의원 입법·표결·출석 실적">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header class="site-header">
-  <h1>일하는 국회</h1>
-  <p class="subtitle">제22대 국회의원 실적 대시보드 — 검증 가능한 공식 기록 기반, 시민 투표·평점 없음</p>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/" aria-current="page">대시보드</a>
+      <a href="/compare.html">의원 비교</a>
+      <a href="/#method">평가 방법</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
 </header>
 
 <main>
-  <section class="notice" id="run-info">불러오는 중…</section>
+  <div class="page-head">
+    <div>
+      <h1>제22대 국회의원 실적</h1>
+      <p id="run-info">불러오는 중…</p>
+    </div>
+  </div>
 
-  <section class="controls">
-    <input type="search" id="search-box" placeholder="이름, 정당, 지역구 검색">
-    <select id="grade-filter">
-      <option value="">전체 등급</option>
-      <option value="S">S</option>
-      <option value="A">A</option>
-      <option value="B">B</option>
-      <option value="C">C</option>
-      <option value="D">D</option>
-      <option value="ineligible">관찰 기간 부족</option>
-    </select>
-    <select id="sort-key">
-      <option value="rank">종합 순위</option>
-      <option value="legislation_percentile">입법 성과</option>
-      <option value="vote_percentile">표결 참여</option>
-      <option value="attendance_percentile">본회의 출석</option>
-      <option value="committee_attendance_percentile">위원회 출석</option>
-      <option value="name">이름</option>
-    </select>
-    <a href="/compare.html" class="compare-link">의원 비교 &rarr;</a>
+  <div class="notice" role="note">
+    <span aria-hidden="true">ⓘ</span>
+    <span><strong>검증용 등급입니다.</strong> 정식 공개 승인 전 단계이며, 등급은 공식 기록 수치를 정해진 비중으로 합산한 상대 지표입니다.</span>
+  </div>
+
+  <section class="card finder">
+    <div class="finder-copy">
+      <h2>우리 지역 의원 찾기</h2>
+      <p>이름, 지역구(예: 수원, 강남), 정당으로 검색</p>
+    </div>
+    <div class="combo">
+      <span class="combo-icon" aria-hidden="true">⌕</span>
+      <input class="input" id="finder-input" type="search" placeholder="의원 이름 또는 지역구 입력" autocomplete="off">
+      <div class="combo-list" id="finder-list"></div>
+    </div>
   </section>
 
-  <section class="table-wrap">
-    <table id="member-table">
+  <section class="grid grid-4 section" id="kpis" aria-label="핵심 지표"></section>
+
+  <section class="grid grid-3 section">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">등급 분포</h2>
+          <p class="card-sub">막대를 누르면 아래 목록이 해당 등급으로 필터됩니다</p>
+        </div>
+      </div>
+      <div class="cols" id="grade-cols"></div>
+      <div class="card-foot" id="grade-foot"></div>
+    </div>
+
+    <div class="card span-2">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">항목별 상위 10명</h2>
+          <p class="card-sub" id="top-sub"></p>
+        </div>
+        <div class="tabs" role="tablist" id="top-tabs"></div>
+      </div>
+      <div class="barlist" id="top-list"></div>
+    </div>
+  </section>
+
+  <section class="card section">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">정당별 평균</h2>
+        <p class="card-sub">소속 의원 3명 이상 정당 · 평가 대상 의원 기준</p>
+      </div>
+      <div class="tabs" role="tablist" id="party-tabs"></div>
+    </div>
+    <div class="barlist" id="party-list"></div>
+  </section>
+
+  <section class="card section" id="board-card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">전체 실적표</h2>
+        <p class="card-sub">막대는 전체 의원 중 백분위(오른쪽일수록 상위), 가운데 선은 중간</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <input class="input" type="search" id="search-box" placeholder="이름·정당·지역구 검색" aria-label="목록 검색">
+      <select class="select" id="party-filter" aria-label="정당"><option value="">전체 정당</option></select>
+      <select class="select" id="region-filter" aria-label="지역"><option value="">전체 지역</option></select>
+      <select class="select" id="committee-filter" aria-label="위원회"><option value="">전체 위원회</option></select>
+      <select class="select" id="grade-filter" aria-label="등급">
+        <option value="">전체 등급</option>
+        <option value="S">S</option><option value="A">A</option><option value="B">B</option>
+        <option value="C">C</option><option value="D">D</option>
+        <option value="ineligible">관찰 기간 부족</option>
+      </select>
+      <span class="count num" id="count"></span>
+    </div>
+    <table class="board" id="board">
       <thead>
         <tr>
-          <th>순위</th>
-          <th>등급</th>
-          <th>이름</th>
-          <th>정당</th>
-          <th>지역구</th>
-          <th>입법 성과</th>
-          <th>표결 참여</th>
-          <th>본회의 출석</th>
-          <th>위원회 출석</th>
+          <th scope="col" data-sort="rank"><button type="button">순위</button></th>
+          <th scope="col" data-sort="name"><button type="button">의원</button></th>
+          <th scope="col">등급</th>
+          <th scope="col" data-sort="legislation_percentile"><button type="button">입법 성과</button></th>
+          <th scope="col" data-sort="vote_percentile"><button type="button">표결 참여</button></th>
+          <th scope="col" data-sort="attendance_percentile"><button type="button">본회의 출석</button></th>
+          <th scope="col" data-sort="committee_attendance_percentile"><button type="button">위원회 출석</button></th>
         </tr>
       </thead>
-      <tbody id="member-tbody">
-        <tr><td colspan="9">불러오는 중…</td></tr>
-      </tbody>
+      <tbody id="board-body"><tr><td class="skeleton" colspan="7">불러오는 중…</td></tr></tbody>
     </table>
+    <div class="more" id="more"></div>
   </section>
 
-  <section class="method-note">
-    <h2>이 수치를 읽는 방법</h2>
-    <ul>
-      <li>종합 등급은 <strong>입법 성과 40% · 표결 참여 35% · 본회의 출석 15% · 위원회 출석 10%</strong>의 백분위 가중합입니다. 위원회 출석은 월별 집계 자료이며 회의일 단위 구조화는 아직 끝나지 않아 본회의 출석보다 비중을 낮게 두었습니다. 자료가 아직 없는 의원은 나머지 세 항목의 비중을 재분배해 계산합니다.</li>
-      <li>재임 180일 미만인 의원은 "관찰 기간 부족"으로 표시하고 등급을 매기지 않습니다.</li>
-      <li>입법 성과는 대표발의 중 가결(1.0)·대안반영(0.5)의 재임일수 보정 가중합입니다. 계류 중인 법안은 실패로 보지 않습니다. 공동발의 건수는 참고용입니다.</li>
-      <li>등급·백분위는 설계자의 판단이 들어간 상대적 지표이며, 완전히 객관적인 능력 평가가 아닙니다. 원본 수치를 항상 함께 표시합니다.</li>
-      <li>자세한 산식과 검증 과정은 <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">평가 설계 문서</a>를 참고하세요.</li>
-    </ul>
+  <section class="card section method" id="method">
+    <div class="card-head"><h2 class="card-title">평가 방법</h2></div>
+    <div class="grid grid-2">
+      <div>
+        <p style="margin-top:0">종합 등급은 네 항목 백분위의 가중합입니다.</p>
+        <div class="barlist" id="weights"></div>
+      </div>
+      <ul>
+        <li>등급은 S 10% · A 20% · B 40% · C 20% · D 10% 상대평가입니다.</li>
+        <li>입법 성과는 대표발의 중 가결(1.0)·대안반영(0.5)을 재임일수로 보정합니다. 계류 법안은 실패로 보지 않습니다.</li>
+        <li>위원회 출석은 월별 집계 자료라 비중을 낮게 두었습니다. 자료가 없는 의원은 나머지 항목 비중을 재분배합니다.</li>
+        <li>재임 180일 미만은 "관찰 기간 부족"으로 등급을 매기지 않습니다.</li>
+        <li>등급은 설계자가 정한 비중에 따른 상대 지표이며, 의정활동 전체를 평가하지 않습니다. <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">산식 문서</a></li>
+      </ul>
+    </div>
   </section>
 </main>
 
-<footer>
-  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a>, <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a>. 소스: <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a></p>
+<footer class="site">
+  데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a> · 소스 <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a>
 </footer>
 
+<script src="/js/common.js"></script>
 <script src="/js/app.js"></script>
 </body>
 </html>

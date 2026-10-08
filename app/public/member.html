@@ -3,30 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>의원 상세 — 일하는 국회</title>
+<title>의원 성적표 — 일하는 국회</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/css/style.css">
-<style>
-  .detail-card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
-  .detail-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
-  .metric-box { border:1px solid var(--border); border-radius:8px; padding:14px; }
-  .metric-box h3 { margin:0 0 8px; font-size:0.9rem; color:#57606a; }
-  .metric-box .big { font-size:1.6rem; font-weight:700; }
-  .metric-box .raw { font-size:0.85rem; color:#57606a; margin-top:4px; }
-  a.back { display:inline-block; margin-bottom:12px; color:#2f81f7; text-decoration:none; }
-</style>
 </head>
 <body>
-<header class="site-header">
-  <h1>일하는 국회</h1>
-  <p class="subtitle">의원 상세 성적표</p>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">대시보드</a>
+      <a href="/compare.html">의원 비교</a>
+      <a href="/#method">평가 방법</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
 </header>
+
 <main>
-  <a class="back" href="/">&larr; 전체 실적표로</a>
-  <div id="content">불러오는 중…</div>
+  <div id="content"><div class="skeleton">불러오는 중…</div></div>
 </main>
-<footer>
-  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a>, <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a>. 소스: <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a></p>
+
+<footer class="site">
+  데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a> · 소스 <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a>
 </footer>
+
+<script src="/js/common.js"></script>
 <script src="/js/member.js"></script>
 </body>
 </html>
