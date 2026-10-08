@@ -17,7 +17,8 @@
           { label: '폐기', value: m.lead_rejected, color: 'var(--s-orange)' },
           { label: '철회', value: m.lead_withdrawn, color: 'var(--s-violet)' },
         ], '건')}
-        <div class="facts">${fact('공동발의 (참고)', `${num(m.co_lead_count)}건`)}</div>`;
+        <div class="facts">${fact('공동발의 (참고)', `${num(m.co_lead_count)}건`)}</div>
+        <a class="btn" style="margin-top:12px" href="#bills">대표발의 법안 목록 보기 ↓</a>`;
     }
     if (key === 'vote') {
       return `<div class="facts">
@@ -46,6 +47,46 @@
         { label: '청가', value: m.committee_leave, color: 'var(--s-violet)' },
         { label: '결석', value: m.committee_absent, color: 'var(--s-orange)' },
       ], '회')}`;
+  }
+
+  // Lead-proposed bills with outcome filters and links to the official record.
+  const BILL_TABS = [
+    ['reflected', '법에 반영', (b) => b.status === 'passed' || b.status === 'alt'],
+    ['passed', '가결', (b) => b.status === 'passed'],
+    ['alt', '대안반영', (b) => b.status === 'alt'],
+    ['pending', '계류', (b) => b.status === 'pending'],
+    ['closed', '철회·폐기', (b) => b.status === 'withdrawn' || b.status === 'rejected'],
+    ['all', '전체', () => true],
+  ];
+  const BILL_LABEL = { passed: '가결', alt: '대안반영', pending: '계류', withdrawn: '철회', rejected: '폐기' };
+  function loadBills(m) {
+    const listEl = document.getElementById('bill-list');
+    fetch(`/bills/${encodeURIComponent(m.id)}.json`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+      .then(({ bills, cutoff }) => {
+        document.getElementById('bill-total').textContent = `${num(bills.length)}건 · ${cutoff.replace(/-/g, '.')} 기준`;
+        let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
+        let shown = 15;
+        const paint = () => {
+          const tab = BILL_TABS.find((t) => t[0] === cur);
+          document.getElementById('bill-tabs').innerHTML = BILL_TABS.map(([k, label, f]) =>
+            `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(bills.filter(f).length)}</button>`).join('');
+          document.querySelectorAll('#bill-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; shown = 15; paint(); }));
+          const list = bills.filter(tab[2]);
+          listEl.innerHTML = list.length
+            ? list.slice(0, shown).map((b) => `<li>
+                <span class="bill-st st-${b.status}">${BILL_LABEL[b.status]}</span>
+                <div><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.name)}</a>
+                <small>발의 ${esc(b.proposed)}${b.decided ? ` · ${esc(b.result)} ${esc(b.decided)}` : ''}${b.committee ? ` · ${esc(b.committee)}` : ''}${b.co ? ' · 공동 대표발의' : ''}</small></div>
+              </li>`).join('')
+            : '<li class="skeleton">해당하는 법안이 없습니다.</li>';
+          const more = document.getElementById('bill-more');
+          more.innerHTML = list.length > shown ? `<button class="btn" type="button">더 보기 (${num(list.length - shown)}건 남음)</button>` : '';
+          more.querySelector('button')?.addEventListener('click', () => { shown += 30; paint(); });
+        };
+        paint();
+      })
+      .catch(() => { listEl.innerHTML = '<li class="skeleton">법안 목록을 불러오지 못했습니다.</li>'; });
   }
 
   function render(m, all, run) {
@@ -134,11 +175,24 @@
         ${roleNote}
       </section>
       <div class="grid grid-2 section">${cards}</div>
+      <section class="card section" id="bills">
+        <div class="card-head">
+          <div>
+            <h2 class="card-title">대표발의 법안 <span class="muted num" id="bill-total"></span></h2>
+            <p class="card-sub">대안반영 = 비슷한 법안들과 합쳐 위원회 대안으로 처리된 경우 · 법안 이름을 누르면 국회 의안정보시스템 원문이 열립니다</p>
+          </div>
+          <div class="tabs" role="tablist" id="bill-tabs"></div>
+        </div>
+        <ul class="bill-list" id="bill-list"><li class="skeleton">불러오는 중…</li></ul>
+        <div class="more" id="bill-more"></div>
+      </section>
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
         입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.
         <a href="/method">평가 방법</a> · <a href="/notes">데이터 처리 기준</a>
       </p>`;
+
+    loadBills(m);
 
     content.querySelectorAll('.strip-host').forEach((el) => {
       const mt = METRICS.find((x) => x.key === el.dataset.key);

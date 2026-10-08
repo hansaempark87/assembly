@@ -518,3 +518,17 @@ tr.reveal.in-view .meter-fill { transform: none; transition: transform 1.2s cubi
 .note summary { cursor: pointer; color: var(--accent); }
 .note ul { margin: 6px 0 0; padding-left: 18px; color: var(--text-2); }
 .note-links { margin: 10px 0 0; font-size: 0.85rem; }
+
+/* ---------- member bill list ---------- */
+.bill-list { list-style: none; margin: 0; padding: 0; }
+.bill-list li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.bill-list li:last-child { border-bottom: 0; }
+.bill-list li.skeleton { display: block; }
+.bill-list a { color: var(--text); font-weight: 500; font-size: 0.92rem; }
+.bill-list a:hover { color: var(--accent); }
+.bill-list small { display: block; color: var(--text-3); font-size: 0.78rem; margin-top: 2px; }
+.bill-st { display: inline-block; text-align: center; padding: 2px 0; border-radius: 6px; font-size: 0.75rem; font-weight: 600; background: var(--surface-2); color: var(--text-2); }
+.bill-st.st-passed { background: var(--s-blue); color: #fff; }
+.bill-st.st-alt { background: var(--accent-soft); color: var(--accent-ink); }
+@media (max-width: 640px) { .bill-list li { grid-template-columns: 56px 1fr; gap: 10px; } }
+#bills { scroll-margin-top: 72px; }
