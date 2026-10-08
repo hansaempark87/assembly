@@ -185,7 +185,7 @@
       .map(
         (m) => `<tr data-id="${esc(m.id)}">
           <td class="rank num">${rankText(m, all) ?? `<span class="na" title="${statusText(m)}">–</span>`}</td>
-          <td class="who">${gradeBadge(m.grade)}<div><a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>${m.roles.length ? `<span class="role-dot" title="${esc(m.roles.map((r) => r.role).join(', '))}">${m.roles.some((r) => r.kind === 'exclude') ? '겸직' : '의장단'}</span>` : ''}<small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small></div></td>
+          <td class="who">${gradeBadge(m.grade)}<div><a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>${m.roles.filter((r) => !r.end).map((r) => `<span class="role-dot">${esc(r.role)}</span>`).join('')}<small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small></div></td>
           <td class="grade-cell">${gradeBadge(m.grade)}</td>
           ${METRICS.map((mt) => metricCell(m, mt)).join('')}
         </tr>`
