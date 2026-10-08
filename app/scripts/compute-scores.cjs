@@ -150,4 +150,6 @@ function main() {
   console.log('eligible:', eligible.length, 'ineligible:', ineligible.length, 'sql rows:', lines.length);
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { percentileRank, grade };
