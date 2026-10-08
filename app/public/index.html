@@ -106,7 +106,7 @@
         <option value="">전체 등급</option>
         <option value="S">S</option><option value="A">A</option><option value="B">B</option>
         <option value="C">C</option><option value="D">D</option>
-        <option value="ineligible">관찰 기간 부족</option>
+        <option value="ineligible">등급 없음 (관찰 기간 부족·겸직 유보)</option>
       </select>
       <span class="count num" id="count"></span>
     </div>
@@ -139,6 +139,7 @@
         <li>입법 성과는 대표발의 중 가결(1.0)·대안반영(0.5)을 재임일수로 보정합니다. 계류 법안은 실패로 보지 않습니다.</li>
         <li>위원회 출석은 월별 집계 자료라 비중을 낮게 두었습니다. 자료가 없는 의원은 나머지 항목 비중을 재분배합니다.</li>
         <li>재임 6개월(180일) 미만은 "관찰 기간 부족"으로 등급을 매기지 않습니다.</li>
+        <li><b>국회의장·국무총리·장관 겸직 기간</b>의 표결·본회의·위원회 기록과 재임일수는 분자와 분모에서 함께 뺍니다. 국가 공직 수행 기간을 의정활동 부진으로 계산하지 않기 위해서입니다. 남은 기간이 6개월 미만이면 "겸직으로 평가 유보"입니다. 국회부의장은 표시만 하고 그대로 평가합니다. 당직(당대표·원내대표 등)은 자발적 정치 활동이므로 보정하지 않습니다.</li>
         <li>등급은 설계자가 정한 비중에 따른 상대 지표이며, 의정활동 전체를 평가하지 않습니다. <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">산식 문서</a></li>
         <li class="muted" id="run-meta"></li>
       </ul>

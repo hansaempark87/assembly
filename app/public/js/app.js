@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, pct, topText, rankText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
+  const { esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
   const PAGE = window.matchMedia('(max-width: 760px)').matches ? 20 : 50;
 
@@ -23,7 +23,7 @@
     const tile = (label, value, meta) =>
       `<div class="card"><div class="kpi-label">${label}</div><div class="kpi-value num">${value}</div><div class="kpi-meta">${meta}</div></div>`;
     $('kpis').innerHTML = [
-      tile('평가 대상 의원', `${num(eligible.length)}<small>명</small>`, `전체 ${num(all.length)}명 · 관찰 기간 부족 ${num(all.length - eligible.length)}명`),
+      tile('평가 대상 의원', `${num(eligible.length)}<small>명</small>`, `전체 ${num(all.length)}명 · 재임 6개월 미만 ${num(all.filter((m) => m.status === 'short_tenure').length)}명 · 겸직 유보 ${num(all.filter((m) => m.status === 'role_hold').length)}명`),
       tile('법에 반영된 대표발의', `${num(reflected)}<small>건</small>`, `대표발의 ${num(leadTotal)}건 중 ${pct(reflected / leadTotal)} · 공동 대표발의는 각자 집계`),
       tile('표결 참여율 중앙값', pct(median(vote)), range(vote)),
       tile('본회의 출석률 중앙값', pct(median(att)), `${range(att)} · 100% 출석 ${num(fullAtt)}명`),
@@ -166,7 +166,7 @@
   function metricCell(m, metric) {
     const p = m[metric.pctKey];
     if (p === null || p === undefined) {
-      return `<td class="metric" data-label="${metric.label}"><span class="na">${m.eligible ? '' : '평가 제외 · '}${esc(metric.short(m))}</span></td>`;
+      return `<td class="metric" data-label="${metric.label}"><span class="na">${m.eligible ? '' : `${statusText(m)} · `}${esc(metric.short(m))}</span></td>`;
     }
     return `<td class="metric" data-label="${metric.label}">${meter(p)}<b>${topText(p)}</b><small>${esc(metric.short(m))}</small></td>`;
   }
@@ -184,8 +184,8 @@
       .slice(0, shown)
       .map(
         (m) => `<tr data-id="${esc(m.id)}">
-          <td class="rank num">${rankText(m, all) ?? '<span class="na" title="재임 180일 미만">–</span>'}</td>
-          <td class="who">${gradeBadge(m.grade)}<div><a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small></div></td>
+          <td class="rank num">${rankText(m, all) ?? `<span class="na" title="${statusText(m)}">–</span>`}</td>
+          <td class="who">${gradeBadge(m.grade)}<div><a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>${m.roles.length ? `<span class="role-dot" title="${esc(m.roles.map((r) => r.role).join(', '))}">${m.roles.some((r) => r.kind === 'exclude') ? '겸직' : '의장단'}</span>` : ''}<small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small></div></td>
           <td class="grade-cell">${gradeBadge(m.grade)}</td>
           ${METRICS.map((mt) => metricCell(m, mt)).join('')}
         </tr>`
@@ -259,8 +259,9 @@
       const kdate = (iso) => { const [y, mo, d] = iso.slice(0, 10).split('-').map(Number); return `${y}년 ${mo}월 ${d}일`; };
       const start = all.map((m) => m.term_start).sort()[0];
       const evaluated = all.filter((m) => m.eligible).length;
-      $('run-info').textContent = `${kdate(run.created_at)} 기준 · ${kdate(start)} 개원 이후 공식 기록 · ${num(all.length)}명 중 ${num(evaluated)}명 평가 (재임 6개월 미만 ${num(all.length - evaluated)}명 제외)`;
-      $('run-meta').textContent = `산식 버전 ${run.formula_version} · 계산 ${run.created_at.slice(0, 10)} · 최소 재임 ${run.min_tenure_days}일`;
+      $('run-info').textContent = `${kdate(run.data_as_of || run.created_at)} 기준 · ${kdate(start)} 개원 이후 공식 기록 · ${num(all.length)}명 중 ${num(evaluated)}명 평가`;
+      const cov = run.coverage;
+      $('run-meta').textContent = `${cov ? `수록 범위: 표결 ${kdate(cov.votes_until)}까지 · 본회의 출결 ${kdate(cov.plenary_until)}까지 · 위원회 출결 ${cov.committee_until.replace('-', '년 ')}월까지 · ` : ''}산식 버전 ${run.formula_version} · 최소 재임 ${run.min_tenure_days}일`;
       memberCombo({
         input: $('finder-input'),
         list: $('finder-list'),

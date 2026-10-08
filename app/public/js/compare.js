@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, topText, rankText, gradeBadge, loadMembers, METRICS, stripPlot, memberCombo } = window.NA;
+  const { esc, num, topText, rankText, statusText, gradeBadge, loadMembers, METRICS, stripPlot, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
   const result = $('result');
 
@@ -13,8 +13,8 @@
       ${gradeBadge(m.grade, 'grade-lg')}
       <div class="who">
         <span class="vs-key ${side}"></span><b><a href="/member.html?id=${encodeURIComponent(m.id)}" style="color:inherit">${esc(m.name)}</a></b>
-        <small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small>
-        <small>${m.eligible ? `종합 ${rankText(m, all)} · ${topText(m.composite_percentile)}` : '관찰 기간 부족 (등급 없음)'} · 재임 ${num(m.tenure_days)}일</small>
+        <small>${esc(m.party || '-')} · ${esc(m.district || '-')}${m.roles.some((r) => r.kind === 'exclude') ? ' · 겸직 기간 제외 반영' : ''}</small>
+        <small>${m.eligible ? `종합 ${rankText(m, all)} · ${topText(m.composite_percentile)}` : `${statusText(m)} (등급 없음)`} · 재임 ${num(m.tenure_days)}일</small>
       </div>
     </div>`;
   }

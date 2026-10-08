@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, topText, GRADE_BAND, rankText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
+  const { esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
   const content = document.getElementById('content');
   const id = new URLSearchParams(window.location.search).get('id');
 
@@ -66,7 +66,24 @@
             <div class="sub">${esc(m.grade)}등급(${GRADE_BAND[m.grade]}) · 종합 ${topText(m.composite_percentile)}${partyRank ? ` · ${esc(m.party)} ${num(party.length)}명 중 ${partyRank}위` : ''}</div>
           </div>
         </div>`
-      : `<div class="profile-score">${gradeBadge(null, 'grade-lg')}<div><div class="big">관찰 기간 부족</div><div class="sub">재임 ${num(m.tenure_days)}일 · ${num(run.min_tenure_days)}일 이상부터 등급 산출</div></div></div>`;
+      : `<div class="profile-score">${gradeBadge(null, 'grade-lg')}<div><div class="big">${statusText(m)}</div><div class="sub">${
+          m.status === 'role_hold'
+            ? `겸직 기간을 뺀 관찰 기간 ${num(m.observed_days)}일`
+            : `재임 ${num(m.tenure_days)}일`
+        } · ${num(run.min_tenure_days)}일 이상부터 등급 산출</div></div></div>`;
+
+    // State-office periods: what was removed and why.
+    const ex = m.roles.filter((r) => r.kind === 'exclude');
+    const fl = m.roles.filter((r) => r.kind === 'flag');
+    const srcLinks = (r) => r.sources.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">출처${r.sources.length > 1 ? i + 1 : ''}</a>`).join(' ');
+    const roleCard = m.roles.length
+      ? `<section class="card section role-card">
+          ${ex.length ? `<div class="card-head" style="margin-bottom:8px"><h2 class="card-title">겸직 기간 반영</h2></div>
+          <p style="margin:0 0 6px">${ex.map((r) => `<b>${esc(roleText(r))}</b> ${srcLinks(r)}`).join('<br>')}</p>
+          <p class="card-sub" style="margin:0">이 기간의 표결 ${num(m.raw.vote_eligible - m.vote_eligible)}회 · 본회의 ${num(m.raw.attendance_meetings - m.attendance_meetings)}일 · 위원회 ${num(m.raw.committee_meetings_total - m.committee_meetings_total)}회와 재임 ${num(m.tenure_days - m.observed_days)}일은 평가의 분자·분모에서 함께 뺐습니다. 국가 공직 수행 기간을 의정활동 부진으로 계산하지 않기 위해서이며, 아래 수치는 이 기간을 뺀 값입니다.</p>` : ''}
+          ${fl.length ? `<p class="card-sub" style="margin:${ex.length ? '10px' : '0'} 0 0">${fl.map((r) => `${esc(roleText(r))} ${srcLinks(r)}`).join(' · ')} — 의장단 표시만 하며 평가는 그대로입니다.</p>` : ''}
+        </section>`
+      : '';
 
     const summary =
       m.eligible && best && worst && best !== worst
@@ -86,6 +103,7 @@
           ${p === null || p === undefined ? '' : `<span class="pct ${p < 50 ? 'low' : ''}">${topText(p)}</span>`}
         </div>
         <p class="plain">${esc(mt.plain(m))}</p>
+        ${m.raw && mt.rawRate ? `<p class="card-sub" style="margin:-6px 0 10px">겸직 기간 포함 시: ${esc(mt.rawRate(m.raw, m))}</p>` : ''}
         <div class="card-sub">${mt.axisNote} · 평가 대상 ${num(eligible.length)}명 분포</div>
         <div class="strip-host" data-key="${mt.key}"></div>
         ${detail(mt.key, m)}
@@ -109,6 +127,7 @@
         </div>
         ${summary}
       </section>
+      ${roleCard}
       <div class="grid grid-2 section">${cards}</div>
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.created_at.slice(0, 10))} · 등급은 설계자가 정한 비중에 따른 상대 지표이며 정식 공개 승인 전입니다.

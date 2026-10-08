@@ -16,6 +16,8 @@
 
 [출결·표결 예외 후속 검증](docs/attendance-followup-2026-10-01.md): 본회의 119일을 회의록과 대조하고 위원회 9,285행의 의원 신원을 연결했습니다. 표결 예외 77건의 처리 규칙도 공식 회의록을 근거로 마련했습니다.
 
+[3단계: 겸직 기간 처리](docs/role-adjustment.md): 국회의장·국무총리·장관 겸직 기간의 표결·본회의·위원회 기록과 재임일수를 분자·분모에서 함께 제외했습니다. 제외 건수는 표결 API·출결 원본(해시 검증)에서 날짜별로 다시 계산했고, 의원별 전체 합계가 D1과 일치하는지 확인했습니다. 국회부의장은 표시만 합니다.
+
 [2단계 평가 산식 적용](docs/evaluation-draft.md): 위원회 출결 PDF 9,285행을 의원코드에 연결(298/299)해 월별 집계 지표로 추가했습니다. 입법 성과 40%·표결 참여 35%·본회의 출석 15%·위원회 출석 10%로 2단계 산식을 적용했습니다. 위원회 출석은 아직 회의일 단위가 아니라 낮은 비중입니다. 실제 의원 등급은 아직 공개하지 않습니다.
 
 ## 핵심 방향
@@ -68,7 +70,9 @@ npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0007_stage
 npx wrangler pages deploy public --project-name=assembly-dashboard --branch=main
 ```
 
-점수를 다시 계산하려면 `bash app/scripts/recompute-scores.sh`를 실행합니다. D1에서 최신 원자료를 JSON으로 뽑아 `compute-scores.cjs`로 백분위·등급을 계산하고, 결과 SQL을 새 마이그레이션 파일로 자동 적용합니다. `score_runs`에 새 행이 추가되므로 과거 산식 결과도 남습니다. 의원·입법·표결·출석·위원회 출석의 원자료 자체(members/member_legislation/member_votes/member_attendance/member_committee_attendance 테이블)는 아직 자동 수집기가 없고, 현재는 검증 단계에서 만든 로컬 스크립트로 수동 생성합니다.
+**3단계부터 점수 결과는 코드와 함께 버전 관리합니다.** D1에는 원자료만 두고, `app/lib/score-run.js`(산식 버전·백분위·등급·겸직 조정값)를 `scripts/compute-scores-stage3.cjs`로 생성해 커밋합니다. API(`app/lib/scoring.js`)가 D1 원자료와 이 파일을 합쳐 응답하므로, Git에 반영되면 화면과 점수가 함께 배포되고 D1 마이그레이션이 필요 없습니다. 겸직 기간 데이터는 `app/data/member-roles.json`(날짜·출처), 날짜별 제외 건수는 `app/data/role-adjustments.json`이며 재현 절차는 [겸직 기간 처리](docs/role-adjustment.md)에 있습니다.
+
+(2단계까지의 방식) 점수를 다시 계산하려면 `bash app/scripts/recompute-scores.sh`를 실행합니다. D1에서 최신 원자료를 JSON으로 뽑아 `compute-scores.cjs`로 백분위·등급을 계산하고, 결과 SQL을 새 마이그레이션 파일로 자동 적용합니다. `score_runs`에 새 행이 추가되므로 과거 산식 결과도 남습니다. 의원·입법·표결·출석·위원회 출석의 원자료 자체(members/member_legislation/member_votes/member_attendance/member_committee_attendance 테이블)는 아직 자동 수집기가 없고, 현재는 검증 단계에서 만든 로컬 스크립트로 수동 생성합니다.
 
 ## 인증정보 관리
 
