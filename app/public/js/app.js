@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
+  const { reveal, esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
   const PAGE = window.matchMedia('(max-width: 760px)').matches ? 20 : 50;
 
@@ -12,7 +12,7 @@
     root.querySelectorAll('.count').forEach((el) => {
       const to = +el.dataset.to, dec = +el.dataset.dec, suffix = el.dataset.suffix;
       const fmt = (x) => `${dec ? x.toFixed(dec) : num(Math.round(x))}${suffix}`;
-      const t0 = performance.now(), dur = 900;
+      const t0 = performance.now(), dur = 1800;
       const step = (t) => {
         const k = Math.min(1, (t - t0) / dur);
         el.textContent = fmt(to * (1 - Math.pow(1 - k, 3)));
@@ -47,7 +47,7 @@
       tile('표결 참여율 중앙값', count(median(vote) * 100, 1, '%'), range(vote)),
       tile('본회의 출석률 중앙값', count(median(att) * 100, 1, '%'), `${range(att)} · 100% 출석 ${num(fullAtt)}명`),
     ].join('');
-    runCountUps($('kpis'));
+    reveal($('kpis').children, (card) => runCountUps(card));
   }
 
   // ---------- grade distribution ----------
@@ -213,6 +213,7 @@
         </tr>`
       )
       .join('');
+    reveal(body.querySelectorAll('tr[data-id]'));
     body.querySelectorAll('tr[data-id]').forEach((tr) =>
       tr.addEventListener('click', (e) => {
         if (e.target.closest('a')) return;
@@ -282,13 +283,12 @@
         members: all,
         onPick: (m) => (window.location.href = `/member?id=${encodeURIComponent(m.id)}`),
       });
-      document.body.classList.add('intro');
-      setTimeout(() => document.body.classList.remove('intro'), 1600);
       renderKpis();
       renderGrades();
       tabs($('top-tabs'), TOP, renderTop);
       tabs($('party-tabs'), PARTY, renderParty);
       setupBoard();
+      reveal(document.querySelectorAll('main > .card, main > .notice, main > .grid:not(#kpis) > .card'));
     } catch (err) {
       $('run-info').innerHTML = `<span class="error">데이터를 불러오지 못했습니다: ${esc(err.message)}</span>`;
       $('board-body').innerHTML = '<tr><td class="skeleton" colspan="7">오류</td></tr>';

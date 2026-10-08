@@ -324,6 +324,35 @@
     });
   }
 
+  // ---- scroll reveal ----
+  // Marks elements .reveal and adds .in-view once they enter the upper 88%
+  // of the viewport (works for very tall cards too), then
+  // calls onShow(el). Without IntersectionObserver everything shows at once.
+  let io = null;
+  const shown = new WeakMap();
+  function reveal(els, onShow) {
+    const list = Array.from(els);
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      list.forEach((el) => { el.classList.add('reveal', 'in-view'); onShow && onShow(el); });
+      return;
+    }
+    io = io || new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+        const cb = shown.get(e.target);
+        if (cb) cb(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    list.forEach((el) => {
+      if (el.classList.contains('in-view')) return;
+      el.classList.add('reveal');
+      if (onShow) shown.set(el, onShow);
+      io.observe(el);
+    });
+  }
+
   // ---- theme toggle ----
   function initTheme() {
     const btn = document.getElementById('theme-toggle');
@@ -345,5 +374,5 @@
   } catch (_) { /* storage unavailable */ }
   document.addEventListener('DOMContentLoaded', initTheme);
 
-  window.NA = { esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+  window.NA = { reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
 })();
