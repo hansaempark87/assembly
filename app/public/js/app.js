@@ -100,7 +100,7 @@
         const fill = t.scale === 'max' ? (v / max) * 100 : t.scale === 'rate' ? v * 100 : v;
         return barRow(
           fill,
-          `<span class="muted num">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
+          `<span class="bl-rank">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
           t.show(m)
         );
       })
