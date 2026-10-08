@@ -3,6 +3,25 @@
   const $ = (id) => document.getElementById(id);
   const PAGE = window.matchMedia('(max-width: 760px)').matches ? 20 : 50;
 
+  // KPI numbers count up once on first paint (skipped for reduced motion).
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const count = (v, dec = 0, suffix = '') =>
+    `<span class="count" data-to="${v}" data-dec="${dec}" data-suffix="${suffix}">${dec ? v.toFixed(dec) : num(Math.round(v))}${suffix}</span>`;
+  function runCountUps(root) {
+    if (reduceMotion) return;
+    root.querySelectorAll('.count').forEach((el) => {
+      const to = +el.dataset.to, dec = +el.dataset.dec, suffix = el.dataset.suffix;
+      const fmt = (x) => `${dec ? x.toFixed(dec) : num(Math.round(x))}${suffix}`;
+      const t0 = performance.now(), dur = 900;
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / dur);
+        el.textContent = fmt(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
   let all = [];
   let run = null;
   let shown = PAGE;
@@ -23,11 +42,12 @@
     const tile = (label, value, meta) =>
       `<div class="card"><div class="kpi-label">${label}</div><div class="kpi-value num">${value}</div><div class="kpi-meta">${meta}</div></div>`;
     $('kpis').innerHTML = [
-      tile('평가 대상 의원', `${num(eligible.length)}<small>명</small>`, `전체 ${num(all.length)}명 · 재임 6개월 미만 ${num(all.filter((m) => m.status === 'short_tenure').length)}명 · 겸직 유보 ${num(all.filter((m) => m.status === 'role_hold').length)}명`),
-      tile('법에 반영된 대표발의', `${num(reflected)}<small>건</small>`, `대표발의 ${num(leadTotal)}건 중 ${pct(reflected / leadTotal)} · 공동 대표발의는 각자 집계`),
-      tile('표결 참여율 중앙값', pct(median(vote)), range(vote)),
-      tile('본회의 출석률 중앙값', pct(median(att)), `${range(att)} · 100% 출석 ${num(fullAtt)}명`),
+      tile('평가 대상 의원', `${count(eligible.length)}<small>명</small>`, `전체 ${num(all.length)}명 · 재임 6개월 미만 ${num(all.filter((m) => m.status === 'short_tenure').length)}명 · 겸직 유보 ${num(all.filter((m) => m.status === 'role_hold').length)}명`),
+      tile('법에 반영된 대표발의', `${count(reflected)}<small>건</small>`, `대표발의 ${num(leadTotal)}건 중 ${pct(reflected / leadTotal)} · 공동 대표발의는 각자 집계`),
+      tile('표결 참여율 중앙값', count(median(vote) * 100, 1, '%'), range(vote)),
+      tile('본회의 출석률 중앙값', count(median(att) * 100, 1, '%'), `${range(att)} · 100% 출석 ${num(fullAtt)}명`),
     ].join('');
+    runCountUps($('kpis'));
   }
 
   // ---------- grade distribution ----------
@@ -42,7 +62,7 @@
       .map(
         (g) => `<button type="button" class="col ${gradeActive === g ? 'active' : ''}" data-g="${g}" aria-pressed="${gradeActive === g}" aria-label="${g}등급 ${counts[g]}명">
           <span class="col-val num">${counts[g]}</span>
-          <span class="col-bar" style="height:${((counts[g] / max) * 100).toFixed(1)}%;background:var(--g-${g})"></span>
+          <span class="col-bar" style="height:${((counts[g] / max) * 100).toFixed(1)}%;background:var(--g-${g});--i:${grades.indexOf(g)}"></span>
           <span class="col-label">${g}</span>
         </button>`
       )
@@ -76,9 +96,9 @@
     onChange(cur);
   }
 
-  function barRow(fillPct, labelHtml, valueHtml) {
+  function barRow(fillPct, labelHtml, valueHtml, i = 0) {
     return `<div class="barlist-row">
-      <div class="barlist-bar"><div class="barlist-fill" style="width:${Math.max(0.5, fillPct).toFixed(1)}%"></div><div class="barlist-text">${labelHtml}</div></div>
+      <div class="barlist-bar"><div class="barlist-fill" style="width:${Math.max(0.5, fillPct).toFixed(1)}%;--i:${i}"></div><div class="barlist-text">${labelHtml}</div></div>
       <div class="barlist-value num">${valueHtml}</div>
     </div>`;
   }
@@ -101,7 +121,8 @@
         return barRow(
           fill,
           `<span class="bl-rank">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
-          t.show(m)
+          t.show(m),
+          i
         );
       })
       .join('');
@@ -125,11 +146,12 @@
     const max = Math.max(...rows.map((r) => r.v));
     $('party-sub').textContent = `소속 의원 3명 이상 정당 · 평가 대상 의원 기준${t.note ? ` · ${t.note}` : ''}`;
     $('party-list').innerHTML = rows
-      .map((r) =>
+      .map((r, i) =>
         barRow(
           t.fill ? t.fill(r.v) : (r.v / max) * 100,
           `<b>${esc(r.party)}</b><span class="muted">${r.n}명</span>`,
-          t.fmt(r.v)
+          t.fmt(r.v),
+          i
         )
       )
       .join('');
@@ -260,6 +282,8 @@
         members: all,
         onPick: (m) => (window.location.href = `/member?id=${encodeURIComponent(m.id)}`),
       });
+      document.body.classList.add('intro');
+      setTimeout(() => document.body.classList.remove('intro'), 1600);
       renderKpis();
       renderGrades();
       tabs($('top-tabs'), TOP, renderTop);
