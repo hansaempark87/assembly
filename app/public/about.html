@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서비스 소개 — 일하는 국회</title>
+<meta name="description" content="일하는 국회는 제22대 국회의원의 입법·표결·출석 실적을 공식 기록으로 보여주는 독립 대시보드입니다.">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일하는 국회">
+<meta property="og:title" content="서비스 소개 — 일하는 국회">
+<meta property="og:description" content="일하는 국회는 제22대 국회의원의 입법·표결·출석 실적을 공식 기록으로 보여주는 독립 대시보드입니다.">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">대시보드</a>
+      <a href="/compare">의원 비교</a>
+      <a href="/about">소개</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
+</header>
+
+<main class="doc">
+<article class="card prose">
+  <h1>서비스 소개</h1>
+  <p class="lead"><b>일하는 국회</b>는 제22대 국회의원 299명의 의정활동을 국회가 공개한 공식 기록으로 보여주는 대시보드입니다. 시민이 우리 지역 의원이 실제로 어떻게 일하고 있는지 숫자로 확인하고, 의원끼리 같은 기준으로 비교할 수 있게 하는 것이 목적입니다.</p>
+
+  <h2>무엇을 보여주나요</h2>
+  <ul>
+    <li><b>입법 성과</b> — 의원이 대표로 발의한 법안 중 실제로 가결되거나 대안에 반영된 비율</li>
+    <li><b>표결 참여</b> — 본회의 기록표결에 찬성·반대·기권으로 참여한 비율</li>
+    <li><b>본회의 출석</b> — 본회의가 열린 날 출석한 비율</li>
+    <li><b>위원회 출석</b> — 소속 상임위원회·특별위원회 회의에 출석한 비율</li>
+  </ul>
+  <p>네 항목을 전체 의원 안의 상대 위치(백분위)로 바꾼 뒤 정해진 비중으로 합쳐 종합 순위와 S·A·B·C·D 등급을 매깁니다. 등급 옆에는 항상 실제 건수와 비율을 함께 표시합니다. 자세한 계산 방식은 <a href="/#method">평가 방법</a>과 <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">산식 문서</a>에 공개돼 있습니다.</p>
+
+  <h2>운영 원칙</h2>
+  <ul>
+    <li><b>공식 기록만 사용합니다.</b> 열린국회정보 공개 API와 출결 공개 파일, 국회회의록을 원자료로 쓰고, 원문과 대조한 검증 결과를 함께 공개합니다.</li>
+    <li><b>판단이 들어가는 평가는 하지 않습니다.</b> 발언 내용, 법안의 질, 정치적 입장, 찬반 방향은 점수에 넣지 않습니다. 시민 투표나 평점도 받지 않습니다.</li>
+    <li><b>정당과 무관합니다.</b> 모든 의원에게 같은 산식을 적용하며 특정 정당·후보를 지지하거나 반대하지 않습니다.</li>
+    <li><b>공정성을 위한 보정을 공개합니다.</b> 재임 6개월 미만 의원은 등급을 매기지 않고, 국회의장·국무총리·장관 겸직 기간은 평가에서 뺍니다. <a href="https://github.com/hansaempark87/assembly/blob/main/docs/role-adjustment.md" target="_blank" rel="noopener">겸직 기간 처리 문서</a></li>
+    <li><b>모든 코드와 계산 과정은 공개돼 있습니다.</b> 누구나 <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a>에서 같은 결과를 재현할 수 있습니다.</li>
+  </ul>
+
+  <h2>알아두실 점</h2>
+  <p>이 지표는 의정활동의 일부 측면만 보여줍니다. 지역구 활동, 정책 연구, 법안의 사회적 영향처럼 공식 기록으로 측정할 수 없는 활동은 포함하지 않습니다. 등급은 설계자가 정한 비중에 따른 상대 지표이며 의원의 전체 역량을 평가하지 않습니다. 현재 등급은 정식 공개 승인 전의 검증용입니다.</p>
+
+  <h2 id="contact">문의·정정 요청</h2>
+  <p>수치 오류, 원자료와 다른 부분, 겸직 기간 날짜 오류 등을 발견하시면 알려주세요. 원문 근거를 확인한 뒤 정정하고, 정정 내역은 변경 기록에 남깁니다.</p>
+  <ul>
+    <li>GitHub 이슈: <a href="https://github.com/hansaempark87/assembly/issues" target="_blank" rel="noopener">github.com/hansaempark87/assembly/issues</a></li>
+    <li>이메일: <span data-contact-email>준비 중</span></li>
+  </ul>
+</article>
+</main>
+
+<footer class="site">
+  <nav class="foot-links" aria-label="사이트 정보">
+    <a href="/about">서비스 소개</a>
+    <a href="/#method">평가 방법</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+    <a href="/about#contact">문의·정정 요청</a>
+  </nav>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a> · 소스 <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a></p>
+  <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
+</footer>
+
+<script src="/js/common.js"></script>
+</body>
+</html>

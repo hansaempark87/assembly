@@ -100,7 +100,7 @@
         const fill = t.scale === 'max' ? (v / max) * 100 : t.scale === 'rate' ? v * 100 : v;
         return barRow(
           fill,
-          `<span class="bl-rank">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
+          `<span class="bl-rank">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
           t.show(m)
         );
       })
@@ -185,7 +185,7 @@
       .map(
         (m) => `<tr data-id="${esc(m.id)}">
           <td class="rank num">${rankText(m, all) ?? `<span class="na" title="${statusText(m)}">–</span>`}</td>
-          <td class="who">${gradeBadge(m.grade)}<div><a href="/member.html?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>${m.roles.filter((r) => !r.end).map((r) => `<span class="role-dot">${esc(r.role)}</span>`).join('')}<small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small></div></td>
+          <td class="who">${gradeBadge(m.grade)}<div><a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>${m.roles.filter((r) => !r.end).map((r) => `<span class="role-dot">${esc(r.role)}</span>`).join('')}<small>${esc(m.party || '-')} · ${esc(m.district || '-')}</small></div></td>
           <td class="grade-cell">${gradeBadge(m.grade)}</td>
           ${METRICS.map((mt) => metricCell(m, mt)).join('')}
         </tr>`
@@ -194,7 +194,7 @@
     body.querySelectorAll('tr[data-id]').forEach((tr) =>
       tr.addEventListener('click', (e) => {
         if (e.target.closest('a')) return;
-        window.location.href = `/member.html?id=${encodeURIComponent(tr.dataset.id)}`;
+        window.location.href = `/member?id=${encodeURIComponent(tr.dataset.id)}`;
       })
     );
     $('more').innerHTML =
@@ -266,7 +266,7 @@
         input: $('finder-input'),
         list: $('finder-list'),
         members: all,
-        onPick: (m) => (window.location.href = `/member.html?id=${encodeURIComponent(m.id)}`),
+        onPick: (m) => (window.location.href = `/member?id=${encodeURIComponent(m.id)}`),
       });
       renderKpis();
       renderGrades();
