@@ -6,31 +6,156 @@
     "conflict": "출처마다 날짜가 다르면 더 넓은 기간을 쓰지 않고, 임명 재가·이임처럼 법적 효력이 생기는 날을 우선한다"
   },
   "roles": [
-    { "member_id": "XBT9550Q", "name": "우원식", "role": "국회의장", "kind": "exclude", "start": "2024-06-05", "end": "2026-05-29",
-      "sources": ["https://www.seoul.co.kr/news/politics/2024/06/05/20240605500120", "https://www.jeonmae.co.kr/news/articleView.html?idxno=1261218"] },
-    { "member_id": "IN328264", "name": "조정식", "role": "국회의장", "kind": "exclude", "start": "2026-06-05", "end": null,
-      "sources": ["https://x.com/news_NA/status/2063903816920260794", "https://www.fnnews.com/news/202606051628361697"] },
-    { "member_id": "MLH1404S", "name": "김민석", "role": "국무총리", "kind": "exclude", "start": "2025-07-03", "end": "2026-07-01",
-      "sources": ["https://biz.sbs.co.kr/amp/article/20000244558", "https://www.etoday.co.kr/news/view/2599081"] },
-    { "member_id": "ARP89147", "name": "정동영", "role": "통일부 장관", "kind": "exclude", "start": "2025-07-25", "end": null,
-      "sources": ["https://www.unikorea.go.kr/web/minister/contents/introduce_minister"] },
-    { "member_id": "TST4507I", "name": "안규백", "role": "국방부 장관", "kind": "exclude", "start": "2025-07-25", "end": "2026-09-22",
-      "sources": ["https://www.newsis.com/view/NISI20260922_0021451154", "https://www.jjan.kr/article/20260922500135"] },
-    { "member_id": "M0A1658U", "name": "윤호중", "role": "행정안전부 장관", "kind": "exclude", "start": "2025-07-19", "end": null,
-      "sources": ["https://www.imaeil.com/page/view/2025071916412917051"] },
-    { "member_id": "JZY9937U", "name": "김윤덕", "role": "국토교통부 장관", "kind": "exclude", "start": "2025-07-31", "end": "2026-09-22",
-      "sources": ["https://news.bizwatch.co.kr/article/real_estate/2025/07/31/0041", "https://www.jjan.kr/article/20260922500135"] },
-    { "member_id": "XSP20229", "name": "김성환", "role": "환경부·기후에너지환경부 장관", "kind": "exclude", "start": "2025-07-21", "end": null,
-      "sources": ["https://www.khan.co.kr/article/202507212234001", "https://mcee.go.kr/minister/web/index.do?menuId=364"] },
-    { "member_id": "V429892C", "name": "정성호", "role": "법무부 장관", "kind": "exclude", "start": "2025-07-18", "end": "2026-08-26",
-      "sources": ["https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04113126642235832", "https://imnews.imbc.com/news/2026/politics/article/6846909_36911.html"] },
-    { "member_id": "K5F2023J", "name": "이학영", "role": "국회부의장", "kind": "flag", "start": "2024-06-05", "end": "2026-05-29",
-      "sources": ["https://www.seoul.co.kr/news/politics/2024/06/05/20240605500120"] },
-    { "member_id": "8SV6917G", "name": "주호영", "role": "국회부의장", "kind": "flag", "start": "2024-06-27", "end": "2026-05-29",
-      "sources": ["https://www.seoul.co.kr/news/politics/congress/2024/06/27/20240627500198"] },
-    { "member_id": "04T3751T", "name": "남인순", "role": "국회부의장", "kind": "flag", "start": "2026-06-05", "end": null,
-      "sources": ["https://news.ikbc.co.kr/article/view/kbc202606050050"] },
-    { "member_id": "N4R2421C", "name": "박덕흠", "role": "국회부의장", "kind": "flag", "start": "2026-06-05", "end": null,
-      "sources": ["https://news.ikbc.co.kr/article/view/kbc202606050050"] }
+    {
+      "member_id": "XBT9550Q",
+      "name": "우원식",
+      "role": "국회의장",
+      "kind": "exclude",
+      "start": "2024-06-05",
+      "end": "2026-05-29",
+      "sources": [
+        "https://www.seoul.co.kr/news/politics/2024/06/05/20240605500120",
+        "https://www.jeonmae.co.kr/news/articleView.html?idxno=1261218"
+      ]
+    },
+    {
+      "member_id": "IN328264",
+      "name": "조정식",
+      "role": "국회의장",
+      "kind": "exclude",
+      "start": "2026-06-05",
+      "end": null,
+      "sources": [
+        "https://x.com/news_NA/status/2063903816920260794",
+        "https://www.fnnews.com/news/202606051628361697"
+      ]
+    },
+    {
+      "member_id": "MLH1404S",
+      "name": "김민석",
+      "role": "국무총리",
+      "kind": "exclude",
+      "start": "2025-07-03",
+      "end": "2026-07-01",
+      "sources": [
+        "https://biz.sbs.co.kr/amp/article/20000244558",
+        "https://www.etoday.co.kr/news/view/2599081"
+      ]
+    },
+    {
+      "member_id": "ARP89147",
+      "name": "정동영",
+      "role": "통일부 장관",
+      "kind": "exclude",
+      "start": "2025-07-25",
+      "end": null,
+      "sources": [
+        "https://www.unikorea.go.kr/web/minister/contents/introduce_minister"
+      ]
+    },
+    {
+      "member_id": "TST4507I",
+      "name": "안규백",
+      "role": "국방부 장관",
+      "kind": "exclude",
+      "start": "2025-07-25",
+      "end": "2026-09-22",
+      "sources": [
+        "https://www.newsis.com/view/NISI20260922_0021451154",
+        "https://www.jjan.kr/article/20260922500135"
+      ]
+    },
+    {
+      "member_id": "M0A1658U",
+      "name": "윤호중",
+      "role": "행정안전부 장관",
+      "kind": "exclude",
+      "start": "2025-07-19",
+      "end": null,
+      "sources": [
+        "https://www.imaeil.com/page/view/2025071916412917051"
+      ]
+    },
+    {
+      "member_id": "JZY9937U",
+      "name": "김윤덕",
+      "role": "국토교통부 장관",
+      "kind": "exclude",
+      "start": "2025-07-31",
+      "end": "2026-09-22",
+      "sources": [
+        "https://news.bizwatch.co.kr/article/real_estate/2025/07/31/0041",
+        "https://www.jjan.kr/article/20260922500135"
+      ],
+      "note": "임명 재가일을 확인할 수 있는 출처가 없어 취임일(7/31)을 사용. 겸직 기간을 넓히지 않는 쪽이며, 7/23 시작으로 바꾸면 종합 92위→82위(B→A)."
+    },
+    {
+      "member_id": "XSP20229",
+      "name": "김성환",
+      "role": "환경부·기후에너지환경부 장관",
+      "kind": "exclude",
+      "start": "2025-07-21",
+      "end": null,
+      "sources": [
+        "https://www.khan.co.kr/article/202507212234001",
+        "https://mcee.go.kr/minister/web/index.do?menuId=364"
+      ]
+    },
+    {
+      "member_id": "V429892C",
+      "name": "정성호",
+      "role": "법무부 장관",
+      "kind": "exclude",
+      "start": "2025-07-18",
+      "end": "2026-08-26",
+      "sources": [
+        "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04113126642235832",
+        "https://imnews.imbc.com/news/2026/politics/article/6846909_36911.html"
+      ]
+    },
+    {
+      "member_id": "K5F2023J",
+      "name": "이학영",
+      "role": "국회부의장",
+      "kind": "flag",
+      "start": "2024-06-05",
+      "end": "2026-05-29",
+      "sources": [
+        "https://www.seoul.co.kr/news/politics/2024/06/05/20240605500120"
+      ]
+    },
+    {
+      "member_id": "8SV6917G",
+      "name": "주호영",
+      "role": "국회부의장",
+      "kind": "flag",
+      "start": "2024-06-27",
+      "end": "2026-05-29",
+      "sources": [
+        "https://www.seoul.co.kr/news/politics/congress/2024/06/27/20240627500198"
+      ]
+    },
+    {
+      "member_id": "04T3751T",
+      "name": "남인순",
+      "role": "국회부의장",
+      "kind": "flag",
+      "start": "2026-06-05",
+      "end": null,
+      "sources": [
+        "https://news.ikbc.co.kr/article/view/kbc202606050050"
+      ]
+    },
+    {
+      "member_id": "N4R2421C",
+      "name": "박덕흠",
+      "role": "국회부의장",
+      "kind": "flag",
+      "start": "2026-06-05",
+      "end": null,
+      "sources": [
+        "https://news.ikbc.co.kr/article/view/kbc202606050050"
+      ]
+    }
   ]
 }

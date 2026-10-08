@@ -1,0 +1,288 @@
+{
+  "generated_from": {
+    "roles": "member-roles.json",
+    "audit": "vote-audit-results-2026-10-01.csv",
+    "eval_end": "2026-09-30"
+  },
+  "members": {
+    "ARP89147": {
+      "name": "정동영",
+      "periods": [
+        {
+          "start": "2025-07-25",
+          "end": "2026-09-30"
+        }
+      ],
+      "role_days": 433,
+      "votes": {
+        "eligible": 1057,
+        "participated": 27,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 56,
+        "present": 27,
+        "absent": 4,
+        "leave": 25,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 42,
+        "present": 7,
+        "absent": 0,
+        "leave": 34,
+        "travel": 0,
+        "reported_absence": 1
+      }
+    },
+    "IN328264": {
+      "name": "조정식",
+      "periods": [
+        {
+          "start": "2026-06-05",
+          "end": "2026-09-30"
+        }
+      ],
+      "role_days": 118,
+      "votes": {
+        "eligible": 252,
+        "participated": 208,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 9,
+        "present": 9,
+        "absent": 0,
+        "leave": 0,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 0,
+        "present": 0,
+        "absent": 0,
+        "leave": 0,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "JZY9937U": {
+      "name": "김윤덕",
+      "periods": [
+        {
+          "start": "2025-07-31",
+          "end": "2026-09-22"
+        }
+      ],
+      "role_days": 419,
+      "votes": {
+        "eligible": 1057,
+        "participated": 1,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 56,
+        "present": 28,
+        "absent": 0,
+        "leave": 25,
+        "travel": 0,
+        "reported_absence": 3
+      },
+      "committee": {
+        "meetings": 27,
+        "present": 0,
+        "absent": 0,
+        "leave": 27,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "M0A1658U": {
+      "name": "윤호중",
+      "periods": [
+        {
+          "start": "2025-07-19",
+          "end": "2026-09-30"
+        }
+      ],
+      "role_days": 439,
+      "votes": {
+        "eligible": 1057,
+        "participated": 70,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 57,
+        "present": 40,
+        "absent": 4,
+        "leave": 13,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 23,
+        "present": 0,
+        "absent": 0,
+        "leave": 23,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "MLH1404S": {
+      "name": "김민석",
+      "periods": [
+        {
+          "start": "2025-07-03",
+          "end": "2026-07-01"
+        }
+      ],
+      "role_days": 364,
+      "votes": {
+        "eligible": 878,
+        "participated": 15,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 55,
+        "present": 29,
+        "absent": 0,
+        "leave": 26,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 16,
+        "present": 0,
+        "absent": 2,
+        "leave": 14,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "TST4507I": {
+      "name": "안규백",
+      "periods": [
+        {
+          "start": "2025-07-25",
+          "end": "2026-09-22"
+        }
+      ],
+      "role_days": 425,
+      "votes": {
+        "eligible": 1057,
+        "participated": 88,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 56,
+        "present": 26,
+        "absent": 2,
+        "leave": 28,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 32,
+        "present": 0,
+        "absent": 1,
+        "leave": 31,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "V429892C": {
+      "name": "정성호",
+      "periods": [
+        {
+          "start": "2025-07-18",
+          "end": "2026-08-26"
+        }
+      ],
+      "role_days": 405,
+      "votes": {
+        "eligible": 970,
+        "participated": 37,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 57,
+        "present": 38,
+        "absent": 3,
+        "leave": 16,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 37,
+        "present": 0,
+        "absent": 1,
+        "leave": 36,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "XBT9550Q": {
+      "name": "우원식",
+      "periods": [
+        {
+          "start": "2024-06-05",
+          "end": "2026-05-29"
+        }
+      ],
+      "role_days": 724,
+      "votes": {
+        "eligible": 1519,
+        "participated": 1252,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 110,
+        "present": 110,
+        "absent": 0,
+        "leave": 0,
+        "travel": 0,
+        "reported_absence": 0
+      },
+      "committee": {
+        "meetings": 0,
+        "present": 0,
+        "absent": 0,
+        "leave": 0,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    },
+    "XSP20229": {
+      "name": "김성환",
+      "periods": [
+        {
+          "start": "2025-07-21",
+          "end": "2026-09-30"
+        }
+      ],
+      "role_days": 437,
+      "votes": {
+        "eligible": 1057,
+        "participated": 22,
+        "api_gap_rows_total": 0
+      },
+      "plenary": {
+        "meetings": 57,
+        "present": 38,
+        "absent": 2,
+        "leave": 16,
+        "travel": 0,
+        "reported_absence": 1
+      },
+      "committee": {
+        "meetings": 21,
+        "present": 0,
+        "absent": 0,
+        "leave": 21,
+        "travel": 0,
+        "reported_absence": 0
+      }
+    }
+  }
+}
