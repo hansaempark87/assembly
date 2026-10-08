@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>평가 방법 — 일하는 국회</title>
+<meta name="description" content="일하는 국회의 국회의원 평가 방법: 입법·표결·본회의 출석·위원회 출석 4개 항목, 비중, 등급 기준, 공정성 보정 규칙">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일하는 국회">
+<meta property="og:title" content="평가 방법 — 일하는 국회">
+<meta property="og:description" content="일하는 국회의 국회의원 평가 방법: 입법·표결·본회의 출석·위원회 출석 4개 항목, 비중, 등급 기준, 공정성 보정 규칙">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">대시보드</a>
+      <a href="/compare">의원 비교</a>
+      <a href="/method" aria-current="page">평가 방법</a>
+      <a href="/about">소개</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
+</header>
+
+<main class="doc method-page">
+  <div class="page-head">
+    <div>
+      <h1>평가 방법</h1>
+      <p>공식 기록 4가지를 같은 기준으로 비교해 등급을 매깁니다</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <h2 class="card-title">3단계로 계산합니다</h2>
+    <ol class="steps">
+      <li><b>기록 모으기</b><span>국회가 공개한 법안·표결·출결 기록</span></li>
+      <li><b>항목별 순위 매기기</b><span>전체 의원 중 위치를 0~100점(백분위)으로</span></li>
+      <li><b>비중대로 합치기</b><span>종합 순위와 S~D 등급</span></li>
+    </ol>
+  </section>
+
+  <section class="card section">
+    <div class="card-head"><div><h2 class="card-title">항목과 비중</h2><p class="card-sub">비중이 클수록 종합 등급에 크게 반영됩니다</p></div></div>
+    <div class="weight-bar" aria-label="입법 40%, 표결 35%, 본회의 출석 15%, 위원회 출석 10%">
+      <span style="flex:40;background:var(--g-S)">입법 40%</span>
+      <span style="flex:35;background:var(--g-A)">표결 35%</span>
+      <span style="flex:15;background:var(--g-B)">본회의 15%</span>
+      <span style="flex:10;background:var(--g-C);color:var(--g-C-ink)">위원회 10%</span>
+    </div>
+  </section>
+
+  <div class="grid grid-2 section">
+    <section class="card pillar">
+      <div class="pillar-head"><h3>입법 성과</h3><span class="chip">40%</span></div>
+      <p class="formula">(가결 1점 + 대안반영 0.5점) ÷ 재임 기간</p>
+      <p>의원이 <b>대표로 발의한 법안</b>이 실제 법에 반영된 정도입니다.</p>
+      <p class="why">계류 중인 법안은 감점하지 않습니다. 발의된 법안의 75%가 아직 처리 전이기 때문입니다.</p>
+    </section>
+    <section class="card pillar">
+      <div class="pillar-head"><h3>표결 참여</h3><span class="chip">35%</span></div>
+      <p class="formula">참여한 표결 ÷ 표결 대상</p>
+      <p>본회의 기록표결에 <b>찬성·반대·기권</b> 중 하나로 참여한 비율입니다.</p>
+      <p class="why">찬성인지 반대인지는 점수에 영향이 없습니다.</p>
+    </section>
+    <section class="card pillar">
+      <div class="pillar-head"><h3>본회의 출석</h3><span class="chip">15%</span></div>
+      <p class="formula">출석한 날 ÷ 본회의가 열린 날</p>
+      <p>국회 본회의에 <b>출석</b>한 비율입니다.</p>
+      <p class="why">청가·출장은 출석으로 세지 않고, 따로 표시합니다.</p>
+    </section>
+    <section class="card pillar">
+      <div class="pillar-head"><h3>위원회 출석</h3><span class="chip">10%</span></div>
+      <p class="formula">출석한 회의 ÷ 소속 위원회 회의</p>
+      <p>상임위원회·특별위원회 <b>회의 출석률</b>입니다.</p>
+      <p class="why">월별로만 공개되는 자료라 비중을 낮게 두었습니다.</p>
+    </section>
+  </div>
+
+  <section class="card section">
+    <div class="card-head"><div><h2 class="card-title">등급 기준</h2><p class="card-sub">종합 순위를 상대평가로 나눕니다</p></div></div>
+    <div class="grade-scale">
+      <div><span class="grade grade-S">S</span><b>상위 10%</b></div>
+      <div><span class="grade grade-A">A</span><b>10~30%</b></div>
+      <div><span class="grade grade-B">B</span><b>30~70%</b></div>
+      <div><span class="grade grade-C">C</span><b>70~90%</b></div>
+      <div><span class="grade grade-D">D</span><b>하위 10%</b></div>
+    </div>
+    <p class="card-sub" style="margin-top:12px">항목마다 숫자의 분포가 달라 원점수를 그대로 더하면 한 항목이 결과를 좌우합니다. 그래서 각 항목을 0~100 순위 점수로 바꾼 뒤 합칩니다.</p>
+  </section>
+
+  <section class="card section" id="fair">
+    <h2 class="card-title">공정하게 비교하기 위한 규칙</h2>
+    <ul class="rules">
+      <li><span class="rule-ico" aria-hidden="true">⏱</span><div><b>재임 6개월 미만은 등급 없음</b><span>기록이 너무 적어 비교가 어렵습니다.</span></div></li>
+      <li><span class="rule-ico" aria-hidden="true">🏛</span><div><b>국회의장·총리·장관 겸직 기간은 제외</b><span>그 기간의 표결·출석을 분자·분모에서 함께 뺍니다. 남은 기간이 6개월 미만이면 평가를 유보합니다. 국회부의장은 표시만 합니다.</span></div></li>
+      <li><span class="rule-ico" aria-hidden="true">＝</span><div><b>같은 점수는 같은 순위·등급</b><span>동점자를 임의로 나누지 않습니다.</span></div></li>
+      <li><span class="rule-ico" aria-hidden="true">✕</span><div><b>판단이 들어가는 것은 넣지 않음</b><span>발언 내용, 법안의 질, 찬반 방향, 당직 활동, 시민 평점은 점수에 없습니다.</span></div></li>
+    </ul>
+  </section>
+
+  <section class="card section">
+    <h2 class="card-title">데이터 출처와 수록 범위</h2>
+    <dl class="facts-list">
+      <div><dt>출처</dt><dd><a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> 공개 API·출결 파일, <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></dd></div>
+      <div><dt>기간</dt><dd>2024년 5월 30일 제22대 국회 개원부터</dd></div>
+      <div><dt>수록 범위</dt><dd id="coverage">불러오는 중…</dd></div>
+      <div><dt>산식 버전</dt><dd id="formula">–</dd></div>
+    </dl>
+  </section>
+
+  <section class="card section">
+    <h2 class="card-title">자주 묻는 질문</h2>
+    <details><summary>등급이 의원의 실력을 뜻하나요?</summary><p>아닙니다. 공식 기록으로 측정할 수 있는 활동의 일부를 같은 기준으로 비교한 상대 지표입니다. 지역구 활동이나 정책의 질은 담지 못합니다.</p></details>
+    <details><summary>숫자가 틀린 것 같아요.</summary><p><a href="/about#contact">문의·정정 요청</a>으로 알려주세요. 원문을 확인해 정정하고 기록을 남깁니다.</p></details>
+    <details><summary>등급이 바뀔 수 있나요?</summary><p>새 기록이 쌓이거나 산식이 바뀌면 달라집니다. 현재 등급은 정식 공개 전 검증용입니다.</p></details>
+  </section>
+</main>
+
+<footer class="site">
+  <nav class="foot-links" aria-label="사이트 정보">
+    <a href="/about">서비스 소개</a>
+    <a href="/method">평가 방법</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+    <a href="/about#contact">문의·정정 요청</a>
+  </nav>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></p>
+  <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
+</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/method.js"></script>
+</body>
+</html>

@@ -137,7 +137,7 @@
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.created_at.slice(0, 10))} · 등급은 설계자가 정한 비중에 따른 상대 지표이며 정식 공개 승인 전입니다.
         입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.
-        <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">산식 문서</a>
+        <a href="/method">평가 방법</a>
       </p>`;
 
     content.querySelectorAll('.strip-host').forEach((el) => {

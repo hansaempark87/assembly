@@ -6,7 +6,7 @@ export async function onRequestGet({ env, request }) {
   const origin = new URL(request.url).origin;
   const { results } = await env.DB.prepare(MEMBER_SQL).all();
   const lastmod = (run.data_as_of || run.created_at).slice(0, 10);
-  const urls = ['/', '/compare', '/about', '/privacy', '/terms']
+  const urls = ['/', '/compare', '/method', '/about', '/privacy', '/terms']
     .map((p) => `${origin}${p}`)
     .concat(results.map((m) => `${origin}/member?id=${encodeURIComponent(m.id)}`));
   const body =
