@@ -23,7 +23,8 @@
     <nav class="nav">
       <a href="/">대시보드</a>
       <a href="/compare">의원 비교</a>
-      <a href="/about">소개</a>
+      <a href="/method">평가 방법</a>
+      <a href="/about" aria-current="page">소개</a>
     </nav>
     <span class="topbar-spacer"></span>
     <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
@@ -42,15 +43,15 @@
     <li><b>본회의 출석</b> — 본회의가 열린 날 출석한 비율</li>
     <li><b>위원회 출석</b> — 소속 상임위원회·특별위원회 회의에 출석한 비율</li>
   </ul>
-  <p>네 항목을 전체 의원 안의 상대 위치(백분위)로 바꾼 뒤 정해진 비중으로 합쳐 종합 순위와 S·A·B·C·D 등급을 매깁니다. 등급 옆에는 항상 실제 건수와 비율을 함께 표시합니다. 자세한 계산 방식은 <a href="/#method">평가 방법</a>과 <a href="https://github.com/hansaempark87/assembly/blob/main/docs/evaluation-draft.md" target="_blank" rel="noopener">산식 문서</a>에 공개돼 있습니다.</p>
+  <p>네 항목을 전체 의원 안의 상대 위치(백분위)로 바꾼 뒤 정해진 비중으로 합쳐 종합 순위와 S·A·B·C·D 등급을 매깁니다. 등급 옆에는 항상 실제 건수와 비율을 함께 표시합니다. 자세한 계산 방식은 <a href="/method">평가 방법</a>에 모두 공개돼 있습니다.</p>
 
   <h2>운영 원칙</h2>
   <ul>
     <li><b>공식 기록만 사용합니다.</b> 열린국회정보 공개 API와 출결 공개 파일, 국회회의록을 원자료로 쓰고, 원문과 대조한 검증 결과를 함께 공개합니다.</li>
     <li><b>판단이 들어가는 평가는 하지 않습니다.</b> 발언 내용, 법안의 질, 정치적 입장, 찬반 방향은 점수에 넣지 않습니다. 시민 투표나 평점도 받지 않습니다.</li>
     <li><b>정당과 무관합니다.</b> 모든 의원에게 같은 산식을 적용하며 특정 정당·후보를 지지하거나 반대하지 않습니다.</li>
-    <li><b>공정성을 위한 보정을 공개합니다.</b> 재임 6개월 미만 의원은 등급을 매기지 않고, 국회의장·국무총리·장관 겸직 기간은 평가에서 뺍니다. <a href="https://github.com/hansaempark87/assembly/blob/main/docs/role-adjustment.md" target="_blank" rel="noopener">겸직 기간 처리 문서</a></li>
-    <li><b>모든 코드와 계산 과정은 공개돼 있습니다.</b> 누구나 <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a>에서 같은 결과를 재현할 수 있습니다.</li>
+    <li><b>공정성을 위한 보정을 공개합니다.</b> 재임 6개월 미만 의원은 등급을 매기지 않고, 국회의장·국무총리·장관 겸직 기간은 평가에서 뺍니다. <a href="/method#fair">자세히</a></li>
+    <li><b>계산 방식을 모두 공개합니다.</b> 산식, 비중, 보정 규칙, 데이터 수록 범위를 <a href="/method">평가 방법</a>에 공개하고 바뀌면 기록을 남깁니다.</li>
   </ul>
 
   <h2>알아두실 점</h2>
@@ -59,7 +60,6 @@
   <h2 id="contact">문의·정정 요청</h2>
   <p>수치 오류, 원자료와 다른 부분, 겸직 기간 날짜 오류 등을 발견하시면 알려주세요. 원문 근거를 확인한 뒤 정정하고, 정정 내역은 변경 기록에 남깁니다.</p>
   <ul>
-    <li>GitHub 이슈: <a href="https://github.com/hansaempark87/assembly/issues" target="_blank" rel="noopener">github.com/hansaempark87/assembly/issues</a></li>
     <li>이메일: <span data-contact-email>준비 중</span></li>
   </ul>
 </article>
@@ -68,12 +68,12 @@
 <footer class="site">
   <nav class="foot-links" aria-label="사이트 정보">
     <a href="/about">서비스 소개</a>
-    <a href="/#method">평가 방법</a>
+    <a href="/method">평가 방법</a>
     <a href="/privacy">개인정보처리방침</a>
     <a href="/terms">이용약관</a>
     <a href="/about#contact">문의·정정 요청</a>
   </nav>
-  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a> · 소스 <a href="https://github.com/hansaempark87/assembly" target="_blank" rel="noopener">GitHub</a></p>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></p>
   <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
 </footer>
 

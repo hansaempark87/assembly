@@ -244,12 +244,6 @@
     renderBoard();
   }
 
-  function renderWeights() {
-    $('weights').innerHTML = METRICS.map((mt) => {
-      const w = run[mt.weightKey] || 0;
-      return barRow(w * 100 / 0.4 * 0.95, `<b>${mt.label}</b>`, `${Math.round(w * 100)}%`);
-    }).join('');
-  }
 
   async function init() {
     try {
@@ -260,8 +254,6 @@
       const start = all.map((m) => m.term_start).sort()[0];
       const evaluated = all.filter((m) => m.eligible).length;
       $('run-info').textContent = `${kdate(run.data_as_of || run.created_at)} 기준 · ${kdate(start)} 개원 이후 공식 기록 · ${num(all.length)}명 중 ${num(evaluated)}명 평가`;
-      const cov = run.coverage;
-      $('run-meta').textContent = `${cov ? `수록 범위: 표결 ${kdate(cov.votes_until)}까지 · 본회의 출결 ${kdate(cov.plenary_until)}까지 · 위원회 출결 ${cov.committee_until.replace('-', '년 ')}월까지 · ` : ''}산식 버전 ${run.formula_version} · 최소 재임 ${run.min_tenure_days}일`;
       memberCombo({
         input: $('finder-input'),
         list: $('finder-list'),
@@ -273,7 +265,6 @@
       tabs($('top-tabs'), TOP, renderTop);
       tabs($('party-tabs'), PARTY, renderParty);
       setupBoard();
-      renderWeights();
     } catch (err) {
       $('run-info').innerHTML = `<span class="error">데이터를 불러오지 못했습니다: ${esc(err.message)}</span>`;
       $('board-body').innerHTML = '<tr><td class="skeleton" colspan="7">오류</td></tr>';
