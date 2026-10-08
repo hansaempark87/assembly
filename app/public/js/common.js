@@ -134,7 +134,7 @@
         m.committee_meetings_total
           ? `위원회 회의 10번 중 ${(m.committee_attendance_rate * 10).toFixed(1)}번 출석했어요.`
           : '아직 공개된 위원회 출결 자료가 없습니다.',
-      axisNote: '위원회 출석률 (월별 집계)',
+      axisNote: '위원회 출석률',
       rawRate: (raw) => `${pct(raw.committee_attendance_rate)} (${num(raw.committee_present)} / ${num(raw.committee_meetings_total)}회)`,
     },
   ];

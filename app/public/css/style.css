@@ -503,3 +503,18 @@ tr.reveal.in-view .meter-fill { transform: none; transition: transform 1.2s cubi
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal .barlist-fill, .reveal .col-bar, .reveal .col-val, tr.reveal .meter-fill { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ---------- data notes page ---------- */
+.notes-summary p { margin: 0 0 6px; font-size: 0.92rem; color: var(--text-2); line-height: 1.7; }
+#notes { display: grid; gap: 12px; }
+.note h2 { margin: 8px 0 10px; font-size: 1.02rem; }
+.note-meta { display: flex; gap: 8px; align-items: center; font-size: 0.8rem; }
+.note dl { margin: 0; display: grid; gap: 8px; }
+.note dl div { display: grid; grid-template-columns: 44px 1fr; gap: 10px; font-size: 0.88rem; line-height: 1.6; }
+.note dt { color: var(--text-3); font-weight: 600; }
+.note dd { margin: 0; color: var(--text-2); }
+.note .rule dd { color: var(--text); font-weight: 600; background: var(--accent-soft); border-radius: 6px; padding: 4px 8px; }
+.note details { margin-top: 10px; font-size: 0.85rem; }
+.note summary { cursor: pointer; color: var(--accent); }
+.note ul { margin: 6px 0 0; padding-left: 18px; color: var(--text-2); }
+.note-links { margin: 10px 0 0; font-size: 0.85rem; }

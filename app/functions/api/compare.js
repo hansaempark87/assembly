@@ -13,5 +13,5 @@ export async function onRequestGet({ env, request }) {
   if (!a || !b) {
     return Response.json({ error: 'one or both member ids not found', found: { a: !!a, b: !!b } }, { status: 404 });
   }
-  return Response.json({ run, gradeDatasetApproved: false, a: withScores(a), b: withScores(b) });
+  return Response.json({ run, gradeDatasetApproved: true, a: withScores(a), b: withScores(b) });
 }

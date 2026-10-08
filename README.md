@@ -70,6 +70,8 @@ npx wrangler d1 execute assembly-dashboard --remote --file=migrations/0007_stage
 npx wrangler pages deploy public --project-name=assembly-dashboard --branch=main
 ```
 
+**데이터 처리 기준**은 `app/public/data-notes.json`에 항목을 추가하면 사이트 `/notes`에 바로 공개됩니다. 원자료 정정값은 `app/data/data-corrections.json`에 두고 점수 계산 때 반영합니다(`compute-scores-stage3.cjs <members> <roles> <adjustments> <corrections> <out>`).
+
 **3단계부터 점수 결과는 코드와 함께 버전 관리합니다.** D1에는 원자료만 두고, `app/lib/score-run.js`(산식 버전·백분위·등급·겸직 조정값)를 `scripts/compute-scores-stage3.cjs`로 생성해 커밋합니다. API(`app/lib/scoring.js`)가 D1 원자료와 이 파일을 합쳐 응답하므로, Git에 반영되면 화면과 점수가 함께 배포되고 D1 마이그레이션이 필요 없습니다. 겸직 기간 데이터는 `app/data/member-roles.json`(날짜·출처), 날짜별 제외 건수는 `app/data/role-adjustments.json`이며 재현 절차는 [겸직 기간 처리](docs/role-adjustment.md)에 있습니다.
 
 (2단계까지의 방식) 점수를 다시 계산하려면 `bash app/scripts/recompute-scores.sh`를 실행합니다. D1에서 최신 원자료를 JSON으로 뽑아 `compute-scores.cjs`로 백분위·등급을 계산하고, 결과 SQL을 새 마이그레이션 파일로 자동 적용합니다. `score_runs`에 새 행이 추가되므로 과거 산식 결과도 남습니다. 의원·입법·표결·출석·위원회 출석의 원자료 자체(members/member_legislation/member_votes/member_attendance/member_committee_attendance 테이블)는 아직 자동 수집기가 없고, 현재는 검증 단계에서 만든 로컬 스크립트로 수동 생성합니다.

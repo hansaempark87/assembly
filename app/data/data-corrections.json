@@ -1,0 +1,45 @@
+{
+  "description": "D1 원자료에 덮어쓰는 정정값. 각 항목의 note는 public/data-notes.json의 id와 연결된다.",
+  "corrections": [
+    {
+      "member_id": "REG96285",
+      "name": "곽규택",
+      "note": "committee-contradiction",
+      "fields": {
+        "committee_meetings_total": 168,
+        "committee_present": 148,
+        "committee_absent": 14,
+        "committee_leave": 5,
+        "committee_travel": 1,
+        "committee_attendance_rate": 0.8809523809523809
+      },
+      "was": {
+        "committee_meetings_total": 168,
+        "committee_present": 148,
+        "committee_absent": 14,
+        "committee_leave": 4,
+        "committee_travel": 2
+      }
+    },
+    {
+      "member_id": "MSY7784L",
+      "name": "윤상현",
+      "note": "committee-contradiction",
+      "fields": {
+        "committee_meetings_total": 71,
+        "committee_present": 60,
+        "committee_absent": 7,
+        "committee_leave": 2,
+        "committee_travel": 2,
+        "committee_attendance_rate": 0.8450704225352113
+      },
+      "was": {
+        "committee_meetings_total": 71,
+        "committee_present": 61,
+        "committee_absent": 5,
+        "committee_leave": 3,
+        "committee_travel": 2
+      }
+    }
+  ]
+}

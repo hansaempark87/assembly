@@ -70,17 +70,17 @@ def parse_committee(att_dir, published):
                     dates = None
                     for row in tb:
                         cells = [(c or '').strip() for c in row]
-                        if any(re.match(r'\d{2}월\s*\d{2}일', c) for c in cells):
+                        if any(re.match(r'\d{1,2}월\s*\d{1,2}일', c) for c in cells):
                             dates = []
                             for c in cells[1:]:
-                                m = re.match(r'(\d{2})월\s*(\d{2})일', c)
+                                m = re.match(r'(\d{1,2})월\s*(\d{1,2})일', c)
                                 if m:
                                     mo, d = int(m.group(1)), int(m.group(2))
                                     dates.append(f'{py if mo <= pm else py - 1}-{mo:02d}-{d:02d}')
                                 else:
                                     dates.append(None)
                             continue
-                        m = re.match(r'^(.+?)\((.+)\)$', cells[0])
+                        m = re.match(r'^(.+?)\((.*)\)$', cells[0])
                         if not m or dates is None or not all(re.fullmatch(r'\d+', x) for x in cells[-6:]):
                             continue
                         for i, s in enumerate(cells[1:len(cells) - 6]):

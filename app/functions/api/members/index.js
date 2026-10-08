@@ -6,5 +6,5 @@ import { MEMBER_SQL, run, withScores, byRank } from '../../../lib/scoring.js';
 export async function onRequestGet({ env }) {
   const { results } = await env.DB.prepare(MEMBER_SQL).all();
   const members = results.map(withScores).sort(byRank);
-  return Response.json({ run, gradeDatasetApproved: false, count: members.length, members });
+  return Response.json({ run, gradeDatasetApproved: true, count: members.length, members });
 }
