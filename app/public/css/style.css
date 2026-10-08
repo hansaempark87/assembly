@@ -485,17 +485,21 @@ footer.site p { margin: 4px 0; }
   .weight-bar span { font-size: 0.7rem; }
 }
 
-/* ---------- entrance motion ---------- */
-@keyframes grow-x { from { transform: scaleX(0); } }
-@keyframes grow-y { from { transform: scaleY(0); } }
-@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
-.barlist-fill { transform-origin: left; animation: grow-x .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 45ms); }
-.intro .col-bar { transform-origin: bottom; animation: grow-y .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(200ms + var(--i, 0) * 90ms); }
-.intro .meter-fill { transform-origin: left; animation: grow-x .8s cubic-bezier(.2,.7,.2,1) .3s both; }
-.intro main > .card, .intro main > .grid > .card, .intro main > .notice { animation: rise .5s ease-out both; }
-.intro main > .grid > .card:nth-child(2) { animation-delay: 60ms; }
-.intro main > .grid > .card:nth-child(3) { animation-delay: 120ms; }
-.intro main > .grid > .card:nth-child(4) { animation-delay: 180ms; }
+/* ---------- scroll-reveal motion ----------
+   Elements marked .reveal start hidden/empty and animate when they scroll
+   into view (.in-view is added by NA.reveal). Content inserted later into an
+   already-revealed block appears in its final state, so filters don't replay. */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in-view { opacity: 1; transform: none; }
+.reveal .barlist-fill { transform: scaleX(0); transform-origin: left; }
+.reveal.in-view .barlist-fill { transform: none; transition: transform 1.4s cubic-bezier(.2,.7,.2,1); transition-delay: calc(300ms + var(--i, 0) * 110ms); }
+.reveal .col-bar { transform: scaleY(0); transform-origin: bottom; }
+.reveal.in-view .col-bar { transform: none; transition: transform 1.3s cubic-bezier(.2,.7,.2,1); transition-delay: calc(300ms + var(--i, 0) * 160ms); }
+.reveal .col-val { opacity: 0; }
+.reveal.in-view .col-val { opacity: 1; transition: opacity .6s ease-out; transition-delay: calc(900ms + var(--i, 0) * 160ms); }
+tr.reveal { transform: translateY(12px); }
+tr.reveal .meter-fill { transform: scaleX(0); transform-origin: left; }
+tr.reveal.in-view .meter-fill { transform: none; transition: transform 1.2s cubic-bezier(.2,.7,.2,1) .25s; }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal, .reveal .barlist-fill, .reveal .col-bar, .reveal .col-val, tr.reveal .meter-fill { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
