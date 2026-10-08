@@ -204,19 +204,39 @@
       for (const m of sorted) if (Math.abs(opts.value(m) - v) < Math.abs(opts.value(best) - v)) best = m;
       return best;
     };
+    // Many members share a value (e.g. 91/119 days), so a hover shows the whole
+    // tied group, highlighted members first, instead of one arbitrary name.
+    const marked = (opts.highlights || []).map((h) => h.member).filter(Boolean);
+    const groupAt = (clientX) => {
+      const r = hit.getBoundingClientRect();
+      // snap to a highlighted mark within 8px so a member's own dot shows them
+      const snap = marked.find((m) => {
+        const v = opts.value(m);
+        return v !== null && v !== undefined && Math.abs(r.left + (x(v) / 100) * r.width - clientX) <= 8;
+      });
+      const v = opts.value(snap || nearest(clientX));
+      const group = rows.filter((m) => opts.value(m) === v);
+      group.sort((a, b) => marked.includes(b) - marked.includes(a));
+      return { v, group };
+    };
     const show = (e) => {
-      const m = nearest(e.clientX);
-      const same = rows.filter((r) => opts.value(r) === opts.value(m)).length;
-      tip(`<b>${esc(m.name)}</b> · ${esc(m.party || '')}<br>${esc(opts.fmt(opts.value(m)))}${same > 1 ? ` <span style="opacity:.7">(동일 값 ${same}명)</span>` : ''}`, e.clientX, e.clientY);
-      return m;
+      const { v, group } = groupAt(e.clientX);
+      const nm = (m) => (marked.includes(m) ? `<b>${esc(m.name)}</b>` : esc(m.name));
+      const html =
+        group.length === 1
+          ? `<b>${esc(group[0].name)}</b> · ${esc(group[0].party || '')}<br>${esc(opts.fmt(v))}`
+          : `<b>${esc(opts.fmt(v))}</b> · ${group.length}명 동일<br>${group.slice(0, 3).map(nm).join(', ')}${group.length > 3 ? ` 외 ${group.length - 3}명` : ''}`;
+      tip(html, e.clientX, e.clientY);
+      return group[0];
     };
     let tapped = null;
     hit.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') show(e); });
     hit.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') tip(null); });
     hit.addEventListener('click', (e) => {
-      const m = nearest(e.clientX);
+      const m = groupAt(e.clientX).group[0];
       // touch: first tap previews, a second tap on the same member opens it
       if (e.pointerType && e.pointerType !== 'mouse' && tapped !== m) { tapped = show(e); return; }
+      if (m.id === opts.selfId) return;
       window.location.href = `/member.html?id=${encodeURIComponent(m.id)}`;
     });
   }

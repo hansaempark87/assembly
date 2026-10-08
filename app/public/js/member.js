@@ -148,6 +148,7 @@
         fmt: mt.fmt,
         label: `${mt.label} 분포`,
         highlights: [{ member: m }],
+        selfId: m.id,
       });
     });
   }
