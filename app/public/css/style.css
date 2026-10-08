@@ -385,6 +385,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 64px; }
 .profile h1 { margin: 0; font-size: 1.7rem; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .profile h1 small { font-size: 1rem; font-weight: 400; color: var(--text-3); }
 .profile .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.profile .chips .chip { white-space: normal; height: auto; min-height: 24px; padding: 3px 8px; line-height: 1.35; max-width: 100%; }
 .profile-score { display: flex; align-items: center; gap: 14px; }
 .profile-score .big { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
 .profile-score .sub { font-size: 0.82rem; color: var(--text-3); }
