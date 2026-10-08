@@ -12,7 +12,7 @@
     return `<div class="card vs-card">
       ${gradeBadge(m.grade, 'grade-lg')}
       <div class="who">
-        <span class="vs-key ${side}"></span><b><a href="/member.html?id=${encodeURIComponent(m.id)}" style="color:inherit">${esc(m.name)}</a></b>
+        <span class="vs-key ${side}"></span><b><a href="/member?id=${encodeURIComponent(m.id)}" style="color:inherit">${esc(m.name)}</a></b>
         <small>${esc(m.party || '-')} · ${esc(m.district || '-')}${m.roles.filter((r) => !r.end).map((r) => ` · 현 ${esc(r.role)}`).join('')}</small>
         <small>${m.eligible ? `종합 ${rankText(m, all)} · ${topText(m.composite_percentile)}` : `${statusText(m)} (등급 없음)`} · 재임 ${num(m.tenure_days)}일</small>
       </div>

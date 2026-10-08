@@ -237,7 +237,7 @@
       // touch: first tap previews, a second tap on the same member opens it
       if (e.pointerType && e.pointerType !== 'mouse' && tapped !== m) { tapped = show(e); return; }
       if (m.id === opts.selfId) return;
-      window.location.href = `/member.html?id=${encodeURIComponent(m.id)}`;
+      window.location.href = `/member?id=${encodeURIComponent(m.id)}`;
     });
   }
 

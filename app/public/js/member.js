@@ -128,7 +128,7 @@
             <div class="chips">${m.committees.map((c) => `<span class="chip" style="background:var(--accent-soft);color:var(--accent-ink)">${esc(c)}</span>`).join('')}</div>
           </div>
           ${score}
-          <a class="btn" href="/compare.html?a=${encodeURIComponent(m.id)}">다른 의원과 비교 →</a>
+          <a class="btn" href="/compare?a=${encodeURIComponent(m.id)}">다른 의원과 비교 →</a>
         </div>
         ${summary}
         ${roleNote}

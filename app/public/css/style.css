@@ -429,7 +429,22 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 64px; }
 .method ul { margin: 0; padding-left: 18px; }
 .method li { margin-bottom: 6px; }
 footer.site { max-width: 1200px; margin: 0 auto; padding: 24px 20px 40px; font-size: 0.8rem; color: var(--text-3); border-top: 1px solid var(--border); }
-footer.site a { color: inherit; text-decoration: underline; }
+footer.site p a { color: inherit; text-decoration: underline; }
 
 .skeleton { color: var(--text-3); font-size: 0.9rem; padding: 24px 0; text-align: center; }
 .error { color: var(--bad); }
+
+/* ---------- text pages (about / privacy / terms) ---------- */
+main.doc { max-width: 800px; }
+.prose { line-height: 1.75; font-size: 0.95rem; color: var(--text-2); padding: 28px; }
+.prose h1 { margin: 0 0 12px; font-size: 1.6rem; color: var(--text); letter-spacing: -0.02em; }
+.prose h2 { margin: 28px 0 8px; font-size: 1.08rem; color: var(--text); }
+.prose .lead { font-size: 1.02rem; color: var(--text); }
+.prose ul { padding-left: 20px; margin: 8px 0; }
+.prose li { margin-bottom: 6px; }
+.prose b { color: var(--text); }
+@media (max-width: 640px) { .prose { padding: 20px; } }
+.foot-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 10px; }
+.foot-links a { color: var(--text-2); text-decoration: none; font-weight: 500; }
+.foot-links a:hover { text-decoration: underline; }
+footer.site p { margin: 4px 0; }
