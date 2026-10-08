@@ -256,7 +256,11 @@
       const data = await loadMembers();
       all = data.members;
       run = data.run;
-      $('run-info').textContent = `기준일 ${run.created_at.slice(0, 10)} · 산식 ${run.formula_version} · 재임 ${run.min_tenure_days}일 이상 평가`;
+      const kdate = (iso) => { const [y, mo, d] = iso.slice(0, 10).split('-').map(Number); return `${y}년 ${mo}월 ${d}일`; };
+      const start = all.map((m) => m.term_start).sort()[0];
+      const evaluated = all.filter((m) => m.eligible).length;
+      $('run-info').textContent = `${kdate(run.created_at)} 기준 · ${kdate(start)} 개원 이후 공식 기록 · ${num(all.length)}명 중 ${num(evaluated)}명 평가 (재임 6개월 미만 ${num(all.length - evaluated)}명 제외)`;
+      $('run-meta').textContent = `산식 버전 ${run.formula_version} · 계산 ${run.created_at.slice(0, 10)} · 최소 재임 ${run.min_tenure_days}일`;
       memberCombo({
         input: $('finder-input'),
         list: $('finder-list'),
