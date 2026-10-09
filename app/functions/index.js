@@ -3,15 +3,10 @@
 import { loadAll, boardRows, setHtml, setText } from '../lib/seo.js';
 import { run } from '../lib/scoring.js';
 
-export async function onRequestGet({ env, next }) {
+export async function onRequestGet({ next }) {
   const res = await next();
   if (!res.headers.get('content-type')?.includes('text/html')) return res;
-  let members;
-  try {
-    members = await loadAll(env.DB);
-  } catch {
-    return res;
-  }
+  const members = loadAll();
   const evaluated = members.filter((m) => m.eligible).length;
   return new HTMLRewriter()
     .on('#run-info', setText(`${run.data_as_of} 기준 · 제22대 국회의원 ${members.length}명 중 ${evaluated}명 평가`))

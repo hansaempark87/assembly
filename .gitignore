@@ -18,3 +18,8 @@ app/.wrangler/
 app/tmp/
 app/node_modules/
 node_modules/
+
+# pipeline scratch output (report, summary, intermediate JSON)
+app/data/build/
+
+__pycache__/

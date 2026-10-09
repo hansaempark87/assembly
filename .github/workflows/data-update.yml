@@ -1,0 +1,91 @@
+# Weekly data update: fetch the public Assembly records, rebuild the scores,
+# check them against what is live, then publish.
+#   all checks pass  -> commit to main (Cloudflare Pages deploys it)
+#   anything to look at -> nothing goes live; the result is pushed to a
+#                          data-review/<date> branch and an issue is opened
+name: data-update
+
+on:
+  schedule:
+    - cron: '0 21 * * 0'   # Monday 06:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: app/pipeline/requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install
+        run: pip install -r app/pipeline/requirements.txt
+
+      - name: Fetch public records
+        id: fetch
+        continue-on-error: true
+        working-directory: app/pipeline
+        env:
+          ASSEMBLY_API_KEY: ${{ secrets.ASSEMBLY_API_KEY }}
+        run: python -u fetch.py
+
+      - name: Rebuild scores
+        working-directory: app/pipeline
+        run: python -u build.py
+
+      - name: Check against the live data
+        id: check
+        continue-on-error: true
+        working-directory: app/pipeline
+        run: python -u check.py
+
+      - name: Publish
+        if: steps.fetch.outcome == 'success' && steps.check.outcome == 'success'
+        run: |
+          git config user.name 'data-update-bot'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add app/data app/lib app/public/bills
+          if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
+          date=$(python -c "import json;print(json.load(open('app/data/source/meta.json'))['data_as_of'])")
+          { echo "data: weekly update ${date}"; echo; cat app/data/build/summary.md; } > /tmp/msg
+          git commit -q -F /tmp/msg
+          git push origin HEAD:main
+
+      - name: Hold for review
+        if: steps.fetch.outcome != 'success' || steps.check.outcome != 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'data-update-bot'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          branch="data-review/$(date -u +%Y-%m-%d)"
+          body=app/data/build/summary.md
+          git add app/data app/lib app/public/bills
+          if ! git diff --cached --quiet; then
+            { echo "data: update held for review"; echo; cat "$body"; } > /tmp/msg
+            git commit -q -F /tmp/msg
+            git push -f origin "HEAD:refs/heads/${branch}"
+            printf '\n변경 내용 보기·반영: %s/%s/compare/main...%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$branch" >> "$body"
+          fi
+          printf '\n실행 기록: %s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" >> "$body"
+          gh issue create --title "데이터 갱신 확인 필요 ($(date -u +%Y-%m-%d))" --body-file "$body"
+          exit 1
