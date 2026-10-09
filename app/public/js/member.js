@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
+  const { CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
   const content = document.getElementById('content');
   const id = new URLSearchParams(window.location.search).get('id');
 
@@ -113,7 +113,8 @@
     const listEl = document.getElementById('bill-list');
     fetch(`/bills/${encodeURIComponent(m.id)}.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-      .then(({ bills, cutoff, areas, partners, coop }) => {
+      .then(({ bills, cutoff, areas, partners, coop, votes }) => {
+        if (votes) renderVotes(votes);
         let areaFilter = null;
         let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
         let shown = 15;
@@ -143,6 +144,48 @@
         paint();
       })
       .catch(() => { listEl.innerHTML = '<li class="skeleton">법안 목록을 불러오지 못했습니다.</li>'; });
+  }
+
+  // Every recorded plenary vote while in office, newest first. `votes` has one
+  // character per entry of /vote-data/index.json: Y N A X, or . when not in office.
+  function renderVotes(str) {
+    const el = document.getElementById('votes-card');
+    loadVoteIndex().then(({ votes }) => {
+      const mine = votes.map((v, i) => ({ v, c: str[i] })).filter((x) => x.c && x.c !== '.');
+      const cnt = { Y: 0, N: 0, A: 0, X: 0 };
+      mine.forEach((x) => { cnt[x.c] += 1; });
+      let cur = 'all';
+      let shown = 15;
+      const TABS = [['all', '전체'], ['N', '반대'], ['A', '기권'], ['X', '불참']];
+      el.innerHTML = `<div class="card-head">
+          <div>
+            <h2 class="card-title">본회의 표결 기록 <span class="muted num">${num(mine.length)}건</span></h2>
+            <p class="card-sub">재임 중 열린 모든 본회의 표결 · 표결을 누르면 전체 의석 결과를 봅니다</p>
+          </div>
+          <div class="tabs" role="tablist" id="vote-tabs"></div>
+        </div>
+        ${stackedBar('YNAX'.split('').map((k) => ({ label: CHOICE[k].label, value: cnt[k], color: CHOICE[k].color })), '건')}
+        <div class="section" id="vote-list"></div>
+        <div class="more" id="vote-more"></div>
+        <div class="card-foot">평가의 표결 참여율은 겸직 기간과 의석이 바뀐 날의 표결을 뺀 값이라 이 건수와 다를 수 있습니다.</div>`;
+      const paint = () => {
+        document.getElementById('vote-tabs').innerHTML = TABS.map(([k, label]) =>
+          `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(k === 'all' ? mine.length : cnt[k])}</button>`).join('');
+        document.querySelectorAll('#vote-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; shown = 15; paint(); }));
+        const list = mine.filter((x) => cur === 'all' || x.c === cur);
+        document.getElementById('vote-list').innerHTML = list.length
+          ? list.slice(0, shown).map(({ v, c }) => `<a class="vrec-row" href="/vote?id=${encodeURIComponent(v.id)}">
+              <span class="vrow-date num">${kdate(v.date)}</span>
+              <span class="vrow-name">${esc(v.name)}</span>
+              <span class="choice"><i class="dot-key" style="background:${CHOICE[c].color}"></i>${CHOICE[c].label}</span>
+            </a>`).join('')
+          : '<p class="muted">해당하는 표결이 없습니다.</p>';
+        const more = document.getElementById('vote-more');
+        more.innerHTML = list.length > shown ? `<button class="btn" type="button">더 보기 (${num(list.length - shown)}건 남음)</button>` : '';
+        more.querySelector('button')?.addEventListener('click', () => { shown += 30; paint(); });
+      };
+      paint();
+    }).catch(() => { el.innerHTML = '<p class="muted">표결 기록을 불러오지 못했습니다.</p>'; });
   }
 
   function render(m, all, run) {
@@ -247,6 +290,7 @@
         <ul class="bill-list" id="bill-list"><li class="skeleton">불러오는 중…</li></ul>
         <div class="more" id="bill-more"></div>
       </section>
+      <section class="card section" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
         입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.

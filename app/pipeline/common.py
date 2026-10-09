@@ -28,6 +28,7 @@ PLENARY_INF = 'O4Q5B50011905O18367'
 COMMITTEE_INF = 'OND4F9001191DA18437'
 
 VOTED = {'찬성': 'Y', '반대': 'N', '기권': 'A'}
+CHOICE = {**VOTED, '불참': 'X'}
 STATUSES = ('출석', '결석', '청가', '출장', '결석신고서')
 # votes counted in the denominator; hold_tenure_boundary votes fall on a day a
 # seat changed hands and are left out for everyone (see /notes)
@@ -239,17 +240,24 @@ def bill_record(r):
 
 
 def vote_record(item, rows, status):
-    """item: a row of the vote list API; rows: its per-member rows."""
+    """item: a row of the vote list API; rows: its per-member rows.
+
+    Y/N/A/X list the member codes that voted yes / no / abstained / were
+    absent; party groups the same codes by the party the API printed for
+    them on the day of the vote."""
     out = {'bill_id': item['BILL_ID'], 'bill_no': item['BILL_NO'], 'bill_name': item['BILL_NAME'],
            'date': item['PROC_DT'], 'result': item.get('PROC_RESULT_CD'), 'status': status,
            'totals': {'members': item['MEMBER_TCNT'], 'voted': item['VOTE_TCNT'], 'yes': item['YES_TCNT'],
                       'no': item['NO_TCNT'], 'abstain': item['BLANK_TCNT']}}
-    for k in VOTED.values():
+    for k in CHOICE.values():
         out[k] = []
+    party = collections.defaultdict(list)
     for r in rows:
-        k = VOTED.get(r['RESULT_VOTE_MOD'])
+        k = CHOICE.get(r['RESULT_VOTE_MOD'])
         if k:
             out[k].append(r['MONA_CD'])
-    for k in VOTED.values():
+            party[r.get('POLY_NM') or ''].append(r['MONA_CD'])
+    for k in CHOICE.values():
         out[k].sort()
+    out['party'] = {p: sorted(v) for p, v in sorted(party.items())}
     return out

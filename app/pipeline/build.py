@@ -208,7 +208,7 @@ def role_adjustments(S, recs):
 
 # ---------- bill lists, policy areas, collaboration ----------
 
-def bill_lists_and_coop(S, recs):
+def bill_lists_and_coop(S, recs, vote_strings):
     members = S.by_id
     # party at proposal: the party printed in the plenary roster of the latest
     # session that started on or before the proposal date
@@ -313,6 +313,7 @@ def bill_lists_and_coop(S, recs):
                       for k, (n, rr) in sorted(areas[mid].items(), key=lambda kv: (-kv[1][0], kv[0]))],
             'partners': {'same': [p for p in top if p['same_party']][:5], 'other': [p for p in top if not p['same_party']][:5]},
             'coop': {k: c[k] for k in ('cross', 'base', 'bills', 'index', 'eligible', 'party_median', 'excess', 'bonus')},
+            'votes': vote_strings.get(mid, ''),
         }
         with open(out_dir / f'{mid}.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
@@ -330,6 +331,42 @@ def bill_lists_and_coop(S, recs):
     return coop_out
 
 
+# ---------- plenary vote pages ----------
+
+def vote_pages(S):
+    """public/vote-data/index.json (every vote, newest first), public/vote-data/<BILL_ID>.json
+    (every seat: member, party on the day, choice) and, per member, one character
+    per vote in index order (Y yes, N no, A abstain, X absent, . not in office)."""
+    names = {m['id']: m['name'] for m in S.members}
+    names.update({k: v for k, v in S.former.items() if k not in names})
+    votes = sorted(S.votes, key=lambda v: (v['date'], v['bill_no']), reverse=True)
+    out_dir = APP / 'public' / 'vote-data'
+    os.makedirs(out_dir, exist_ok=True)
+    index, strings = [], {m['id']: [] for m in S.members}
+    for v in votes:
+        choice = {i: k for k in 'YNAX' for i in v[k]}
+        party = {i: p for p, members in v['party'].items() for i in members}
+        counts = [len(v[k]) for k in 'YNAX']
+        index.append({'id': v['bill_id'], 'no': v['bill_no'], 'name': v['bill_name'], 'date': v['date'],
+                      'result': v['result'], 'counts': counts, 'held': v['status'] not in SCORED_VOTE})
+        seats = [[i, names.get(i, i), party.get(i, ''), c] for i, c in choice.items()]
+        seats.sort(key=lambda x: (x[2], 'YNAX'.index(x[3]), x[1]))
+        page = {'id': v['bill_id'], 'no': v['bill_no'], 'name': v['bill_name'], 'date': v['date'], 'result': v['result'],
+                'held': v['status'] not in SCORED_VOTE, 'totals': v['totals'], 'counts': counts,
+                'url': f"https://likms.assembly.go.kr/bill/billDetail.do?billId={v['bill_id']}", 'seats': seats}
+        with open(out_dir / f"{v['bill_id']}.json", 'w', encoding='utf-8') as f:
+            json.dump(page, f, ensure_ascii=False, separators=(',', ':'))
+        for mid, acc in strings.items():
+            acc.append(choice.get(mid, '.'))
+    with open(out_dir / 'index.json', 'w', encoding='utf-8') as f:
+        json.dump({'votes': index}, f, ensure_ascii=False, separators=(',', ':'))
+    keep = {v['bill_id'] for v in votes} | {'index'}
+    for p in out_dir.glob('*.json'):
+        if p.stem not in keep:
+            os.remove(p)
+    return {mid: ''.join(acc) for mid, acc in strings.items()}
+
+
 def main():
     S = Sources()
     recs = records(S)
@@ -342,7 +379,7 @@ def main():
         f.write('export default ' + json.dumps(recs, ensure_ascii=False, separators=(',', ':')) + ';\n')
     write_json(tmp / 'records.json', {'members': recs})
     write_json(APP / 'data' / 'role-adjustments.json', role_adjustments(S, recs), indent=2)
-    write_json(APP / 'data' / 'coop.json', bill_lists_and_coop(S, recs))
+    write_json(APP / 'data' / 'coop.json', bill_lists_and_coop(S, recs, vote_pages(S)))
     write_json(tmp / 'run-meta.json', {'data_as_of': S.meta['data_as_of'], 'coverage': cov})
 
     d = APP / 'data'

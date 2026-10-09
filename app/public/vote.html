@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>본회의 표결 — 일하는 국회</title>
+<meta name="description" content="제22대 국회 본회의 표결 결과와 의원별 찬반">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일하는 국회">
+<meta property="og:title" content="일하는 국회 — 제22대 국회의원 실적 대시보드">
+<meta property="og:description" content="공식 기록으로 보는 국회의원 입법·표결·출석 실적과 상대평가 등급">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">대시보드</a>
+      <a href="/compare">의원 비교</a>
+      <a href="/votes" aria-current="page">표결</a>
+      <a href="/method">평가 방법</a>
+      <a href="/about">소개</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
+</header>
+
+<main>
+  <div class="page-head">
+    <div>
+      <p class="crumb"><a href="/votes">본회의 표결</a></p>
+      <h1 id="title">표결 결과</h1>
+      <p id="meta">불러오는 중…</p>
+    </div>
+  </div>
+  <div id="content"></div>
+</main>
+
+<footer class="site">
+  <nav class="foot-links" aria-label="사이트 정보">
+    <a href="/about">서비스 소개</a>
+    <a href="/method">평가 방법</a>
+    <a href="/notes">데이터 처리 기준</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+    <a href="/about#contact">문의·정정 요청</a>
+  </nav>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></p>
+  <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
+</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/vote.js"></script>
+</body>
+</html>

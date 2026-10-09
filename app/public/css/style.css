@@ -568,3 +568,77 @@ button.barlist-row:focus-visible { outline: 2px solid var(--accent); }
 .cmp-big { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .cmp-val small { font-size: 0.78rem; color: var(--text-3); }
 .cmp-row .strip-host { margin-top: 6px; }
+
+/* ---------- plenary votes ---------- */
+.crumb { margin: 0 0 4px !important; font-size: 0.82rem; }
+.dot-key { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.chip-bad { background: color-mix(in srgb, var(--bad) 14%, transparent); color: var(--bad); }
+
+.hemi-wrap { max-width: 760px; margin: 0 auto; }
+.hemi { display: block; width: 100%; height: auto; }
+.hemi .seat { cursor: pointer; transition: opacity .15s; }
+.hemi .seat:hover { stroke: var(--text); stroke-width: 0.006; }
+.hemi.finding .seat { opacity: 0.18; }
+.hemi.finding .seat.hit { opacity: 1; stroke: var(--text); stroke-width: 0.008; }
+.hemi-legend { justify-content: center; }
+.hemi-parties { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; margin-top: 6px; font-size: 0.78rem; color: var(--text-3); }
+.hemi-parties b { color: var(--text-2); font-weight: 600; }
+.hemi-find { width: 220px; max-width: 100%; }
+
+.prows { display: flex; flex-direction: column; gap: 14px; }
+.prow-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; }
+.prow-name small { font-weight: 400; color: var(--text-3); margin-left: 4px; }
+.prow .legend { margin-top: 6px; font-size: 0.76rem; }
+
+.names + .names { margin-top: 14px; }
+.names h3 { margin: 0 0 8px; font-size: 0.86rem; font-weight: 600; }
+.name-grid { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.86rem; }
+.name-grid small { color: var(--text-3); margin-left: 4px; font-size: 0.74rem; }
+.absent { margin-top: 16px; font-size: 0.86rem; }
+.absent summary { cursor: pointer; color: var(--text-2); }
+.absent .names { margin-top: 10px; }
+
+.vlist { display: flex; flex-direction: column; }
+.vrow {
+  display: grid; grid-template-columns: 88px minmax(0, 1fr) auto 240px; gap: 12px; align-items: center;
+  padding: 10px 4px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 0.88rem;
+}
+.vrow:hover { background: var(--surface-2); text-decoration: none; }
+.vrow-date { color: var(--text-3); font-size: 0.8rem; }
+.vrow-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vrow-bar small { display: block; margin-top: 4px; font-size: 0.72rem; color: var(--text-3); white-space: nowrap; }
+.vrow-bar .stack { height: 8px; }
+@media (max-width: 760px) {
+  .vrow { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; }
+  .vrow-date { grid-column: 1; grid-row: 1; }
+  .vrow-result { grid-column: 2; grid-row: 1; justify-self: end; }
+  .vrow-name { grid-column: 1 / -1; white-space: normal; }
+  .vrow-bar { grid-column: 1 / -1; }
+}
+
+/* member vote record */
+.vrec-row { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 2px; border-bottom: 1px solid var(--border); font-size: 0.86rem; color: var(--text); }
+.vrec-row:hover { background: var(--surface-2); text-decoration: none; }
+.vrec-row .vrow-name { white-space: normal; }
+.choice { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.prow-parts { margin-top: 5px; font-size: 0.76rem; color: var(--text-3); }
+.prow-parts b { color: var(--text-2); font-weight: 600; }
+.pgroup { margin-top: 8px; }
+.pgroup-head, .pgroup > summary { font-size: 0.78rem; color: var(--text-3); margin-bottom: 4px; }
+.pgroup > summary { cursor: pointer; }
+.pgroup[open] > summary { margin-bottom: 6px; }
+.nav a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .nav { overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { padding: 6px 7px; font-size: 0.85rem; }
+}
+@media (max-width: 640px) {
+  .topbar-spacer { display: none; }
+  .nav { margin-left: 4px; }
+  .nav a[href="/about"] { display: none; } /* in the footer */
+}
+@media (max-width: 400px) {
+  .nav { gap: 0; }
+  .nav a { padding: 6px 6px; font-size: 0.82rem; }
+}

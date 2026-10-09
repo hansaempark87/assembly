@@ -7,6 +7,7 @@
 ```
 fetch.py  → 국회 공개 자료 수집, app/data/source/ 갱신
 build.py  → 원자료 → 의원별 집계 → 겸직 제외 → 협치 가산점 → 점수·등급
+            → 표결 페이지 자료(public/vote-data/), 의원별 법안·표결 기록(public/bills/)
 check.py  → 현재 공개본(main)과 비교 검증
   ├ 모두 통과   → main에 커밋 → Cloudflare Pages 자동 배포
   └ 확인 필요   → 반영하지 않음. data-review/<날짜> 브랜치 + GitHub 이슈(메일 알림)
@@ -20,7 +21,7 @@ check.py  → 현재 공개본(main)과 비교 검증
 | --- | --- | --- |
 | `members.json` | 국회의원 인적사항 API(`nwvrqwxyaytdsfvhu`) | 현직 의원 299명(임기 시작일 포함), 기록에 나오는 전직 의원 코드·이름 |
 | `bills.jsonl` | 의원 발의법률안 API(`nzmimeepazxkubdpn`) | 제22대 발의 법률안 전체(한 줄에 한 건) |
-| `votes.jsonl` | 표결 목록(`ncocpgfiaoituanbr`) + 개인 표결(`nojepdqqaweusdfbi`) | 표결 한 건당 한 줄: 공식 집계, 찬성·반대·기권 의원코드, 처리 상태 |
+| `votes.jsonl` | 표결 목록(`ncocpgfiaoituanbr`) + 개인 표결(`nojepdqqaweusdfbi`) | 표결 한 건당 한 줄: 공식 집계, 찬성·반대·기권·불참 의원코드, 표결 당일 정당, 처리 상태 |
 | `plenary.json` | 열린국회정보 본회의 출결 XLSX | 회기별 날짜·의원별 상태·공개 합계·소속 정당 |
 | `committee.jsonl` | 열린국회정보 위원회 출결 PDF | 월·위원회·의원별 날짜별 상태와 공개 합계 |
 | `files.json` | 위 출결 파일 | 파일 번호·제목·게시일·sha256 |

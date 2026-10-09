@@ -374,5 +374,64 @@
   } catch (_) { /* storage unavailable */ }
   document.addEventListener('DOMContentLoaded', initTheme);
 
-  window.NA = { reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+
+  // ---------- plenary votes ----------
+  const CHOICE = {
+    Y: { label: '찬성', color: 'var(--s-blue)' },
+    N: { label: '반대', color: 'var(--s-orange)' },
+    A: { label: '기권', color: 'var(--s-violet)' },
+    X: { label: '불참', color: 'var(--s-neutral)' },
+  };
+  // Seating order from the chamber's left to right; parties not listed sit
+  // between the two blocs, larger first.
+  const LEFT = ['더불어민주당', '조국혁신당', '진보당', '기본소득당', '사회민주당'];
+  const RIGHT = ['개혁신당', '국민의힘'];
+  function partyOrder(counts) {
+    const mid = Object.keys(counts).filter((p) => !LEFT.includes(p) && !RIGHT.includes(p))
+      .sort((a, b) => (a === '무소속') - (b === '무소속') || counts[b] - counts[a]);
+    return [...LEFT, ...mid, ...RIGHT].filter((p) => counts[p]);
+  }
+
+  // Semicircle seat chart. seats: [{id, name, party, color, title}] already in
+  // left-to-right order. Seats are laid out in concentric rows and filled by
+  // angle, so each block reads as a wedge like the real chamber.
+  function hemicycle(el, { seats, rows, label, onPick }) {
+    const n = seats.length;
+    if (!n) { el.innerHTML = '<div class="muted">자료 없음</div>'; return; }
+    rows = rows || Math.max(4, Math.round(Math.sqrt(n / 3)));
+    const r0 = 0.38;
+    const radii = Array.from({ length: rows }, (_, i) => r0 + (i * (1 - r0)) / (rows - 1));
+    const sum = radii.reduce((a, b) => a + b, 0);
+    const per = radii.map((r) => Math.max(1, Math.round((n * r) / sum)));
+    let diff = n - per.reduce((a, b) => a + b, 0);
+    for (let i = rows - 1; diff !== 0; i = (i - 1 + rows) % rows) { per[i] += Math.sign(diff); diff -= Math.sign(diff); }
+    const pos = [];
+    radii.forEach((r, i) => {
+      for (let k = 0; k < per[i]; k++) {
+        const a = per[i] === 1 ? Math.PI / 2 : Math.PI - (k * Math.PI) / (per[i] - 1);
+        pos.push({ a, r, x: 1 + r * Math.cos(a), y: 1 - r * Math.sin(a) });
+      }
+    });
+    pos.sort((p, q) => q.a - p.a || p.r - q.r);
+    const dot = ((1 - r0) / (rows - 1)) * 0.42;
+    const circles = seats.map((s, i) => {
+      const p = pos[i];
+      return `<circle class="seat${s.cls ? ' ' + s.cls : ''}" cx="${p.x.toFixed(4)}" cy="${p.y.toFixed(4)}" r="${dot.toFixed(4)}" fill="${s.color}" data-i="${i}"></circle>`;
+    }).join('');
+    el.innerHTML = `<svg class="hemi" viewBox="${-dot} ${-dot} ${2 + 2 * dot} ${1 + 2 * dot}" role="img" aria-label="${esc(label || '')}">${circles}</svg>`;
+    const svg = el.firstChild;
+    const at = (e) => { const i = e.target.dataset && e.target.dataset.i; return i === undefined ? null : seats[+i]; };
+    svg.addEventListener('mousemove', (e) => { const s = at(e); tip(s ? s.title : null, e.clientX, e.clientY); });
+    svg.addEventListener('mouseleave', () => tip(null));
+    if (onPick) svg.addEventListener('click', (e) => { const s = at(e); if (s) onPick(s); });
+    return svg;
+  }
+
+  let voteIndex = null;
+  const loadVoteIndex = () => (voteIndex = voteIndex || fetch('/vote-data/index.json').then((r) => {
+    if (!r.ok) throw new Error('표결 목록을 불러오지 못했습니다');
+    return r.json();
+  }).catch((e) => { voteIndex = null; throw e; }));
+
+  window.NA = { kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
 })();
