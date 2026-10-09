@@ -333,10 +333,22 @@ def bill_lists_and_coop(S, recs, vote_strings):
 
 # ---------- plenary vote pages ----------
 
+def vote_area(committee):
+    if committee == '예산결산특별위원회':
+        return '예산·결산'
+    if committee == '본회의':
+        return '본회의 직접 상정'
+    return area_of(committee)
+
+
 def vote_pages(S):
     """public/vote-data/index.json (every vote, newest first), public/vote-data/<BILL_ID>.json
     (every seat: member, party on the day, choice) and, per member, one character
-    per vote in index order (Y yes, N no, A abstain, X absent, . not in office)."""
+    per vote in index order: Y yes, N no, A abstain, X absent, . not in office.
+    y/n/a (lower case) mark a vote that differs from the choice most members of
+    the member's own party made that day (parties of 3 or more voters; not
+    independents). `clash` marks votes where the two largest parties' majority
+    choices differ."""
     names = {m['id']: m['name'] for m in S.members}
     names.update({k: v for k, v in S.former.items() if k not in names})
     votes = sorted(S.votes, key=lambda v: (v['date'], v['bill_no']), reverse=True)
@@ -347,17 +359,29 @@ def vote_pages(S):
         choice = {i: k for k in 'YNAX' for i in v[k]}
         party = {i: p for p, members in v['party'].items() for i in members}
         counts = [len(v[k]) for k in 'YNAX']
+        majority = {}
+        for p, ids_ in v['party'].items():
+            c = collections.Counter(choice[i] for i in ids_ if choice[i] != 'X')
+            top = c.most_common(2)
+            if p and p != INDEPENDENT and sum(c.values()) >= 3 and (len(top) == 1 or top[0][1] > top[1][1]):
+                majority[p] = top[0][0]
+        big = sorted(v['party'], key=lambda p: -len(v['party'][p]))[:2]
+        clash = len(big) == 2 and all(p in majority for p in big) and majority[big[0]] != majority[big[1]]
         index.append({'id': v['bill_id'], 'no': v['bill_no'], 'name': v['bill_name'], 'date': v['date'],
-                      'result': v['result'], 'counts': counts, 'held': v['status'] not in SCORED_VOTE})
+                      'result': v['result'], 'kind': v.get('kind'), 'area': vote_area(v.get('committee')),
+                      'counts': counts, 'clash': clash, 'held': v['status'] not in SCORED_VOTE})
         seats = [[i, names.get(i, i), party.get(i, ''), c] for i, c in choice.items()]
         seats.sort(key=lambda x: (x[2], 'YNAX'.index(x[3]), x[1]))
         page = {'id': v['bill_id'], 'no': v['bill_no'], 'name': v['bill_name'], 'date': v['date'], 'result': v['result'],
+                'kind': v.get('kind'), 'committee': v.get('committee'),
                 'held': v['status'] not in SCORED_VOTE, 'totals': v['totals'], 'counts': counts,
                 'url': f"https://likms.assembly.go.kr/bill/billDetail.do?billId={v['bill_id']}", 'seats': seats}
         with open(out_dir / f"{v['bill_id']}.json", 'w', encoding='utf-8') as f:
             json.dump(page, f, ensure_ascii=False, separators=(',', ':'))
         for mid, acc in strings.items():
-            acc.append(choice.get(mid, '.'))
+            c = choice.get(mid, '.')
+            m = majority.get(party.get(mid))
+            acc.append(c.lower() if c in 'YNA' and m and c != m else c)
     with open(out_dir / 'index.json', 'w', encoding='utf-8') as f:
         json.dump({'votes': index}, f, ensure_ascii=False, separators=(',', ':'))
     keep = {v['bill_id'] for v in votes} | {'index'}

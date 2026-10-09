@@ -1,5 +1,5 @@
 (function () {
-  const { reveal, esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
+  const { pager, view, reveal, esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
   const PAGE = window.matchMedia('(max-width: 760px)').matches ? 20 : 50;
 
@@ -24,7 +24,8 @@
 
   let all = [];
   let run = null;
-  let shown = PAGE;
+  let page = 1;
+  view.manual();
   let sort = { key: 'rank', dir: 'asc' };
 
   // ---------- KPI tiles ----------
@@ -74,7 +75,7 @@
         gradeActive = gradeActive === b.dataset.g ? '' : b.dataset.g;
         $('grade-filter').value = gradeActive;
         renderGrades();
-        shown = PAGE;
+        page = 1;
         renderBoard();
         if (gradeActive) $('board-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
       })
@@ -201,10 +202,11 @@
     if (!list.length) {
       body.innerHTML = '<tr><td class="skeleton" colspan="7">조건에 맞는 의원이 없습니다.</td></tr>';
       $('more').innerHTML = '';
+      saveBoard();
       return;
     }
     body.innerHTML = list
-      .slice(0, shown)
+      .slice((page - 1) * PAGE, page * PAGE)
       .map(
         (m) => `<tr data-id="${esc(m.id)}">
           <td class="rank num">${rankText(m, all) ?? `<span class="na" title="${statusText(m)}">–</span>`}</td>
@@ -221,17 +223,29 @@
         window.location.href = `/member?id=${encodeURIComponent(tr.dataset.id)}`;
       })
     );
-    $('more').innerHTML =
-      list.length > shown
-        ? `<button class="btn" type="button" id="more-btn">더 보기 (${num(list.length - shown)}명 남음)</button>`
-        : '';
-    $('more-btn')?.addEventListener('click', () => { shown += PAGE; renderBoard(); });
+    pager($('more'), { total: list.length, page, size: PAGE, anchor: $('board-card'), onGo: (p) => { page = p; renderBoard(); } });
+    saveBoard();
     document.querySelectorAll('#board th[data-sort]').forEach((th) => {
       if (th.dataset.sort === sort.key) th.setAttribute('aria-sort', sort.dir === 'asc' ? 'ascending' : 'descending');
       else th.removeAttribute('aria-sort');
       const btn = th.querySelector('button');
       btn.textContent = btn.textContent.replace(/ [▲▼]$/, '') + (th.dataset.sort === sort.key ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : '');
     });
+  }
+
+  // filters, sort and page survive a trip to a member page and back
+  const BOARD_INPUTS = ['search-box', 'party-filter', 'region-filter', 'committee-filter', 'grade-filter'];
+  function saveBoard() {
+    view.set('board', { page, sort, inputs: BOARD_INPUTS.map((id) => $(id).value) });
+  }
+  function restoreBoard() {
+    const st = view.get('board', null);
+    if (!st) return;
+    BOARD_INPUTS.forEach((id, i) => { if ([...($(id).options || [{ value: st.inputs[i] }])].some((o) => o.value === st.inputs[i])) $(id).value = st.inputs[i]; });
+    gradeActive = ['S', 'A', 'B', 'C', 'D'].includes($('grade-filter').value) ? $('grade-filter').value : '';
+    sort = st.sort || sort;
+    page = st.page || 1;
+    if (gradeActive) renderGrades();
   }
 
   function fillSelect(id, values) {
@@ -249,7 +263,7 @@
     fillSelect('region-filter', count((m) => m.region).map(([k, n]) => ({ value: k, label: `${k} (${n})` })));
     fillSelect('committee-filter', count((m) => m.committees).map(([k, n]) => ({ value: k, label: `${k.length > 22 ? k.slice(0, 22) + '…' : k} (${n})` })));
 
-    const reset = () => { shown = PAGE; renderBoard(); };
+    const reset = () => { page = 1; renderBoard(); };
     $('search-box').addEventListener('input', reset);
     ['party-filter', 'region-filter', 'committee-filter'].forEach((id) => $(id).addEventListener('change', reset));
     $('grade-filter').addEventListener('change', () => {
@@ -265,6 +279,7 @@
         reset();
       })
     );
+    restoreBoard();
     renderBoard();
   }
 
@@ -290,6 +305,7 @@
       tabs($('party-tabs'), PARTY, renderParty);
       setupBoard();
       reveal(document.querySelectorAll('main > .card, main > .notice, main > .grid:not(#kpis) > .card'));
+      view.restoreScroll();
     } catch (err) {
       $('run-info').innerHTML = `<span class="error">데이터를 불러오지 못했습니다: ${esc(err.message)}</span>`;
       $('board-body').innerHTML = '<tr><td class="skeleton" colspan="7">오류</td></tr>';
