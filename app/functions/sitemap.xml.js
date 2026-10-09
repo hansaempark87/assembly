@@ -6,7 +6,7 @@ export async function onRequestGet({ env, request }) {
   const lastmod = (run.data_as_of || run.created_at).slice(0, 10);
   let votes = [];
   try {
-    const r = await env.ASSETS.fetch(new URL('/votes/index.json', origin));
+    const r = await env.ASSETS.fetch(new URL('/vote-data/index.json', origin));
     if (r.ok) votes = (await r.json()).votes;
   } catch {
     votes = [];

@@ -334,13 +334,13 @@ def bill_lists_and_coop(S, recs, vote_strings):
 # ---------- plenary vote pages ----------
 
 def vote_pages(S):
-    """public/votes/index.json (every vote, newest first), public/votes/<BILL_ID>.json
+    """public/vote-data/index.json (every vote, newest first), public/vote-data/<BILL_ID>.json
     (every seat: member, party on the day, choice) and, per member, one character
     per vote in index order (Y yes, N no, A abstain, X absent, . not in office)."""
     names = {m['id']: m['name'] for m in S.members}
     names.update({k: v for k, v in S.former.items() if k not in names})
     votes = sorted(S.votes, key=lambda v: (v['date'], v['bill_no']), reverse=True)
-    out_dir = APP / 'public' / 'votes'
+    out_dir = APP / 'public' / 'vote-data'
     os.makedirs(out_dir, exist_ok=True)
     index, strings = [], {m['id']: [] for m in S.members}
     for v in votes:

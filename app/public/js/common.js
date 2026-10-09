@@ -428,7 +428,7 @@
   }
 
   let voteIndex = null;
-  const loadVoteIndex = () => (voteIndex = voteIndex || fetch('/votes/index.json').then((r) => {
+  const loadVoteIndex = () => (voteIndex = voteIndex || fetch('/vote-data/index.json').then((r) => {
     if (!r.ok) throw new Error('표결 목록을 불러오지 못했습니다');
     return r.json();
   }).catch((e) => { voteIndex = null; throw e; }));

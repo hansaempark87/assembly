@@ -147,7 +147,7 @@
   }
 
   // Every recorded plenary vote while in office, newest first. `votes` has one
-  // character per entry of /votes/index.json: Y N A X, or . when not in office.
+  // character per entry of /vote-data/index.json: Y N A X, or . when not in office.
   function renderVotes(str) {
     const el = document.getElementById('votes-card');
     loadVoteIndex().then(({ votes }) => {

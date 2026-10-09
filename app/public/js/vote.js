@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, kdate, CHOICE, partyOrder, hemicycle, stackedBar, reveal } = window.NA;
+  const { esc, num, kdate, CHOICE, partyOrder, hemicycle, reveal } = window.NA;
   const $ = (id) => document.getElementById(id);
   const content = $('content');
   const id = new URLSearchParams(window.location.search).get('id');
@@ -18,18 +18,31 @@
     return order.map((p) => {
       const c = byParty[p];
       const n = c.Y + c.N + c.A + c.X;
+      const segs = 'YNAX'.split('').map((k) => (c[k] ? `<span style="flex:${c[k]};background:${CHOICE[k].color}"></span>` : '')).join('');
+      const parts = 'YNAX'.split('').filter((k) => c[k]).map((k) => `${CHOICE[k].label} <b class="num">${num(c[k])}</b>`).join(' · ');
       return `<div class="prow">
         <div class="prow-name">${esc(p || '정당 정보 없음')} <small class="num">${num(n)}명</small></div>
-        ${stackedBar('YNAX'.split('').map((k) => ({ label: CHOICE[k].label, value: c[k], color: CHOICE[k].color })), '명')}
+        <div class="stack" role="img" aria-label="${esc(p)} ${esc(parts.replace(/<[^>]+>/g, ''))}">${segs}</div>
+        <div class="prow-parts">${parts}</div>
       </div>`;
     }).join('');
   }
 
-  function nameList(seats, k) {
+  // Names for one choice, grouped by party in seating order. A party block
+  // larger than BIG folds away so the cross-votes stay visible.
+  const BIG = 30;
+  function nameList(seats, k, order) {
     const list = seats.filter((s) => s[3] === k);
     if (!list.length) return '';
-    const links = list.map((s) => `<a href="/member?id=${encodeURIComponent(s[0])}">${esc(s[1])}</a><small>${esc(s[2])}</small>`).join('');
-    return `<div class="names"><h3><i class="dot-key" style="background:${CHOICE[k].color}"></i>${CHOICE[k].label} ${num(list.length)}명</h3><div class="name-grid">${links}</div></div>`;
+    const groups = order.map((p) => [p, list.filter((s) => s[2] === p)]).filter(([, g]) => g.length);
+    const body = groups.map(([p, g]) => {
+      const links = g.map((s) => `<a href="/member?id=${encodeURIComponent(s[0])}">${esc(s[1])}</a>`).join('');
+      const head = `${esc(p || '정당 정보 없음')} <span class="num">${num(g.length)}명</span>`;
+      return g.length > BIG
+        ? `<details class="pgroup"><summary>${head}</summary><div class="name-grid">${links}</div></details>`
+        : `<div class="pgroup"><div class="pgroup-head">${head}</div><div class="name-grid">${links}</div></div>`;
+    }).join('');
+    return `<div class="names"><h3><i class="dot-key" style="background:${CHOICE[k].color}"></i>${CHOICE[k].label} ${num(list.length)}명</h3>${body}</div>`;
   }
 
   function render(v) {
@@ -82,10 +95,10 @@
           <div class="prows">${partyRows(byParty, order)}</div>
         </section>
         <section class="card">
-          <div class="card-head"><div><h2 class="card-title">반대·기권한 의원</h2><p class="card-sub">이름을 누르면 의원 실적으로 이동</p></div></div>
-          ${nameList(v.seats, 'N')}${nameList(v.seats, 'A')}
+          <div class="card-head"><div><h2 class="card-title">반대·기권한 의원</h2><p class="card-sub">정당별 · 이름을 누르면 의원 실적으로 이동</p></div></div>
+          ${nameList(v.seats, 'N', order)}${nameList(v.seats, 'A', order)}
           ${v.counts[1] + v.counts[2] === 0 ? '<p class="muted">반대·기권한 의원이 없습니다.</p>' : ''}
-          <details class="absent"><summary>불참 ${num(v.counts[3])}명 보기</summary>${nameList(v.seats, 'X')}</details>
+          ${v.counts[3] ? `<details class="absent"><summary>불참 ${num(v.counts[3])}명 보기</summary>${nameList(v.seats, 'X', order)}</details>` : ''}
         </section>
       </div>`;
 
@@ -109,7 +122,7 @@
     content.innerHTML = '<div class="card error">표결을 찾을 수 없습니다. <a href="/votes">표결 목록</a>에서 골라 주세요.</div>';
     return;
   }
-  fetch(`/votes/${encodeURIComponent(id)}.json`)
+  fetch(`/vote-data/${encodeURIComponent(id)}.json`)
     .then((r) => { if (!r.ok) throw new Error('해당 표결이 없습니다'); return r.json(); })
     .then(render)
     .catch((e) => {

@@ -9,7 +9,7 @@ export async function onRequestGet({ env, request, next }) {
   if (!id || !/^[A-Z0-9_]+$/.test(id) || !res.headers.get('content-type')?.includes('text/html')) return res;
   let v;
   try {
-    const r = await env.ASSETS.fetch(new URL(`/votes/${id}.json`, url.origin));
+    const r = await env.ASSETS.fetch(new URL(`/vote-data/${id}.json`, url.origin));
     if (!r.ok) return res;
     v = await r.json();
   } catch {
