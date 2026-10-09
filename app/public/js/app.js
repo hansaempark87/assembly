@@ -76,7 +76,18 @@
         <a class="wk-name" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>
         <small>${esc(x.result)} ${shortDate(x.date)} · 대표발의 ${x.leads.map((l) => `<a href="/member?id=${encodeURIComponent(l.id)}">${esc(l.name)}</a>`).join(', ') || '-'}</small>
       </div>`).join('');
-    const chip = (x, dir) => `<a class="wk-chip ${dir}" href="/member?id=${encodeURIComponent(x.id)}">${esc(x.name)} <span class="num">${x.from}→${x.to}</span></a>`;
+    const moveRow = (x, dir) => {
+      const d = (x.rank_from ?? 0) - (x.rank_to ?? 0);
+      return `<a class="gm-row" href="/member?id=${encodeURIComponent(x.id)}">
+        <span class="gm-who"><b>${esc(x.name)}</b><small>${esc(x.party || '')}</small></span>
+        <span class="gm-grades">${gradeBadge(x.from)}<span class="gm-arrow ${dir}">${dir === 'up' ? '▲' : '▼'}</span>${gradeBadge(x.to)}</span>
+        <span class="gm-rank num">${x.rank_from}위 → <b>${x.rank_to}위</b><small class="${dir}">${d > 0 ? `${d}계단 상승` : `${-d}계단 하락`}</small></span>
+      </a>`;
+    };
+    const moveCol = (list, dir, title) => `<div class="gm-col">
+      <h3 class="wk-h"><span class="gm-arrow ${dir}">${dir === 'up' ? '▲' : '▼'}</span> ${title} <span class="muted num">${num(list.length)}명</span></h3>
+      ${list.length ? list.map((x) => moveRow(x, dir)).join('') : '<p class="muted">없습니다.</p>'}
+    </div>`;
     $('weekly').innerHTML = `
       <div class="wk-tiles">
         ${tile('본회의 표결', `${num(v.total)}<small>건</small>`, `여야 대립 ${num(v.clash)} · 만장일치 ${num(v.unanimous)}${v.rejected ? ` · 부결 ${num(v.rejected)}` : ''}`)}
@@ -88,8 +99,7 @@
         <div><h3 class="wk-h">눈여겨볼 표결</h3>${voteItems || '<p class="muted">찬반이 갈린 표결이 없었습니다.</p>'}</div>
         <div><h3 class="wk-h">가결된 의원 발의 법안</h3>${billItems || '<p class="muted">없습니다.</p>'}</div>
       </div>
-      ${g.up.length + g.down.length ? `<div class="section"><h3 class="wk-h">등급이 바뀐 의원</h3>
-        <div class="wk-chips">${g.up.map((x) => chip(x, 'up')).join('')}${g.down.map((x) => chip(x, 'down')).join('')}</div></div>` : ''}`;
+      ${g.up.length + g.down.length ? `<div class="grid grid-2 section">${moveCol(g.up, 'up', '등급 상승')}${moveCol(g.down, 'down', '등급 하락')}</div>` : ''}`;
   }
 
   // ---------- KPI tiles ----------

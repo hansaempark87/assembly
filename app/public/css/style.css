@@ -728,3 +728,16 @@ a.wk-row:hover { background: var(--surface-2); text-decoration: none; }
 .peer b { display: block; font-size: 0.9rem; }
 .peer small { font-size: 0.74rem; color: var(--text-3); }
 @media (max-width: 960px) { .peer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* grade moves in the weekly summary */
+.gm-col { min-width: 0; }
+.gm-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; align-items: center; padding: 8px 2px; border-bottom: 1px solid var(--border); color: var(--text); }
+.gm-row:hover { background: var(--surface-2); text-decoration: none; }
+.gm-who b { display: block; font-size: 0.9rem; }
+.gm-who small { font-size: 0.74rem; color: var(--text-3); }
+.gm-grades { display: inline-flex; align-items: center; gap: 6px; }
+.gm-arrow { font-size: 0.72rem; }
+.gm-arrow.up, .gm-rank .up { color: var(--good); }
+.gm-arrow.down, .gm-rank .down { color: var(--bad); }
+.gm-rank { text-align: right; font-size: 0.8rem; color: var(--text-3); min-width: 112px; }
+.gm-rank b { color: var(--text); }
+.gm-rank small { display: block; font-size: 0.72rem; font-weight: 600; }
