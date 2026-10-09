@@ -546,3 +546,25 @@ button.barlist-row:focus-visible { outline: 2px solid var(--accent); }
 @media (max-width: 640px) { .partners { grid-template-columns: 1fr; } }
 
 .formula-line { margin: 0; font-size: 0.9rem; background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; }
+
+/* ---------- compare: explicit A/B identity ---------- */
+.vs-card.side-a { box-shadow: inset 4px 0 0 var(--accent); }
+.vs-card.side-b { box-shadow: inset 4px 0 0 var(--s-b); }
+.who-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.who-tag::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none; }
+.who-tag.b::before { background: var(--s-b); }
+.vs-legend {
+  position: sticky; top: 56px; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin: 0 -20px 4px; padding: 10px 20px; background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.vs-legend .who-tag { font-size: 0.92rem; }
+.vs-legend b { font-size: 0.9rem; color: var(--text-2); }
+.cmp-label { font-weight: 700; font-size: 0.95rem; margin-bottom: 10px; }
+.cmp-label small { font-weight: 400; color: var(--text-3); font-size: 0.78rem; margin-left: 4px; }
+.cmp-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cmp-val { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); border-top: 3px solid var(--accent); min-width: 0; }
+.cmp-val.side-b { border-top-color: var(--s-b); }
+.cmp-val .who-tag { font-size: 0.78rem; color: var(--text-2); margin-bottom: 2px; }
+.cmp-big { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.cmp-val small { font-size: 0.78rem; color: var(--text-3); }
+.cmp-row .strip-host { margin-top: 6px; }
