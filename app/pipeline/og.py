@@ -228,6 +228,48 @@ def generic_vote_image(as_of):
     return im
 
 
+PARTY_COLOR = {'더불어민주당': '#1f6fd1', '국민의힘': '#e2404b', '조국혁신당': '#0b3a7e', '진보당': '#d6336c',
+               '개혁신당': '#f08c00', '기본소득당': '#12a594', '사회민주당': '#9c4dcc', '무소속': '#9aa1ab'}
+
+
+def party_image(records, scores, as_of):
+    """Parties with 3+ members: seats, grade mix bar, average composite percentile."""
+    im, d = canvas()
+    d.text((80, 170), '정당별 의정활동 비교', font=font(44, True), fill=TEXT, anchor='ls')
+    d.text((W - 90, 168), '종합 백분위 평균', font=font(20), fill=TEXT3, anchor='rs')
+    groups = {}
+    for m in records:
+        groups.setdefault(m.get('party') or '무소속', []).append(m)
+    parties = sorted((p for p, ms in groups.items() if len(ms) >= 3), key=lambda p: -len(groups[p]))[:6]
+    y = 212
+    x0, x1 = 400, 860
+    for p in parties:
+        ms = groups[p]
+        d.ellipse((82, y - 10, 102, y + 10), fill=PARTY_COLOR.get(p, '#b8bec8'))
+        d.text((116, y), p, font=font(28, True), fill=TEXT, anchor='lm')
+        d.text((x0 - 20, y), f'{len(ms)}명', font=font(24), fill=TEXT3, anchor='rm')
+        counts = [sum(1 for m in ms if scores.get(m['id'], {}).get('grade') == g) for g in 'SABCD']
+        counts.append(len(ms) - sum(counts))
+        x = x0
+        for n, g in zip(counts, list('SABCD') + [None]):
+            if n:
+                w = (x1 - x0) * n / len(ms)
+                d.rectangle((x, y - 13, x + w - 2, y + 13), fill=GRADE[g][0])
+                x += w
+        cp = [scores[m['id']]['composite_percentile'] for m in ms if scores.get(m['id'], {}).get('composite_percentile') is not None]
+        avg = sum(cp) / len(cp) if cp else None
+        d.text((W - 90, y), f'{avg:.0f}' if avg is not None else '-', font=font(30, True), fill=TEXT, anchor='rm')
+        y += 47
+    # legend
+    lx = x0
+    for g in 'SABCD':
+        d.rectangle((lx, y - 4, lx + 18, y + 14), fill=GRADE[g][0])
+        d.text((lx + 26, y + 5), f'{g}등급', font=font(20), fill=TEXT2, anchor='lm')
+        lx += 92
+    footer(d, f'{kdate(as_of)} 기준 · 등급 구성 · 국회 공식 기록')
+    return im
+
+
 def build_all(records, run, vote_index, vote_pages_dir, as_of):
     out = APP / 'public' / 'og'
     scores = run['scores']
@@ -235,6 +277,7 @@ def build_all(records, run, vote_index, vote_pages_dir, as_of):
     written = 0
     written += save(site_image(len(records), graded, len(vote_index), as_of), out / 'site.png')
     written += save(generic_vote_image(as_of), out / 'vote.png')
+    written += save(party_image(records, scores, as_of), out / 'party.png')
     keep_m = set()
     for m in records:
         keep_m.add(m['id'])
