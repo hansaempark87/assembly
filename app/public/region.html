@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>페이지를 찾을 수 없습니다 — 일하는 국회</title>
-<meta name="description" content="요청한 페이지를 찾을 수 없습니다.">
+<title>지역별 의원 — 일하는 국회</title>
+<meta name="description" content="우리 지역 국회의원의 실적과 등급을 시도별로 찾아봅니다">
 <meta name="theme-color" content="#2a78d6">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="일하는 국회">
-<meta property="og:title" content="페이지를 찾을 수 없습니다 — 일하는 국회">
-<meta property="og:description" content="요청한 페이지를 찾을 수 없습니다.">
+<meta property="og:title" content="일하는 국회 — 제22대 국회의원 실적 대시보드">
+<meta property="og:description" content="공식 기록으로 보는 국회의원 입법·표결·출석 실적과 상대평가 등급">
 <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -24,7 +24,7 @@
       <a href="/">대시보드</a>
       <a href="/compare">의원 비교</a>
       <a href="/votes">표결</a>
-      <a href="/region">지역</a>
+      <a href="/region" aria-current="page">지역</a>
       <a href="/method">평가 방법</a>
       <a href="/about">소개</a>
     </nav>
@@ -33,12 +33,36 @@
   </div>
 </header>
 
-<main class="doc">
-<article class="card prose" style="text-align:center">
-  <h1>페이지를 찾을 수 없습니다</h1>
-  <p>주소가 바뀌었거나 없는 페이지입니다.</p>
-  <p><a class="btn btn-primary" href="/">대시보드로 가기</a></p>
-</article>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>지역별 의원</h1>
+      <p>지역을 누르거나 시·군·구 이름을 검색해 우리 지역 의원의 실적을 봅니다</p>
+    </div>
+  </div>
+  <section class="card">
+    <div class="combo">
+      <span class="combo-icon" aria-hidden="true">⌕</span>
+      <input class="input" id="q" type="search" placeholder="시·군·구 이름 (예: 분당, 해운대, 강남)" autocomplete="off" aria-label="지역구 검색">
+    </div>
+    <div class="region-layout section">
+      <div class="tilemap" id="tiles" role="list" aria-label="시도 선택"></div>
+      <div class="region-panel">
+        <div id="panel"></div>
+        <p class="card-sub section">칸 안의 막대는 그 지역 의원의 등급 구성입니다.</p>
+        <div class="legend" id="tile-legend"></div>
+      </div>
+    </div>
+  </section>
+  <section class="card section list-anchor" id="result-card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title" id="result-title">지역을 고르세요</h2>
+        <p class="card-sub" id="result-sub"></p>
+      </div>
+    </div>
+    <div id="result"></div>
+  </section>
 </main>
 
 <footer class="site">
@@ -55,5 +79,6 @@
 </footer>
 
 <script src="/js/common.js"></script>
+<script src="/js/region.js"></script>
 </body>
 </html>

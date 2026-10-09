@@ -388,7 +388,80 @@ def vote_pages(S):
     for p in out_dir.glob('*.json'):
         if p.stem not in keep:
             os.remove(p)
-    return {mid: ''.join(acc) for mid, acc in strings.items()}
+    return {mid: ''.join(acc) for mid, acc in strings.items()}, index
+
+
+# ---------- what changed since the previous update ----------
+
+def load_module(path):
+    text = open(path, encoding='utf-8').read()
+    return json.loads(text[text.index('export default ') + len('export default '):text.rstrip().rindex(';')])
+
+
+def weekly(S, cov, vote_index):
+    """public/weekly.json: votes, bills and grade changes since the previous
+    data date. data/weekly-state.json keeps the previous run's ranks and
+    coverage (base) and this run's (current); a new data date moves current
+    to base, a rebuild of the same date keeps the base."""
+    run = load_module(APP / 'lib' / 'score-run.js')
+    as_of = S.meta['data_as_of']
+    snap = {i: [s['rank'], s['grade']] for i, s in run['scores'].items()}
+    cur = {'as_of': as_of, 'coverage': cov, 'ranks': snap}
+    path = APP / 'data' / 'weekly-state.json'
+    state = json.load(open(path, encoding='utf-8')) if path.exists() else None
+    if state and state['current']['as_of'] == as_of:
+        base = state['base']
+    elif state:
+        base = state['current']
+    else:
+        base = cur
+    write_json(path, {'base': base, 'current': cur}, indent=None)
+
+    bc = base['coverage']
+    in_votes = lambda d: bc['votes_until'] < d <= cov['votes_until']
+    in_bills = lambda d: bool(d) and bc['bills_until'] < d <= cov['bills_until']
+    votes = [v for v in vote_index if in_votes(v['date'])]
+    contested = lambda v: v['counts'][1] + v['counts'][2]
+    highlights = sorted([v for v in votes if v['clash'] or contested(v) >= 20 or '부결' in (v['result'] or '')],
+                        key=lambda v: (-v['clash'], -contested(v)))[:6]
+
+    members = S.by_id
+    proposed = [b for b in S.bills if in_bills(b['PROPOSE_DT'])]
+    decided = []
+    for b in S.bills:
+        st, label = bill_status(b, S.cutoff)
+        if st in ('passed', 'alt') and in_bills(b['PROC_DT']):
+            leads = [{'id': i, 'name': members[i]['name'], 'party': members[i]['party']} for i in ids(b['RST_MONA_CD']) if i in members]
+            decided.append({'name': b['BILL_NAME'], 'date': b['PROC_DT'], 'status': st, 'result': label, 'leads': leads,
+                            'url': f"https://likms.assembly.go.kr/bill/billDetail.do?billId={b['BILL_ID']}"})
+    decided.sort(key=lambda x: (x['date'], x['status'] == 'passed'), reverse=True)
+
+    up, down = [], []
+    order = 'SABCD'
+    for i, (rank, grade) in snap.items():
+        if i not in base['ranks'] or i not in members:
+            continue
+        r0, g0 = base['ranks'][i]
+        if g0 == grade or not g0 or not grade:
+            continue
+        item = {'id': i, 'name': members[i]['name'], 'party': members[i]['party'], 'from': g0, 'to': grade, 'rank_from': r0, 'rank_to': rank}
+        (up if order.index(grade) < order.index(g0) else down).append(item)
+    up.sort(key=lambda x: x['rank_to'])
+    down.sort(key=lambda x: x['rank_to'])
+
+    out = {
+        'since': base['as_of'], 'as_of': as_of,
+        'windows': {'votes': [bc['votes_until'], cov['votes_until']], 'bills': [bc['bills_until'], cov['bills_until']]},
+        'votes': {'total': len(votes), 'clash': sum(v['clash'] for v in votes), 'contested': sum(contested(v) >= 20 for v in votes),
+                  'unanimous': sum(contested(v) == 0 for v in votes), 'rejected': sum('부결' in (v['result'] or '') for v in votes),
+                  'dates': sorted({v['date'] for v in votes}),
+                  'highlights': [{k: v[k] for k in ('id', 'name', 'date', 'result', 'counts', 'clash')} for v in highlights]},
+        'bills': {'proposed': len(proposed), 'passed': sum(x['status'] == 'passed' for x in decided),
+                  'alt': sum(x['status'] == 'alt' for x in decided), 'highlights': [x for x in decided if x['status'] == 'passed'][:6]},
+        'grades': {'up': up, 'down': down},
+    }
+    with open(APP / 'public' / 'weekly.json', 'w', encoding='utf-8') as f:
+        json.dump(out, f, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():
@@ -403,13 +476,15 @@ def main():
         f.write('export default ' + json.dumps(recs, ensure_ascii=False, separators=(',', ':')) + ';\n')
     write_json(tmp / 'records.json', {'members': recs})
     write_json(APP / 'data' / 'role-adjustments.json', role_adjustments(S, recs), indent=2)
-    write_json(APP / 'data' / 'coop.json', bill_lists_and_coop(S, recs, vote_pages(S)))
+    vote_strings, vote_index = vote_pages(S)
+    write_json(APP / 'data' / 'coop.json', bill_lists_and_coop(S, recs, vote_strings))
     write_json(tmp / 'run-meta.json', {'data_as_of': S.meta['data_as_of'], 'coverage': cov})
 
     d = APP / 'data'
     subprocess.run(['node', str(APP / 'scripts' / 'compute-scores-stage3.cjs'), str(tmp / 'records.json'),
                     str(d / 'member-roles.json'), str(d / 'role-adjustments.json'), str(d / 'data-corrections.json'),
                     str(d / 'coop.json'), str(tmp / 'run-meta.json'), str(APP / 'lib' / 'score-run.js')], check=True)
+    weekly(S, cov, vote_index)
     print('coverage', cov, 'members', len(recs))
 
 
