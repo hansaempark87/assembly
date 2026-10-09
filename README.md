@@ -72,6 +72,8 @@ npx wrangler pages deploy public --project-name=assembly-dashboard --branch=main
 
 **의원별 대표발의 법안 목록**은 `app/public/bills/<의원코드>.json`이며 `scripts/build-bill-lists.py <발의법률안 API 덤프> <D1 원자료 JSON> app/public/bills`로 만듭니다. 점수와 같은 기준일을 쓰고, 건수가 성적표와 하나라도 다르면 생성을 멈춥니다.
 
+**관심 분야·협치 가산점**은 `scripts/build-member-extras.py <발의법률안 덤프> <D1 원자료> <표결 응답 폴더> <출결 파일 폴더> app`이 `app/data/coop.json`과 의원별 법안 파일의 `areas`·`partners`·`coop`를 만듭니다. 점수 계산은 `compute-scores-stage3.cjs <members> <roles> <adjustments> <corrections> <coop> <out>`입니다.
+
 **데이터 처리 기준**은 `app/public/data-notes.json`에 항목을 추가하면 사이트 `/notes`에 바로 공개됩니다. 원자료 정정값은 `app/data/data-corrections.json`에 두고 점수 계산 때 반영합니다(`compute-scores-stage3.cjs <members> <roles> <adjustments> <corrections> <out>`).
 
 **3단계부터 점수 결과는 코드와 함께 버전 관리합니다.** D1에는 원자료만 두고, `app/lib/score-run.js`(산식 버전·백분위·등급·겸직 조정값)를 `scripts/compute-scores-stage3.cjs`로 생성해 커밋합니다. API(`app/lib/scoring.js`)가 D1 원자료와 이 파일을 합쳐 응답하므로, Git에 반영되면 화면과 점수가 함께 배포되고 D1 마이그레이션이 필요 없습니다. 겸직 기간 데이터는 `app/data/member-roles.json`(날짜·출처), 날짜별 제외 건수는 `app/data/role-adjustments.json`이며 재현 절차는 [겸직 기간 처리](docs/role-adjustment.md)에 있습니다.

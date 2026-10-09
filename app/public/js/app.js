@@ -107,6 +107,7 @@
   const TOP = [
     { key: 'composite', label: '종합', value: (m) => m.composite_percentile, show: (m) => m.composite_percentile.toFixed(1), sub: '종합 백분위 (100 = 1위) · 등급 산출 대상', scale: 'pct' },
     { key: 'legislation', label: '입법 성과', value: (m) => m.weighted_score, show: (m) => `${(m.weighted_score * 365).toFixed(1)}점<small>반영 ${num(m.lead_reflected)}/${num(m.lead_count)}건</small>`, sub: '채점 점수 = (가결 1 + 대안반영 0.5) ÷ 재임 연수', scale: 'max' },
+    { key: 'coop', label: '초당적 협력', value: (m) => (m.coop_excess > 0 ? m.coop_excess : null), show: (m) => `+${m.coop_bonus.toFixed(1)}점<small>다른 당 ${(m.coop_index * 100).toFixed(1)}%</small>`, sub: '같은 당 중앙값보다 다른 당 공동발의자 비율이 높은 만큼 최대 +3점 가산', scale: 'max' },
     { key: 'vote', label: '표결 참여', value: (m) => m.participation_rate, show: (m) => `${pct(m.participation_rate)}<small>${num(m.vote_participated)}/${num(m.vote_eligible)}회</small>`, sub: '본회의 기록표결 참여율', scale: 'rate' },
   ];
   function renderTop(key) {

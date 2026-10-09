@@ -1,0 +1,3008 @@
+{
+ "rules": {
+  "max_bonus": 3.0,
+  "min_bills": 5,
+  "min_party": 3,
+  "p90_excess": 0.1040081830309403,
+  "party_medians": {
+   "더불어민주당": 0.03667953667953668,
+   "조국혁신당": 0.28846153846153844,
+   "국민의힘": 0.009456264775413711,
+   "진보당": 0.7866205305651672,
+   "개혁신당": 0.7946428571428571
+  },
+  "cutoff": "2026-09-30"
+ },
+ "members": {
+  "YS38221N": {
+   "cross": 46,
+   "base": 1047,
+   "bills": 75,
+   "index": 0.04393505253104107,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.007255515851504385,
+   "bonus": 0.209
+  },
+  "6K79158C": {
+   "cross": 207,
+   "base": 1881,
+   "bills": 173,
+   "index": 0.11004784688995216,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.07336831021041548,
+   "bonus": 2.116
+  },
+  "H5476989": {
+   "cross": 42,
+   "base": 1671,
+   "bills": 104,
+   "index": 0.025134649910233394,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "E2B3753X": {
+   "cross": 12,
+   "base": 1469,
+   "bills": 136,
+   "index": 0.008168822328114363,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "0R68099X": {
+   "cross": 204,
+   "base": 2682,
+   "bills": 233,
+   "index": 0.07606263982102908,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0393831031414924,
+   "bonus": 1.136
+  },
+  "NUB4941Z": {
+   "cross": 44,
+   "base": 1126,
+   "bills": 76,
+   "index": 0.03907637655417407,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.002396839874637388,
+   "bonus": 0.069
+  },
+  "CCU1009B": {
+   "cross": 14,
+   "base": 1017,
+   "bills": 95,
+   "index": 0.01376597836774828,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "CK143054": {
+   "cross": 7,
+   "base": 1115,
+   "bills": 102,
+   "index": 0.006278026905829596,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8FB1535Y": {
+   "cross": 64,
+   "base": 722,
+   "bills": 64,
+   "index": 0.0886426592797784,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.05196312260024171,
+   "bonus": 1.499
+  },
+  "D6U6678O": {
+   "cross": 17,
+   "base": 1084,
+   "bills": 104,
+   "index": 0.015682656826568265,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "4T026790": {
+   "cross": 78,
+   "base": 1006,
+   "bills": 101,
+   "index": 0.0775347912524851,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04085525457294841,
+   "bonus": 1.178
+  },
+  "JC14718Q": {
+   "cross": 56,
+   "base": 3671,
+   "bills": 349,
+   "index": 0.015254698992100245,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "TKJ4800F": {
+   "cross": 57,
+   "base": 1519,
+   "bills": 148,
+   "index": 0.037524687294272545,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0008451506147358623,
+   "bonus": 0.024
+  },
+  "2S73768V": {
+   "cross": 57,
+   "base": 1554,
+   "bills": 122,
+   "index": 0.03667953667953668,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "XR24352K": {
+   "cross": 45,
+   "base": 884,
+   "bills": 82,
+   "index": 0.05090497737556561,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.014225440696028928,
+   "bonus": 0.41
+  },
+  "X639721U": {
+   "cross": 104,
+   "base": 1342,
+   "bills": 97,
+   "index": 0.07749627421758569,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04081673753804901,
+   "bonus": 1.177
+  },
+  "1JI2689F": {
+   "cross": 21,
+   "base": 1325,
+   "bills": 106,
+   "index": 0.015849056603773583,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "5765663F": {
+   "cross": 12,
+   "base": 682,
+   "bills": 68,
+   "index": 0.017595307917888565,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "BRU2690F": {
+   "cross": 33,
+   "base": 1129,
+   "bills": 89,
+   "index": 0.029229406554472984,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "4L695580": {
+   "cross": 33,
+   "base": 875,
+   "bills": 78,
+   "index": 0.037714285714285714,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0010347490347490315,
+   "bonus": 0.03
+  },
+  "MIS62075": {
+   "cross": 46,
+   "base": 1053,
+   "bills": 92,
+   "index": 0.04368471035137702,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.007005173671840337,
+   "bonus": 0.202
+  },
+  "OFE45081": {
+   "cross": 55,
+   "base": 680,
+   "bills": 61,
+   "index": 0.08088235294117647,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04420281626163979,
+   "bonus": 1.275
+  },
+  "ZW43496R": {
+   "cross": 35,
+   "base": 2382,
+   "bills": 159,
+   "index": 0.014693534844668345,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "T6A6557F": {
+   "cross": 15,
+   "base": 930,
+   "bills": 80,
+   "index": 0.016129032258064516,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "6WK3815W": {
+   "cross": 49,
+   "base": 1787,
+   "bills": 150,
+   "index": 0.027420257414661444,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8TU8443O": {
+   "cross": 4,
+   "base": 951,
+   "bills": 84,
+   "index": 0.004206098843322818,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "EFU76868": {
+   "cross": 45,
+   "base": 1087,
+   "bills": 94,
+   "index": 0.04139834406623735,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.00471880738670067,
+   "bonus": 0.136
+  },
+  "HXT76735": {
+   "cross": 33,
+   "base": 1139,
+   "bills": 111,
+   "index": 0.02897278314310799,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8JG4358H": {
+   "cross": 10,
+   "base": 747,
+   "bills": 65,
+   "index": 0.013386880856760375,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3249208I": {
+   "cross": 93,
+   "base": 1370,
+   "bills": 130,
+   "index": 0.06788321167883211,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.031203674999295432,
+   "bonus": 0.9
+  },
+  "CIZ8557P": {
+   "cross": 45,
+   "base": 525,
+   "bills": 48,
+   "index": 0.08571428571428572,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04903474903474903,
+   "bonus": 1.414
+  },
+  "NXB3178C": {
+   "cross": 27,
+   "base": 838,
+   "bills": 67,
+   "index": 0.032219570405727926,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "MDC3257K": {
+   "cross": 52,
+   "base": 712,
+   "bills": 49,
+   "index": 0.07303370786516854,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.036354171185631855,
+   "bonus": 1.049
+  },
+  "6VC83722": {
+   "cross": 33,
+   "base": 1449,
+   "bills": 122,
+   "index": 0.022774327122153208,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "EBH1101V": {
+   "cross": 4,
+   "base": 1533,
+   "bills": 98,
+   "index": 0.002609262883235486,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "XG348314": {
+   "cross": 228,
+   "base": 1193,
+   "bills": 116,
+   "index": 0.19111483654652137,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "GP07421U": {
+   "cross": 23,
+   "base": 845,
+   "bills": 72,
+   "index": 0.027218934911242602,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "RKS3658I": {
+   "cross": 6,
+   "base": 699,
+   "bills": 56,
+   "index": 0.008583690987124463,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "RG972910": {
+   "cross": 37,
+   "base": 1239,
+   "bills": 100,
+   "index": 0.02986279257465698,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "ZKB18611": {
+   "cross": 87,
+   "base": 1296,
+   "bills": 112,
+   "index": 0.06712962962962964,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.030450092950092954,
+   "bonus": 0.878
+  },
+  "3CC88975": {
+   "cross": 6,
+   "base": 599,
+   "bills": 56,
+   "index": 0.01001669449081803,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "EMH4976E": {
+   "cross": 12,
+   "base": 1113,
+   "bills": 88,
+   "index": 0.01078167115902965,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "7YL9580G": {
+   "cross": 12,
+   "base": 586,
+   "bills": 40,
+   "index": 0.020477815699658702,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "IL74008M": {
+   "cross": 11,
+   "base": 395,
+   "bills": 32,
+   "index": 0.027848101265822784,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "51A45980": {
+   "cross": 251,
+   "base": 1379,
+   "bills": 112,
+   "index": 0.18201595358955766,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.14533641691002097,
+   "bonus": 3.0
+  },
+  "O0I2045I": {
+   "cross": 2,
+   "base": 998,
+   "bills": 88,
+   "index": 0.002004008016032064,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "43Q3892U": {
+   "cross": 22,
+   "base": 1246,
+   "bills": 80,
+   "index": 0.01765650080256822,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "UHB5553T": {
+   "cross": 47,
+   "base": 1045,
+   "bills": 84,
+   "index": 0.044976076555023926,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.008296539875487244,
+   "bonus": 0.239
+  },
+  "7YC6702R": {
+   "cross": 11,
+   "base": 689,
+   "bills": 69,
+   "index": 0.015965166908563134,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "W8W95421": {
+   "cross": 35,
+   "base": 564,
+   "bills": 54,
+   "index": 0.06205673758865248,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0253772009091158,
+   "bonus": 0.732
+  },
+  "5KV96424": {
+   "cross": 41,
+   "base": 945,
+   "bills": 72,
+   "index": 0.04338624338624339,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.006706706706706707,
+   "bonus": 0.193
+  },
+  "5762459L": {
+   "cross": 32,
+   "base": 730,
+   "bills": 61,
+   "index": 0.043835616438356165,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.007156079758819482,
+   "bonus": 0.206
+  },
+  "DMP1439I": {
+   "cross": 370,
+   "base": 862,
+   "bills": 82,
+   "index": 0.42923433874709976,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.14077280028556133,
+   "bonus": 3.0
+  },
+  "N2P9317N": {
+   "cross": 28,
+   "base": 697,
+   "bills": 64,
+   "index": 0.040172166427546625,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0034926297480099427,
+   "bonus": 0.101
+  },
+  "GRP3908I": {
+   "cross": 61,
+   "base": 1118,
+   "bills": 80,
+   "index": 0.05456171735241502,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.01788218067287834,
+   "bonus": 0.516
+  },
+  "T2T8225E": {
+   "cross": 329,
+   "base": 1070,
+   "bills": 96,
+   "index": 0.3074766355140187,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.01901509705248028,
+   "bonus": 0.548
+  },
+  "EB16073M": {
+   "cross": 5,
+   "base": 685,
+   "bills": 61,
+   "index": 0.0072992700729927005,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "AEO5706C": {
+   "cross": 59,
+   "base": 1080,
+   "bills": 92,
+   "index": 0.05462962962962963,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.01795009295009295,
+   "bonus": 0.518
+  },
+  "FOK3459D": {
+   "cross": 25,
+   "base": 1338,
+   "bills": 109,
+   "index": 0.01868460388639761,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "URX8075K": {
+   "cross": 18,
+   "base": 734,
+   "bills": 64,
+   "index": 0.02452316076294278,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "LH97552Q": {
+   "cross": 3,
+   "base": 1177,
+   "bills": 119,
+   "index": 0.002548853016142736,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "86R9476S": {
+   "cross": 32,
+   "base": 1240,
+   "bills": 109,
+   "index": 0.025806451612903226,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3C23171A": {
+   "cross": 5,
+   "base": 566,
+   "bills": 54,
+   "index": 0.0088339222614841,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "RBM5454A": {
+   "cross": 131,
+   "base": 687,
+   "bills": 47,
+   "index": 0.19068413391557495,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.15400459723603827,
+   "bonus": 3.0
+  },
+  "GJ56729D": {
+   "cross": 107,
+   "base": 1606,
+   "bills": 123,
+   "index": 0.06662515566625156,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.029945618986714877,
+   "bonus": 0.864
+  },
+  "W3U3344O": {
+   "cross": 39,
+   "base": 520,
+   "bills": 52,
+   "index": 0.075,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.038320463320463315,
+   "bonus": 1.105
+  },
+  "8P37634C": {
+   "cross": 46,
+   "base": 644,
+   "bills": 65,
+   "index": 0.07142857142857142,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.03474903474903474,
+   "bonus": 1.002
+  },
+  "OSV9142K": {
+   "cross": 2,
+   "base": 1416,
+   "bills": 138,
+   "index": 0.0014124293785310734,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "5N65159P": {
+   "cross": 94,
+   "base": 1052,
+   "bills": 68,
+   "index": 0.08935361216730038,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0526740754877637,
+   "bonus": 1.519
+  },
+  "C7E79345": {
+   "cross": 44,
+   "base": 715,
+   "bills": 68,
+   "index": 0.06153846153846154,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.02485892485892486,
+   "bonus": 0.717
+  },
+  "ZDR63255": {
+   "cross": 64,
+   "base": 934,
+   "bills": 87,
+   "index": 0.06852248394004283,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.03184294726050615,
+   "bonus": 0.918
+  },
+  "RUZ25800": {
+   "cross": 1,
+   "base": 470,
+   "bills": 39,
+   "index": 0.002127659574468085,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "CC78321E": {
+   "cross": 0,
+   "base": 0,
+   "bills": 64,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "IWR8966I": {
+   "cross": 20,
+   "base": 1007,
+   "bills": 80,
+   "index": 0.019860973187686197,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "XPP2564T": {
+   "cross": 78,
+   "base": 1834,
+   "bills": 166,
+   "index": 0.04252998909487459,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.005850452415337909,
+   "bonus": 0.169
+  },
+  "D9I3309M": {
+   "cross": 37,
+   "base": 821,
+   "bills": 71,
+   "index": 0.04506699147381242,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.008387454794275738,
+   "bonus": 0.242
+  },
+  "A494529E": {
+   "cross": 6,
+   "base": 356,
+   "bills": 35,
+   "index": 0.016853932584269662,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JSA8739I": {
+   "cross": 86,
+   "base": 552,
+   "bills": 41,
+   "index": 0.15579710144927536,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.11911756476973867,
+   "bonus": 3.0
+  },
+  "9HE7226N": {
+   "cross": 5,
+   "base": 711,
+   "bills": 49,
+   "index": 0.007032348804500703,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "IC499858": {
+   "cross": 19,
+   "base": 834,
+   "bills": 76,
+   "index": 0.022781774580335732,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3NI5978A": {
+   "cross": 0,
+   "base": 937,
+   "bills": 76,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "4U29186R": {
+   "cross": 22,
+   "base": 1586,
+   "bills": 162,
+   "index": 0.013871374527112233,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "QUR40502": {
+   "cross": 74,
+   "base": 1148,
+   "bills": 103,
+   "index": 0.06445993031358885,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.027780393634052165,
+   "bonus": 0.801
+  },
+  "2NV6751W": {
+   "cross": 61,
+   "base": 774,
+   "bills": 72,
+   "index": 0.07881136950904392,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04213183282950724,
+   "bonus": 1.215
+  },
+  "WCD5518S": {
+   "cross": 74,
+   "base": 800,
+   "bills": 55,
+   "index": 0.0925,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.055820463320463316,
+   "bonus": 1.61
+  },
+  "KNP22261": {
+   "cross": 93,
+   "base": 665,
+   "bills": 62,
+   "index": 0.13984962406015036,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "HSS7466Y": {
+   "cross": 39,
+   "base": 1092,
+   "bills": 115,
+   "index": 0.03571428571428571,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "M4O5221T": {
+   "cross": 14,
+   "base": 527,
+   "bills": 46,
+   "index": 0.026565464895635674,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "5MD4184K": {
+   "cross": 39,
+   "base": 761,
+   "bills": 63,
+   "index": 0.051248357424441525,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.014568820744904842,
+   "bonus": 0.42
+  },
+  "9LD2641Q": {
+   "cross": 55,
+   "base": 1188,
+   "bills": 107,
+   "index": 0.046296296296296294,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.009616759616759611,
+   "bonus": 0.277
+  },
+  "XEF29171": {
+   "cross": 19,
+   "base": 644,
+   "bills": 64,
+   "index": 0.029503105590062112,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "FH777496": {
+   "cross": 67,
+   "base": 1040,
+   "bills": 104,
+   "index": 0.06442307692307692,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.027743540243540234,
+   "bonus": 0.8
+  },
+  "W8L9421K": {
+   "cross": 4,
+   "base": 572,
+   "bills": 57,
+   "index": 0.006993006993006993,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "TZ228122": {
+   "cross": 100,
+   "base": 1236,
+   "bills": 89,
+   "index": 0.08090614886731391,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04422661218777723,
+   "bonus": 1.276
+  },
+  "RJH6314D": {
+   "cross": 30,
+   "base": 756,
+   "bills": 53,
+   "index": 0.03968253968253968,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0030030030030029978,
+   "bonus": 0.087
+  },
+  "FYI20317": {
+   "cross": 33,
+   "base": 539,
+   "bills": 49,
+   "index": 0.061224489795918366,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.024544953116381683,
+   "bonus": 0.708
+  },
+  "GX38539O": {
+   "cross": 1,
+   "base": 286,
+   "bills": 30,
+   "index": 0.0034965034965034965,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "HVV5250J": {
+   "cross": 24,
+   "base": 850,
+   "bills": 65,
+   "index": 0.02823529411764706,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "YM42715P": {
+   "cross": 87,
+   "base": 639,
+   "bills": 55,
+   "index": 0.13615023474178403,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.09947069806224734,
+   "bonus": 2.869
+  },
+  "OIA3741M": {
+   "cross": 16,
+   "base": 302,
+   "bills": 24,
+   "index": 0.052980132450331126,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.016300595770794443,
+   "bonus": 0.47
+  },
+  "NX534083": {
+   "cross": 0,
+   "base": 1438,
+   "bills": 140,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "95J3282H": {
+   "cross": 16,
+   "base": 1151,
+   "bills": 90,
+   "index": 0.013900955690703735,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "I5I2468R": {
+   "cross": 33,
+   "base": 487,
+   "bills": 44,
+   "index": 0.06776180698151951,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.03108227030198283,
+   "bonus": 0.897
+  },
+  "8O34202I": {
+   "cross": 21,
+   "base": 426,
+   "bills": 32,
+   "index": 0.04929577464788732,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.012616237968350638,
+   "bonus": 0.364
+  },
+  "4019850M": {
+   "cross": 54,
+   "base": 1130,
+   "bills": 88,
+   "index": 0.047787610619469026,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.011108073939932343,
+   "bonus": 0.32
+  },
+  "TJW93720": {
+   "cross": 41,
+   "base": 957,
+   "bills": 82,
+   "index": 0.042842215256008356,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.006162678576471674,
+   "bonus": 0.178
+  },
+  "NPD75153": {
+   "cross": 471,
+   "base": 1312,
+   "bills": 103,
+   "index": 0.3589939024390244,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.07053236397748597,
+   "bonus": 2.034
+  },
+  "1A82234K": {
+   "cross": 95,
+   "base": 384,
+   "bills": 38,
+   "index": 0.24739583333333334,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "CNZ51556": {
+   "cross": 177,
+   "base": 1514,
+   "bills": 146,
+   "index": 0.11690885072655217,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.10745258595113846,
+   "bonus": 3.0
+  },
+  "7GW5372Y": {
+   "cross": 225,
+   "base": 780,
+   "bills": 68,
+   "index": 0.28846153846153844,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "DWK26447": {
+   "cross": 20,
+   "base": 783,
+   "bills": 80,
+   "index": 0.02554278416347382,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.01608651938806011,
+   "bonus": 0.464
+  },
+  "04T3751T": {
+   "cross": 91,
+   "base": 1114,
+   "bills": 92,
+   "index": 0.08168761220825853,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.045008075528721846,
+   "bonus": 1.298
+  },
+  "M7O7878U": {
+   "cross": 37,
+   "base": 758,
+   "bills": 57,
+   "index": 0.048812664907651716,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.012133128228115034,
+   "bonus": 0.35
+  },
+  "FU53642G": {
+   "cross": 20,
+   "base": 1098,
+   "bills": 93,
+   "index": 0.018214936247723135,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "ATB59635": {
+   "cross": 26,
+   "base": 848,
+   "bills": 87,
+   "index": 0.030660377358490566,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "EH27538E": {
+   "cross": 4,
+   "base": 794,
+   "bills": 72,
+   "index": 0.005037783375314861,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "68P7228G": {
+   "cross": 32,
+   "base": 462,
+   "bills": 46,
+   "index": 0.06926406926406926,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.03258453258453258,
+   "bonus": 0.94
+  },
+  "88O1334C": {
+   "cross": 18,
+   "base": 271,
+   "bills": 25,
+   "index": 0.06642066420664207,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.029741127527105386,
+   "bonus": 0.858
+  },
+  "I7R13867": {
+   "cross": 15,
+   "base": 506,
+   "bills": 51,
+   "index": 0.029644268774703556,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "5KV82250": {
+   "cross": 1,
+   "base": 658,
+   "bills": 66,
+   "index": 0.001519756838905775,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "T465023H": {
+   "cross": 30,
+   "base": 491,
+   "bills": 39,
+   "index": 0.06109979633401222,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.024420259654475536,
+   "bonus": 0.704
+  },
+  "6AU2417B": {
+   "cross": 63,
+   "base": 794,
+   "bills": 51,
+   "index": 0.07934508816120907,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.042665551481672385,
+   "bonus": 1.231
+  },
+  "WTR5885Y": {
+   "cross": 9,
+   "base": 381,
+   "bills": 34,
+   "index": 0.023622047244094488,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "NB64509Z": {
+   "cross": 18,
+   "base": 764,
+   "bills": 66,
+   "index": 0.02356020942408377,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "T4I4862D": {
+   "cross": 692,
+   "base": 692,
+   "bills": 51,
+   "index": 1.0,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3BC6890E": {
+   "cross": 9,
+   "base": 1682,
+   "bills": 134,
+   "index": 0.00535077288941736,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "FJK3396E": {
+   "cross": 10,
+   "base": 334,
+   "bills": 28,
+   "index": 0.029940119760479042,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "BNV6535N": {
+   "cross": 543,
+   "base": 732,
+   "bills": 74,
+   "index": 0.7418032786885246,
+   "eligible": true,
+   "party_median": 0.7866205305651672,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JNL7001A": {
+   "cross": 2,
+   "base": 1586,
+   "bills": 169,
+   "index": 0.0012610340479192938,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JEZ3130Q": {
+   "cross": 15,
+   "base": 585,
+   "bills": 55,
+   "index": 0.02564102564102564,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.01618476086561193,
+   "bonus": 0.467
+  },
+  "FU87526G": {
+   "cross": 24,
+   "base": 688,
+   "bills": 62,
+   "index": 0.03488372093023256,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.025427456154818846,
+   "bonus": 0.733
+  },
+  "0YT3774N": {
+   "cross": 322,
+   "base": 1265,
+   "bills": 120,
+   "index": 0.2545454545454545,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "QQ429063": {
+   "cross": 0,
+   "base": 498,
+   "bills": 50,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "HSW1214Q": {
+   "cross": 48,
+   "base": 1191,
+   "bills": 110,
+   "index": 0.04030226700251889,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.03084600222710518,
+   "bonus": 0.89
+  },
+  "ROS6754L": {
+   "cross": 0,
+   "base": 669,
+   "bills": 67,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "IUX1829H": {
+   "cross": 29,
+   "base": 1501,
+   "bills": 80,
+   "index": 0.019320453031312457,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "J1G57517": {
+   "cross": 10,
+   "base": 469,
+   "bills": 39,
+   "index": 0.021321961620469083,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3TP65086": {
+   "cross": 682,
+   "base": 867,
+   "bills": 71,
+   "index": 0.7866205305651672,
+   "eligible": true,
+   "party_median": 0.7866205305651672,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "TZP9391O": {
+   "cross": 4,
+   "base": 518,
+   "bills": 41,
+   "index": 0.007722007722007722,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "7BM2933Y": {
+   "cross": 35,
+   "base": 456,
+   "bills": 39,
+   "index": 0.07675438596491228,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0400748492853756,
+   "bonus": 1.156
+  },
+  "LCZ1711I": {
+   "cross": 1,
+   "base": 1236,
+   "bills": 121,
+   "index": 0.0008090614886731392,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3ZR4438W": {
+   "cross": 1,
+   "base": 483,
+   "bills": 48,
+   "index": 0.002070393374741201,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "1WE5693J": {
+   "cross": 54,
+   "base": 1044,
+   "bills": 74,
+   "index": 0.05172413793103448,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0150446012514978,
+   "bonus": 0.434
+  },
+  "5K93695T": {
+   "cross": 11,
+   "base": 812,
+   "bills": 76,
+   "index": 0.013546798029556651,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.00409053325414294,
+   "bonus": 0.118
+  },
+  "2KM3589W": {
+   "cross": 195,
+   "base": 285,
+   "bills": 30,
+   "index": 0.6842105263157895,
+   "eligible": true,
+   "party_median": 0.7866205305651672,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "V2R7430Z": {
+   "cross": 11,
+   "base": 321,
+   "bills": 60,
+   "index": 0.03426791277258567,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "PFG2137X": {
+   "cross": 10,
+   "base": 1202,
+   "bills": 109,
+   "index": 0.008319467554076539,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "LT72093S": {
+   "cross": 2,
+   "base": 709,
+   "bills": 62,
+   "index": 0.0028208744710860366,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "PYA8594I": {
+   "cross": 0,
+   "base": 659,
+   "bills": 66,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "O6D8329R": {
+   "cross": 78,
+   "base": 659,
+   "bills": 62,
+   "index": 0.11836115326251896,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.08168161658298229,
+   "bonus": 2.356
+  },
+  "2385336L": {
+   "cross": 7,
+   "base": 312,
+   "bills": 28,
+   "index": 0.022435897435897436,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "CAA7713A": {
+   "cross": 4,
+   "base": 250,
+   "bills": 24,
+   "index": 0.016,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.006543735224586289,
+   "bonus": 0.189
+  },
+  "ME83002L": {
+   "cross": 0,
+   "base": 486,
+   "bills": 51,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "1Y73132H": {
+   "cross": 43,
+   "base": 1491,
+   "bills": 103,
+   "index": 0.028839704896042925,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.019383440120629213,
+   "bonus": 0.559
+  },
+  "WMT66995": {
+   "cross": 0,
+   "base": 36,
+   "bills": 4,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "GP21946O": {
+   "cross": 2,
+   "base": 649,
+   "bills": 61,
+   "index": 0.0030816640986132513,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "SQ36001H": {
+   "cross": 101,
+   "base": 520,
+   "bills": 40,
+   "index": 0.19423076923076923,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.15755123255123255,
+   "bonus": 3.0
+  },
+  "NLS46526": {
+   "cross": 26,
+   "base": 548,
+   "bills": 52,
+   "index": 0.04744525547445255,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.03798899069903884,
+   "bonus": 1.096
+  },
+  "80C5885Z": {
+   "cross": 129,
+   "base": 622,
+   "bills": 52,
+   "index": 0.20739549839228297,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "EPI69383": {
+   "cross": 71,
+   "base": 961,
+   "bills": 90,
+   "index": 0.07388137356919876,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.06442510879378505,
+   "bonus": 1.858
+  },
+  "LYY5513O": {
+   "cross": 197,
+   "base": 763,
+   "bills": 58,
+   "index": 0.2581913499344692,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.24873508515905546,
+   "bonus": 3.0
+  },
+  "X1K3667J": {
+   "cross": 199,
+   "base": 897,
+   "bills": 48,
+   "index": 0.221850613154961,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.1851710764754243,
+   "bonus": 3.0
+  },
+  "VCP96419": {
+   "cross": 6,
+   "base": 434,
+   "bills": 43,
+   "index": 0.013824884792626729,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8348421R": {
+   "cross": 150,
+   "base": 1322,
+   "bills": 129,
+   "index": 0.11346444780635401,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.1040081830309403,
+   "bonus": 3.0
+  },
+  "YN160848": {
+   "cross": 342,
+   "base": 697,
+   "bills": 64,
+   "index": 0.49067431850789095,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.2022127800463525,
+   "bonus": 3.0
+  },
+  "HHB5652A": {
+   "cross": 96,
+   "base": 1032,
+   "bills": 94,
+   "index": 0.09302325581395349,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.056343719134416805,
+   "bonus": 1.625
+  },
+  "UOS16250": {
+   "cross": 94,
+   "base": 927,
+   "bills": 97,
+   "index": 0.10140237324703344,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.09194610847161973,
+   "bonus": 2.652
+  },
+  "QQP4727N": {
+   "cross": 39,
+   "base": 781,
+   "bills": 78,
+   "index": 0.0499359795134443,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.04047971473803059,
+   "bonus": 1.168
+  },
+  "MQK9493H": {
+   "cross": 30,
+   "base": 503,
+   "bills": 38,
+   "index": 0.05964214711729622,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.02296261043775954,
+   "bonus": 0.662
+  },
+  "W4X85128": {
+   "cross": 0,
+   "base": 854,
+   "bills": 45,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "RAJ1024Z": {
+   "cross": 22,
+   "base": 1168,
+   "bills": 117,
+   "index": 0.018835616438356163,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.009379351662942452,
+   "bonus": 0.271
+  },
+  "1SR94244": {
+   "cross": 1,
+   "base": 1692,
+   "bills": 118,
+   "index": 0.000591016548463357,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "Q918403D": {
+   "cross": 2,
+   "base": 597,
+   "bills": 61,
+   "index": 0.0033500837520938024,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JP222486": {
+   "cross": 36,
+   "base": 748,
+   "bills": 70,
+   "index": 0.0481283422459893,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.03867207747057559,
+   "bonus": 1.115
+  },
+  "1S05899F": {
+   "cross": 5,
+   "base": 534,
+   "bills": 42,
+   "index": 0.009363295880149813,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "O7R5461J": {
+   "cross": 9,
+   "base": 584,
+   "bills": 44,
+   "index": 0.015410958904109588,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "P8A4624C": {
+   "cross": 499,
+   "base": 634,
+   "bills": 54,
+   "index": 0.7870662460567823,
+   "eligible": true,
+   "party_median": 0.7866205305651672,
+   "excess": 0.00044571549161509516,
+   "bonus": 0.013
+  },
+  "L7J93733": {
+   "cross": 17,
+   "base": 499,
+   "bills": 49,
+   "index": 0.03406813627254509,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.024611871497131378,
+   "bonus": 0.71
+  },
+  "E1J8836Y": {
+   "cross": 0,
+   "base": 1110,
+   "bills": 76,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "6I88973D": {
+   "cross": 35,
+   "base": 386,
+   "bills": 32,
+   "index": 0.09067357512953368,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.053994038449997,
+   "bonus": 1.557
+  },
+  "BCQ55105": {
+   "cross": 7,
+   "base": 447,
+   "bills": 41,
+   "index": 0.015659955257270694,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "X3170462": {
+   "cross": 9,
+   "base": 538,
+   "bills": 55,
+   "index": 0.016728624535315983,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.007272359759902272,
+   "bonus": 0.21
+  },
+  "L2I9861C": {
+   "cross": 0,
+   "base": 825,
+   "bills": 87,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "XBT9550Q": {
+   "cross": 0,
+   "base": 0,
+   "bills": 0,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "GOC54665": {
+   "cross": 22,
+   "base": 329,
+   "bills": 29,
+   "index": 0.0668693009118541,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.030189764232317416,
+   "bonus": 0.871
+  },
+  "VZA76236": {
+   "cross": 13,
+   "base": 264,
+   "bills": 24,
+   "index": 0.04924242424242424,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.012562887562887558,
+   "bonus": 0.362
+  },
+  "S9U45255": {
+   "cross": 16,
+   "base": 443,
+   "bills": 46,
+   "index": 0.03611738148984198,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.026661116714428272,
+   "bonus": 0.769
+  },
+  "WJG74792": {
+   "cross": 8,
+   "base": 767,
+   "bills": 74,
+   "index": 0.010430247718383311,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0009739829429696,
+   "bonus": 0.028
+  },
+  "B7D7534L": {
+   "cross": 15,
+   "base": 566,
+   "bills": 50,
+   "index": 0.026501766784452298,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "9D939735": {
+   "cross": 28,
+   "base": 1350,
+   "bills": 142,
+   "index": 0.02074074074074074,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.011284475965327029,
+   "bonus": 0.325
+  },
+  "EVH1507C": {
+   "cross": 11,
+   "base": 982,
+   "bills": 84,
+   "index": 0.01120162932790224,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0017453645524885281,
+   "bonus": 0.05
+  },
+  "TCP9838Y": {
+   "cross": 4,
+   "base": 682,
+   "bills": 68,
+   "index": 0.005865102639296188,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "K5F2023J": {
+   "cross": 60,
+   "base": 1128,
+   "bills": 108,
+   "index": 0.05319148936170213,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.016511952682165446,
+   "bonus": 0.476
+  },
+  "8L52480G": {
+   "cross": 74,
+   "base": 653,
+   "bills": 50,
+   "index": 0.11332312404287902,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.1038668592674653,
+   "bonus": 2.996
+  },
+  "9VR65006": {
+   "cross": 29,
+   "base": 694,
+   "bills": 68,
+   "index": 0.04178674351585014,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.03233047874043643,
+   "bonus": 0.933
+  },
+  "ZRF3039U": {
+   "cross": 24,
+   "base": 526,
+   "bills": 54,
+   "index": 0.045627376425855515,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0361711116504418,
+   "bonus": 1.043
+  },
+  "25G2571T": {
+   "cross": 42,
+   "base": 972,
+   "bills": 58,
+   "index": 0.043209876543209874,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.006530339863673192,
+   "bonus": 0.188
+  },
+  "7XY7109I": {
+   "cross": 9,
+   "base": 580,
+   "bills": 56,
+   "index": 0.015517241379310345,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.006060976603896633,
+   "bonus": 0.175
+  },
+  "TQP7167T": {
+   "cross": 37,
+   "base": 597,
+   "bills": 48,
+   "index": 0.06197654941373534,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.05252028463832163,
+   "bonus": 1.515
+  },
+  "3LP22204": {
+   "cross": 33,
+   "base": 422,
+   "bills": 35,
+   "index": 0.07819905213270142,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.04151951545316474,
+   "bonus": 1.198
+  },
+  "MNZ4401T": {
+   "cross": 15,
+   "base": 770,
+   "bills": 51,
+   "index": 0.01948051948051948,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "3UI95829": {
+   "cross": 19,
+   "base": 502,
+   "bills": 30,
+   "index": 0.037848605577689244,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0011690688981525615,
+   "bonus": 0.034
+  },
+  "HS39431V": {
+   "cross": 0,
+   "base": 1136,
+   "bills": 80,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "6RD62559": {
+   "cross": 29,
+   "base": 621,
+   "bills": 57,
+   "index": 0.04669887278582931,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.037242608010415595,
+   "bonus": 1.074
+  },
+  "N4R2421C": {
+   "cross": 0,
+   "base": 773,
+   "bills": 78,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "WJL30106": {
+   "cross": 3,
+   "base": 554,
+   "bills": 56,
+   "index": 0.005415162454873646,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "9JF4562W": {
+   "cross": 15,
+   "base": 364,
+   "bills": 32,
+   "index": 0.04120879120879121,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0045292545292545255,
+   "bonus": 0.131
+  },
+  "GF286398": {
+   "cross": 46,
+   "base": 471,
+   "bills": 38,
+   "index": 0.09766454352441614,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.06098500684487946,
+   "bonus": 1.759
+  },
+  "RMC1840P": {
+   "cross": 10,
+   "base": 463,
+   "bills": 46,
+   "index": 0.02159827213822894,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.012142007362815229,
+   "bonus": 0.35
+  },
+  "REG96285": {
+   "cross": 30,
+   "base": 884,
+   "bills": 75,
+   "index": 0.033936651583710405,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.024480386808296693,
+   "bonus": 0.706
+  },
+  "WI719547": {
+   "cross": 235,
+   "base": 297,
+   "bills": 31,
+   "index": 0.7912457912457912,
+   "eligible": true,
+   "party_median": 0.7946428571428571,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "A0P4646G": {
+   "cross": 58,
+   "base": 847,
+   "bills": 48,
+   "index": 0.06847697756788666,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.05902071279247295,
+   "bonus": 1.702
+  },
+  "CGW7415Z": {
+   "cross": 1,
+   "base": 378,
+   "bills": 38,
+   "index": 0.0026455026455026454,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "V429892C": {
+   "cross": 15,
+   "base": 543,
+   "bills": 50,
+   "index": 0.027624309392265192,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "UF53617M": {
+   "cross": 6,
+   "base": 1046,
+   "bills": 93,
+   "index": 0.0057361376673040155,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "P7U7800Z": {
+   "cross": 0,
+   "base": 806,
+   "bills": 61,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "RPN2293B": {
+   "cross": 9,
+   "base": 410,
+   "bills": 35,
+   "index": 0.02195121951219512,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "NQO7187X": {
+   "cross": 8,
+   "base": 531,
+   "bills": 56,
+   "index": 0.015065913370998116,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.005609648595584405,
+   "bonus": 0.162
+  },
+  "7469929V": {
+   "cross": 17,
+   "base": 1058,
+   "bills": 95,
+   "index": 0.01606805293005671,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.006611788154643,
+   "bonus": 0.191
+  },
+  "CNW5754J": {
+   "cross": 34,
+   "base": 557,
+   "bills": 46,
+   "index": 0.06104129263913824,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.05158502786372453,
+   "bonus": 1.488
+  },
+  "DAY6557K": {
+   "cross": 25,
+   "base": 503,
+   "bills": 51,
+   "index": 0.04970178926441352,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.04024552448899981,
+   "bonus": 1.161
+  },
+  "WXJ8352N": {
+   "cross": 28,
+   "base": 683,
+   "bills": 53,
+   "index": 0.040995607613469986,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.031539342838056275,
+   "bonus": 0.91
+  },
+  "HRG9655C": {
+   "cross": 4,
+   "base": 756,
+   "bills": 53,
+   "index": 0.005291005291005291,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8A05621B": {
+   "cross": 146,
+   "base": 324,
+   "bills": 23,
+   "index": 0.4506172839506173,
+   "eligible": true,
+   "party_median": 0.28846153846153844,
+   "excess": 0.16215574548907885,
+   "bonus": 3.0
+  },
+  "MR210505": {
+   "cross": 0,
+   "base": 344,
+   "bills": 33,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "7R156073": {
+   "cross": 3,
+   "base": 313,
+   "bills": 28,
+   "index": 0.009584664536741214,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "GE71932C": {
+   "cross": 885,
+   "base": 885,
+   "bills": 68,
+   "index": 1.0,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "MQU41854": {
+   "cross": 24,
+   "base": 760,
+   "bills": 71,
+   "index": 0.031578947368421054,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.022122682593007342,
+   "bonus": 0.638
+  },
+  "IN328264": {
+   "cross": 23,
+   "base": 292,
+   "bills": 27,
+   "index": 0.07876712328767123,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "GX22581L": {
+   "cross": 21,
+   "base": 243,
+   "bills": 23,
+   "index": 0.08641975308641975,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.07696348831100604,
+   "bonus": 2.22
+  },
+  "8SV6917G": {
+   "cross": 25,
+   "base": 577,
+   "bills": 57,
+   "index": 0.043327556325823226,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.033871291550409514,
+   "bonus": 0.977
+  },
+  "9901388T": {
+   "cross": 1,
+   "base": 761,
+   "bills": 75,
+   "index": 0.001314060446780552,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "YGB8604T": {
+   "cross": 350,
+   "base": 390,
+   "bills": 26,
+   "index": 0.8974358974358975,
+   "eligible": true,
+   "party_median": 0.7946428571428571,
+   "excess": 0.10279304029304037,
+   "bonus": 2.965
+  },
+  "VA04150X": {
+   "cross": 3,
+   "base": 607,
+   "bills": 50,
+   "index": 0.004942339373970346,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "ANS8383S": {
+   "cross": 51,
+   "base": 548,
+   "bills": 46,
+   "index": 0.09306569343065693,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.08360942865524322,
+   "bonus": 2.412
+  },
+  "JQA21112": {
+   "cross": 76,
+   "base": 360,
+   "bills": 26,
+   "index": 0.2111111111111111,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.2016548463356974,
+   "bonus": 3.0
+  },
+  "6U243644": {
+   "cross": 0,
+   "base": 364,
+   "bills": 36,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "FIE6569O": {
+   "cross": 18,
+   "base": 368,
+   "bills": 34,
+   "index": 0.04891304347826087,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.012233506798724189,
+   "bonus": 0.353
+  },
+  "X7I4680R": {
+   "cross": 15,
+   "base": 715,
+   "bills": 53,
+   "index": 0.02097902097902098,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.011522756203607269,
+   "bonus": 0.332
+  },
+  "S824682L": {
+   "cross": 7,
+   "base": 353,
+   "bills": 33,
+   "index": 0.019830028328611898,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "0VU8517U": {
+   "cross": 33,
+   "base": 551,
+   "bills": 59,
+   "index": 0.05989110707803993,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.023211570398503245,
+   "bonus": 0.67
+  },
+  "JZV5283U": {
+   "cross": 6,
+   "base": 193,
+   "bills": 18,
+   "index": 0.031088082901554404,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.021631818126140692,
+   "bonus": 0.624
+  },
+  "8BF5855P": {
+   "cross": 23,
+   "base": 392,
+   "bills": 26,
+   "index": 0.058673469387755105,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.021993932708218422,
+   "bonus": 0.634
+  },
+  "RC885085": {
+   "cross": 1,
+   "base": 212,
+   "bills": 21,
+   "index": 0.0047169811320754715,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "KBK8836C": {
+   "cross": 95,
+   "base": 670,
+   "bills": 55,
+   "index": 0.1417910447761194,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.1323347800007057,
+   "bonus": 3.0
+  },
+  "MU69217P": {
+   "cross": 0,
+   "base": 599,
+   "bills": 47,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8X15119P": {
+   "cross": 0,
+   "base": 424,
+   "bills": 40,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JZY9937U": {
+   "cross": 2,
+   "base": 226,
+   "bills": 23,
+   "index": 0.008849557522123894,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8Q88373R": {
+   "cross": 30,
+   "base": 2547,
+   "bills": 45,
+   "index": 0.011778563015312132,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8XE7026P": {
+   "cross": 2,
+   "base": 241,
+   "bills": 22,
+   "index": 0.008298755186721992,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JG77046J": {
+   "cross": 2,
+   "base": 541,
+   "bills": 52,
+   "index": 0.0036968576709796672,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "N378078V": {
+   "cross": 25,
+   "base": 498,
+   "bills": 51,
+   "index": 0.050200803212851405,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.040744538437437694,
+   "bonus": 1.175
+  },
+  "M2Q9024I": {
+   "cross": 16,
+   "base": 16,
+   "bills": 59,
+   "index": 1.0,
+   "eligible": true,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "LJK4960Z": {
+   "cross": 402,
+   "base": 1380,
+   "bills": 48,
+   "index": 0.29130434782608694,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.2818480830506732,
+   "bonus": 3.0
+  },
+  "UQ282145": {
+   "cross": 20,
+   "base": 406,
+   "bills": 38,
+   "index": 0.04926108374384237,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.012581547064305684,
+   "bonus": 0.363
+  },
+  "42K7317Y": {
+   "cross": 4,
+   "base": 311,
+   "bills": 30,
+   "index": 0.012861736334405145,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.003405471558991433,
+   "bonus": 0.098
+  },
+  "IWK63872": {
+   "cross": 12,
+   "base": 301,
+   "bills": 25,
+   "index": 0.03986710963455149,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.03041084485913778,
+   "bonus": 0.877
+  },
+  "LG63087O": {
+   "cross": 0,
+   "base": 390,
+   "bills": 32,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "L5P27909": {
+   "cross": 12,
+   "base": 676,
+   "bills": 45,
+   "index": 0.01775147928994083,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.008295214514527117,
+   "bonus": 0.239
+  },
+  "YOG1280B": {
+   "cross": 4,
+   "base": 423,
+   "bills": 42,
+   "index": 0.009456264775413711,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "8UC4779G": {
+   "cross": 4,
+   "base": 501,
+   "bills": 50,
+   "index": 0.007984031936127744,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "ZYP7962W": {
+   "cross": 100,
+   "base": 444,
+   "bills": 25,
+   "index": 0.22522522522522523,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.21576896044981153,
+   "bonus": 3.0
+  },
+  "6EN68926": {
+   "cross": 4,
+   "base": 1065,
+   "bills": 58,
+   "index": 0.003755868544600939,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "57B28032": {
+   "cross": 6,
+   "base": 413,
+   "bills": 41,
+   "index": 0.014527845036319613,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.005071580260905902,
+   "bonus": 0.146
+  },
+  "X7E7893P": {
+   "cross": 0,
+   "base": 516,
+   "bills": 39,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "Y0X4618N": {
+   "cross": 2,
+   "base": 397,
+   "bills": 34,
+   "index": 0.005037783375314861,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "HE08888N": {
+   "cross": 0,
+   "base": 416,
+   "bills": 42,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "MSY7784L": {
+   "cross": 9,
+   "base": 294,
+   "bills": 30,
+   "index": 0.030612244897959183,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.02115598012254547,
+   "bonus": 0.61
+  },
+  "XSP20229": {
+   "cross": 17,
+   "base": 551,
+   "bills": 14,
+   "index": 0.030852994555353903,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "QDU1100U": {
+   "cross": 0,
+   "base": 368,
+   "bills": 39,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "OWD1018N": {
+   "cross": 0,
+   "base": 356,
+   "bills": 29,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "QWL7778X": {
+   "cross": 178,
+   "base": 224,
+   "bills": 24,
+   "index": 0.7946428571428571,
+   "eligible": true,
+   "party_median": 0.7946428571428571,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "TST4507I": {
+   "cross": 8,
+   "base": 249,
+   "bills": 25,
+   "index": 0.0321285140562249,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "MRS4949T": {
+   "cross": 0,
+   "base": 21,
+   "bills": 1,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "M0A1658U": {
+   "cross": 4,
+   "base": 279,
+   "bills": 27,
+   "index": 0.014336917562724014,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "AEJ19639": {
+   "cross": 1,
+   "base": 220,
+   "bills": 22,
+   "index": 0.004545454545454545,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "KFM1081G": {
+   "cross": 0,
+   "base": 266,
+   "bills": 23,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "SLW27496": {
+   "cross": 1,
+   "base": 659,
+   "bills": 31,
+   "index": 0.0015174506828528073,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "G6W8250J": {
+   "cross": 0,
+   "base": 248,
+   "bills": 21,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "MLH1404S": {
+   "cross": 1,
+   "base": 116,
+   "bills": 11,
+   "index": 0.008620689655172414,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "GJK57930": {
+   "cross": 0,
+   "base": 593,
+   "bills": 26,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "4X525582": {
+   "cross": 1,
+   "base": 197,
+   "bills": 17,
+   "index": 0.005076142131979695,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "P0F1530P": {
+   "cross": 0,
+   "base": 516,
+   "bills": 52,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "ARP89147": {
+   "cross": 25,
+   "base": 349,
+   "bills": 17,
+   "index": 0.07163323782234957,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.03495370114281288,
+   "bonus": 1.008
+  },
+  "QHL3248U": {
+   "cross": 1,
+   "base": 9,
+   "bills": 1,
+   "index": 0.1111111111111111,
+   "eligible": false,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "SKP6181Y": {
+   "cross": 0,
+   "base": 39,
+   "bills": 4,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "DOZ1588B": {
+   "cross": 0,
+   "base": 56,
+   "bills": 6,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "FIC9046Z": {
+   "cross": 0,
+   "base": 105,
+   "bills": 9,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "7ZS19508": {
+   "cross": 0,
+   "base": 65,
+   "bills": 7,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "KBZ59750": {
+   "cross": 0,
+   "base": 0,
+   "bills": 4,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.28846153846153844,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "H7X3372O": {
+   "cross": 0,
+   "base": 62,
+   "bills": 6,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "PAO22428": {
+   "cross": 3,
+   "base": 84,
+   "bills": 6,
+   "index": 0.03571428571428571,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "MRK4871S": {
+   "cross": 4,
+   "base": 47,
+   "bills": 4,
+   "index": 0.0851063829787234,
+   "eligible": false,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "W0154979": {
+   "cross": 0,
+   "base": 44,
+   "bills": 2,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "4A067125": {
+   "cross": 0,
+   "base": 99,
+   "bills": 8,
+   "index": 0.0,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "29V4537Y": {
+   "cross": 1,
+   "base": 46,
+   "bills": 3,
+   "index": 0.021739130434782608,
+   "eligible": false,
+   "party_median": 0.009456264775413711,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "JVK71445": {
+   "cross": 1,
+   "base": 79,
+   "bills": 8,
+   "index": 0.012658227848101266,
+   "eligible": true,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "FYG6302V": {
+   "cross": 0,
+   "base": 43,
+   "bills": 4,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": 0.03667953667953668,
+   "excess": 0.0,
+   "bonus": 0.0
+  },
+  "5DC8083A": {
+   "cross": 0,
+   "base": 0,
+   "bills": 3,
+   "index": 0.0,
+   "eligible": false,
+   "party_median": null,
+   "excess": 0.0,
+   "bonus": 0.0
+  }
+ }
+}

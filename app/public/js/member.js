@@ -59,20 +59,76 @@
     ['all', '전체', () => true],
   ];
   const BILL_LABEL = { passed: '가결', alt: '대안반영', pending: '계류', withdrawn: '철회', rejected: '폐기' };
-  function loadBills(m) {
+  function renderAreas(areas, onPick) {
+    const el = document.getElementById('areas-card');
+    if (!areas.length) { el.innerHTML = '<h2 class="card-title">관심 분야</h2><p class="muted">대표발의 법안이 없습니다.</p>'; return; }
+    const top = areas.slice(0, 6);
+    const rest = areas.slice(6).reduce((s, a) => s + a.bills, 0);
+    const total = areas.reduce((s, a) => s + a.bills, 0);
+    const max = top[0].bills;
+    const lead = areas[0];
+    el.innerHTML = `<div class="card-head" style="margin-bottom:6px"><div><h2 class="card-title">관심 분야</h2>
+        <p class="card-sub">대표발의 법안의 소관 위원회 기준 · 막대를 누르면 아래 목록이 걸러집니다</p></div></div>
+      <p class="plain">가장 많이 발의한 분야는 <b>${esc(lead.area)}</b>(${num(lead.bills)}건${lead.top_pct === 0 ? ', 이 분야 발의 1위' : lead.top_pct < 50 ? `, 이 분야 발의 상위 ${Math.max(1, Math.round(lead.top_pct))}%` : ''})입니다.</p>
+      <div class="barlist">${top.map((a, i) => `<button type="button" class="barlist-row area-row" data-area="${esc(a.area)}">
+          <div class="barlist-bar"><div class="barlist-fill" style="width:${((a.bills / max) * 100).toFixed(1)}%;--i:${i}"></div>
+          <div class="barlist-text"><b>${esc(a.area)}</b><span class="muted">${Math.round((a.bills / total) * 100)}%</span></div></div>
+          <div class="barlist-value num">${num(a.bills)}건<small>반영 ${num(a.reflected)}</small></div>
+        </button>`).join('')}</div>
+      ${rest ? `<p class="card-sub" style="margin-top:8px">그 외 ${num(areas.length - 6)}개 분야 ${num(rest)}건</p>` : ''}`;
+    el.querySelectorAll('.area-row').forEach((b) => b.addEventListener('click', () => onPick(b.dataset.area)));
+  }
+
+  function renderCoop(m, all, coop, partners) {
+    const el = document.getElementById('coop-card');
+    const pct1 = (v) => `${(v * 100).toFixed(1)}%`;
+    const plist = (arr) => arr.length
+      ? arr.map((p) => `<li><a href="/member?id=${encodeURIComponent(p.id)}">${esc(p.name)}</a> <span class="muted">${esc(p.party)}</span><b class="num">${num(p.bills)}건</b></li>`).join('')
+      : '<li class="muted">없음</li>';
+    const headline = coop.eligible
+      ? `<div class="headline"><span class="v num">${pct1(coop.index)}</span>${m.coop_bonus > 0 ? `<span class="pct">가산 +${m.coop_bonus.toFixed(1)}점</span>` : ''}</div>
+         <p class="plain">대표발의 법안 공동발의자 ${num(coop.base)}명 중 <b>${num(coop.cross)}명</b>이 다른 정당 의원입니다.${coop.party_median !== null && coop.party_median !== undefined ? ` 같은 당 의원 중앙값은 ${pct1(coop.party_median)}입니다.` : ''}</p>`
+      : `<p class="plain">${coop.bills < 5 ? '대표발의 법안이 5건 미만이라 협력 지수를 계산하지 않습니다.' : '비교할 정당 기준이 없어 가산점 대상이 아닙니다.'}</p>`;
+    el.innerHTML = `<div class="card-head" style="margin-bottom:6px"><div><h2 class="card-title">초당적 협력</h2>
+        <p class="card-sub">다른 당 공동발의자 비율 · 같은 당 평균보다 높은 만큼 최대 +3점 가산</p></div></div>
+      ${headline}
+      <div class="strip-host" id="coop-strip"></div>
+      <div class="partners">
+        <div><h3>다른 당과 함께한 의원</h3><ol>${plist(partners.other)}</ol></div>
+        <div><h3>같은 당에서 함께한 의원</h3><ol>${plist(partners.same)}</ol></div>
+      </div>`;
+    if (coop.eligible) {
+      stripPlot(document.getElementById('coop-strip'), {
+        members: all.filter((x) => x.coop_index !== null && x.coop_index !== undefined),
+        value: (x) => x.coop_index,
+        fmt: pct1,
+        label: '초당적 협력 지수 분포',
+        highlights: [{ member: m }],
+        selfId: m.id,
+      });
+    }
+  }
+
+  function loadBills(m, all) {
     const listEl = document.getElementById('bill-list');
     fetch(`/bills/${encodeURIComponent(m.id)}.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-      .then(({ bills, cutoff }) => {
-        document.getElementById('bill-total').textContent = `${num(bills.length)}건 · ${cutoff.replace(/-/g, '.')} 기준`;
+      .then(({ bills, cutoff, areas, partners, coop }) => {
+        let areaFilter = null;
         let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
         let shown = 15;
+        if (areas) renderAreas(areas, (a) => { areaFilter = a; cur = 'all'; shown = 15; paint(); document.getElementById('bills').scrollIntoView({ behavior: 'smooth' }); });
+        if (coop) renderCoop(m, all, coop, partners);
+        document.getElementById('bill-total').textContent = `${num(bills.length)}건 · ${cutoff.replace(/-/g, '.')} 기준`;
         const paint = () => {
           const tab = BILL_TABS.find((t) => t[0] === cur);
           document.getElementById('bill-tabs').innerHTML = BILL_TABS.map(([k, label, f]) =>
-            `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(bills.filter(f).length)}</button>`).join('');
+            `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(bills.filter((b) => f(b) && (!areaFilter || b.area === areaFilter)).length)}</button>`).join('');
           document.querySelectorAll('#bill-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; shown = 15; paint(); }));
-          const list = bills.filter(tab[2]);
+          const list = bills.filter(tab[2]).filter((b) => !areaFilter || b.area === areaFilter);
+          const af = document.getElementById('bill-area');
+          af.innerHTML = areaFilter ? `분야: <b>${esc(areaFilter)}</b> <button type="button" class="link-btn">해제 ✕</button>` : '';
+          af.querySelector('button')?.addEventListener('click', () => { areaFilter = null; paint(); });
           listEl.innerHTML = list.length
             ? list.slice(0, shown).map((b) => `<li>
                 <span class="bill-st st-${b.status}">${BILL_LABEL[b.status]}</span>
@@ -104,7 +160,7 @@
           ${gradeBadge(m.grade, 'grade-lg')}
           <div>
             <div class="big num">${rankText(m, all)} <span class="muted" style="font-size:1rem;font-weight:500">/ ${num(eligible.length)}명</span></div>
-            <div class="sub">${esc(m.grade)}등급(${GRADE_BAND[m.grade]}) · 종합 ${topText(m.composite_percentile)}${partyRank ? ` · ${esc(m.party)} ${num(party.length)}명 중 ${partyRank}위` : ''}</div>
+            <div class="sub">${esc(m.grade)}등급(${GRADE_BAND[m.grade]}) · 종합 ${topText(m.composite_percentile)}${partyRank ? ` · ${esc(m.party)} ${num(party.length)}명 중 ${partyRank}위` : ''}${m.coop_bonus > 0 ? ` · 협치 가산 +${m.coop_bonus.toFixed(1)}점` : ''}</div>
           </div>
         </div>`
       : `<div class="profile-score">${gradeBadge(null, 'grade-lg')}<div><div class="big">${statusText(m)}</div><div class="sub">${
@@ -175,6 +231,10 @@
         ${roleNote}
       </section>
       <div class="grid grid-2 section">${cards}</div>
+      <div class="grid grid-2 section">
+        <section class="card metric-card" id="areas-card"><h2 class="card-title">관심 분야</h2><div class="skeleton">불러오는 중…</div></section>
+        <section class="card metric-card" id="coop-card"><h2 class="card-title">초당적 협력</h2><div class="skeleton">불러오는 중…</div></section>
+      </div>
       <section class="card section" id="bills">
         <div class="card-head">
           <div>
@@ -183,6 +243,7 @@
           </div>
           <div class="tabs" role="tablist" id="bill-tabs"></div>
         </div>
+        <p class="card-sub" id="bill-area"></p>
         <ul class="bill-list" id="bill-list"><li class="skeleton">불러오는 중…</li></ul>
         <div class="more" id="bill-more"></div>
       </section>
@@ -192,7 +253,7 @@
         <a href="/method">평가 방법</a> · <a href="/notes">데이터 처리 기준</a>
       </p>`;
 
-    loadBills(m);
+    loadBills(m, all);
 
     content.querySelectorAll('.strip-host').forEach((el) => {
       const mt = METRICS.find((x) => x.key === el.dataset.key);
