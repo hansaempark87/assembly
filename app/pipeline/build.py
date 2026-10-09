@@ -489,6 +489,8 @@ def main():
     weekly(S, cov, vote_index)
     import og
     og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
+    import stamp
+    stamp.main()
     print('coverage', cov, 'members', len(recs))
 
 

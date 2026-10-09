@@ -7,3 +7,4 @@
 - Never commit or print the Assembly API key; it is read from ASSEMBLY_API_KEY only.
 - Do not show GitHub or repository details anywhere on the public site.
 - Data is rebuilt by app/pipeline (fetch.py → build.py → check.py); generated files are not edited by hand.
+- After editing app/public/js or app/public/css, run `python3 app/pipeline/stamp.py` so browsers load the new files.
