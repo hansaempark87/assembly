@@ -1,6 +1,7 @@
 // GET /member?id=… — per-member title, description, canonical URL and a
 // server-rendered summary, so each member page is indexable and shares with a
 // meaningful preview. The client script replaces #content after loading.
+import { run } from '../lib/scoring.js';
 import { loadAll, memberSummary, esc, setHtml, setText, setAttr, appendHtml } from '../lib/seo.js';
 
 export async function onRequestGet({ request, next }) {
@@ -18,6 +19,7 @@ export async function onRequestGet({ request, next }) {
     .on('meta[name="description"]', setAttr('content', description))
     .on('meta[property="og:title"]', setAttr('content', title))
     .on('meta[property="og:description"]', setAttr('content', description))
+    .on('meta[property="og:image"]', setAttr('content', `${url.origin}/og/m/${encodeURIComponent(id)}.png?v=${run.data_as_of}`))
     .on('head', appendHtml(`<link rel="canonical" href="${esc(canonical)}"><meta property="og:url" content="${esc(canonical)}">`))
     .on('#content', setHtml(html))
     .transform(res);

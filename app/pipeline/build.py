@@ -367,13 +367,15 @@ def vote_pages(S):
                 majority[p] = top[0][0]
         big = sorted(v['party'], key=lambda p: -len(v['party'][p]))[:2]
         clash = len(big) == 2 and all(p in majority for p in big) and majority[big[0]] != majority[big[1]]
+        # notable votes get their own link-preview image (pipeline/og.py)
+        notable = clash or counts[1] + counts[2] >= 20 or '부결' in (v['result'] or '')
         index.append({'id': v['bill_id'], 'no': v['bill_no'], 'name': v['bill_name'], 'date': v['date'],
                       'result': v['result'], 'kind': v.get('kind'), 'area': vote_area(v.get('committee')),
-                      'counts': counts, 'clash': clash, 'held': v['status'] not in SCORED_VOTE})
+                      'counts': counts, 'clash': clash, 'og': notable, 'held': v['status'] not in SCORED_VOTE})
         seats = [[i, names.get(i, i), party.get(i, ''), c] for i, c in choice.items()]
         seats.sort(key=lambda x: (x[2], 'YNAX'.index(x[3]), x[1]))
         page = {'id': v['bill_id'], 'no': v['bill_no'], 'name': v['bill_name'], 'date': v['date'], 'result': v['result'],
-                'kind': v.get('kind'), 'committee': v.get('committee'),
+                'kind': v.get('kind'), 'committee': v.get('committee'), 'og': notable,
                 'held': v['status'] not in SCORED_VOTE, 'totals': v['totals'], 'counts': counts,
                 'url': f"https://likms.assembly.go.kr/bill/billDetail.do?billId={v['bill_id']}", 'seats': seats}
         with open(out_dir / f"{v['bill_id']}.json", 'w', encoding='utf-8') as f:
@@ -485,6 +487,8 @@ def main():
                     str(d / 'member-roles.json'), str(d / 'role-adjustments.json'), str(d / 'data-corrections.json'),
                     str(d / 'coop.json'), str(tmp / 'run-meta.json'), str(APP / 'lib' / 'score-run.js')], check=True)
     weekly(S, cov, vote_index)
+    import og
+    og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
     print('coverage', cov, 'members', len(recs))
 
 
