@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "roles": "member-roles.json",
-    "audit": "vote-audit-results-2026-10-01.csv",
+    "source": "data/source",
     "eval_end": "2026-09-30"
   },
   "members": {

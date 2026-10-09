@@ -34,16 +34,7 @@
 - **위원회 출결**: 상임위·특위 PDF 50개. 역시 sha256 일치. PDF 표의 회의 날짜 열을 읽어 **회의일 단위**로 제외했다(월 단위로 넓게 빼지 않음).
 - **재임일수**: 평가 기간 끝(2026-09-30)까지의 재임일에서 겸직 일수를 뺐다. 입법 성과 점수의 분모로 쓴다. 법안 처리 결과(분자)는 그대로 둔다.
 
-재현 절차:
-
-```
-cd app
-ASSEMBLY_API_KEY=... ./scripts/fetch-role-sources.sh tmp/sources
-python3 scripts/role-adjust.py --roles data/member-roles.json --members <D1 원자료 /api/members JSON> \
-  --audit ../docs/vote-audit-results-2026-10-01.csv --files ../docs/attendance-audit-files-2026-10-01.csv \
-  --votes tmp/sources/votes --att tmp/sources/att --out data/role-adjustments.json
-node scripts/compute-scores-stage3.cjs <D1 원자료 JSON> data/member-roles.json data/role-adjustments.json data/data-corrections.json lib/score-run.js
-```
+재현 절차: 2026-10-09부터 이 계산은 자동 갱신 파이프라인의 일부다. `app/pipeline/build.py`가 `app/data/source/`(표결·출결·법안 원자료를 정리한 파일)에서 겸직 기간 제외 건수를 매번 다시 계산해 `app/data/role-adjustments.json`을 쓰고, 이어서 `scripts/compute-scores-stage3.cjs`가 `lib/score-run.js`를 만든다. 진행 중인 겸직은 매 갱신의 기준일까지 제외된다. 절차 전체는 [자동 갱신](auto-update.md) 참고.
 
 ## 5. 결과
 

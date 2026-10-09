@@ -1,16 +1,15 @@
 // Server-side text for crawlers and link previews. The pages are rendered in
 // the browser, so without this a crawler would see an empty shell. The
 // client script replaces these blocks once it loads.
-import { MEMBER_SQL, run, withScores, byRank } from './scoring.js';
+import { run, allMembers } from './scoring.js';
 
 export const esc = (v) =>
   String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pct = (r) => (r === null || r === undefined ? '-' : `${(r * 100).toFixed(1)}%`);
 const STATUS = { short_tenure: '관찰 기간 부족', role_hold: '겸직으로 평가 유보' };
 
-export async function loadAll(db) {
-  const { results } = await db.prepare(MEMBER_SQL).all();
-  return results.map(withScores).sort(byRank);
+export function loadAll() {
+  return allMembers();
 }
 
 export function memberSummary(m, evaluated) {
