@@ -39,18 +39,33 @@
       <p id="meta">불러오는 중…</p>
     </div>
   </div>
-  <section class="card">
+  <section class="card list-anchor" id="vote-card">
     <div class="toolbar">
       <input class="input" id="q" type="search" placeholder="법안 이름 검색" autocomplete="off" aria-label="법안 이름 검색">
+      <select class="select" id="f-period" aria-label="기간"><option value="">전체 기간</option></select>
+      <select class="select" id="f-area" aria-label="분야"><option value="">전체 분야</option></select>
+      <select class="select" id="f-kind" aria-label="안건 종류"><option value="">모든 안건</option></select>
+      <select class="select" id="f-sort" aria-label="정렬">
+        <option value="new">최신순</option>
+        <option value="split">반대·기권 많은 순</option>
+        <option value="yes">찬성률 낮은 순</option>
+        <option value="absent">불참 많은 순</option>
+      </select>
+    </div>
+    <div class="toolbar">
       <div class="tabs" role="tablist" id="filter">
         <button class="tab" role="tab" aria-selected="true" data-f="all">전체</button>
-        <button class="tab" role="tab" aria-selected="false" data-f="split">반대·기권 많은 표결</button>
+        <button class="tab" role="tab" aria-selected="false" data-f="clash">여야 대립</button>
+        <button class="tab" role="tab" aria-selected="false" data-f="split">쟁점 표결</button>
+        <button class="tab" role="tab" aria-selected="false" data-f="unanimous">만장일치</button>
         <button class="tab" role="tab" aria-selected="false" data-f="rejected">부결</button>
       </div>
+      <button class="link-btn" type="button" id="reset" hidden>조건 초기화</button>
       <span class="count" id="count"></span>
     </div>
+    <p class="card-sub" id="filter-help"></p>
     <div id="list" class="vlist"></div>
-    <button class="btn more" id="more" type="button" hidden>더 보기</button>
+    <div id="pager"></div>
   </section>
 </main>
 

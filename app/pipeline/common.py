@@ -247,6 +247,7 @@ def vote_record(item, rows, status):
     them on the day of the vote."""
     out = {'bill_id': item['BILL_ID'], 'bill_no': item['BILL_NO'], 'bill_name': item['BILL_NAME'],
            'date': item['PROC_DT'], 'result': item.get('PROC_RESULT_CD'), 'status': status,
+           'kind': item.get('BILL_KIND_CD'), 'committee': item.get('CURR_COMMITTEE'),
            'totals': {'members': item['MEMBER_TCNT'], 'voted': item['VOTE_TCNT'], 'yes': item['YES_TCNT'],
                       'no': item['NO_TCNT'], 'abstain': item['BLANK_TCNT']}}
     for k in CHOICE.values():

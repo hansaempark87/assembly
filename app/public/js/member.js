@@ -1,5 +1,5 @@
 (function () {
-  const { CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
+  const { view, pager, CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
   const content = document.getElementById('content');
   const id = new URLSearchParams(window.location.search).get('id');
 
@@ -117,29 +117,28 @@
         if (votes) renderVotes(votes);
         let areaFilter = null;
         let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
-        let shown = 15;
-        if (areas) renderAreas(areas, (a) => { areaFilter = a; cur = 'all'; shown = 15; paint(); document.getElementById('bills').scrollIntoView({ behavior: 'smooth' }); });
+        let page = 1;
+        const SIZE = 15;
+        if (areas) renderAreas(areas, (a) => { areaFilter = a; cur = 'all'; page = 1; paint(); document.getElementById('bills').scrollIntoView({ behavior: 'smooth' }); });
         if (coop) renderCoop(m, all, coop, partners);
         document.getElementById('bill-total').textContent = `${num(bills.length)}건 · ${cutoff.replace(/-/g, '.')} 기준`;
         const paint = () => {
           const tab = BILL_TABS.find((t) => t[0] === cur);
           document.getElementById('bill-tabs').innerHTML = BILL_TABS.map(([k, label, f]) =>
             `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(bills.filter((b) => f(b) && (!areaFilter || b.area === areaFilter)).length)}</button>`).join('');
-          document.querySelectorAll('#bill-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; shown = 15; paint(); }));
+          document.querySelectorAll('#bill-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; page = 1; paint(); }));
           const list = bills.filter(tab[2]).filter((b) => !areaFilter || b.area === areaFilter);
           const af = document.getElementById('bill-area');
           af.innerHTML = areaFilter ? `분야: <b>${esc(areaFilter)}</b> <button type="button" class="link-btn">해제 ✕</button>` : '';
-          af.querySelector('button')?.addEventListener('click', () => { areaFilter = null; paint(); });
+          af.querySelector('button')?.addEventListener('click', () => { areaFilter = null; page = 1; paint(); });
           listEl.innerHTML = list.length
-            ? list.slice(0, shown).map((b) => `<li>
+            ? list.slice((page - 1) * SIZE, page * SIZE).map((b) => `<li>
                 <span class="bill-st st-${b.status}">${BILL_LABEL[b.status]}</span>
                 <div><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.name)}</a>
                 <small>발의 ${esc(b.proposed)}${b.decided ? ` · ${esc(b.result)} ${esc(b.decided)}` : ''}${b.committee ? ` · ${esc(b.committee)}` : ''}${b.co ? ' · 공동 대표발의' : ''}</small></div>
               </li>`).join('')
             : '<li class="skeleton">해당하는 법안이 없습니다.</li>';
-          const more = document.getElementById('bill-more');
-          more.innerHTML = list.length > shown ? `<button class="btn" type="button">더 보기 (${num(list.length - shown)}건 남음)</button>` : '';
-          more.querySelector('button')?.addEventListener('click', () => { shown += 30; paint(); });
+          pager(document.getElementById('bill-more'), { total: list.length, page, size: SIZE, anchor: document.getElementById('bills'), onGo: (p) => { page = p; paint(); } });
         };
         paint();
       })
@@ -148,43 +147,57 @@
 
   // Every recorded plenary vote while in office, newest first. `votes` has one
   // character per entry of /vote-data/index.json: Y N A X, or . when not in office.
+  view.manual();
   function renderVotes(str) {
     const el = document.getElementById('votes-card');
     loadVoteIndex().then(({ votes }) => {
-      const mine = votes.map((v, i) => ({ v, c: str[i] })).filter((x) => x.c && x.c !== '.');
+      // lower case = voted differently from most of the member's own party that day
+      const mine = votes.map((v, i) => ({ v, raw: str[i] }))
+        .filter((x) => x.raw && x.raw !== '.')
+        .map((x) => ({ v: x.v, c: x.raw.toUpperCase(), dissent: x.raw !== x.raw.toUpperCase() }));
       const cnt = { Y: 0, N: 0, A: 0, X: 0 };
       mine.forEach((x) => { cnt[x.c] += 1; });
+      const nDissent = mine.filter((x) => x.dissent).length;
       let cur = 'all';
-      let shown = 15;
-      const TABS = [['all', '전체'], ['N', '반대'], ['A', '기권'], ['X', '불참']];
+      let page = 1;
+      let q = '';
+      const SIZE = 15;
+      const TABS = [['all', '전체', () => true], ['dissent', '당과 다르게', (x) => x.dissent], ['clash', '여야 대립 표결', (x) => x.v.clash],
+        ['N', '반대', (x) => x.c === 'N'], ['A', '기권', (x) => x.c === 'A'], ['X', '불참', (x) => x.c === 'X']];
       el.innerHTML = `<div class="card-head">
           <div>
             <h2 class="card-title">본회의 표결 기록 <span class="muted num">${num(mine.length)}건</span></h2>
-            <p class="card-sub">재임 중 열린 모든 본회의 표결 · 표결을 누르면 전체 의석 결과를 봅니다</p>
+            <p class="card-sub">재임 중 열린 모든 본회의 표결 · 소속 정당 의원 다수와 다르게 투표한 표결 ${num(nDissent)}건</p>
           </div>
-          <div class="tabs" role="tablist" id="vote-tabs"></div>
         </div>
         ${stackedBar('YNAX'.split('').map((k) => ({ label: CHOICE[k].label, value: cnt[k], color: CHOICE[k].color })), '건')}
-        <div class="section" id="vote-list"></div>
-        <div class="more" id="vote-more"></div>
-        <div class="card-foot">평가의 표결 참여율은 겸직 기간과 의석이 바뀐 날의 표결을 뺀 값이라 이 건수와 다를 수 있습니다.</div>`;
+        <div class="toolbar section">
+          <div class="tabs" role="tablist" id="vote-tabs"></div>
+          <input class="input" id="vote-q" type="search" placeholder="법안 이름 검색" aria-label="표결 기록에서 법안 검색">
+        </div>
+        <div id="vote-list"></div>
+        <div id="vote-more"></div>
+        <div class="card-foot">평가의 표결 참여율은 겸직 기간과 의석이 바뀐 날의 표결을 뺀 값이라 이 건수와 다를 수 있습니다. 표결을 누르면 전체 의석 결과를 봅니다.</div>`;
       const paint = () => {
-        document.getElementById('vote-tabs').innerHTML = TABS.map(([k, label]) =>
-          `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(k === 'all' ? mine.length : cnt[k])}</button>`).join('');
-        document.querySelectorAll('#vote-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; shown = 15; paint(); }));
-        const list = mine.filter((x) => cur === 'all' || x.c === cur);
+        const tab = TABS.find((t) => t[0] === cur);
+        const qq = q.replace(/\s+/g, '');
+        const base = mine.filter((x) => !qq || x.v.name.replace(/\s+/g, '').includes(qq));
+        document.getElementById('vote-tabs').innerHTML = TABS.map(([k, label, f]) =>
+          `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${label} ${num(base.filter(f).length)}</button>`).join('');
+        document.querySelectorAll('#vote-tabs .tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; page = 1; paint(); }));
+        const list = base.filter(tab[2]);
         document.getElementById('vote-list').innerHTML = list.length
-          ? list.slice(0, shown).map(({ v, c }) => `<a class="vrec-row" href="/vote?id=${encodeURIComponent(v.id)}">
+          ? list.slice((page - 1) * SIZE, page * SIZE).map(({ v, c, dissent }) => `<a class="vrec-row" href="/vote?id=${encodeURIComponent(v.id)}">
               <span class="vrow-date num">${kdate(v.date)}</span>
               <span class="vrow-name">${esc(v.name)}</span>
-              <span class="choice"><i class="dot-key" style="background:${CHOICE[c].color}"></i>${CHOICE[c].label}</span>
+              <span class="choice"><i class="dot-key" style="background:${CHOICE[c].color}"></i>${CHOICE[c].label}${dissent ? '<span class="dissent-tag">당과 다름</span>' : ''}</span>
             </a>`).join('')
           : '<p class="muted">해당하는 표결이 없습니다.</p>';
-        const more = document.getElementById('vote-more');
-        more.innerHTML = list.length > shown ? `<button class="btn" type="button">더 보기 (${num(list.length - shown)}건 남음)</button>` : '';
-        more.querySelector('button')?.addEventListener('click', () => { shown += 30; paint(); });
+        pager(document.getElementById('vote-more'), { total: list.length, page, size: SIZE, anchor: el, onGo: (p) => { page = p; paint(); } });
       };
+      document.getElementById('vote-q').addEventListener('input', (e) => { q = e.target.value; page = 1; paint(); });
       paint();
+      view.restoreScroll();
     }).catch(() => { el.innerHTML = '<p class="muted">표결 기록을 불러오지 못했습니다.</p>'; });
   }
 
@@ -278,7 +291,7 @@
         <section class="card metric-card" id="areas-card"><h2 class="card-title">관심 분야</h2><div class="skeleton">불러오는 중…</div></section>
         <section class="card metric-card" id="coop-card"><h2 class="card-title">초당적 협력</h2><div class="skeleton">불러오는 중…</div></section>
       </div>
-      <section class="card section" id="bills">
+      <section class="card section list-anchor" id="bills">
         <div class="card-head">
           <div>
             <h2 class="card-title">대표발의 법안 <span class="muted num" id="bill-total"></span></h2>
@@ -290,7 +303,7 @@
         <ul class="bill-list" id="bill-list"><li class="skeleton">불러오는 중…</li></ul>
         <div class="more" id="bill-more"></div>
       </section>
-      <section class="card section" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
+      <section class="card section list-anchor" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
         입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.

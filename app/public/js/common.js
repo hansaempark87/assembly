@@ -433,5 +433,65 @@
     return r.json();
   }).catch((e) => { voteIndex = null; throw e; }));
 
-  window.NA = { kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+  // ---------- paging and returning to where you were ----------
+  // Page numbers under a list instead of an ever-growing "더 보기". On a page
+  // change the list's top is brought back into view, so the reader never has
+  // to scroll back up through what they already passed.
+  function pager(el, { total, page, size, onGo, anchor }) {
+    const pages = Math.max(1, Math.ceil(total / size));
+    if (pages <= 1) { el.innerHTML = ''; return; }
+    const want = new Set([1, pages, page - 2, page - 1, page, page + 1, page + 2].filter((p) => p >= 1 && p <= pages));
+    const list = [...want].sort((a, b) => a - b);
+    let html = '';
+    list.forEach((p, i) => {
+      if (i && p - list[i - 1] > 1) html += '<span class="pager-gap">…</span>';
+      html += `<button type="button" class="pager-btn" data-p="${p}"${p === page ? ' aria-current="page"' : ''}>${p}</button>`;
+    });
+    const from = (page - 1) * size + 1;
+    el.innerHTML = `<nav class="pager" aria-label="페이지 이동">
+      <button type="button" class="pager-btn" data-p="${page - 1}" ${page === 1 ? 'disabled' : ''} aria-label="이전 페이지">‹</button>
+      ${html}
+      <button type="button" class="pager-btn" data-p="${page + 1}" ${page === pages ? 'disabled' : ''} aria-label="다음 페이지">›</button>
+      <span class="pager-info num">${num(from)}–${num(Math.min(total, page * size))} / ${num(total)}</span>
+    </nav>`;
+    el.onclick = (e) => {
+      const b = e.target.closest('button[data-p]');
+      if (!b || b.disabled) return;
+      onGo(+b.dataset.p);
+      const a = anchor || el;
+      if (a.getBoundingClientRect().top < 64) a.scrollIntoView({ block: 'start' });
+    };
+  }
+
+  // View state (filters, page) kept in the history entry, so the back button
+  // returns to the same list, page and scroll position.
+  const view = {
+    get: (key, def) => (history.state && history.state[key] !== undefined ? history.state[key] : def),
+    set(key, val) {
+      try { history.replaceState({ ...(history.state || {}), [key]: val }, ''); } catch (e) { /* ignore */ }
+    },
+    // call once the async content is on the page
+    // pages whose content arrives after load restore the position themselves
+    manual() { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; },
+    restoreScroll() {
+      const y = view.get('scrollY', 0);
+      if (y) window.scrollTo(0, y);
+    },
+  };
+  let scrollTimer = null;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => view.set('scrollY', Math.round(window.scrollY)), 150);
+    toTop.classList.toggle('show', window.scrollY > 900);
+  }, { passive: true });
+
+  const toTop = document.createElement('button');
+  toTop.type = 'button';
+  toTop.className = 'to-top';
+  toTop.setAttribute('aria-label', '맨 위로');
+  toTop.textContent = '↑';
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (document.body) document.body.appendChild(toTop);
+
+  window.NA = { pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
 })();
