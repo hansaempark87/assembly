@@ -382,6 +382,12 @@
     A: { label: '기권', color: 'var(--s-violet)' },
     X: { label: '불참', color: 'var(--s-neutral)' },
   };
+  // Conventional party colours, used only where the party itself is the subject.
+  const PARTY_COLOR = {
+    '더불어민주당': '#1f6fd1', '국민의힘': '#e2404b', '조국혁신당': '#0b3a7e', '진보당': '#d6336c',
+    '개혁신당': '#f08c00', '기본소득당': '#12a594', '사회민주당': '#9c4dcc', '무소속': '#9aa1ab',
+  };
+  const partyColor = (p) => PARTY_COLOR[p] || '#b8bec8';
   // Seating order from the chamber's left to right; parties not listed sit
   // between the two blocs, larger first.
   const LEFT = ['더불어민주당', '조국혁신당', '진보당', '기본소득당', '사회민주당'];
@@ -493,5 +499,5 @@
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   if (document.body) document.body.appendChild(toTop);
 
-  window.NA = { pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+  window.NA = { PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
 })();

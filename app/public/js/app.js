@@ -1,5 +1,5 @@
 (function () {
-  const { pager, view, reveal, esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
+  const { partyColor, partyOrder, hemicycle, CHOICE, pager, view, reveal, esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
   const PAGE = window.matchMedia('(max-width: 760px)').matches ? 20 : 50;
 
@@ -27,6 +27,70 @@
   let page = 1;
   view.manual();
   let sort = { key: 'rank', dir: 'asc' };
+
+  // ---------- seat chart ----------
+  const GRADES = ['S', 'A', 'B', 'C', 'D'];
+  function renderSeats(mode) {
+    const counts = {};
+    all.forEach((m) => { counts[m.party] = (counts[m.party] || 0) + 1; });
+    const order = partyOrder(counts);
+    const gi = (g) => (g ? GRADES.indexOf(g) : 9);
+    const seats = [...all]
+      .sort((a, b) => order.indexOf(a.party) - order.indexOf(b.party) ||
+        (mode === 'grade' ? gi(a.grade) - gi(b.grade) || (a.rank ?? 999) - (b.rank ?? 999) : 0) || a.name.localeCompare(b.name, 'ko'))
+      .map((m) => ({
+        id: m.id, name: m.name,
+        color: mode === 'grade' ? (m.grade ? `var(--g-${m.grade})` : 'var(--g-none)') : partyColor(m.party),
+        title: `<b>${esc(m.name)}</b> · ${esc(m.party || '')}<br>${m.grade ? `${m.grade}등급 · 종합 ${m.rank}위` : esc(statusText(m))}`,
+      }));
+    hemicycle($('seat-chart'), {
+      seats,
+      label: mode === 'grade' ? '의원별 등급을 정당별로 배치한 의석 그림' : '정당별 의석 그림',
+      onPick: (s) => { window.location.href = `/member?id=${encodeURIComponent(s.id)}`; },
+    });
+    const items = mode === 'grade'
+      ? [...GRADES.map((g) => [`${g}등급`, `var(--g-${g})`, all.filter((m) => m.grade === g).length]), ['등급 없음', 'var(--g-none)', all.filter((m) => !m.grade).length]]
+      : order.map((p) => [p, partyColor(p), counts[p]]);
+    $('seat-legend').innerHTML = items.map(([l, c, n]) => `<span><i style="background:${c}"></i>${esc(l)}<b class="num">${num(n)}</b></span>`).join('') +
+      (mode === 'grade' ? `<div class="hemi-parties">왼쪽부터 ${order.map((p) => `<span class="nw">${esc(p)} <b class="num">${num(counts[p])}</b></span>`).join(' · ')}</div>` : '');
+    $('seat-sub').textContent = `${num(all.length)}명 · 점 하나가 의원 한 명 · 왼쪽부터 정당별${mode === 'grade' ? ', 당 안에서는 높은 등급부터' : ''} · 점을 누르면 의원 실적으로 이동`;
+    $('seat-tabs').querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.k === mode)));
+  }
+
+  // ---------- what changed since the previous update ----------
+  const shortDate = (iso) => { const [, mo, d] = iso.split('-').map(Number); return `${mo}.${d}`; };
+  function renderWeekly(w) {
+    const v = w.votes, b = w.bills, g = w.grades;
+    const md = (iso) => { const [, mo, d] = iso.split('-').map(Number); return `${mo}월 ${d}일`; };
+    const next = (iso) => new Date(new Date(iso).getTime() + 864e5).toISOString().slice(0, 10);
+    $('weekly-sub').textContent = w.since === w.as_of
+      ? `${md(w.as_of)} 기준`
+      : `지난 갱신(${md(w.since)}) 이후 새로 들어온 기록 · 본회의 ${v.dates.length ? v.dates.map(md).join(', ') : '없음'} · 법안 ${md(next(w.windows.bills[0]))}~${md(w.windows.bills[1])}`;
+    const tile = (label, value, meta) => `<div class="wk-tile"><div class="kpi-label">${label}</div><div class="kpi-value num">${value}</div><div class="kpi-meta">${meta}</div></div>`;
+    const bar = (c) => `<div class="stack" aria-hidden="true">${'YNAX'.split('').map((k, i) => (c[i] ? `<span style="flex:${c[i]};background:${CHOICE[k].color}"></span>` : '')).join('')}</div>`;
+    const voteItems = v.highlights.map((x) => `<a class="wk-row" href="/vote?id=${encodeURIComponent(x.id)}">
+        <span class="wk-name">${esc(x.name)}${x.clash ? '<b class="tag-clash"> 여야 대립</b>' : ''}</span>
+        ${bar(x.counts)}<small class="num">찬성 ${num(x.counts[0])} · 반대 ${num(x.counts[1])} · 기권 ${num(x.counts[2])} · ${esc(x.result || '')}</small>
+      </a>`).join('');
+    const billItems = b.highlights.map((x) => `<div class="wk-row">
+        <a class="wk-name" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>
+        <small>${esc(x.result)} ${shortDate(x.date)} · 대표발의 ${x.leads.map((l) => `<a href="/member?id=${encodeURIComponent(l.id)}">${esc(l.name)}</a>`).join(', ') || '-'}</small>
+      </div>`).join('');
+    const chip = (x, dir) => `<a class="wk-chip ${dir}" href="/member?id=${encodeURIComponent(x.id)}">${esc(x.name)} <span class="num">${x.from}→${x.to}</span></a>`;
+    $('weekly').innerHTML = `
+      <div class="wk-tiles">
+        ${tile('본회의 표결', `${num(v.total)}<small>건</small>`, `여야 대립 ${num(v.clash)} · 만장일치 ${num(v.unanimous)}${v.rejected ? ` · 부결 ${num(v.rejected)}` : ''}`)}
+        ${tile('새로 발의된 법안', `${num(b.proposed)}<small>건</small>`, '의원 대표발의 기준')}
+        ${tile('법안 반영', `${num(b.passed + b.alt)}<small>건</small>`, `가결 ${num(b.passed)} · 대안반영 ${num(b.alt)}`)}
+        ${tile('등급 변동', `${num(g.up.length + g.down.length)}<small>명</small>`, `오름 ${num(g.up.length)} · 내림 ${num(g.down.length)}`)}
+      </div>
+      <div class="grid grid-2 section">
+        <div><h3 class="wk-h">눈여겨볼 표결</h3>${voteItems || '<p class="muted">찬반이 갈린 표결이 없었습니다.</p>'}</div>
+        <div><h3 class="wk-h">가결된 의원 발의 법안</h3>${billItems || '<p class="muted">없습니다.</p>'}</div>
+      </div>
+      ${g.up.length + g.down.length ? `<div class="section"><h3 class="wk-h">등급이 바뀐 의원</h3>
+        <div class="wk-chips">${g.up.map((x) => chip(x, 'up')).join('')}${g.down.map((x) => chip(x, 'down')).join('')}</div></div>` : ''}`;
+  }
 
   // ---------- KPI tiles ----------
   function renderKpis() {
@@ -304,6 +368,10 @@
       tabs($('top-tabs'), TOP, renderTop);
       tabs($('party-tabs'), PARTY, renderParty);
       setupBoard();
+      renderSeats('grade');
+      $('seat-tabs').addEventListener('click', (e) => { const t = e.target.closest('.tab'); if (t) renderSeats(t.dataset.k); });
+      fetch('/weekly.json').then((r) => (r.ok ? r.json() : Promise.reject())).then(renderWeekly)
+        .catch(() => { $('weekly-card').hidden = true; });
       reveal(document.querySelectorAll('main > .card, main > .notice, main > .grid:not(#kpis) > .card'));
       view.restoreScroll();
     } catch (err) {

@@ -24,6 +24,7 @@
       <a href="/" aria-current="page">대시보드</a>
       <a href="/compare">의원 비교</a>
       <a href="/votes">표결</a>
+      <a href="/region">지역</a>
       <a href="/method">평가 방법</a>
       <a href="/about">소개</a>
     </nav>
@@ -54,6 +55,32 @@
   </section>
 
   <section class="grid grid-4 section" id="kpis" aria-label="핵심 지표"></section>
+
+  <section class="card section" id="seat-card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">국회 의석 한눈에</h2>
+        <p class="card-sub" id="seat-sub">점 하나가 의원 한 명 · 왼쪽부터 정당별 · 점을 누르면 의원 실적으로 이동</p>
+      </div>
+      <div class="tabs" role="tablist" id="seat-tabs">
+        <button class="tab" role="tab" aria-selected="true" data-k="grade">등급으로 보기</button>
+        <button class="tab" role="tab" aria-selected="false" data-k="party">정당으로 보기</button>
+      </div>
+    </div>
+    <div id="seat-chart" class="hemi-wrap"></div>
+    <div class="legend hemi-legend" id="seat-legend"></div>
+  </section>
+
+  <section class="card section" id="weekly-card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">이번 주 국회</h2>
+        <p class="card-sub" id="weekly-sub">불러오는 중…</p>
+      </div>
+      <a class="btn" href="/votes">전체 표결 보기 →</a>
+    </div>
+    <div id="weekly"></div>
+  </section>
 
   <section class="grid grid-3 section">
     <div class="card">
