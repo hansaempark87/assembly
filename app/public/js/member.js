@@ -1,5 +1,5 @@
 (function () {
-  const { view, pager, CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
+  const { shareBar, view, pager, CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
   const content = document.getElementById('content');
   const id = new URLSearchParams(window.location.search).get('id');
 
@@ -201,8 +201,23 @@
     }).catch(() => { el.innerHTML = '<p class="muted">표결 기록을 불러오지 못했습니다.</p>'; });
   }
 
+  // other members from the same region, best first, so a reader can keep going
+  function regionCard(m, all) {
+    const same = all.filter((x) => x.region === m.region && x.id !== m.id)
+      .sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999) || a.name.localeCompare(b.name, 'ko'));
+    if (!same.length) return '';
+    const label = m.region === '비례대표' ? '다른 비례대표 의원' : `${m.region} 지역 다른 의원`;
+    return `<section class="card section">
+      <div class="card-head"><div><h2 class="card-title">${esc(label)} <span class="muted num">${num(same.length)}명</span></h2>
+        <p class="card-sub">종합 순위 순</p></div>
+        <a class="btn" href="/region?r=${encodeURIComponent(m.region)}">지역 전체 보기 →</a></div>
+      <div class="peer-grid">${same.slice(0, 8).map((x) => `<a class="peer" href="/member?id=${encodeURIComponent(x.id)}">
+        ${gradeBadge(x.grade)}<span><b>${esc(x.name)}</b><small>${esc(x.party || '')} · ${x.eligible ? `${num(x.rank)}위` : esc(statusText(x))}</small></span></a>`).join('')}</div>
+    </section>`;
+  }
+
   function render(m, all, run) {
-    document.title = `${m.name} 성적표 — 일하는 국회`;
+    document.title = `${m.name} 의원 출석률·표결 참여·법안 실적 (${m.party || ""} ${(m.district || "").trim()}) — 일하는 국회`;
     const eligible = all.filter((x) => x.eligible);
     const party = eligible.filter((x) => x.party === m.party).sort((a, b) => a.rank - b.rank);
     const partyRank = party.findIndex((x) => x.id === m.id) + 1;
@@ -281,7 +296,10 @@
             <div class="chips">${m.committees.map((c) => `<span class="chip" style="background:var(--accent-soft);color:var(--accent-ink)">${esc(c)}</span>`).join('')}</div>
           </div>
           ${score}
-          <a class="btn" href="/compare?a=${encodeURIComponent(m.id)}">다른 의원과 비교 →</a>
+          <div class="profile-actions">
+            <a class="btn" href="/compare?a=${encodeURIComponent(m.id)}">다른 의원과 비교 →</a>
+            <div id="share"></div>
+          </div>
         </div>
         ${summary}
         ${roleNote}
@@ -304,12 +322,14 @@
         <div class="more" id="bill-more"></div>
       </section>
       <section class="card section list-anchor" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
+      ${regionCard(m, all)}
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
         입법 성과는 반영 건수가 아니라 채점 점수(가결 1 + 대안반영 0.5, 재임 1년 환산)로 순위를 매깁니다.
         <a href="/method">평가 방법</a> · <a href="/notes">데이터 처리 기준</a>
       </p>`;
 
+    shareBar(document.getElementById('share'), { title: `${m.name} 의원 실적 — 일하는 국회`, text: `${m.name} 의원 ${m.grade ? `${m.grade}등급 · 종합 ${m.rank}위` : ''} 의정활동 실적` });
     loadBills(m, all);
 
     content.querySelectorAll('.strip-host').forEach((el) => {

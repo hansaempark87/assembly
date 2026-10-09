@@ -28,7 +28,7 @@ export function memberSummary(m, evaluated) {
       <li>위원회 출석: ${m.committee_present ?? 0} / ${m.committee_meetings_total ?? 0}회 (${pct(m.committee_attendance_rate)})</li>
     </ul>
     <p>기준일 ${esc(run.data_as_of || '')} · 출처: 열린국회정보, 국회회의록</p></section>`;
-  return { title: `${m.name} 의원 의정활동 실적 — 일하는 국회`, description, html };
+  return { title: `${m.name} 의원 출석률·표결 참여·법안 실적 (${m.party || ''} ${(m.district || '').trim()}) — 일하는 국회`, description, html };
 }
 
 export function boardRows(members) {

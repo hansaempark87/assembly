@@ -499,5 +499,29 @@
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   if (document.body) document.body.appendChild(toTop);
 
-  window.NA = { PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+  // "링크 복사" plus the phone's own share sheet (KakaoTalk etc.) where available
+  function shareBar(el, { title, text }) {
+    const url = window.location.href;
+    el.innerHTML = `<div class="share">
+      ${navigator.share ? '<button type="button" class="btn btn-primary" data-act="share">공유하기</button>' : ''}
+      <button type="button" class="btn" data-act="copy">링크 복사</button>
+    </div>`;
+    el.addEventListener('click', async (e) => {
+      const b = e.target.closest('button[data-act]');
+      if (!b) return;
+      if (b.dataset.act === 'share') {
+        try { await navigator.share({ title, text, url }); } catch (err) { /* cancelled */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        b.textContent = '복사했습니다 ✓';
+      } catch (err) {
+        window.prompt('아래 주소를 복사하세요', url);
+      }
+      setTimeout(() => { b.textContent = '링크 복사'; }, 2000);
+    });
+  }
+
+  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
 })();

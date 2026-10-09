@@ -16,7 +16,7 @@ export async function onRequestGet({ env, request, next }) {
     return res;
   }
   const [y, n, a, x] = v.counts;
-  const title = `${v.name} 표결 결과 — 일하는 국회`;
+  const title = `${v.name} 표결 결과 · 누가 찬성·반대했나 — 일하는 국회`;
   const description = `${v.date} 본회의 ${v.result || ''} · 찬성 ${y} · 반대 ${n} · 기권 ${a} · 불참 ${x}. 의원별 찬반과 정당별 표결을 의석 그림으로 봅니다.`;
   const canonical = `${url.origin}/vote?id=${encodeURIComponent(id)}`;
   return new HTMLRewriter()
