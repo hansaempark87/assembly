@@ -1,5 +1,5 @@
 (function () {
-  const { esc, num, kdate, CHOICE, partyOrder, hemicycle, reveal } = window.NA;
+  const { shareBar, esc, num, kdate, CHOICE, partyOrder, hemicycle, reveal } = window.NA;
   const $ = (id) => document.getElementById(id);
   const content = $('content');
   const id = new URLSearchParams(window.location.search).get('id');
@@ -46,10 +46,11 @@
   }
 
   function render(v) {
-    document.title = `${v.name} 표결 — 일하는 국회`;
+    document.title = `${v.name} 표결 결과 · 누가 찬성·반대했나 — 일하는 국회`;
     $('title').textContent = v.name;
     $('meta').innerHTML = `${kdate(v.date)} 본회의 · 의안번호 ${esc(v.no)} · <b>${esc(v.result || '결과 미상')}</b> · <a href="${esc(v.url)}" target="_blank" rel="noopener">의안 원문 ↗</a>`;
 
+    shareBar(document.getElementById('share'), { title: `${v.name} 표결 결과`, text: `${v.name} — 찬성 ${v.counts[0]} · 반대 ${v.counts[1]} · 기권 ${v.counts[2]}. 누가 어떻게 투표했는지 보기` });
     const total = v.seats.length;
     const byParty = {};
     for (const s of v.seats) {
