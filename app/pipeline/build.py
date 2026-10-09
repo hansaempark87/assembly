@@ -386,10 +386,14 @@ def vote_pages(S):
             acc.append(c.lower() if c in 'YNA' and m and c != m else c)
     with open(out_dir / 'index.json', 'w', encoding='utf-8') as f:
         json.dump({'votes': index}, f, ensure_ascii=False, separators=(',', ':'))
-    keep = {v['bill_id'] for v in votes} | {'index'}
+    keep = {v['bill_id'] for v in votes} | {'index', 'dissent'}
     for p in out_dir.glob('*.json'):
         if p.stem not in keep:
             os.remove(p)
+    # per member: [votes cast (yes/no/abstain), of which differing from own party]
+    dissent = {mid: [sum(c in 'YNAyna' for c in acc), sum(c in 'yna' for c in acc)] for mid, acc in strings.items()}
+    with open(out_dir / 'dissent.json', 'w', encoding='utf-8') as f:
+        json.dump(dissent, f, separators=(',', ':'))
     return {mid: ''.join(acc) for mid, acc in strings.items()}, index
 
 

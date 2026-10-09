@@ -231,6 +231,28 @@
   }
 
   // ---------- party averages ----------
+  // ---------- bottom 10: the basic duties (lowest rates among graded members) ----------
+  const LOW = [
+    { key: 'vote', label: '표결 불참', value: (m) => m.participation_rate,
+      show: (m) => `${pct(m.participation_rate)}<small>${num(m.vote_eligible - m.vote_participated)}회 불참</small>`,
+      sub: '본회의 표결 참여율이 낮은 순 (불참 횟수)' },
+    { key: 'attendance', label: '본회의 결석', value: (m) => m.attendance_rate,
+      show: (m) => `${pct(m.attendance_rate)}<small>${num(m.attendance_meetings - m.attendance_present)}일 빠짐</small>`,
+      sub: '본회의 출석률이 낮은 순' },
+    { key: 'committee', label: '위원회 결석', value: (m) => m.committee_attendance_rate,
+      show: (m) => `${pct(m.committee_attendance_rate)}<small>${num(m.committee_meetings_total - m.committee_present)}회 빠짐</small>`,
+      sub: '위원회 출석률이 낮은 순' },
+  ];
+  function renderLow(key) {
+    const t = LOW.find((x) => x.key === key);
+    const list = all.filter((m) => m.eligible && t.value(m) !== null && t.value(m) !== undefined)
+      .sort((a, b) => t.value(a) - t.value(b) || a.name.localeCompare(b.name, 'ko')).slice(0, 10);
+    $('low-sub').textContent = `${t.sub} · 평가 대상 ${num(all.filter((m) => m.eligible).length)}명 중`;
+    $('low-list').innerHTML = list.map((m, i) => barRow(t.value(m) * 100,
+      `<span class="bl-rank">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
+      t.show(m), i)).join('');
+  }
+
   const PARTY = [
     { key: 'composite', label: '종합 백분위', value: (m) => m.composite_percentile, fmt: (v) => v.toFixed(1), fill: (v) => v, note: '종합 백분위 평균 · 50이 전체 중간' },
     { key: 'legislation', label: '입법 반영', value: (m) => m.lead_reflected, fmt: (v) => `평균 ${v.toFixed(1)}건`, fill: null },
@@ -403,6 +425,7 @@
       renderGrades();
       tabs($('top-tabs'), TOP, renderTop);
       tabs($('party-tabs'), PARTY, renderParty);
+      tabs($('low-tabs'), LOW, renderLow);
       setupBoard();
       renderTerm();
       renderSeats('party');
