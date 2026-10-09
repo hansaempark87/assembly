@@ -21,8 +21,8 @@ FONTS = APP / 'pipeline' / 'fonts'
 BG, SURFACE, BORDER = '#f6f7f9', '#ffffff', '#e5e7eb'
 TEXT, TEXT2, TEXT3 = '#111827', '#4b5563', '#6b7280'
 ACCENT, TRACK = '#2a78d6', '#e6e9ee'
-GRADE = {'S': ('#0f5e57', '#ffffff'), 'A': ('#2a9d8f', '#ffffff'), 'B': ('#9aa3ad', '#111827'),
-         'C': ('#e9a23b', '#2b1a00'), 'D': ('#b25e09', '#ffffff'), None: ('#e5e7eb', '#4b5563')}
+GRADE = {'S': ('#7c3aed', '#ffffff'), 'A': ('#16a34a', '#ffffff'), 'B': ('#eab308', '#2b2100'),
+         'C': ('#f97316', '#2b1200'), 'D': ('#57534e', '#ffffff'), None: ('#e5e7eb', '#4b5563')}
 CHOICE = {'Y': ('찬성', '#2a78d6'), 'N': ('반대', '#eb6834'), 'A': ('기권', '#4a3aa7'), 'X': ('불참', '#c9ced6')}
 LEFT = ['더불어민주당', '조국혁신당', '진보당', '기본소득당', '사회민주당']
 RIGHT = ['개혁신당', '국민의힘']
