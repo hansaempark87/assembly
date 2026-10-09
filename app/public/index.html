@@ -19,7 +19,7 @@
 <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="/css/style.css?v=87d83baa">
+<link rel="stylesheet" href="/css/style.css?v=8db22078">
 </head>
 <body>
 <header class="topbar">
@@ -113,10 +113,22 @@
     </div>
   </section>
 
+  <section class="card section" id="low-card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">기본 업무 하위 10명</h2>
+        <p class="card-sub" id="low-sub"></p>
+      </div>
+      <div class="tabs" role="tablist" id="low-tabs"></div>
+    </div>
+    <div class="barlist low" id="low-list"></div>
+    <div class="card-foot">평가 대상 의원만 · 국무위원·국회의장 등 겸직 기간과 재임 6개월 미만 의원은 제외 · 청가(사유를 낸 결석)와 출장도 출석으로 세지 않습니다</div>
+  </section>
+
   <section class="card section">
     <div class="card-head">
       <div>
-        <h2 class="card-title">정당별 평균</h2>
+        <h2 class="card-title">정당별 평균 <a class="card-link" href="/party">정당 비교 자세히 →</a></h2>
         <p class="card-sub" id="party-sub"></p>
       </div>
       <div class="tabs" role="tablist" id="party-tabs"></div>
@@ -166,6 +178,7 @@
 <footer class="site">
   <nav class="foot-links" aria-label="사이트 정보">
     <a href="/about">서비스 소개</a>
+    <a href="/party">정당별 비교</a>
     <a href="/method">평가 방법</a>
     <a href="/notes">데이터 처리 기준</a>
     <a href="/privacy">개인정보처리방침</a>
@@ -177,6 +190,6 @@
 </footer>
 
 <script src="/js/common.js?v=c6dacb53"></script>
-<script src="/js/app.js?v=4071d1e1"></script>
+<script src="/js/app.js?v=05af3033"></script>
 </body>
 </html>

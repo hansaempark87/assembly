@@ -755,3 +755,13 @@ a.wk-row:hover { background: var(--surface-2); text-decoration: none; }
   .topbar-inner { gap: 6px; }
 }
 @media (max-width: 380px) { .nav a { padding: 6px 4px; font-size: 0.76rem; } }
+.barlist.low .barlist-fill { background: color-mix(in srgb, var(--bad) 16%, transparent); }
+.card-link { font-size: 0.8rem; font-weight: 500; margin-left: 8px; }
+/* party comparison */
+.pm-sec { margin-top: 14px; }
+.pm-sec .kpi-label { margin-bottom: 6px; font-size: 0.8rem; }
+.pm-row { display: grid; grid-template-columns: 140px minmax(0, 1fr) 110px; gap: 12px; align-items: center; padding: 6px 0; }
+.pm-label { font-size: 0.84rem; color: var(--text-2); }
+.pm-val { text-align: right; font-weight: 600; font-size: 0.9rem; }
+.pm-val small { display: block; font-weight: 400; font-size: 0.72rem; color: var(--text-3); }
+@media (max-width: 640px) { .pm-row { grid-template-columns: 110px minmax(0, 1fr) 90px; gap: 8px; } }
