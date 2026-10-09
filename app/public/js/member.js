@@ -69,7 +69,7 @@
     const lead = areas[0];
     el.innerHTML = `<div class="card-head" style="margin-bottom:6px"><div><h2 class="card-title">관심 분야</h2>
         <p class="card-sub">대표발의 법안의 소관 위원회 기준 · 막대를 누르면 아래 목록이 걸러집니다</p></div></div>
-      <p class="plain">가장 많이 발의한 분야는 <b>${esc(lead.area)}</b>(${num(lead.bills)}건${lead.top_pct === 0 ? ', 이 분야 발의 1위' : lead.top_pct < 50 ? `, 이 분야 발의 상위 ${Math.max(1, Math.round(lead.top_pct))}%` : ''})입니다.</p>
+      <p class="plain">최다 발의 분야: <b>${esc(lead.area)}</b> ${num(lead.bills)}건 · 이 분야 발의 의원 중 ${num(lead.rank)}위</p>
       <div class="barlist">${top.map((a, i) => `<button type="button" class="barlist-row area-row" data-area="${esc(a.area)}">
           <div class="barlist-bar"><div class="barlist-fill" style="width:${((a.bills / max) * 100).toFixed(1)}%;--i:${i}"></div>
           <div class="barlist-text"><b>${esc(a.area)}</b><span class="muted">${Math.round((a.bills / total) * 100)}%</span></div></div>
@@ -87,7 +87,7 @@
       : '<li class="muted">없음</li>';
     const headline = coop.eligible
       ? `<div class="headline"><span class="v num">${pct1(coop.index)}</span>${m.coop_bonus > 0 ? `<span class="pct">가산 +${m.coop_bonus.toFixed(1)}점</span>` : ''}</div>
-         <p class="plain">대표발의 법안 공동발의자 ${num(coop.base)}명 중 <b>${num(coop.cross)}명</b>이 다른 정당 의원입니다.${coop.party_median !== null && coop.party_median !== undefined ? ` 같은 당 의원 중앙값은 ${pct1(coop.party_median)}입니다.` : ''}</p>`
+         <p class="plain">공동발의 참여 ${num(coop.base)}건 중 ${num(coop.cross)}건이 다른 정당 의원${coop.party_median !== null && coop.party_median !== undefined ? ` · 같은 당 중앙값 ${pct1(coop.party_median)}` : ''}</p>`
       : `<p class="plain">${coop.bills < 5 ? '대표발의 법안이 5건 미만이라 협력 지수를 계산하지 않습니다.' : '비교할 정당 기준이 없어 가산점 대상이 아닙니다.'}</p>`;
     el.innerHTML = `<div class="card-head" style="margin-bottom:6px"><div><h2 class="card-title">초당적 협력</h2>
         <p class="card-sub">다른 당 공동발의자 비율 · 같은 당 평균보다 높은 만큼 최대 +3점 가산</p></div></div>

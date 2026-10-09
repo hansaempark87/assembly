@@ -160,7 +160,7 @@ def main():
         ar = sorted(areas[mid].items(), key=lambda kv: -kv[1][0])
         data['areas'] = [
             {'area': k, 'bills': n, 'reflected': r,
-             'top_pct': round(100 * sum(1 for x in area_counts[k] if x > n) / max(1, len(members)), 1)}
+             'rank': 1 + sum(1 for x in area_counts[k] if x > n)}
             for k, (n, r) in ar
         ]
         top = []
