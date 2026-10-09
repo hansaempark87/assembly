@@ -1,0 +1,14 @@
+# Scripts, styles and data change with every update: always revalidate
+# (an unchanged file costs only a 304), so visitors never run an old script.
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+/*.json
+  Cache-Control: public, max-age=0, must-revalidate
+/bills/*
+  Cache-Control: public, max-age=0, must-revalidate
+/vote-data/*
+  Cache-Control: public, max-age=0, must-revalidate
+/og/*
+  Cache-Control: public, max-age=3600
