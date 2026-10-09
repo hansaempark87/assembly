@@ -96,7 +96,7 @@
       short: (m) => `반영 ${num(m.lead_reflected)}/${num(m.lead_count)}건`,
       plain: (m) =>
         m.lead_count
-          ? `대표발의한 법안 10건 중 약 ${((m.lead_reflected / m.lead_count) * 10).toFixed(1)}건이 법에 반영됐어요.`
+          ? `대표발의 ${num(m.lead_count)}건 중 ${num(m.lead_reflected)}건 법에 반영`
           : '대표발의한 법안이 없습니다.',
       axisNote: '채점 점수 = (가결 1 + 대안반영 0.5) ÷ 재임 연수',
       rawRate: (raw, m) => `채점 ${((m.lead_passed + 0.5 * m.lead_alternative) / m.tenure_days * 365).toFixed(1)}점 (재임 ${num(m.tenure_days)}일 기준)`,
@@ -108,7 +108,7 @@
       short: (m) => `${pct(m.participation_rate)} · ${num(m.vote_participated)}회`,
       plain: (m) =>
         m.participation_rate !== null && m.participation_rate !== undefined
-          ? `본회의 표결 10번 중 ${(m.participation_rate * 10).toFixed(1)}번 참여했어요.`
+          ? `표결 ${num(m.vote_eligible)}회 중 ${num(m.vote_participated)}회 참여`
           : '표결 기록이 없습니다.',
       axisNote: '기록표결 참여율',
       rawRate: (raw) => `${pct(raw.participation_rate)} (${num(raw.vote_participated)} / ${num(raw.vote_eligible)}회)`,
@@ -120,7 +120,7 @@
       short: (m) => `${pct(m.attendance_rate)} · ${num(m.attendance_present)}/${num(m.attendance_meetings)}일`,
       plain: (m) =>
         m.attendance_rate !== null && m.attendance_rate !== undefined
-          ? `본회의가 10번 열리면 ${(m.attendance_rate * 10).toFixed(1)}번 출석했어요.`
+          ? `본회의 ${num(m.attendance_meetings)}일 중 ${num(m.attendance_present)}일 출석`
           : '출석 기록이 없습니다.',
       axisNote: '본회의 출석률',
       rawRate: (raw) => `${pct(raw.attendance_rate)} (${num(raw.attendance_present)} / ${num(raw.attendance_meetings)}일)`,
@@ -132,7 +132,7 @@
       short: (m) => (m.committee_meetings_total ? `${pct(m.committee_attendance_rate)} · ${num(m.committee_present)}/${num(m.committee_meetings_total)}회` : '자료 없음'),
       plain: (m) =>
         m.committee_meetings_total
-          ? `위원회 회의 10번 중 ${(m.committee_attendance_rate * 10).toFixed(1)}번 출석했어요.`
+          ? `위원회 회의 ${num(m.committee_meetings_total)}회 중 ${num(m.committee_present)}회 출석`
           : '아직 공개된 위원회 출결 자료가 없습니다.',
       axisNote: '위원회 출석률',
       rawRate: (raw) => `${pct(raw.committee_attendance_rate)} (${num(raw.committee_present)} / ${num(raw.committee_meetings_total)}회)`,
