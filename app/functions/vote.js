@@ -24,6 +24,7 @@ export async function onRequestGet({ env, request, next }) {
     .on('meta[name="description"]', setAttr('content', description))
     .on('meta[property="og:title"]', setAttr('content', title))
     .on('meta[property="og:description"]', setAttr('content', description))
+    .on('meta[property="og:image"]', setAttr('content', `${url.origin}/og/${v.og ? `v/${id}.png` : 'vote.png'}`))
     .on('head', appendHtml(`<link rel="canonical" href="${esc(canonical)}"><meta property="og:url" content="${esc(canonical)}">`))
     .on('#title', setText(v.name))
     .on('#meta', setText(description))
