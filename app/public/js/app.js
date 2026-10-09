@@ -368,7 +368,7 @@
       tabs($('top-tabs'), TOP, renderTop);
       tabs($('party-tabs'), PARTY, renderParty);
       setupBoard();
-      renderSeats('grade');
+      renderSeats('party');
       $('seat-tabs').addEventListener('click', (e) => { const t = e.target.closest('.tab'); if (t) renderSeats(t.dataset.k); });
       fetch('/weekly.json').then((r) => (r.ok ? r.json() : Promise.reject())).then(renderWeekly)
         .catch(() => { $('weekly-card').hidden = true; });
