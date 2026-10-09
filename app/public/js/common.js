@@ -104,7 +104,7 @@
     {
       key: 'vote', label: '표결 참여', weightKey: 'vote_weight', pctKey: 'vote_percentile',
       rate: (m) => m.participation_rate, fmt: (v) => pct(v), unit: '%',
-      raw: (m) => `${num(m.vote_participated)} / ${num(m.vote_eligible)}회 참여`,
+      raw: (m) => `${num(m.vote_participated)}회 참여 / 대상 ${num(m.vote_eligible)}회`,
       short: (m) => `${pct(m.participation_rate)} · ${num(m.vote_participated)}회`,
       plain: (m) =>
         m.participation_rate !== null && m.participation_rate !== undefined
@@ -116,7 +116,7 @@
     {
       key: 'attendance', label: '본회의 출석', weightKey: 'attendance_weight', pctKey: 'attendance_percentile',
       rate: (m) => m.attendance_rate, fmt: (v) => pct(v), unit: '%',
-      raw: (m) => `${num(m.attendance_present)} / ${num(m.attendance_meetings)}일 출석`,
+      raw: (m) => `${num(m.attendance_present)}일 출석 / 개의 ${num(m.attendance_meetings)}일`,
       short: (m) => `${pct(m.attendance_rate)} · ${num(m.attendance_present)}/${num(m.attendance_meetings)}일`,
       plain: (m) =>
         m.attendance_rate !== null && m.attendance_rate !== undefined
@@ -128,7 +128,7 @@
     {
       key: 'committee', label: '위원회 출석', weightKey: 'committee_attendance_weight', pctKey: 'committee_attendance_percentile',
       rate: (m) => m.committee_attendance_rate, fmt: (v) => pct(v), unit: '%',
-      raw: (m) => (m.committee_meetings_total ? `${num(m.committee_present)} / ${num(m.committee_meetings_total)}회 출석` : '자료 없음'),
+      raw: (m) => (m.committee_meetings_total ? `${num(m.committee_present)}회 출석 / 회의 ${num(m.committee_meetings_total)}회` : '자료 없음'),
       short: (m) => (m.committee_meetings_total ? `${pct(m.committee_attendance_rate)} · ${num(m.committee_present)}/${num(m.committee_meetings_total)}회` : '자료 없음'),
       plain: (m) =>
         m.committee_meetings_total

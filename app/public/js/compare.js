@@ -9,7 +9,7 @@
   const sel = { a: null, b: null };
 
   function headCard(m, side) {
-    return `<div class="card vs-card">
+    return `<div class="card vs-card side-${side}">
       ${gradeBadge(m.grade, 'grade-lg')}
       <div class="who">
         <span class="vs-key ${side}"></span><b><a href="/member?id=${encodeURIComponent(m.id)}" style="color:inherit">${esc(m.name)}</a></b>
@@ -29,10 +29,12 @@
     const v = mt.rate(m);
     const p = m[mt.pctKey];
     const big = mt.headline ? mt.headline(m) : v === null || v === undefined ? '–' : mt.fmt(v);
-    const detail = mt.headline && v !== null && v !== undefined ? `채점 ${mt.fmt(v)} · ${mt.short(m)}` : mt.raw(m);
-    return `<div class="cmp-val num ${side === 'b' ? 'right' : ''}">
-      ${esc(big)}${win === side ? '<span class="win">▲ 우세</span>' : ''}
-      <small>${p === null || p === undefined ? '' : `${topText(p)} · `}${esc(detail)}</small>
+    const detail = mt.headline && v !== null && v !== undefined ? `채점 ${mt.fmt(v)} · ${mt.raw(m)}` : mt.raw(m);
+    return `<div class="cmp-val num side-${side}">
+      <span class="who-tag ${side}">${esc(m.name)}</span>
+      <span class="cmp-big">${esc(big)}${win === side ? '<span class="win">▲ 우세</span>' : ''}</span>
+      ${p === null || p === undefined ? '' : `<small>${topText(p)}</small>`}
+      <small>${esc(detail)}</small>
     </div>`;
   }
 
@@ -51,9 +53,9 @@
       const w = winner(a[mt.pctKey], b[mt.pctKey]);
       if (w) wins[w] += 1;
       return `<div class="cmp-row">
-        <div class="cmp-head">
+        <div class="cmp-label">${mt.label} <small>비중 ${Math.round((run[mt.weightKey] || 0) * 100)}%</small></div>
+        <div class="cmp-pair">
           ${valueCell(a, mt, 'a', w)}
-          <div class="label">${mt.label}<small>비중 ${Math.round((run[mt.weightKey] || 0) * 100)}%</small></div>
           ${valueCell(b, mt, 'b', w)}
         </div>
         <div class="strip-host" data-key="${mt.key}"></div>
@@ -66,9 +68,13 @@
         <div class="card-head">
           <div>
             <h2 class="card-title">항목별 비교</h2>
-            <p class="card-sub">회색 점은 평가 대상 ${num(eligible.length)}명, <span class="vs-key"></span>${esc(a.name)} · <span class="vs-key b"></span>${esc(b.name)} · 백분위가 높은 쪽에 ▲</p>
+            <p class="card-sub">회색 점은 평가 대상 ${num(eligible.length)}명 · 백분위가 높은 쪽에 ▲</p>
           </div>
-          <div class="chip num">${esc(a.name)} ${wins.a} : ${wins.b} ${esc(b.name)}</div>
+        </div>
+        <div class="vs-legend">
+          <span class="who-tag a">${esc(a.name)}</span>
+          <b class="num">${wins.a} : ${wins.b}</b>
+          <span class="who-tag b">${esc(b.name)}</span>
         </div>
         ${rows}
       </section>`;
