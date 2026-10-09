@@ -423,6 +423,25 @@ def weekly(S, cov, vote_index):
         base = cur
     write_json(path, {'base': base, 'current': cur}, indent=None)
 
+    # rank/grade history, one entry per data date (kept for trend charts)
+    hpath = APP / 'data' / 'rank-history.json'
+    hist = json.load(open(hpath, encoding='utf-8')) if hpath.exists() else {'dates': [], 'ranks': {}}
+    for snap_ in ([base] if base['as_of'] not in hist['dates'] and base is not cur else []) + [cur]:
+        d = snap_['as_of']
+        if d in hist['dates']:
+            k = hist['dates'].index(d)
+        else:
+            hist['dates'].append(d)
+            k = len(hist['dates']) - 1
+        for i, (rank, grade) in snap_['ranks'].items():
+            row = hist['ranks'].setdefault(i, [])
+            row.extend([None] * (k + 1 - len(row)))
+            row[k] = [rank, grade]
+    order = sorted(range(len(hist['dates'])), key=lambda k: hist['dates'][k])
+    hist = {'dates': [hist['dates'][k] for k in order],
+            'ranks': {i: [(row[k] if k < len(row) else None) for k in order] for i, row in hist['ranks'].items()}}
+    write_json(hpath, hist, indent=None)
+
     bc = base['coverage']
     in_votes = lambda d: bc['votes_until'] < d <= cov['votes_until']
     in_bills = lambda d: bool(d) and bc['bills_until'] < d <= cov['bills_until']
