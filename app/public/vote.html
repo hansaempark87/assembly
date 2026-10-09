@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>데이터 처리 기준 — 일하는 국회</title>
-<meta name="description" content="일하는 국회가 원자료의 모순·누락·동일인 판별 등에 적용한 데이터 처리 기준과 정정 내역">
+<title>본회의 표결 — 일하는 국회</title>
+<meta name="description" content="제22대 국회 본회의 표결 결과와 의원별 찬반">
 <meta name="theme-color" content="#2a78d6">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="일하는 국회">
-<meta property="og:title" content="데이터 처리 기준 — 일하는 국회">
-<meta property="og:description" content="일하는 국회가 원자료의 모순·누락·동일인 판별 등에 적용한 데이터 처리 기준과 정정 내역">
+<meta property="og:title" content="일하는 국회 — 제22대 국회의원 실적 대시보드">
+<meta property="og:description" content="공식 기록으로 보는 국회의원 입법·표결·출석 실적과 상대평가 등급">
 <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -23,7 +23,7 @@
     <nav class="nav">
       <a href="/">대시보드</a>
       <a href="/compare">의원 비교</a>
-      <a href="/votes">표결</a>
+      <a href="/votes" aria-current="page">표결</a>
       <a href="/method">평가 방법</a>
       <a href="/about">소개</a>
     </nav>
@@ -32,26 +32,15 @@
   </div>
 </header>
 
-<main class="doc notes-page">
+<main>
   <div class="page-head">
     <div>
-      <h1>데이터 처리 기준</h1>
-      <p>원자료가 서로 맞지 않거나 판단이 필요했던 곳에 어떤 기준을 적용했는지 모두 공개합니다</p>
+      <p class="crumb"><a href="/votes">본회의 표결</a></p>
+      <h1 id="title">표결 결과</h1>
+      <p id="meta">불러오는 중…</p>
     </div>
   </div>
-
-  <section class="card notes-summary">
-    <p>국회 공개 자료끼리 숫자가 다르면 <b>공개된 공식 합계</b>를 기본으로 따릅니다. 그래도 판단이 필요한 경우 아래에 문제, 적용한 기준, 결과에 미친 영향을 함께 기록합니다. 새 기준이 생기거나 바뀌면 날짜와 함께 이 페이지에 추가합니다.</p>
-    <p class="card-sub" id="notes-updated"></p>
-  </section>
-
-  <div class="toolbar section" style="margin-bottom:12px">
-    <div class="tabs" role="tablist" id="note-tabs"></div>
-    <span class="count num" id="note-count"></span>
-  </div>
-  <div id="notes"><div class="skeleton">불러오는 중…</div></div>
-
-  <p class="card-sub" style="margin-top:20px">기준에 이의가 있거나 원자료 오류를 발견하시면 <a href="mailto:assemblygowork@gmail.com">assemblygowork@gmail.com</a>으로 알려주세요.</p>
+  <div id="content"></div>
 </main>
 
 <footer class="site">
@@ -68,6 +57,6 @@
 </footer>
 
 <script src="/js/common.js"></script>
-<script src="/js/notes.js"></script>
+<script src="/js/vote.js"></script>
 </body>
 </html>
