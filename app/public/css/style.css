@@ -532,3 +532,17 @@ tr.reveal.in-view .meter-fill { transform: none; transition: transform 1.2s cubi
 .bill-st.st-alt { background: var(--accent-soft); color: var(--accent-ink); }
 @media (max-width: 640px) { .bill-list li { grid-template-columns: 56px 1fr; gap: 10px; } }
 #bills { scroll-margin-top: 72px; }
+
+/* ---------- areas & collaboration cards ---------- */
+button.barlist-row { all: unset; display: grid; grid-template-columns: minmax(0, 1fr) 84px; gap: 12px; align-items: center; cursor: pointer; border-radius: 6px; }
+button.barlist-row:hover .barlist-fill { background: color-mix(in srgb, var(--accent) 25%, var(--accent-soft)); }
+button.barlist-row:focus-visible { outline: 2px solid var(--accent); }
+.partners { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+.partners h3 { margin: 0 0 6px; font-size: 0.82rem; color: var(--text-3); font-weight: 600; }
+.partners ol { margin: 0; padding-left: 18px; font-size: 0.86rem; }
+.partners li { margin-bottom: 4px; }
+.partners li b { float: right; font-weight: 600; }
+.link-btn { all: unset; cursor: pointer; color: var(--accent); margin-left: 6px; }
+@media (max-width: 640px) { .partners { grid-template-columns: 1fr; } }
+
+.formula-line { margin: 0; font-size: 0.9rem; background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; }

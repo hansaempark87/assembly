@@ -21,7 +21,7 @@ LEFT JOIN member_committee_attendance c ON c.member_id = m.id`;
 
 const SCORE_FIELDS = [
   'status', 'eligible', 'observed_days', 'legislation_percentile', 'vote_percentile', 'attendance_percentile',
-  'committee_attendance_percentile', 'composite_percentile', 'rank', 'grade',
+  'committee_attendance_percentile', 'composite_percentile', 'composite_score', 'coop_bonus', 'coop_index', 'coop_excess', 'rank', 'grade',
 ];
 
 // Returns the row with score fields attached. For members with an excluded

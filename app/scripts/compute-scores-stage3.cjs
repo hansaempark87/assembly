@@ -1,6 +1,6 @@
 // Stage-3 scoring: stage-2 formula + exclusion of state-office periods.
 //
-// Usage: node scripts/compute-scores-stage3.cjs <members.json> <data/member-roles.json> <data/role-adjustments.json> <data/data-corrections.json> <lib/score-run.js>
+// Usage: node scripts/compute-scores-stage3.cjs <members.json> <data/member-roles.json> <data/role-adjustments.json> <data/data-corrections.json> <data/coop.json> <lib/score-run.js>
 //   members.json is the /api/members response (raw D1 counts, any score run).
 //
 // For members whose role kind is "exclude" (국회의장·국무총리·국무위원), every
@@ -19,12 +19,14 @@ const { percentileRank, grade } = require('./compute-scores.cjs');
 
 const MIN_TENURE_DAYS = 180;
 const WEIGHTS = { legislation: 0.40, vote: 0.35, attendance: 0.15, committee: 0.10 };
-const FORMULA_VERSION = 'stage3-2026-10-08';
+const FORMULA_VERSION = 'stage4-2026-10-09';
 
 const ratio = (n, d) => (d > 0 ? n / d : null);
 
 function main() {
-  const [membersFile, rolesFile, adjFile, corrFile, outFile] = process.argv.slice(2);
+  const [membersFile, rolesFile, adjFile, corrFile, coopFile, outFile] = process.argv.slice(2);
+  // Cross-party collaboration bonus (+0..3 on the 0..100 composite), see scripts/build-member-extras.py
+  const coop = JSON.parse(fs.readFileSync(coopFile, 'utf8')).members;
   const members = JSON.parse(fs.readFileSync(membersFile, 'utf8')).members;
   // Documented corrections to the raw records (see public/data-notes.json)
   const corrections = JSON.parse(fs.readFileSync(corrFile, 'utf8')).corrections;
@@ -95,6 +97,10 @@ function main() {
         r.attendance_percentile * WEIGHTS.attendance) / core3;
     }
   }
+  for (const r of eligible) {
+    r.coop_bonus = (coop[r.id] && coop[r.id].bonus) || 0;
+    if (r.comp !== null) { r.base_comp = r.comp; r.comp += r.coop_bonus; }
+  }
   const compP = percentileRank(eligible.map((r) => ({ id: r.id, value: r.comp })));
   const ranked = eligible.filter((r) => r.comp !== null).sort((a, b) => b.comp - a.comp);
   ranked.forEach((r, i) => {
@@ -114,6 +120,10 @@ function main() {
       attendance_percentile: ok ? r.attendance_percentile : null,
       committee_attendance_percentile: ok ? r.committee_attendance_percentile : null,
       composite_percentile: cp,
+      composite_score: ok && r.comp !== null ? r.comp : null,
+      coop_bonus: ok ? r.coop_bonus || 0 : 0,
+      coop_index: coop[r.id] && coop[r.id].eligible ? coop[r.id].index : null,
+      coop_excess: coop[r.id] ? coop[r.id].excess : 0,
       rank: ok ? r.rank ?? null : null,
       grade: grade(cp),
       ...(correctById[r.id] ? { correct: correctById[r.id] } : {}),
