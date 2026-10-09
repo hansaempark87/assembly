@@ -4,7 +4,7 @@
 
 **현재 단계: 공개 운영.** 데이터는 매주 월요일 자동 갱신됩니다([자동 갱신](docs/auto-update.md)).
 
-- 배포 주소: https://assembly-dashboard.pages.dev
+- 배포 주소: https://assembly-korea.com (예전 주소 assembly-dashboard.pages.dev와 www는 자동으로 이동)
 - 배포 방식: Cloudflare Pages Git 연동(루트 `app`, 출력 `public`). `main`에 반영되면 실제 사이트로, 다른 브랜치는 미리보기 주소로 자동 배포됩니다.
 - 소스: [`app/`](app/) — Cloudflare Pages Functions(API) + 코드와 함께 배포되는 데이터 파일 + 정적 HTML/JS
 
