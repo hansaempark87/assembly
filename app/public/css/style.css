@@ -636,7 +636,6 @@ button.barlist-row:focus-visible { outline: 2px solid var(--accent); }
 @media (max-width: 640px) {
   .topbar-spacer { display: none; }
   .nav { margin-left: 4px; }
-  .nav a[href="/about"] { display: none; } /* in the footer */
 }
 @media (max-width: 400px) {
   .nav { gap: 0; }
@@ -751,3 +750,8 @@ a.wk-row:hover { background: var(--surface-2); text-decoration: none; }
 .term-bar span { display: block; height: 100%; background: var(--accent); border-radius: 6px; }
 .term-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; font-size: 0.78rem; color: var(--text-3); flex-wrap: wrap; }
 @media (max-width: 640px) { .term-foot span:nth-child(2) { order: 3; width: 100%; text-align: center; } }
+@media (max-width: 640px) {
+  .nav a { padding: 6px 5px; font-size: 0.8rem; }
+  .topbar-inner { gap: 6px; }
+}
+@media (max-width: 380px) { .nav a { padding: 6px 4px; font-size: 0.76rem; } }
