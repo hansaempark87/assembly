@@ -741,3 +741,13 @@ a.wk-row:hover { background: var(--surface-2); text-decoration: none; }
 .gm-rank { text-align: right; font-size: 0.8rem; color: var(--text-3); min-width: 112px; }
 .gm-rank b { color: var(--text); }
 .gm-rank small { display: block; font-size: 0.72rem; font-weight: 600; }
+/* term progress */
+.term-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 12px; }
+.term-big { font-size: 1.05rem; color: var(--text-2); margin-top: 4px; }
+.term-big b { font-size: 1.8rem; color: var(--text); letter-spacing: -0.02em; margin-right: 4px; }
+.term-left { text-align: right; }
+.term-left b { display: block; font-size: 1.8rem; color: var(--accent); letter-spacing: -0.02em; margin-top: 4px; }
+.term-bar { height: 12px; border-radius: 6px; background: var(--track); overflow: hidden; }
+.term-bar span { display: block; height: 100%; background: var(--accent); border-radius: 6px; }
+.term-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; font-size: 0.78rem; color: var(--text-3); flex-wrap: wrap; }
+@media (max-width: 640px) { .term-foot span:nth-child(2) { order: 3; width: 100%; text-align: center; } }

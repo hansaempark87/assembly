@@ -28,6 +28,32 @@
   view.manual();
   let sort = { key: 'rank', dir: 'asc' };
 
+  // ---------- term progress (22nd Assembly: 2024-05-30 ~ 2028-05-29) ----------
+  function renderTerm() {
+    const START = '2024-05-30', END = '2028-05-29';
+    const kst = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+    const day = (iso) => Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)) / 864e5;
+    const total = day(END) - day(START) + 1;
+    const passed = Math.min(total, Math.max(0, day(kst) - day(START) + 1));
+    const left = total - passed;
+    const share = (passed / total) * 100;
+    const fmt = (iso) => iso.replace(/-/g, '.');
+    $('term').innerHTML = `
+      <div class="term-head">
+        <div><span class="kpi-label">제22대 국회 임기</span>
+          <div class="term-big"><b class="num">${share.toFixed(1)}%</b> 지났습니다</div></div>
+        <div class="term-left"><span class="kpi-label">임기 만료까지</span><b class="num">D-${num(left)}</b></div>
+      </div>
+      <div class="term-bar" role="img" aria-label="임기 ${total}일 중 ${passed}일 경과">
+        <span style="width:${share.toFixed(2)}%"></span>
+      </div>
+      <div class="term-foot num">
+        <span>${fmt(START)} 개원</span>
+        <span>${num(passed)}일 경과 · ${num(left)}일 남음 · 전체 ${num(total)}일</span>
+        <span>${fmt(END)} 임기 만료</span>
+      </div>`;
+  }
+
   // ---------- seat chart ----------
   const GRADES = ['S', 'A', 'B', 'C', 'D'];
   function renderSeats(mode) {
@@ -378,6 +404,7 @@
       tabs($('top-tabs'), TOP, renderTop);
       tabs($('party-tabs'), PARTY, renderParty);
       setupBoard();
+      renderTerm();
       renderSeats('party');
       $('seat-tabs').addEventListener('click', (e) => { const t = e.target.closest('.tab'); if (t) renderSeats(t.dataset.k); });
       fetch('/weekly.json').then((r) => (r.ok ? r.json() : Promise.reject())).then(renderWeekly)
