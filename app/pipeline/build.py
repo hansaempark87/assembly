@@ -489,6 +489,166 @@ def weekly(S, cov, vote_index):
         json.dump(out, f, ensure_ascii=False, separators=(',', ':'))
 
 
+# ---------- political-leaning quiz ----------
+
+def member_positions(S, vote_index):
+    """One left-right score per member from all party-clash votes: the first
+    principal component of the member x vote matrix (yes +1, no -1, abstain
+    -0.5, absent/not in office left out), oriented so 국민의힘 is positive and
+    scaled to -1..1. Pure Python power iteration, no extra dependency."""
+    clash = [v['id'] for v in vote_index if v['clash']]
+    by_id = {v['bill_id']: v for v in S.votes}
+    val = {'Y': 1.0, 'N': -1.0, 'A': -0.5}
+    mids = [m['id'] for m in S.members]
+    rows = {i: {} for i in mids}
+    for j, vid in enumerate(clash):
+        v = by_id[vid]
+        for k in 'YNA':
+            for i in v[k]:
+                if i in rows:
+                    rows[i][j] = val[k]
+    # centre each vote on the members present
+    for j in range(len(clash)):
+        xs = [r[j] for r in rows.values() if j in r]
+        mu = sum(xs) / len(xs) if xs else 0
+        for r in rows.values():
+            if j in r:
+                r[j] -= mu
+    keep = [i for i in mids if len(rows[i]) >= 20]
+    w = [1.0] * len(clash)
+    for _ in range(200):
+        sc = {i: sum(x * w[j] for j, x in rows[i].items()) / len(rows[i]) for i in keep}
+        w = [sum(sc[i] * rows[i].get(j, 0) for i in keep) for j in range(len(clash))]
+        n = sum(x * x for x in w) ** 0.5 or 1
+        w = [x / n for x in w]
+    sc = {i: sum(x * w[j] for j, x in rows[i].items()) / len(rows[i]) for i in keep}
+    party = {m['id']: m['party'] for m in S.members}
+    mean = lambda p: (lambda xs: sum(xs) / len(xs) if xs else 0)([sc[i] for i in keep if party[i] == p])
+    sign = 1 if mean('국민의힘') >= mean('더불어민주당') else -1
+    sc = {i: sign * x for i, x in sc.items()}
+    lo, hi = min(sc.values()), max(sc.values())
+    return {i: round(2 * (x - lo) / ((hi - lo) or 1) - 1, 3) for i, x in sc.items()}
+
+
+def quiz_data(S, vote_index, scores):
+    qfile = APP / 'data' / 'quiz.json'
+    if not qfile.exists():
+        return
+    questions = json.load(open(qfile, encoding='utf-8'))['questions']
+    by_id = {v['bill_id']: v for v in S.votes}
+    idx = {v['id']: v for v in vote_index}
+    pos = member_positions(S, vote_index)
+    out_q, answers = [], {m['id']: [] for m in S.members}
+    party_maj = collections.defaultdict(list)
+    for q in questions:
+        v, x = by_id[q['vote']], idx[q['vote']]
+        choice = {i: k for k in 'YNAX' for i in v[k]}
+        for mid, acc in answers.items():
+            acc.append(choice.get(mid, '.'))
+        out_q.append({**{k: q[k] for k in ('topic', 'title', 'law', 'summary', 'pro', 'con')},
+                      'vote': q['vote'], 'date': x['date'], 'result': x['result'], 'counts': x['counts']})
+        for p, ids_ in v['party'].items():
+            c = collections.Counter(choice[i] for i in ids_ if choice[i] in 'YN')
+            party_maj[p].append(('Y' if c['Y'] > c['N'] else 'N' if c['N'] > c['Y'] else '.') if sum(c.values()) >= 3 else '.')
+    members = {}
+    for m in S.members:
+        s = scores.get(m['id'], {})
+        members[m['id']] = [m['name'], m['party'], s.get('grade'), pos.get(m['id'])]
+    counts = collections.Counter(m['party'] for m in S.members)
+    parties = {}
+    for p, n in counts.items():
+        ps = [pos[m['id']] for m in S.members if m['party'] == p and m['id'] in pos]
+        if n >= 3 and ps and p != INDEPENDENT:
+            parties[p] = {'pos': round(sum(ps) / len(ps), 3), 'n': n, 'majority': ''.join(party_maj.get(p, [])) or '.' * len(out_q)}
+    with open(APP / 'public' / 'quiz-data.json', 'w', encoding='utf-8') as f:
+        json.dump({'questions': out_q, 'members': members, 'answers': {k: ''.join(v) for k, v in answers.items()},
+                   'parties': parties, 'as_of': S.meta['data_as_of']}, f, ensure_ascii=False, separators=(',', ':'))
+
+
+# ---------- law finder ----------
+
+TOPICS = [
+    ('housing', '전세·주거', ['주택임대차', '전세사기', '주택도시기금', '공공주택', '임대주택', '주거기본', '민간임대', '부동산']),
+    ('medical', '의료·건강', ['의료법', '응급의료', '의료인', '지역의사', '공공의료', '국민건강보험', '의과대학', '필수의료', '감염병']),
+    ('labor', '일자리·노동', ['근로기준법', '노동조합', '최저임금', '산업안전보건', '고용보험', '중대재해', '파견근로', '임금채권']),
+    ('family', '저출생·육아', ['저출산', '저출생', '아동수당', '육아', '모자보건', '영유아보육', '남녀고용평등', '출산', '아이돌봄']),
+    ('digital', 'AI·디지털', ['인공지능', '정보통신망', '개인정보', '플랫폼', '전자상거래', '데이터', '전기통신']),
+    ('tax', '세금', ['소득세법', '법인세법', '조세특례제한법', '상속세', '부가가치세', '종합부동산세', '지방세']),
+    ('pension', '연금·노후', ['국민연금', '기초연금', '노인복지', '퇴직연금', '장기요양']),
+    ('youth', '청년', ['청년']),
+    ('education', '교육', ['초·중등교육', '고등교육', '학교폭력', '교원', '유아교육', '사립학교', '교육기본법']),
+    ('safety', '안전·재난', ['재난', '소방', '안전관리', '산업재해', '시설물']),
+    ('traffic', '교통', ['도로교통법', '철도', '자동차관리법', '교통안전', '항공', '여객자동차']),
+    ('climate', '환경·에너지', ['기후', '탄소', '대기환경', '자원순환', '재생에너지', '원자력', '전기사업']),
+    ('animal', '반려동물', ['동물보호', '반려', '수의사']),
+    ('crime', '범죄·처벌', ['형법', '성폭력', '스토킹', '마약', '전기통신금융사기', '아동학대']),
+]
+ST = {'passed': 'P', 'alt': 'A', 'withdrawn': 'W', 'rejected': 'R', 'pending': 'N'}
+
+
+def popular(rows, n=10, per_lead=2):
+    """Most co-sponsored bills, at most two per lead sponsor so one name does not fill the list."""
+    out, seen = [], collections.Counter()
+    for r in sorted(rows, key=lambda r: -r['co']):
+        lead = r['leads'][0] if r['leads'] else ''
+        if seen[lead] >= per_lead:
+            continue
+        seen[lead] += 1
+        out.append(r)
+        if len(out) == n:
+            break
+    return out
+
+
+def law_data(S, vote_index):
+    out = APP / 'public' / 'law-data'
+    os.makedirs(out, exist_ok=True)
+    names = {m['id']: m['name'] for m in S.members}
+    voted = {v['id'] for v in vote_index}
+    rows = []
+    for b in sorted(S.bills, key=lambda b: (b['PROPOSE_DT'], b['BILL_NO']), reverse=True):
+        st, label = bill_status(b, S.cutoff)
+        leads = ids(b['RST_MONA_CD'])
+        rows.append({'id': b['BILL_ID'], 'no': b['BILL_NO'], 'name': b['BILL_NAME'], 'proposed': b['PROPOSE_DT'],
+                     'st': ST[st], 'result': label, 'decided': b['PROC_DT'] if label else None,
+                     'area': area_of(b.get('COMMITTEE')), 'leads': leads,
+                     'co': len(set(ids(b['PUBL_MONA_CD'])) - set(leads)), 'vote': b['BILL_ID'] in voted})
+
+    def card(r):
+        return {**r, 'leads': [[i, names.get(i) or S.former.get(i) or ''] for i in r['leads']]}
+
+    topics = []
+    for key, label, words in TOPICS:
+        hit = [r for r in rows if any(w in r['name'] for w in words)]
+        passed = sorted([r for r in hit if r['st'] in 'PA'], key=lambda r: (r['decided'] or '', r['st'] == 'P'), reverse=True)[:12]
+        topics.append({'key': key, 'label': label, 'words': words, 'total': len(hit),
+                       'passed': sum(r['st'] == 'P' for r in hit), 'alt': sum(r['st'] == 'A' for r in hit),
+                       'items': [card(r) for r in passed]})
+    clash_laws = sorted([v for v in vote_index if v['clash'] and v['kind'] == '법률안'],
+                        key=lambda v: -(v['counts'][1] + v['counts'][2]))[:8]
+    home = {
+        'as_of': S.meta['data_as_of'], 'cutoff': S.cutoff, 'total': len(rows),
+        'counts': {k: sum(r['st'] == c for r in rows) for k, c in ST.items()},
+        'topics': topics,
+        'clash': [{k: v[k] for k in ('id', 'name', 'date', 'result', 'counts')} for v in clash_laws],
+        'popular': [card(r) for r in popular(rows)],
+        'recent': [card(r) for r in sorted([r for r in rows if r['st'] == 'P'], key=lambda r: r['decided'], reverse=True)[:10]],
+    }
+    with open(out / 'home.json', 'w', encoding='utf-8') as f:
+        json.dump(home, f, ensure_ascii=False, separators=(',', ':'))
+    # compact search index: people and areas are listed once and referred to by position
+    # bill row: [BILL_ID, name, proposed, status, decided, area#, [lead#...], co-sponsors, has vote]
+    people = sorted({i for r in rows for i in r['leads']})
+    pidx = {i: k for k, i in enumerate(people)}
+    areas_ = sorted({r['area'] for r in rows})
+    aidx = {a: k for k, a in enumerate(areas_)}
+    with open(out / 'all.json', 'w', encoding='utf-8') as f:
+        json.dump({'people': [[i, names.get(i) or S.former.get(i) or ''] for i in people], 'areas': areas_,
+                   'bills': [[r['id'], r['name'], r['proposed'], r['st'], r['decided'] or 0, aidx[r['area']],
+                              [pidx[i] for i in r['leads']], r['co'], int(r['vote'])] for r in rows]},
+                  f, ensure_ascii=False, separators=(',', ':'))
+
+
 def main():
     S = Sources()
     recs = records(S)
@@ -510,6 +670,8 @@ def main():
                     str(d / 'member-roles.json'), str(d / 'role-adjustments.json'), str(d / 'data-corrections.json'),
                     str(d / 'coop.json'), str(tmp / 'run-meta.json'), str(APP / 'lib' / 'score-run.js')], check=True)
     weekly(S, cov, vote_index)
+    quiz_data(S, vote_index, load_module(APP / 'lib' / 'score-run.js')['scores'])
+    law_data(S, vote_index)
     import og
     og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
     import stamp

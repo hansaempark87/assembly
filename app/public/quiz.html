@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>정당별 의정활동 비교 — 일하는 국회</title>
-<meta name="description" content="정당별 등급 분포, 표결 참여율, 출석률, 당과 다르게 투표한 비율을 비교합니다">
+<title>나와 닮은 국회의원 찾기 · 정치성향 테스트 — 일하는 국회</title>
+<meta name="description" content="실제 국회에서 여야가 갈렸던 법안 10개에 직접 투표해 보고, 나와 가장 비슷하게 투표한 국회의원과 정당을 찾아보세요">
 <meta name="theme-color" content="#2a78d6">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="일하는 국회">
 <meta property="og:title" content="일하는 국회 — 제22대 국회의원 실적 대시보드">
 <meta property="og:description" content="공식 기록으로 보는 국회의원 입법·표결·출석 실적과 상대평가 등급">
-<meta property="og:image" content="https://assembly-korea.com/og/party.png">
+<meta property="og:image" content="https://assembly-korea.com/og/quiz.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,7 @@
       <a href="/votes">표결</a>
       <a href="/laws">법안</a>
       <a href="/region">지역</a>
-      <a href="/quiz" class="nav-hot">성향 테스트</a>
+      <a href="/quiz" aria-current="page" class="nav-hot">성향 테스트</a>
       <a href="/compare">의원 비교</a>
       <a href="/about">소개</a>
     </nav>
@@ -38,15 +38,8 @@
   </div>
 </header>
 
-<main>
-  <div class="page-head">
-    <div>
-      <h1>정당별 비교</h1>
-      <p id="meta">불러오는 중…</p>
-    </div>
-  </div>
-  <div class="grid grid-2" id="parties"></div>
-  <p class="muted section" style="font-size:0.8rem">평균은 평가 대상 의원(재임 6개월 이상, 겸직 기간 제외) 기준입니다. "당과 다르게 투표"는 그날 같은 정당 의원 다수와 다른 선택을 한 비율이며 점수에는 쓰지 않습니다. <a href="/notes">기준 보기</a></p>
+<main class="quiz-main">
+  <div id="quiz"></div>
 </main>
 
 <footer class="site">
@@ -65,6 +58,6 @@
 </footer>
 
 <script src="/js/common.js?v=c6dacb53"></script>
-<script src="/js/party.js?v=da935cd7"></script>
+<script src="/js/quiz.js?v=7912779c"></script>
 </body>
 </html>
