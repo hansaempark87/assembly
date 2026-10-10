@@ -122,7 +122,7 @@
     const u = new URLSearchParams();
     if (st.q) u.set('q', st.q);
     if (st.topic) u.set('topic', st.topic);
-    if (st.tab !== 'all') u.set('tab', st.tab);
+    if (st.tab !== (st.topic ? 'done' : 'all')) u.set('tab', st.tab);
     if (st.p > 1) u.set('p', st.p);
     const qs = u.toString();
     history.replaceState(history.state, '', qs ? `?${qs}` : location.pathname);
@@ -158,7 +158,7 @@
     const u = new URLSearchParams(location.search);
     st.q = u.get('q') || '';
     st.topic = home.topics.some((t) => t.key === u.get('topic')) ? u.get('topic') : '';
-    st.tab = TABS.some((t) => t[0] === u.get('tab')) ? u.get('tab') : 'all';
+    st.tab = TABS.some((t) => t[0] === u.get('tab')) ? u.get('tab') : st.topic ? 'done' : 'all';
     st.p = Math.max(1, +u.get('p') || 1);
     $('q').value = st.q;
     let timer = null;
