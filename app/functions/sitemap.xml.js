@@ -11,7 +11,7 @@ export async function onRequestGet({ env, request }) {
   } catch {
     votes = [];
   }
-  const urls = ['/', '/votes', '/region', '/party', '/compare', '/method', '/notes', '/about', '/privacy', '/terms']
+  const urls = ['/', '/votes', '/laws', '/quiz', '/region', '/party', '/compare', '/method', '/notes', '/about', '/privacy', '/terms']
     .map((p) => [`${origin}${p}`, lastmod])
     .concat(allMembers().map((m) => [`${origin}/member?id=${encodeURIComponent(m.id)}`, lastmod]))
     .concat(votes.map((v) => [`${origin}/vote?id=${encodeURIComponent(v.id)}`, v.date]));

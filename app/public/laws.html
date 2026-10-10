@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>정당별 의정활동 비교 — 일하는 국회</title>
-<meta name="description" content="정당별 등급 분포, 표결 참여율, 출석률, 당과 다르게 투표한 비율을 비교합니다">
+<title>법안 찾기 — 22대 국회 법안을 누가 발의했나 — 일하는 국회</title>
+<meta name="description" content="제22대 국회의원이 발의한 법안을 주제별로 찾아보고, 누가 대표발의했는지와 처리 결과를 확인합니다">
 <meta name="theme-color" content="#2a78d6">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="일하는 국회">
 <meta property="og:title" content="일하는 국회 — 제22대 국회의원 실적 대시보드">
 <meta property="og:description" content="공식 기록으로 보는 국회의원 입법·표결·출석 실적과 상대평가 등급">
-<meta property="og:image" content="https://assembly-korea.com/og/party.png">
+<meta property="og:image" content="https://assembly-korea.com/og/site.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,7 +27,7 @@
     <nav class="nav">
       <a href="/">대시보드</a>
       <a href="/votes">표결</a>
-      <a href="/laws">법안</a>
+      <a href="/laws" aria-current="page">법안</a>
       <a href="/region">지역</a>
       <a href="/quiz" class="nav-hot">성향 테스트</a>
       <a href="/compare">의원 비교</a>
@@ -41,12 +41,47 @@
 <main>
   <div class="page-head">
     <div>
-      <h1>정당별 비교</h1>
+      <h1>법안 찾기</h1>
       <p id="meta">불러오는 중…</p>
     </div>
   </div>
-  <div class="grid grid-2" id="parties"></div>
-  <p class="muted section" style="font-size:0.8rem">평균은 평가 대상 의원(재임 6개월 이상, 겸직 기간 제외) 기준입니다. "당과 다르게 투표"는 그날 같은 정당 의원 다수와 다른 선택을 한 비율이며 점수에는 쓰지 않습니다. <a href="/notes">기준 보기</a></p>
+
+  <section class="card law-search list-anchor" id="search-card">
+    <div class="combo">
+      <span class="combo-icon" aria-hidden="true">⌕</span>
+      <input class="input" id="q" type="search" placeholder="법 이름이나 관심 단어로 검색 (예: 전세, 반려견, 최저임금)" autocomplete="off" aria-label="법안 검색">
+    </div>
+    <div class="chips law-topics" id="topics" aria-label="주제"></div>
+    <div id="results" hidden>
+      <div class="toolbar section">
+        <div class="tabs" role="tablist" id="st-tabs"></div>
+        <span class="count" id="count"></span>
+      </div>
+      <div id="list" class="law-list"></div>
+      <div id="pager"></div>
+    </div>
+  </section>
+
+  <div class="grid grid-4 section" id="kpis"></div>
+
+  <div id="home">
+    <section class="card section">
+      <div class="card-head"><div><h2 class="card-title">여야가 크게 갈렸던 법</h2><p class="card-sub">더불어민주당과 국민의힘 의원 다수의 선택이 달랐던 본회의 표결</p></div>
+        <a class="btn" href="/votes?f=clash">표결 전체 →</a></div>
+      <div id="clash" class="law-list"></div>
+    </section>
+    <div class="grid grid-2 section">
+      <section class="card">
+        <div class="card-head"><div><h2 class="card-title">최근 통과된 법</h2><p class="card-sub">의원이 낸 법안이 원안 또는 수정해서 가결된 것</p></div></div>
+        <div id="recent" class="law-list"></div>
+      </section>
+      <section class="card">
+        <div class="card-head"><div><h2 class="card-title">가장 많은 의원이 함께 낸 법</h2><p class="card-sub">공동발의 의원 수가 많은 순</p></div></div>
+        <div id="popular" class="law-list"></div>
+      </section>
+    </div>
+  </div>
+  <p class="muted section" style="font-size:0.8rem">의원이 대표발의한 법안만 다룹니다(정부 제출 법안 제외). "대안반영"은 비슷한 법안 여러 개가 위원회에서 하나로 합쳐져 그 내용이 법에 들어간 경우입니다. 법안 이름을 누르면 국회 의안정보시스템 원문이 열립니다.</p>
 </main>
 
 <footer class="site">
@@ -65,6 +100,6 @@
 </footer>
 
 <script src="/js/common.js?v=c6dacb53"></script>
-<script src="/js/party.js?v=da935cd7"></script>
+<script src="/js/laws.js?v=74831b89"></script>
 </body>
 </html>

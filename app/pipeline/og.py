@@ -270,6 +270,23 @@ def party_image(records, scores, as_of):
     return im
 
 
+def quiz_image():
+    im, d = canvas()
+    d.text((80, 230), '나와 닮은 국회의원은', font=font(64, True), fill=TEXT, anchor='ls')
+    d.text((80, 312), '누구일까?', font=font(64, True), fill=ACCENT, anchor='ls')
+    d.text((82, 380), '여야가 갈렸던 실제 법안 10개에 투표해 보세요', font=font(30), fill=TEXT2, anchor='ls')
+    # left-right strip with a marker
+    x0, x1, y = 82, W - 90, 450
+    for k in range(60):
+        t = k / 59
+        c = tuple(int(a + (b - a) * t) for a, b in zip((31, 111, 209), (226, 64, 75)))
+        d.rectangle((x0 + (x1 - x0) * k / 60, y, x0 + (x1 - x0) * (k + 1) / 60, y + 14), fill=c)
+    d.text((x0, y + 40), '진보 성향', font=font(22), fill=TEXT3, anchor='lm')
+    d.text((x1, y + 40), '보수 성향', font=font(22), fill=TEXT3, anchor='rm')
+    footer(d, '정치성향 테스트 · 국회 실제 표결로 계산')
+    return im
+
+
 def build_all(records, run, vote_index, vote_pages_dir, as_of):
     out = APP / 'public' / 'og'
     scores = run['scores']
@@ -278,6 +295,7 @@ def build_all(records, run, vote_index, vote_pages_dir, as_of):
     written += save(site_image(len(records), graded, len(vote_index), as_of), out / 'site.png')
     written += save(generic_vote_image(as_of), out / 'vote.png')
     written += save(party_image(records, scores, as_of), out / 'party.png')
+    written += save(quiz_image(), out / 'quiz.png')
     keep_m = set()
     for m in records:
         keep_m.add(m['id'])

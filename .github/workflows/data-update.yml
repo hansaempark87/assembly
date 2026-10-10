@@ -63,7 +63,7 @@ jobs:
         run: |
           git config user.name 'data-update-bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add app/data app/lib app/public/bills app/public/vote-data app/public/weekly.json app/public/og
+          git add app/data app/lib app/public/bills app/public/vote-data app/public/weekly.json app/public/og app/public/law-data app/public/quiz-data.json
           if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
           date=$(python -c "import json;print(json.load(open('app/data/source/meta.json'))['data_as_of'])")
           { echo "data: weekly update ${date}"; echo; cat app/data/build/summary.md; } > /tmp/msg
@@ -79,7 +79,7 @@ jobs:
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           branch="data-review/$(date -u +%Y-%m-%d)"
           body=app/data/build/summary.md
-          git add app/data app/lib app/public/bills app/public/vote-data app/public/weekly.json app/public/og
+          git add app/data app/lib app/public/bills app/public/vote-data app/public/weekly.json app/public/og app/public/law-data app/public/quiz-data.json
           if ! git diff --cached --quiet; then
             { echo "data: update held for review"; echo; cat "$body"; } > /tmp/msg
             git commit -q -F /tmp/msg
