@@ -871,3 +871,10 @@ a.law-row:hover { background: var(--surface-2); text-decoration: none; }
   .topic small { display: none; }
   .recap-head { display: none; }
 }
+/* main page section headings */
+.sec-head { margin: 36px 0 12px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.sec-head h2 { margin: 0; font-size: 1.25rem; letter-spacing: -0.02em; }
+.sec-head p { margin: 0; font-size: 0.85rem; color: var(--text-3); }
+main > .sec-head:first-of-type { margin-top: 8px; }
+.sec-head + .card, .sec-head + .grid, .sec-head + section { margin-top: 0; }
+#seat-card .hemi-wrap { max-width: 600px; }

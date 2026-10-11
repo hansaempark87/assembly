@@ -1,7 +1,7 @@
 (function () {
   const { partyColor, partyOrder, hemicycle, CHOICE, pager, view, reveal, esc, num, pct, topText, rankText, statusText, gradeBadge, median, mean, loadMembers, METRICS, meter, memberCombo } = window.NA;
   const $ = (id) => document.getElementById(id);
-  const PAGE = window.matchMedia('(max-width: 760px)').matches ? 20 : 50;
+  const PAGE = 20;
 
   // KPI numbers count up once on first paint (skipped for reduced motion).
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
