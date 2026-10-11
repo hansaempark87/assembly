@@ -141,6 +141,10 @@
 
   // ---- tooltip ----
   let tipEl = null;
+  // A tooltip must never survive a page change: browsers restore the page
+  // from the back/forward cache exactly as it was left, tooltip included.
+  ['pagehide', 'pageshow', 'scroll', 'blur'].forEach((ev) => window.addEventListener(ev, () => tip(null), { passive: true }));
+
   function tip(html, x, y) {
     if (!tipEl) {
       tipEl = document.createElement('div');
@@ -429,7 +433,7 @@
     const at = (e) => { const i = e.target.dataset && e.target.dataset.i; return i === undefined ? null : seats[+i]; };
     svg.addEventListener('mousemove', (e) => { const s = at(e); tip(s ? s.title : null, e.clientX, e.clientY); });
     svg.addEventListener('mouseleave', () => tip(null));
-    if (onPick) svg.addEventListener('click', (e) => { const s = at(e); if (s) onPick(s); });
+    if (onPick) svg.addEventListener('click', (e) => { const s = at(e); if (s) { tip(null); onPick(s); } });
     return svg;
   }
 
