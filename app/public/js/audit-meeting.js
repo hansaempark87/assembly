@@ -3,7 +3,6 @@
   const root = document.getElementById('am');
   const id = new URLSearchParams(location.search).get('id');
   const kday = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${y}년 ${m}월 ${d}일`; };
-  const title = (t) => (typeof t === 'string' ? t : t.title);
 
   function who(D, mid) {
     const [name, party, grade] = D.people[mid] || [mid, '', null];
@@ -16,9 +15,9 @@
     document.getElementById('back').href = `/audit?y=${D.date.slice(0, 4)}`;
     const ov = D.summary && D.summary.overview;
     let brief;
-    if (ov && ov.issues && ov.issues.length) {
-      brief = `<ul class="am-brief">${ov.issues.map((t) => `<li>${esc(title(t))}</li>`).join('')}</ul>
-        <a class="btn btn-primary" href="/audit-summary?id=${encodeURIComponent(D.id)}">AI 요약 자세히 보기 →</a>`;
+    if (ov) {
+      brief = `<p class="am-brief">${esc(ov.brief || ov.headline)}</p>
+        <a class="btn btn-primary" href="/audit-summary?id=${encodeURIComponent(D.id)}">AI 요약본 자세히 보기 →</a>`;
     } else if (D.status === 'upcoming') {
       brief = '<p class="muted">아직 열리지 않은 감사입니다. 감사가 끝나고 회의록이 공개되면 요약이 올라옵니다.</p>';
     } else if (D.status === 'pending') {
@@ -39,7 +38,7 @@
       </div></div>
       ${D.agencies ? `<section class="card"><h2 class="card-title">감사 대상 기관</h2><p class="am-text">${esc(D.agencies)}</p></section>` : ''}
       <section class="card section">
-        <div class="card-head"><h2 class="card-title">핵심 쟁점</h2>${ov ? '<span class="chip">AI 요약</span>' : ''}</div>
+        <div class="card-head"><h2 class="card-title">핵심 요약</h2>${ov ? '<span class="chip">AI 요약</span>' : ''}</div>
         ${brief}
       </section>
       ${rows ? `<section class="card section">
