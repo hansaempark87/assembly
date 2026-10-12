@@ -19,19 +19,18 @@
 <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="/css/style.css?v=1b6a35c3">
+<link rel="stylesheet" href="/css/style.css?v=e6e22e25">
 </head>
 <body>
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
     <nav class="nav">
-      <a href="/" aria-current="page">대시보드</a>
-      <a href="/votes">표결</a>
-      <a href="/laws">법안</a>
-      <a href="/region">지역</a>
+      <a href="/" aria-current="page">홈</a>
+      <a href="/members">의원</a>
+      <a href="/party">정당</a>
+      <a href="/laws">법안·표결</a>
       <a href="/quiz" class="nav-hot">성향 테스트</a>
-      <a href="/compare">의원 비교</a>
       <a href="/about">소개</a>
     </nav>
     <span class="topbar-spacer"></span>
@@ -85,7 +84,7 @@
       <div class="card-head">
         <div>
           <h2 class="card-title">등급 분포</h2>
-          <p class="card-sub">막대를 누르면 아래 목록이 해당 등급으로 필터됩니다</p>
+          <p class="card-sub">막대를 누르면 해당 등급 의원 목록으로 이동합니다</p>
         </div>
       </div>
       <div class="cols" id="grade-cols"></div>
@@ -116,53 +115,12 @@
     <div class="card-foot">평가 대상 의원만 · 국무위원·국회의장 등 겸직 기간과 재임 6개월 미만 의원은 제외 · 청가(사유를 낸 결석)와 출장도 출석으로 세지 않습니다</div>
   </section>
 
-  <section class="card section list-anchor" id="board-card">
-    <div class="card-head">
-      <div>
-        <h2 class="card-title">전체 실적표</h2>
-        <p class="card-sub">막대는 전체 의원 중 백분위(오른쪽일수록 상위), 가운데 선은 중간</p>
-      </div>
-    </div>
-    <div class="toolbar">
-      <input class="input" type="search" id="search-box" placeholder="이름·정당·지역구 검색" aria-label="목록 검색">
-      <select class="select" id="party-filter" aria-label="정당"><option value="">전체 정당</option></select>
-      <select class="select" id="region-filter" aria-label="지역"><option value="">전체 지역</option></select>
-      <select class="select" id="committee-filter" aria-label="위원회"><option value="">전체 위원회</option></select>
-      <select class="select" id="grade-filter" aria-label="등급">
-        <option value="">전체 등급</option>
-        <option value="S">S</option><option value="A">A</option><option value="B">B</option>
-        <option value="C">C</option><option value="D">D</option>
-        <option value="ineligible">등급 없음 (관찰 기간 부족·겸직 유보)</option>
-      </select>
-      <span class="count num" id="count"></span>
-    </div>
-    <table class="board" id="board">
-      <thead>
-        <tr>
-          <th scope="col" data-sort="rank"><button type="button">순위</button></th>
-          <th scope="col" data-sort="name"><button type="button">의원</button></th>
-          <th scope="col">등급</th>
-          <th scope="col" data-sort="legislation_percentile"><button type="button">입법 성과</button></th>
-          <th scope="col" data-sort="vote_percentile"><button type="button">표결 참여</button></th>
-          <th scope="col" data-sort="attendance_percentile"><button type="button">본회의 출석</button></th>
-          <th scope="col" data-sort="committee_attendance_percentile"><button type="button">위원회 출석</button></th>
-        </tr>
-      </thead>
-      <tbody id="board-body"><tr><td class="skeleton" colspan="7">불러오는 중…</td></tr></tbody>
-    </table>
-    <div class="more" id="more"></div>
-  </section>
 
-  <section class="card section">
-    <div class="card-head">
-      <div>
-        <h2 class="card-title">정당별 평균 <a class="card-link" href="/party">정당 비교 자세히 →</a></h2>
-        <p class="card-sub" id="party-sub"></p>
-      </div>
-      <div class="tabs" role="tablist" id="party-tabs"></div>
-    </div>
-    <div class="barlist" id="party-list"></div>
-  </section>
+
+  <a class="card section cta-all" href="/members">
+    <span><b>전체 의원 순위표</b><small>정당·지역·위원회별로 걸러 보고, 항목별로 정렬해 보세요</small></span>
+    <span class="btn btn-primary" id="cta-n">모두 보기 →</span>
+  </a>
 
   <div class="sec-head"><h2>최근 소식</h2></div>
   <section class="card section" id="weekly-card">
@@ -198,8 +156,6 @@
 <footer class="site">
   <nav class="foot-links" aria-label="사이트 정보">
     <a href="/about">서비스 소개</a>
-    <a href="/party">정당별 비교</a>
-    <a href="/laws">법안 찾기</a>
     <a href="/method">평가 방법</a>
     <a href="/notes">데이터 처리 기준</a>
     <a href="/privacy">개인정보처리방침</a>
@@ -211,6 +167,6 @@
 </footer>
 
 <script src="/js/common.js?v=f73b8f1f"></script>
-<script src="/js/app.js?v=e4e5e502"></script>
+<script src="/js/app.js?v=d4346967"></script>
 </body>
 </html>

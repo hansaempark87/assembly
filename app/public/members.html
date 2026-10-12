@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="naver-site-verification" content="cf871d81fcbb39ba387d2826d8e749b3b11ef01c" />
+<title>의원 순위 — 제22대 국회의원 299명 실적표 | 일하는 국회</title>
+<meta name="description" content="제22대 국회의원 전원의 등급·순위·입법·표결·출석 실적표. 정당·지역·위원회별로 걸러 볼 수 있습니다.">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일하는 국회">
+<meta property="og:title" content="의원 순위 — 제22대 국회의원 실적표">
+<meta property="og:description" content="공식 기록으로 보는 국회의원 입법·표결·출석 실적과 상대평가 등급">
+<meta property="og:image" content="https://assembly-korea.com/og/site.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/style.css?v=e6e22e25">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">홈</a>
+      <a href="/members" aria-current="page">의원</a>
+      <a href="/party">정당</a>
+      <a href="/laws">법안·표결</a>
+      <a href="/quiz" class="nav-hot">성향 테스트</a>
+      <a href="/about">소개</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
+</header>
+
+<main>
+  <nav class="subnav" aria-label="하위 메뉴"><a href="/members" aria-current="page">전체 순위</a><a href="/compare">의원 비교</a><a href="/region">지역별</a></nav>
+  <div class="page-head">
+    <div>
+      <h1>의원 순위</h1>
+      <p id="run-info">불러오는 중…</p>
+    </div>
+  </div>
+
+  <section class="card section list-anchor" id="board-card">
+    <div class="card-head">
+      <div>
+        <h2 class="card-title">전체 실적표</h2>
+        <p class="card-sub">막대는 전체 의원 중 백분위(오른쪽일수록 상위), 가운데 선은 중간</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <input class="input" type="search" id="search-box" placeholder="이름·정당·지역구 검색" aria-label="목록 검색">
+      <select class="select" id="party-filter" aria-label="정당"><option value="">전체 정당</option></select>
+      <select class="select" id="region-filter" aria-label="지역"><option value="">전체 지역</option></select>
+      <select class="select" id="committee-filter" aria-label="위원회"><option value="">전체 위원회</option></select>
+      <select class="select" id="grade-filter" aria-label="등급">
+        <option value="">전체 등급</option>
+        <option value="S">S</option><option value="A">A</option><option value="B">B</option>
+        <option value="C">C</option><option value="D">D</option>
+        <option value="ineligible">등급 없음 (관찰 기간 부족·겸직 유보)</option>
+      </select>
+      <span class="count num" id="count"></span>
+    </div>
+    <table class="board" id="board">
+      <thead>
+        <tr>
+          <th scope="col" data-sort="rank"><button type="button">순위</button></th>
+          <th scope="col" data-sort="name"><button type="button">의원</button></th>
+          <th scope="col">등급</th>
+          <th scope="col" data-sort="legislation_percentile"><button type="button">입법 성과</button></th>
+          <th scope="col" data-sort="vote_percentile"><button type="button">표결 참여</button></th>
+          <th scope="col" data-sort="attendance_percentile"><button type="button">본회의 출석</button></th>
+          <th scope="col" data-sort="committee_attendance_percentile"><button type="button">위원회 출석</button></th>
+        </tr>
+      </thead>
+      <tbody id="board-body"><tr><td class="skeleton" colspan="7">불러오는 중…</td></tr></tbody>
+    </table>
+    <div class="more" id="more"></div>
+  </section>
+
+
+</main>
+
+<footer class="site">
+  <nav class="foot-links" aria-label="사이트 정보">
+    <a href="/about">서비스 소개</a>
+    <a href="/method">평가 방법</a>
+    <a href="/notes">데이터 처리 기준</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+    <a href="/about#contact">문의·정정 요청</a>
+  </nav>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></p>
+  <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
+</footer>
+
+<script src="/js/common.js?v=f73b8f1f"></script>
+<script src="/js/app.js?v=d4346967"></script>
+</body>
+</html>
