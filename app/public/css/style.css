@@ -810,9 +810,14 @@ a.law-row:hover { background: var(--surface-2); text-decoration: none; }
 .quiz-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .quiz-answers .ans { height: 52px; justify-content: center; font-size: 1rem; font-weight: 600; }
 .ans-y, .ans-n { border-color: var(--border-strong); color: var(--text); }
-.ans-y:hover, .ans-n:hover { background: var(--text); border-color: var(--text); color: var(--surface); }
+@media (hover: hover) { .ans:hover { background: var(--surface-2); } }
+.quiz-answers .ans[aria-checked="true"] { background: var(--text); border-color: var(--text); color: var(--surface); }
+.quiz-answers .ans[aria-checked="true"]::before { content: "✓ "; }
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 16px; }
+.quiz-next { min-width: 140px; height: 46px; justify-content: center; font-size: 1rem; font-weight: 600; }
+.quiz-next:disabled { opacity: 0.4; cursor: not-allowed; }
+.quiz-back { height: 46px; }
 .ans-s { grid-column: 1 / -1; height: 40px !important; font-size: 0.88rem !important; font-weight: 500 !important; color: var(--text-3); }
-.quiz-back { margin-top: 14px; font-size: 0.85rem; }
 .lean { color: var(--accent); }
 .axis { margin: 22px 0 8px; }
 .ax-track { position: relative; height: 46px; border-radius: 10px; background: linear-gradient(90deg, color-mix(in srgb, #1f6fd1 14%, transparent), var(--surface-2) 50%, color-mix(in srgb, #e2404b 14%, transparent)); }

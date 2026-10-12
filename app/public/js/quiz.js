@@ -41,18 +41,28 @@
         <div class="side pro"><b>찬성 쪽 주장</b><p>${esc(q.pro)}</p></div>
         <div class="side con"><b>반대 쪽 주장</b><p>${esc(q.con)}</p></div>
       </div>
-      <div class="quiz-answers">
-        <button type="button" class="btn ans ans-y" data-a="Y">찬성</button>
-        <button type="button" class="btn ans ans-n" data-a="N">반대</button>
-        <button type="button" class="btn ans ans-s" data-a="?">잘 모르겠음</button>
+      <div class="quiz-answers" role="radiogroup" aria-label="나의 선택">
+        <button type="button" class="btn ans ans-y" data-a="Y" role="radio">찬성</button>
+        <button type="button" class="btn ans ans-n" data-a="N" role="radio">반대</button>
+        <button type="button" class="btn ans ans-s" data-a="?" role="radio">잘 모르겠음</button>
       </div>
-      ${cur ? '<button type="button" class="link-btn quiz-back" id="back">← 이전 문항</button>' : ''}
+      <div class="quiz-nav">
+        ${cur ? '<button type="button" class="btn quiz-back" id="back">← 이전</button>' : '<span></span>'}
+        <button type="button" class="btn btn-primary quiz-next" id="next" disabled>${cur + 1 < n ? '다음 →' : '결과 보기'}</button>
+      </div>
     </section>`;
-    root.querySelectorAll('.ans').forEach((b) => b.addEventListener('click', () => {
-      answers[cur] = b.dataset.a;
+    const next = document.getElementById('next');
+    const mark = () => {
+      root.querySelectorAll('.ans').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.a === answers[cur])));
+      next.disabled = !answers[cur];
+    };
+    root.querySelectorAll('.ans').forEach((b) => b.addEventListener('click', () => { answers[cur] = b.dataset.a; mark(); }));
+    mark();
+    next.addEventListener('click', () => {
+      if (!answers[cur]) return;
       cur += 1;
       if (cur < n) question(); else finish();
-    }));
+    });
     document.getElementById('back')?.addEventListener('click', () => { cur -= 1; question(); });
     root.scrollIntoView({ block: 'start' });
   }
