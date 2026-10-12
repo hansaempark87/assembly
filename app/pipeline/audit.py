@@ -134,6 +134,7 @@ OVERVIEW_PROMPT = """아래는 {date} {committee} 국정감사({agencies})에서
 규칙:
 - 아래 요지에 있는 내용만 쓴다. 평가나 감정 표현, 특정 정당·의원을 부각하는 표현은 쓰지 않는다.
 - headline: 이날 가장 많이 다뤄진 내용을 담은 제목, 40자 이내.
+- brief: 이날 회의의 핵심을 2문장, 합쳐서 100자 이내로 압축.
 - summary: 회의 전체 흐름을 4~6문장으로. 어떤 문제가 제기됐고 기관이 대체로 어떻게 답했는지.
 - issues: 주요 쟁점 3~5개, 여러 위원이 다룬 주제부터.
   - title: 쟁점 이름, 25자 이내.
@@ -146,8 +147,8 @@ TOPICS = {'type': 'object', 'additionalProperties': False, 'required': ['topics'
     'topics': {'type': 'array', 'items': {'type': 'object', 'additionalProperties': False,
                                          'required': ['question', 'answer'],
                                          'properties': {'question': {'type': 'string'}, 'answer': {'type': 'string'}}}}}}
-OVERVIEW = {'type': 'object', 'additionalProperties': False, 'required': ['headline', 'summary', 'issues'], 'properties': {
-    'headline': {'type': 'string'}, 'summary': {'type': 'string'},
+OVERVIEW = {'type': 'object', 'additionalProperties': False, 'required': ['headline', 'brief', 'summary', 'issues'], 'properties': {
+    'headline': {'type': 'string'}, 'brief': {'type': 'string'}, 'summary': {'type': 'string'},
     'issues': {'type': 'array', 'items': {'type': 'object', 'additionalProperties': False, 'required': ['title', 'detail'],
                                           'properties': {'title': {'type': 'string'}, 'detail': {'type': 'string'}}}}}}
 CHUNK = 150_000  # characters per request; one member's exchanges rarely pass 30k
