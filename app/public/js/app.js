@@ -154,6 +154,7 @@
   // ---------- grade distribution ----------
   let gradeActive = '';
   function renderGrades() {
+    if (!$('grade-cols')) return;
     const grades = ['S', 'A', 'B', 'C', 'D'];
     const counts = Object.fromEntries(grades.map((g) => [g, all.filter((m) => m.grade === g).length]));
     const max = Math.max(...Object.values(counts));
@@ -172,6 +173,7 @@
     $('grade-foot').textContent = `S 10% · A 20% · B 40% · C 20% · D 10% 상대평가 · 등급 없음 ${none}명`;
     cols.querySelectorAll('.col').forEach((b) =>
       b.addEventListener('click', () => {
+        if (!$('board')) { window.location.href = `/members?grade=${b.dataset.g}`; return; }
         gradeActive = gradeActive === b.dataset.g ? '' : b.dataset.g;
         $('grade-filter').value = gradeActive;
         renderGrades();
@@ -251,34 +253,6 @@
     $('low-list').innerHTML = list.map((m, i) => barRow(t.value(m) * 100,
       `<span class="bl-rank">${i + 1}</span>${gradeBadge(m.grade)}<a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a><span class="muted">${esc(m.party || '')}</span>`,
       t.show(m), i)).join('');
-  }
-
-  const PARTY = [
-    { key: 'composite', label: '종합 백분위', value: (m) => m.composite_percentile, fmt: (v) => v.toFixed(1), fill: (v) => v, note: '종합 백분위 평균 · 50이 전체 중간' },
-    { key: 'legislation', label: '입법 반영', value: (m) => m.lead_reflected, fmt: (v) => `평균 ${v.toFixed(1)}건`, fill: null },
-    { key: 'vote', label: '표결 참여', value: (m) => m.participation_rate, fmt: (v) => pct(v), fill: (v) => v * 100 },
-    { key: 'attendance', label: '본회의 출석', value: (m) => m.attendance_rate, fmt: (v) => pct(v), fill: (v) => v * 100 },
-  ];
-  function renderParty(key) {
-    const t = PARTY.find((x) => x.key === key);
-    const groups = {};
-    all.filter((m) => m.eligible).forEach((m) => (groups[m.party || '무소속'] ||= []).push(m));
-    const rows = Object.entries(groups)
-      .filter(([, ms]) => ms.length >= 3)
-      .map(([party, ms]) => ({ party, n: ms.length, v: mean(ms.map(t.value)) }))
-      .sort((a, b) => b.v - a.v);
-    const max = Math.max(...rows.map((r) => r.v));
-    $('party-sub').textContent = `소속 의원 3명 이상 정당 · 평가 대상 의원 기준${t.note ? ` · ${t.note}` : ''}`;
-    $('party-list').innerHTML = rows
-      .map((r, i) =>
-        barRow(
-          t.fill ? t.fill(r.v) : (r.v / max) * 100,
-          `<b>${esc(r.party)}</b><span class="muted">${r.n}명</span>`,
-          t.fmt(r.v),
-          i
-        )
-      )
-      .join('');
   }
 
   // ---------- leaderboard ----------
@@ -402,6 +376,13 @@
       })
     );
     restoreBoard();
+    if (!view.get('board', null)) {
+      const u = new URLSearchParams(location.search);
+      const g = u.get('grade');
+      if (['S', 'A', 'B', 'C', 'D'].includes(g)) { $('grade-filter').value = g; gradeActive = g; renderGrades(); }
+      const pt = u.get('party');
+      if (pt && [...$('party-filter').options].some((o) => o.value === pt)) $('party-filter').value = pt;
+    }
     renderBoard();
   }
 
@@ -415,28 +396,33 @@
       const start = all.map((m) => m.term_start).sort()[0];
       const evaluated = all.filter((m) => m.eligible).length;
       $('run-info').textContent = `${kdate(run.data_as_of || run.created_at)} 기준 · ${kdate(start)} 개원 이후 공식 기록 · ${num(all.length)}명 중 ${num(evaluated)}명 평가`;
-      memberCombo({
+      if ($('finder-input')) memberCombo({
         input: $('finder-input'),
         list: $('finder-list'),
         members: all,
         onPick: (m) => (window.location.href = `/member?id=${encodeURIComponent(m.id)}`),
       });
-      renderKpis();
-      renderGrades();
-      tabs($('top-tabs'), TOP, renderTop);
-      tabs($('party-tabs'), PARTY, renderParty);
-      tabs($('low-tabs'), LOW, renderLow);
-      setupBoard();
-      renderTerm();
-      renderSeats('party');
-      $('seat-tabs').addEventListener('click', (e) => { const t = e.target.closest('.tab'); if (t) renderSeats(t.dataset.k); });
-      fetch('/weekly.json').then((r) => (r.ok ? r.json() : Promise.reject())).then(renderWeekly)
-        .catch(() => { $('weekly-card').hidden = true; });
+      const has = (id) => !!$(id);
+      if (has('kpis')) renderKpis();
+      if (has('grade-cols')) renderGrades();
+      if (has('top-tabs')) tabs($('top-tabs'), TOP, renderTop);
+      if (has('low-tabs')) tabs($('low-tabs'), LOW, renderLow);
+      if (has('board')) setupBoard();
+      if (has('cta-n')) $('cta-n').textContent = `${num(all.length)}명 모두 보기 →`;
+      if (has('term')) renderTerm();
+      if (has('seat-chart')) {
+        renderSeats('party');
+        $('seat-tabs').addEventListener('click', (e) => { const t = e.target.closest('.tab'); if (t) renderSeats(t.dataset.k); });
+      }
+      if (has('weekly-card')) {
+        fetch('/weekly.json').then((r) => (r.ok ? r.json() : Promise.reject())).then(renderWeekly)
+          .catch(() => { $('weekly-card').hidden = true; });
+      }
       reveal(document.querySelectorAll('main > .card, main > .notice, main > .grid:not(#kpis) > .card'));
       view.restoreScroll();
     } catch (err) {
       $('run-info').innerHTML = `<span class="error">데이터를 불러오지 못했습니다: ${esc(err.message)}</span>`;
-      $('board-body').innerHTML = '<tr><td class="skeleton" colspan="7">오류</td></tr>';
+      if ($('board-body')) $('board-body').innerHTML = '<tr><td class="skeleton" colspan="7">오류</td></tr>';
     }
   }
 
