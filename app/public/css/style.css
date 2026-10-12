@@ -892,3 +892,31 @@ main > .sec-head:first-of-type { margin-top: 8px; }
 .cta-all:hover { text-decoration: none; border-color: var(--accent); }
 .cta-all b { display: block; font-size: 1.05rem; }
 .cta-all small { color: var(--text-3); font-size: 0.85rem; }
+
+/* ---- national audit page ---- */
+.au-state { font-size: 1.35rem; margin: 4px 0 2px; letter-spacing: -0.02em; }
+.au-bar { margin-top: 12px; }
+.au-kpis { gap: 10px; }
+.au-kpi { background: var(--surface-2); border-radius: 10px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: baseline; }
+.au-kpi span { font-size: 0.85rem; color: var(--text-2); }
+.au-kpi b { font-size: 1.3rem; }
+.au-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); }
+.au-row:first-child { border-top: 0; }
+.au-cmt b { display: block; font-size: 0.92rem; }
+.au-cmt small { color: var(--text-3); font-size: 0.78rem; }
+.au-dates { display: flex; flex-wrap: wrap; gap: 6px; }
+.au-chip { display: inline-flex; flex-direction: column; gap: 1px; max-width: 260px; padding: 5px 9px; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem; color: var(--text); background: var(--surface); }
+a.au-chip:hover { text-decoration: none; border-color: var(--accent); }
+.au-d { font-weight: 600; }
+.au-ag { color: var(--text-3); font-size: 0.74rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.au-chip.au-done { border-color: var(--accent); }
+.au-chip.au-done .au-d { color: var(--accent); }
+.au-chip.au-pending { background: var(--surface-2); }
+.au-chip.au-up { border-style: dashed; color: var(--text-3); }
+.au-dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; border: 1px solid var(--border); margin-right: 5px; vertical-align: -1px; }
+.au-dot.au-done { border-color: var(--accent); background: var(--accent-soft); }
+.au-dot.au-pending { background: var(--surface-2); }
+.au-dot.au-up { border-style: dashed; }
+#speak-card .select { max-width: 220px; }
+@media (max-width: 640px) { .au-row { grid-template-columns: 1fr; gap: 6px; } .au-kpis { grid-template-columns: repeat(3, 1fr); } .au-kpi { flex-direction: column; } }
+.au-banner { margin-bottom: 8px; border-color: var(--accent); }
