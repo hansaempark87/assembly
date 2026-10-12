@@ -11,6 +11,7 @@
     "/favicon.svg",
     "/weekly.json",
     "/data-notes.json",
-    "/og/*"
+    "/og/*",
+    "/ads.txt"
   ]
 }
