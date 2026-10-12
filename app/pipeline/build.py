@@ -21,7 +21,7 @@ Counting rules (published on /notes and /method):
 
 usage: build.py
 """
-import collections, json, os, subprocess, sys
+import collections, datetime as dt, json, os, subprocess, sys
 
 from common import APP, SRC, SCORED_VOTE, STATUSES, days, read_json, read_jsonl, write_json
 
@@ -651,6 +651,53 @@ def law_data(S, vote_index):
                   f, ensure_ascii=False, separators=(',', ':'))
 
 
+# ---------- national audit (국정감사) ----------
+
+def audit_data(S, scores):
+    """public/audit.json: audit schedule per year and how much each member spoke.
+
+    Built from data/source/audit_list.json and the per-meeting counts that
+    audit.py extracts from the published minutes. A listed meeting is 'done'
+    once its minutes are parsed, 'pending' when its date has passed but the
+    minutes are not out yet, and 'upcoming' otherwise.
+    """
+    lst = APP / 'data' / 'source' / 'audit_list.json'
+    if not lst.exists():
+        return
+    listing = json.load(open(lst, encoding='utf-8'))
+    today = dt.date.today().isoformat()
+    years = {}
+    for r in listing:
+        y = years.setdefault(r['date'][:4], {'sess': r['sess'], 'meetings': [], 'members': {}, 'committees': {}})
+        path = APP / 'data' / 'source' / 'audit' / f"{r['id']}.json"
+        m = json.load(open(path, encoding='utf-8')) if path.exists() else None
+        y['meetings'].append({'id': r['id'], 'date': r['date'], 'committee': r['committee'], 'pdf': r['pdf'],
+                              'status': 'done' if m else 'pending' if r['date'] <= today else 'upcoming',
+                              'agencies': m['agencies'] if m else '', 'speakers': len(m['members']) if m else 0})
+        if not m:
+            continue
+        for mid, (turns, chars) in m['members'].items():
+            t = y['members'].setdefault(mid, [0, 0, 0])
+            t[0] += turns
+            t[1] += chars
+            t[2] += 1
+            c = y['committees'].setdefault(r['committee'], {}).setdefault(mid, [0, 0, 0])
+            c[0] += turns
+            c[1] += chars
+            c[2] += 1
+    for y in years.values():
+        ds = sorted(x['date'] for x in y['meetings'])
+        y['start'], y['end'] = ds[0], ds[-1]
+    ids = {mid for y in years.values() for mid in y['members']}
+    names = {m['id']: m for m in S.members}
+    people = {}
+    for mid in ids:
+        m = names.get(mid)
+        people[mid] = [m['name'], m['party'], scores.get(mid, {}).get('grade')] if m else [S.former.get(mid, mid), None, None]
+    with open(APP / 'public' / 'audit.json', 'w', encoding='utf-8') as f:
+        json.dump({'as_of': today, 'years': years, 'people': people}, f, ensure_ascii=False, separators=(',', ':'))
+
+
 def main():
     S = Sources()
     recs = records(S)
@@ -674,6 +721,7 @@ def main():
     weekly(S, cov, vote_index)
     quiz_data(S, vote_index, load_module(APP / 'lib' / 'score-run.js')['scores'])
     law_data(S, vote_index)
+    audit_data(S, load_module(APP / 'lib' / 'score-run.js')['scores'])
     import og
     og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
     import stamp
