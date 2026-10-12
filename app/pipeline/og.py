@@ -274,7 +274,7 @@ def quiz_image():
     im, d = canvas()
     d.text((80, 230), '나와 닮은 국회의원은', font=font(64, True), fill=TEXT, anchor='ls')
     d.text((80, 312), '누구일까?', font=font(64, True), fill=ACCENT, anchor='ls')
-    d.text((82, 380), '여야가 갈렸던 실제 법안 10개에 투표해 보세요', font=font(30), fill=TEXT2, anchor='ls')
+    d.text((82, 380), '찬반이 갈렸던 실제 법안 10개에 투표해 보세요', font=font(30), fill=TEXT2, anchor='ls')
     # left-right strip with a marker
     x0, x1, y = 82, W - 90, 450
     for k in range(60):

@@ -5,8 +5,6 @@
   let answers = []; // 'Y' | 'N' | '?' per question
   let cur = 0;
 
-  // position of each current question in the original (pre-October 2026) order
-  const OLD_ORDER = [0, 1, 3, 2, 7, 4, 8, 5, 6, 9];
   const CHO = { Y: '찬성', N: '반대', '?': '잘 모르겠음' };
   const LEFT_LABEL = '진보 성향';
   const RIGHT_LABEL = '보수 성향';
@@ -16,7 +14,7 @@
     root.innerHTML = `<section class="card quiz-card quiz-intro">
       <span class="chip">정치성향 테스트 · 약 3분</span>
       <h1>나와 닮은 국회의원은 누구일까?</h1>
-      <p class="lead">제22대 국회에서 <b>여야가 실제로 갈렸던 법안 10개</b>에 직접 찬성·반대해 보세요.
+      <p class="lead">제22대 국회에서 <b>실제로 찬반이 갈렸던 법안 10개</b>(연금·노동·부동산·세금·교육 등 분야별 1개씩)에 직접 찬성·반대해 보세요.
         국회의원 299명의 실제 표결과 비교해 나와 가장 비슷하게 투표한 의원과 정당, 그리고 내 성향의 위치를 보여 드립니다.</p>
       <ul class="quiz-points">
         <li>문항마다 법이 무엇을 바꾸는지와 찬반 양쪽 주장을 같은 분량으로 보여 드립니다.</li>
@@ -69,7 +67,7 @@
 
   function finish() {
     const code = answers.map((a) => (a === '?' ? 'S' : a)).join('');
-    history.replaceState(null, '', `?r=${code}`);
+    history.replaceState(null, '', `?q=${code}`);
     result();
   }
 
@@ -180,16 +178,10 @@
 
   fetch('/quiz-data.json').then((r) => r.json()).then((d) => {
     D = d;
-    const u = new URLSearchParams(location.search);
-    const r = u.get('r');
-    const a = u.get('a'); // links shared before the questions were reordered and reworded
-    const ok = (x) => x && x.length === D.questions.length && /^[YNS]+$/.test(x);
-    if (ok(r)) {
+    // ?q= answers for the current question set (older ?a= / ?r= links used other questions)
+    const r = new URLSearchParams(location.search).get('q');
+    if (r && r.length === D.questions.length && /^[YNS]+$/.test(r)) {
       answers = r.split('').map((c) => (c === 'S' ? '?' : c));
-      result(true);
-    } else if (ok(a)) {
-      const swap = { Y: 'N', N: 'Y', S: '?' };
-      answers = OLD_ORDER.map((i, k) => (D.questions[k].flip ? swap[a[i]] : a[i] === 'S' ? '?' : a[i]));
       result(true);
     } else intro();
   }).catch((e) => { root.innerHTML = `<div class="card error">불러오지 못했습니다: ${esc(e.message)}</div>`; });
