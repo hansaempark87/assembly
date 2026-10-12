@@ -5,6 +5,8 @@
   let answers = []; // 'Y' | 'N' | '?' per question
   let cur = 0;
 
+  // position of each current question in the original (pre-October 2026) order
+  const OLD_ORDER = [0, 1, 3, 2, 7, 4, 8, 5, 6, 9];
   const CHO = { Y: '찬성', N: '반대', '?': '잘 모르겠음' };
   const LEFT_LABEL = '진보 성향';
   const RIGHT_LABEL = '보수 성향';
@@ -19,6 +21,7 @@
       <ul class="quiz-points">
         <li>문항마다 법이 무엇을 바꾸는지와 찬반 양쪽 주장을 같은 분량으로 보여 드립니다.</li>
         <li>판단이 어려우면 "잘 모르겠음"을 고르세요. 결과 계산에서 빠집니다.</li>
+        <li>찬성·반대 중 어느 쪽이 어느 정당 입장인지 짐작할 수 없도록, 질문 방향과 순서를 섞었습니다.</li>
         <li>답은 이 기기 안에서만 계산하며 어디에도 저장하거나 보내지 않습니다.</li>
       </ul>
       <button type="button" class="btn btn-primary btn-lg" id="start">시작하기</button>
@@ -56,7 +59,7 @@
 
   function finish() {
     const code = answers.map((a) => (a === '?' ? 'S' : a)).join('');
-    history.replaceState(null, '', `?a=${code}`);
+    history.replaceState(null, '', `?r=${code}`);
     result();
   }
 
@@ -133,7 +136,7 @@
         return `<span class="rc-p"><i class="dot-key" style="background:${partyColor(p)}"></i>${p === '더불어민주당' ? '민주' : '국힘'} ${c === 'Y' ? '찬성' : c === 'N' ? '반대' : '-'}</span>`;
       }).join('');
       return `<div class="recap-row">
-        <a href="/vote?id=${encodeURIComponent(q.vote)}" class="rc-q">${esc(q.law)}<small>${kdate(q.date)} · ${esc(q.result || '')}</small></a>
+        <a href="/vote?id=${encodeURIComponent(q.vote)}" class="rc-q">${esc(q.title)}<small>${esc(q.law)} · ${kdate(q.date)} ${esc(q.result || '')}${q.flip ? ' · 이 질문의 찬성 = 법안 반대' : ''}</small></a>
         <span class="rc-me ${my === 'Y' ? 'y' : my === 'N' ? 'n' : ''}">나: ${CHO[my]}</span>
         <span class="rc-parties">${big}</span>
       </div>`;
@@ -151,7 +154,7 @@
         <div><h3 class="wk-h">정당별 일치율</h3>${partyRows || '<p class="muted">답이 부족합니다.</p>'}</div>
       </div>
       <div class="section"><h3 class="wk-h">문항별로 다시 보기</h3><div class="recap">
-        <div class="recap-row recap-head"><span>법안</span><span>나의 선택</span><span>양당 다수의 실제 선택</span></div>${recap}</div></div>
+        <div class="recap-row recap-head"><span>질문</span><span>나의 선택</span><span>양당 다수의 실제 표결 (질문 기준)</span></div>${recap}</div></div>
       <div class="quiz-actions section">
         <div id="share"></div>
         <button type="button" class="btn" id="again">다시 하기</button>
@@ -167,9 +170,16 @@
 
   fetch('/quiz-data.json').then((r) => r.json()).then((d) => {
     D = d;
-    const a = new URLSearchParams(location.search).get('a');
-    if (a && a.length === D.questions.length && /^[YNS]+$/.test(a)) {
-      answers = a.split('').map((c) => (c === 'S' ? '?' : c));
+    const u = new URLSearchParams(location.search);
+    const r = u.get('r');
+    const a = u.get('a'); // links shared before the questions were reordered and reworded
+    const ok = (x) => x && x.length === D.questions.length && /^[YNS]+$/.test(x);
+    if (ok(r)) {
+      answers = r.split('').map((c) => (c === 'S' ? '?' : c));
+      result(true);
+    } else if (ok(a)) {
+      const swap = { Y: 'N', N: 'Y', S: '?' };
+      answers = OLD_ORDER.map((i, k) => (D.questions[k].flip ? swap[a[i]] : a[i] === 'S' ? '?' : a[i]));
       result(true);
     } else intro();
   }).catch((e) => { root.innerHTML = `<div class="card error">불러오지 못했습니다: ${esc(e.message)}</div>`; });

@@ -543,10 +543,12 @@ def quiz_data(S, vote_index, scores):
     for q in questions:
         v, x = by_id[q['vote']], idx[q['vote']]
         choice = {i: k for k in 'YNAX' for i in v[k]}
+        if q.get('flip'):  # question asks the opposite of the bill: agreeing = voting no
+            choice = {i: {'Y': 'N', 'N': 'Y'}.get(k, k) for i, k in choice.items()}
         for mid, acc in answers.items():
             acc.append(choice.get(mid, '.'))
         out_q.append({**{k: q[k] for k in ('topic', 'title', 'law', 'summary', 'pro', 'con')},
-                      'vote': q['vote'], 'date': x['date'], 'result': x['result'], 'counts': x['counts']})
+                      'flip': bool(q.get('flip')), 'vote': q['vote'], 'date': x['date'], 'result': x['result'], 'counts': x['counts']})
         for p, ids_ in v['party'].items():
             c = collections.Counter(choice[i] for i in ids_ if choice[i] in 'YN')
             party_maj[p].append(('Y' if c['Y'] > c['N'] else 'N' if c['N'] > c['Y'] else '.') if sum(c.values()) >= 3 else '.')

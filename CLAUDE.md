@@ -8,3 +8,4 @@
 - Do not show GitHub or repository details anywhere on the public site.
 - Data is rebuilt by app/pipeline (fetch.py → build.py → check.py); generated files are not edited by hand.
 - After editing app/public/js or app/public/css, run `python3 app/pipeline/stamp.py` so browsers load the new files.
+- Quiz (/quiz) must never hint at a party: neutral answer colours, and "찬성" must not line up with one party (balance via question direction and order; see app/data/quiz.json description).
