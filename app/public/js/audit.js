@@ -62,10 +62,10 @@
         <div class="au-dates">${by[c].sort((a, b) => a.date.localeCompare(b.date)).map((m) => {
           const [label, cls] = ST[m.status];
           const title = `${kdate(m.date)} · ${label}${m.agencies ? ` · ${m.agencies}` : ''}`;
-          const body = `<span class="au-d num">${m.date.slice(5).replace('-', '.')}</span>${m.agencies ? `<span class="au-ag">${esc(m.agencies)}</span>` : ''}`;
-          return m.status === 'done'
-            ? `<a class="au-chip ${cls}" href="${esc(m.pdf)}" target="_blank" rel="noopener" title="${esc(title)}">${body}</a>`
-            : `<span class="au-chip ${cls}" title="${esc(title)}">${body}</span>`;
+          const body = `<span class="au-d num">${m.date.slice(5).replace('-', '.')}</span>`;
+          return m.status === 'upcoming'
+            ? `<span class="au-chip ${cls}" title="${esc(title)}">${body}</span>`
+            : `<a class="au-chip ${cls}" href="/audit-meeting?id=${encodeURIComponent(m.id)}" title="${esc(title)}">${body}</a>`;
         }).join('')}</div>
       </div>`).join('');
   }

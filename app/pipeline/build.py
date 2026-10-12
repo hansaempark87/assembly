@@ -696,6 +696,22 @@ def audit_data(S, scores):
         people[mid] = [m['name'], m['party'], scores.get(mid, {}).get('grade')] if m else [S.former.get(mid, mid), None, None]
     with open(APP / 'public' / 'audit.json', 'w', encoding='utf-8') as f:
         json.dump({'as_of': today, 'years': years, 'people': people}, f, ensure_ascii=False, separators=(',', ':'))
+    # one file per meeting for its own page: agencies, who spoke, the summary
+    out = APP / 'public' / 'audit-data'
+    os.makedirs(out, exist_ok=True)
+    for y in years.values():
+        for mt in y['meetings']:
+            src = APP / 'data' / 'source' / 'audit' / f"{mt['id']}.json"
+            sm = APP / 'data' / 'source' / 'audit-summary' / f"{mt['id']}.json"
+            m = json.load(open(src, encoding='utf-8')) if src.exists() else {'members': {}}
+            summary = json.load(open(sm, encoding='utf-8')) if sm.exists() else None
+            speakers = sorted(([mid, t, c] for mid, (t, c) in m['members'].items()), key=lambda x: -x[2])
+            ppl = {mid: people.get(mid) or [names[mid]['name'], names[mid]['party'], scores.get(mid, {}).get('grade')]
+                   if mid in names else [S.former.get(mid, mid), None, None] for mid, *_ in speakers}
+            with open(out / f"{mt['id']}.json", 'w', encoding='utf-8') as f:
+                json.dump({**mt, 'sess': y['sess'], 'speakers': speakers, 'people': ppl,
+                           'summary': summary and {'overview': summary['overview'], 'members': summary['members']}},
+                          f, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():
