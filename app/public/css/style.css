@@ -878,3 +878,19 @@ a.law-row:hover { background: var(--surface-2); text-decoration: none; }
 main > .sec-head:first-of-type { margin-top: 8px; }
 .sec-head + .card, .sec-head + .grid, .sec-head + section { margin-top: 0; }
 #seat-card .hemi-wrap { max-width: 600px; }
+
+/* ---- member page: monthly activity ---- */
+.mo-sum { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 14px; font-size: 0.9rem; }
+.mo-sum b { font-size: 1.15rem; margin-left: 4px; }
+.mo-chart { display: flex; align-items: stretch; gap: 3px; height: 170px; padding-bottom: 20px; position: relative; cursor: pointer; }
+.mo-col { flex: 1 1 0; min-width: 0; position: relative; display: flex; flex-direction: column; }
+.mo-plot { flex: 1; position: relative; border-bottom: 1px solid var(--border); border-radius: 3px 3px 0 0; }
+.mo-col:hover .mo-plot { background: var(--surface-2); }
+.mo-col.off .mo-plot { background: repeating-linear-gradient(135deg, transparent 0 4px, var(--surface-2) 4px 7px); }
+.mo-bar { position: absolute; left: 0; right: 0; bottom: 0; background: var(--g-B); border-radius: 3px 3px 0 0; }
+.mo-bar.low { background: var(--g-C); }
+.mo-none { position: absolute; left: 20%; right: 20%; bottom: 0; height: 2px; background: var(--border); }
+.mo-med { position: absolute; left: -2px; right: -2px; height: 0; border-top: 2px dashed var(--text); opacity: 0.55; }
+.mo-x { position: absolute; top: 100%; left: 0; margin-top: 4px; font-size: 0.7rem; color: var(--text-2); white-space: nowrap; }
+.mo-note { font-size: 0.78rem; margin-top: 6px; }
+@media (max-width: 640px) { .mo-chart { gap: 1px; height: 140px; } .mo-med { left: 0; right: 0; } }

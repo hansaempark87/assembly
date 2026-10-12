@@ -1,5 +1,5 @@
 (function () {
-  const { shareBar, view, pager, CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar } = window.NA;
+  const { shareBar, view, pager, CHOICE, kdate, loadVoteIndex, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, loadMembers, METRICS, stripPlot, stackedBar, tip } = window.NA;
   const content = document.getElementById('content');
   const id = new URLSearchParams(window.location.search).get('id');
 
@@ -113,8 +113,9 @@
     const listEl = document.getElementById('bill-list');
     fetch(`/bills/${encodeURIComponent(m.id)}.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-      .then(({ bills, cutoff, areas, partners, coop, votes }) => {
+      .then(({ bills, cutoff, areas, partners, coop, votes, monthly }) => {
         if (votes) renderVotes(votes);
+        renderMonthly(monthly);
         let areaFilter = null;
         let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
         let page = 1;
@@ -143,6 +144,80 @@
         paint();
       })
       .catch(() => { listEl.innerHTML = '<li class="skeleton">법안 목록을 불러오지 못했습니다.</li>'; });
+  }
+
+  // ---- month-by-month attendance and vote participation ----
+  const MONTH_TABS = [
+    ['vote', '표결 참여', '그달 열린 본회의 표결 중 찬성·반대·기권으로 참여한 비율', '건 참여'],
+    ['plenary', '본회의 출석', '그달 열린 본회의에 출석한 날의 비율', '일 출석'],
+    ['committee', '위원회 출석', '그달 열린 소속 위원회 회의에 출석한 날의 비율', '일 출석'],
+  ];
+  function renderMonthly(d) {
+    const el = document.getElementById('monthly-card');
+    if (!d || !d.months.length) { el.hidden = true; return; }
+    let cur = 'vote';
+    const label = (ym) => `${ym.slice(2, 4)}.${+ym.slice(5)}`;
+    const ratio = (rows) => {
+      const t = rows.reduce((a, r) => [a[0] + r[0], a[1] + r[1]], [0, 0]);
+      return t[1] ? t[0] / t[1] : null;
+    };
+    const chart = el.querySelector('.mo-chart');
+    let rows = [];
+    let med = [];
+    let unit = '';
+    const paint = () => {
+      const tab = MONTH_TABS.find((t) => t[0] === cur);
+      unit = tab[3];
+      rows = d[cur].map((r, i) => (d.months[i] >= d.from ? r : [0, 0]));
+      med = d.median[cur];
+      chart.setAttribute('aria-label', `월별 ${tab[1]} 막대그래프`);
+      chart.innerHTML = d.months.map((ym, i) => {
+        const [n, t] = rows[i];
+        const tick = ym.endsWith('-01') || i === 0 ? `<span class="mo-x">${label(ym)}</span>` : '';
+        let inner = '<i class="mo-none"></i>';
+        if (t) {
+          const r = n / t;
+          inner = `<i class="mo-bar${r < 0.5 ? ' low' : ''}" style="height:${Math.max(r * 100, 1.5).toFixed(1)}%"></i>`;
+          if (med[i] !== null) inner += `<i class="mo-med" style="bottom:${(med[i] * 100).toFixed(1)}%"></i>`;
+        }
+        return `<div class="mo-col${d.office && d.office[i] ? ' off' : ''}" data-i="${i}"><div class="mo-plot">${inner}</div>${tick}</div>`;
+      }).join('');
+      const recent = rows.map((r, i) => [r, med[i]]).filter(([r]) => r[1]).slice(-6);
+      const mine = ratio(recent.map(([r]) => r));
+      const rm = recent.map(([, v]) => v).filter((v) => v !== null);
+      const medAvg = rm.length ? rm.reduce((a, b) => a + b, 0) / rm.length : null;
+      el.querySelector('.mo-desc').textContent = `${tab[2]}. 점선은 같은 달 전체 의원의 중간값입니다.${d.office && d.office.some(Boolean) ? ' 빗금 친 달은 장관·국회의장 등 직책 때문에 점수에서 빠지는 기간입니다.' : ''}`;
+      el.querySelector('.mo-sum').innerHTML = `
+        <span>임기 전체 <b class="num">${pct(ratio(rows))}</b></span>
+        <span>최근 6개월 <b class="num">${pct(mine)}</b></span>
+        <span class="muted">같은 기간 의원 중간값 <span class="num">${pct(medAvg)}</span></span>`;
+    };
+    const show = (e) => {
+      const col = e.target.closest('.mo-col');
+      if (!col) { tip(null); return; }
+      const i = +col.dataset.i;
+      const [n, t] = rows[i];
+      const ym = d.months[i];
+      let body;
+      if (ym < d.from) body = '임기 시작 전';
+      else if (!t) body = '회의·표결 없음';
+      else body = `<b>${pct(n / t)}</b> · ${num(t)}${cur === 'vote' ? '건' : '일'} 중 ${num(n)}${unit}${med[i] !== null ? `<br>전체 의원 중간값 ${pct(med[i])}` : ''}`;
+      tip(`${ym.slice(0, 4)}년 ${+ym.slice(5)}월<br>${body}${d.office && d.office[i] ? '<br>직책 기간 (점수 제외)' : ''}`, e.clientX, e.clientY);
+    };
+    chart.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') show(e); });
+    chart.addEventListener('pointerleave', () => tip(null));
+    chart.addEventListener('click', show);
+    const tabs = el.querySelector('.tabs');
+    tabs.innerHTML = MONTH_TABS.map(([k, l]) => `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${l}</button>`).join('');
+    tabs.addEventListener('click', (e) => {
+      const b = e.target.closest('.tab');
+      if (!b) return;
+      cur = b.dataset.k;
+      tabs.querySelectorAll('.tab').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      tip(null);
+      paint();
+    });
+    paint();
   }
 
   // Every recorded plenary vote while in office, newest first. `votes` has one
@@ -305,6 +380,13 @@
         ${roleNote}
       </section>
       <div class="grid grid-2 section">${cards}</div>
+      <section class="card section" id="monthly-card">
+        <div class="card-head"><h2 class="card-title">월별 활동 기록</h2><div class="tabs" role="tablist"></div></div>
+        <p class="card-sub mo-desc"></p>
+        <div class="mo-sum"></div>
+        <div class="mo-chart" role="img"></div>
+        <p class="muted mo-note">막대를 누르거나 마우스를 올리면 그달 기록이 보입니다. 빈 칸은 임기 전이거나 회의·표결이 없던 달입니다.</p>
+      </section>
       <div class="grid grid-2 section">
         <section class="card metric-card" id="areas-card"><h2 class="card-title">관심 분야</h2><div class="skeleton">불러오는 중…</div></section>
         <section class="card metric-card" id="coop-card"><h2 class="card-title">초당적 협력</h2><div class="skeleton">불러오는 중…</div></section>

@@ -208,7 +208,7 @@ def role_adjustments(S, recs):
 
 # ---------- bill lists, policy areas, collaboration ----------
 
-def bill_lists_and_coop(S, recs, vote_strings):
+def bill_lists_and_coop(S, recs, vote_strings, monthly=None):
     members = S.by_id
     # party at proposal: the party printed in the plenary roster of the latest
     # session that started on or before the proposal date
@@ -314,6 +314,7 @@ def bill_lists_and_coop(S, recs, vote_strings):
             'partners': {'same': [p for p in top if p['same_party']][:5], 'other': [p for p in top if not p['same_party']][:5]},
             'coop': {k: c[k] for k in ('cross', 'base', 'bills', 'index', 'eligible', 'party_median', 'excess', 'bonus')},
             'votes': vote_strings.get(mid, ''),
+            'monthly': (monthly or {}).get(mid),
         }
         with open(out_dir / f'{mid}.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
@@ -649,6 +650,65 @@ def law_data(S, vote_index):
                   f, ensure_ascii=False, separators=(',', ':'))
 
 
+# ---------- month-by-month activity per member ----------
+
+def monthly_activity(S):
+    """Per member and calendar month: [cast, of] for plenary votes, plenary
+    days and committee meetings, plus the median rate of all members that
+    month for context, and which months fall in a state-office period.
+    Raw counts by date (votes on a seat-change day are left out, as in the
+    score); nothing here feeds the grade."""
+    months = sorted({v['date'][:7] for v in S.votes}
+                    | {d[:7] for f in S.plenary for d in f['dates']}
+                    | {d[:7] for r in S.committee for d, _ in r['daily'] if d})
+    months = [m for m in months if m >= '2024-05']
+    k = {m: i for i, m in enumerate(months)}
+    zero = lambda: [[0, 0] for _ in months]
+    vote, plen, cmt = collections.defaultdict(zero), collections.defaultdict(zero), collections.defaultdict(zero)
+    for v in S.votes:
+        if v['status'] not in SCORED_VOTE:
+            continue
+        i = k.get(v['date'][:7])
+        voted = set(v['Y']) | set(v['N']) | set(v['A'])
+        for m in S.members:
+            if in_term(m, v['date']):
+                c = vote[m['id']][i]
+                c[1] += 1
+                c[0] += m['id'] in voted
+    for f in S.plenary:
+        for mid, r in f['rows'].items():
+            for d, st in zip(f['dates'], r['status']):
+                if st in STATUSES and d[:7] in k:
+                    c = plen[mid][k[d[:7]]]
+                    c[1] += 1
+                    c[0] += st == '출석'
+    for r in S.committee:
+        for d, st in r['daily']:
+            if d and d[:7] in k:
+                c = cmt[r['id']][k[d[:7]]]
+                c[1] += 1
+                c[0] += st == '출석'
+
+    def median(xs):
+        xs = sorted(xs)
+        return round((xs[len(xs) // 2] + xs[(len(xs) - 1) // 2]) / 2, 4) if xs else None
+
+    med = {name: [median([t[i][0] / t[i][1] for t in table.values() if t[i][1]]) for i in range(len(months))]
+           for name, table in (('vote', vote), ('plenary', plen), ('committee', cmt))}
+    roles = collections.defaultdict(list)
+    for r in S.roles:
+        if r['kind'] == 'exclude':
+            roles[r['member_id']].append((r['start'][:7], (r['end'] or '9999-12')[:7]))
+    out = {}
+    for m in S.members:
+        i = m['id']
+        start = m['term_start'][:7]
+        out[i] = {'months': months, 'from': start,
+                  'vote': vote[i], 'plenary': plen[i], 'committee': cmt[i], 'median': med,
+                  'office': [any(a <= mo <= b for a, b in roles[i]) for mo in months]}
+    return out
+
+
 def main():
     S = Sources()
     recs = records(S)
@@ -662,7 +722,7 @@ def main():
     write_json(tmp / 'records.json', {'members': recs})
     write_json(APP / 'data' / 'role-adjustments.json', role_adjustments(S, recs), indent=2)
     vote_strings, vote_index = vote_pages(S)
-    write_json(APP / 'data' / 'coop.json', bill_lists_and_coop(S, recs, vote_strings))
+    write_json(APP / 'data' / 'coop.json', bill_lists_and_coop(S, recs, vote_strings, monthly_activity(S)))
     write_json(tmp / 'run-meta.json', {'data_as_of': S.meta['data_as_of'], 'coverage': cov})
 
     d = APP / 'data'
