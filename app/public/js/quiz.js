@@ -14,8 +14,8 @@
     root.innerHTML = `<section class="card quiz-card quiz-intro">
       <span class="chip">정치성향 테스트 · 약 3분</span>
       <h1>나와 닮은 국회의원은 누구일까?</h1>
-      <p class="lead">제22대 국회에서 <b>실제로 찬반이 갈렸던 법안 10개</b>(연금·노동·부동산·세금·교육 등 분야별 1개씩)에 직접 찬성·반대해 보세요.
-        국회의원 299명의 실제 표결과 비교해 나와 가장 비슷하게 투표한 의원과 정당, 그리고 내 성향의 위치를 보여 드립니다.</p>
+      <p class="lead">제22대 국회에서 <b>실제로 찬반이 갈렸던 법안 10개</b>(연금·노동·부동산·세금·교육 등 분야별 1개씩)를 읽고, 지역이나 정당, 다른 사람의 의견이 아닌 <b>내 판단</b>으로 찬성·반대해 보세요.
+        내 답으로 정치 성향을 알아보고, 국회의원 299명의 실제 표결과 비교해 나와 가장 비슷하게 투표한 의원과 정당을 보여 드립니다.</p>
       <ul class="quiz-points">
         <li>문항마다 법이 무엇을 바꾸는지와 찬반 양쪽 주장을 같은 분량으로 보여 드립니다.</li>
         <li>판단이 어려우면 "잘 모르겠음"을 고르세요. 결과 계산에서 빠집니다.</li>
@@ -67,7 +67,7 @@
 
   function finish() {
     const code = answers.map((a) => (a === '?' ? 'S' : a)).join('');
-    history.replaceState(null, '', `?q=${code}`);
+    history.replaceState(null, '', `?s=${code}`);
     result();
   }
 
@@ -178,8 +178,8 @@
 
   fetch('/quiz-data.json').then((r) => r.json()).then((d) => {
     D = d;
-    // ?q= answers for the current question set (older ?a= / ?r= links used other questions)
-    const r = new URLSearchParams(location.search).get('q');
+    // ?s= answers for the current question set (older ?a= / ?r= / ?q= links used other questions)
+    const r = new URLSearchParams(location.search).get('s');
     if (r && r.length === D.questions.length && /^[YNS]+$/.test(r)) {
       answers = r.split('').map((c) => (c === 'S' ? '?' : c));
       result(true);

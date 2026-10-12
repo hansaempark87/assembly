@@ -134,8 +134,10 @@ OVERVIEW_PROMPT = """아래는 {date} {committee} 국정감사({agencies})에서
 규칙:
 - 아래 요지에 있는 내용만 쓴다. 평가나 감정 표현, 특정 정당·의원을 부각하는 표현은 쓰지 않는다.
 - headline: 이날 가장 많이 다뤄진 내용을 담은 제목, 40자 이내.
-- summary: 회의 전체 요약 2~3문장.
-- issues: 주요 쟁점 3~5개, 각 25자 이내, 여러 위원이 다룬 주제부터.
+- summary: 회의 전체 흐름을 4~6문장으로. 어떤 문제가 제기됐고 기관이 대체로 어떻게 답했는지.
+- issues: 주요 쟁점 3~5개, 여러 위원이 다룬 주제부터.
+  - title: 쟁점 이름, 25자 이내.
+  - detail: 무엇이 문제로 지적됐고 기관이 어떻게 답했는지 2~3문장.
 
 위원별 요지:
 {items}"""
@@ -146,7 +148,8 @@ TOPICS = {'type': 'object', 'additionalProperties': False, 'required': ['topics'
                                          'properties': {'question': {'type': 'string'}, 'answer': {'type': 'string'}}}}}}
 OVERVIEW = {'type': 'object', 'additionalProperties': False, 'required': ['headline', 'summary', 'issues'], 'properties': {
     'headline': {'type': 'string'}, 'summary': {'type': 'string'},
-    'issues': {'type': 'array', 'items': {'type': 'string'}}}}
+    'issues': {'type': 'array', 'items': {'type': 'object', 'additionalProperties': False, 'required': ['title', 'detail'],
+                                          'properties': {'title': {'type': 'string'}, 'detail': {'type': 'string'}}}}}}
 CHUNK = 150_000  # characters per request; one member's exchanges rarely pass 30k
 
 
@@ -172,7 +175,7 @@ def summarize(client, model, r, agencies, talks, names):
                                                           text=text[i:i + CHUNK]), TOPICS)
             topics += (got or {}).get('topics', [])
         members[mid] = [{'q': t['question'], 'a': t['answer']} for t in topics[:3]]
-    items = '\n'.join(f"- {names.get(mid, '')}: " + ' / '.join(t['q'] for t in ts) for mid, ts in members.items() if ts)
+    items = '\n'.join(f"- {names.get(mid, '')}: " + ' / '.join(f"{t['q']} → {t['a']}" for t in ts) for mid, ts in members.items() if ts)
     overview = ask(client, model, OVERVIEW_PROMPT.format(date=r['date'], committee=r['committee'], agencies=agencies,
                                                          items=items), OVERVIEW) if items else None
     return {'v': 1, 'model': model, 'overview': overview, 'members': members}
