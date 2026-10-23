@@ -330,6 +330,13 @@
    "sha256": "de898af64c4e415d18b49b664ce54bc25ea9a77789d6037d81d1233591a8668c"
   },
   {
+   "kind": "special",
+   "seq": 10001963,
+   "title": "2026년도 9월 특별위원회 출결 현황",
+   "published": "2026-10-21",
+   "sha256": "677c482ff164eb5928d2d8ecaeb1edb7473da0814244b9331a272e2d5001101d"
+  },
+  {
    "kind": "standing",
    "seq": 10001532,
    "title": "2024년도 6월 상임위 출결현황",
@@ -510,6 +517,13 @@
    "title": "2026년도 8월 상임위원회 출결현황",
    "published": "2026-09-14",
    "sha256": "444196601448f88668042df4191d14b600cbdb1fd9138f67b60e8e57d1ecd0db"
+  },
+  {
+   "kind": "standing",
+   "seq": 10001962,
+   "title": "2026년도 9월 상임위원회 출결 현황",
+   "published": "2026-10-21",
+   "sha256": "fa12ce17e50d53ea39abc044717ac87b44e2e2f2be59962bd5f97c2d04d8e68b"
   }
  ]
 }
