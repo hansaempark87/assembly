@@ -91,7 +91,7 @@
     const next = (iso) => new Date(new Date(iso).getTime() + 864e5).toISOString().slice(0, 10);
     $('weekly-sub').textContent = w.since === w.as_of
       ? `${md(w.as_of)} 기준`
-      : `지난 갱신(${md(w.since)}) 이후 새로 들어온 기록 · 본회의 ${v.dates.length ? v.dates.map(md).join(', ') : '없음'} · 법안 ${md(next(w.windows.bills[0]))}~${md(w.windows.bills[1])}`;
+      : `최근 일주일(${md(w.since)} 이후) 새로 들어온 기록 · 본회의 ${v.dates.length ? v.dates.map(md).join(', ') : '없음'} · 법안 ${md(next(w.windows.bills[0]))}~${md(w.windows.bills[1])}`;
     const tile = (label, value, meta) => `<div class="wk-tile"><div class="kpi-label">${label}</div><div class="kpi-value num">${value}</div><div class="kpi-meta">${meta}</div></div>`;
     const bar = (c) => `<div class="stack" aria-hidden="true">${'YNAX'.split('').map((k, i) => (c[i] ? `<span style="flex:${c[i]};background:${CHOICE[k].color}"></span>` : '')).join('')}</div>`;
     const voteItems = v.highlights.map((x) => `<a class="wk-row" href="/vote?id=${encodeURIComponent(x.id)}">

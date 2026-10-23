@@ -405,23 +405,24 @@ def load_module(path):
 
 
 def weekly(S, cov, vote_index):
-    """public/weekly.json: votes, bills and grade changes since the previous
-    data date. data/weekly-state.json keeps the previous run's ranks and
-    coverage (base) and this run's (current); a new data date moves current
-    to base, a rebuild of the same date keeps the base."""
+    """public/weekly.json: votes, bills and grade changes over the last week.
+    The data is checked every morning and rebuilt whenever a new record comes
+    out, so data/weekly-state.json keeps one snapshot (ranks and coverage) per
+    data date; the comparison base is the latest snapshot at least seven days
+    older than this one (the oldest one while there is no week of history)."""
     run = load_module(APP / 'lib' / 'score-run.js')
     as_of = S.meta['data_as_of']
     snap = {i: [s['rank'], s['grade']] for i, s in run['scores'].items()}
     cur = {'as_of': as_of, 'coverage': cov, 'ranks': snap}
     path = APP / 'data' / 'weekly-state.json'
-    state = json.load(open(path, encoding='utf-8')) if path.exists() else None
-    if state and state['current']['as_of'] == as_of:
-        base = state['base']
-    elif state:
-        base = state['current']
-    else:
-        base = cur
-    write_json(path, {'base': base, 'current': cur}, indent=None)
+    state = json.load(open(path, encoding='utf-8')) if path.exists() else {}
+    snaps = state.get('snaps') or [x for x in (state.get('base'), state.get('current')) if x]
+    snaps = [x for x in snaps if x['as_of'] < as_of]
+    week_ago = (dt.date.fromisoformat(as_of) - dt.timedelta(days=7)).isoformat()
+    older = [x for x in snaps if x['as_of'] <= week_ago]
+    base = older[-1] if older else (snaps[0] if snaps else cur)
+    snaps = [x for x in snaps if x['as_of'] >= base['as_of']] + [cur]
+    write_json(path, {'snaps': snaps}, indent=None)
 
     # rank/grade history, one entry per data date (kept for trend charts)
     hpath = APP / 'data' / 'rank-history.json'
