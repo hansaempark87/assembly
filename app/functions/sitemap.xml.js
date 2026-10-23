@@ -1,20 +1,17 @@
-// GET /sitemap.xml — static pages, one URL per member and one per plenary vote.
+// GET /sitemap.xml — static pages, the guide articles and one URL per member.
+// Individual vote and audit-meeting pages are left out (and marked noindex):
+// they are mostly numbers, and AdSense counts thin pages against the site.
 import { run, allMembers } from '../lib/scoring.js';
 
-export async function onRequestGet({ env, request }) {
+export const GUIDES = ['bill-process', 'vote', 'attendance', 'audit', 'grades', 'my-member'];
+
+export async function onRequestGet({ request }) {
   const origin = new URL(request.url).origin;
   const lastmod = (run.data_as_of || run.created_at).slice(0, 10);
-  let votes = [];
-  try {
-    const r = await env.ASSETS.fetch(new URL('/vote-data/index.json', origin));
-    if (r.ok) votes = (await r.json()).votes;
-  } catch {
-    votes = [];
-  }
-  const urls = ['/', '/members', '/audit', '/votes', '/laws', '/quiz', '/region', '/party', '/compare', '/method', '/notes', '/about', '/privacy', '/terms']
+  const urls = ['/', '/members', '/guide/', '/audit', '/votes', '/laws', '/quiz', '/region', '/party', '/compare', '/method', '/notes', '/about', '/privacy', '/terms']
     .map((p) => [`${origin}${p}`, lastmod])
-    .concat(allMembers().map((m) => [`${origin}/member?id=${encodeURIComponent(m.id)}`, lastmod]))
-    .concat(votes.map((v) => [`${origin}/vote?id=${encodeURIComponent(v.id)}`, v.date]));
+    .concat(GUIDES.map((g) => [`${origin}/guide/${g}`, lastmod]))
+    .concat(allMembers().map((m) => [`${origin}/member?id=${encodeURIComponent(m.id)}`, lastmod]));
   const body =
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     urls.map(([u, d]) => `  <url><loc>${u.replace(/&/g, '&amp;')}</loc><lastmod>${d}</lastmod></url>`).join('\n') +
