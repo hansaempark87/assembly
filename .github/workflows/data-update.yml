@@ -59,7 +59,7 @@ jobs:
           ASSEMBLY_API_KEY: ${{ secrets.ASSEMBLY_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           AUDIT_SUMMARY_MODEL: claude-haiku-5-5
-          AUDIT_SUMMARY_MAX: '5'
+          AUDIT_SUMMARY_MAX: '40'
         run: python -u audit.py
 
       - name: Anything new?
