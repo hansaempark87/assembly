@@ -42,7 +42,7 @@ jobs:
       - name: Install
         run: |
           pip install -r app/pipeline/requirements.txt
-          sudo apt-get install -y -qq poppler-utils
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
 
       - name: Fetch public records
         id: fetch
