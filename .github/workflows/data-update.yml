@@ -1,5 +1,7 @@
-# Weekly data update: fetch the public Assembly records, rebuild the scores,
-# check them against what is live, then publish.
+# Daily data check: fetch the public Assembly records every morning; when a
+# new record came out (a plenary vote, an attendance file, new bills, audit
+# minutes), rebuild the scores, check them against what is live, then publish.
+# Days with nothing new end after the fetch and change nothing.
 #   all checks pass  -> commit to main (Cloudflare Pages deploys it)
 #   anything to look at -> nothing goes live; the result is pushed to a
 #                          data-review/<date> branch and an issue is opened
@@ -7,7 +9,7 @@ name: data-update
 
 on:
   schedule:
-    - cron: '0 21 * * 0'   # Monday 06:00 KST
+    - cron: '0 21 * * *'   # every day 06:00 KST
   workflow_dispatch:
 
 permissions:
@@ -60,30 +62,42 @@ jobs:
           AUDIT_SUMMARY_MAX: '5'
         run: python -u audit.py
 
+      - name: Anything new?
+        id: changes
+        run: |
+          # meta.json records the fetch time on every run; anything else changing means new records
+          if git status --porcelain app/data/source | grep -v 'app/data/source/meta.json' | grep -q .; then
+            echo "new=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "new=false" >> "$GITHUB_OUTPUT"; echo 'no new records today'
+          fi
+
       - name: Rebuild scores
+        if: steps.changes.outputs.new == 'true'
         working-directory: app/pipeline
         run: python -u build.py
 
       - name: Check against the live data
+        if: steps.changes.outputs.new == 'true'
         id: check
         continue-on-error: true
         working-directory: app/pipeline
         run: python -u check.py
 
       - name: Publish
-        if: steps.fetch.outcome == 'success' && steps.check.outcome == 'success'
+        if: steps.changes.outputs.new == 'true' && steps.fetch.outcome == 'success' && steps.check.outcome == 'success'
         run: |
           git config user.name 'data-update-bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add app/data app/lib app/public/bills app/public/vote-data app/public/weekly.json app/public/og app/public/law-data app/public/quiz-data.json app/public/audit.json app/public/audit-data
           if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
           date=$(python -c "import json;print(json.load(open('app/data/source/meta.json'))['data_as_of'])")
-          { echo "data: weekly update ${date}"; echo; cat app/data/build/summary.md; } > /tmp/msg
+          { echo "data: update ${date}"; echo; cat app/data/build/summary.md; } > /tmp/msg
           git commit -q -F /tmp/msg
           git push origin HEAD:main
 
       - name: Hold for review
-        if: steps.fetch.outcome != 'success' || steps.check.outcome != 'success'
+        if: steps.changes.outputs.new == 'true' && (steps.fetch.outcome != 'success' || steps.check.outcome != 'success')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

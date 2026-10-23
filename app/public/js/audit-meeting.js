@@ -21,7 +21,7 @@
     } else if (D.status === 'upcoming') {
       brief = '<p class="muted">아직 열리지 않은 감사입니다. 감사가 끝나고 회의록이 공개되면 요약이 올라옵니다.</p>';
     } else if (D.status === 'pending') {
-      brief = '<p class="muted">국회가 아직 회의록을 공개하지 않았습니다. 공개되면 매주 업데이트 때 요약이 자동으로 올라옵니다.</p>';
+      brief = '<p class="muted">국회가 아직 회의록을 공개하지 않았습니다. 공개되면 다음 날 아침 업데이트 때 요약이 자동으로 올라옵니다.</p>';
     } else {
       brief = '<p class="muted">요약을 준비하고 있습니다. 그동안 아래 의원별 발언량과 회의록 원문을 확인할 수 있습니다.</p>';
     }
