@@ -27,8 +27,45 @@ export function memberSummary(m, evaluated) {
       <li>본회의 출석: ${m.attendance_present ?? 0} / ${m.attendance_meetings ?? 0}일 (${pct(m.attendance_rate)})</li>
       <li>위원회 출석: ${m.committee_present ?? 0} / ${m.committee_meetings_total ?? 0}회 (${pct(m.committee_attendance_rate)})</li>
     </ul>
+    <p>${esc(memberNarrative(m, allMembers()))}</p>
     <p>기준일 ${esc(run.data_as_of || '')} · 출처: 열린국회정보, 국회회의록</p></section>`;
   return { title: `${m.name} 의원 출석률·표결 참여·법안 실적 (${m.party || ''} ${(m.district || '').trim()}) — 일하는 국회`, description, html };
+}
+
+const median = (xs) => {
+  const v = xs.filter((x) => x !== null && x !== undefined).sort((a, b) => a - b);
+  if (!v.length) return null;
+  const k = Math.floor(v.length / 2);
+  return v.length % 2 ? v[k] : (v[k - 1] + v[k]) / 2;
+};
+const compare = (x, med) => (x === null || x === undefined || med === null ? '' : x > med ? '보다 높습니다' : x < med ? '보다 낮습니다' : '과 같습니다');
+
+// plain sentences comparing one member with the median of all evaluated members
+export function memberNarrative(m, members) {
+  const ev = members.filter((x) => x.eligible);
+  const mv = median(ev.map((x) => x.participation_rate));
+  const ma = median(ev.map((x) => x.attendance_rate));
+  const mc = median(ev.map((x) => x.committee_attendance_rate));
+  const reflected = (m.lead_passed || 0) + (m.lead_alternative || 0);
+  const s = [];
+  s.push(`${m.name} 의원은 ${m.party || ''} 소속으로 ${m.district || ''}에서 활동하고 있으며, 제22대 국회에서 ${m.tenure_days ?? '-'}일 재임했습니다.`);
+  s.push(`대표발의한 법안 ${m.lead_count ?? 0}건 가운데 ${m.lead_passed ?? 0}건이 그대로 가결됐고 ${m.lead_alternative ?? 0}건이 위원회 대안에 반영돼, 모두 ${reflected}건이 법에 반영됐습니다.`);
+  if (m.participation_rate !== null && m.participation_rate !== undefined)
+    s.push(`본회의 표결 참여율은 ${pct(m.participation_rate)}로 평가 대상 의원 중간값(${pct(mv)})${compare(m.participation_rate, mv)}.`);
+  if (m.attendance_rate !== null && m.attendance_rate !== undefined)
+    s.push(`본회의 출석률은 ${pct(m.attendance_rate)}(중간값 ${pct(ma)}), 위원회 출석률은 ${pct(m.committee_attendance_rate)}(중간값 ${pct(mc)})입니다.`);
+  s.push(m.eligible ? `네 가지 지표를 합친 종합 순위는 ${ev.length}명 중 ${m.rank}위로 ${m.grade}등급입니다.` : `재임 기간이나 겸직 때문에 종합 등급은 매기지 않았습니다.`);
+  return s.join(' ');
+}
+
+export function homeSummary(members) {
+  const ev = members.filter((x) => x.eligible).sort((a, b) => a.rank - b.rank);
+  const link = (m) => `<a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>(${esc(m.party || '')})`;
+  const lead = members.reduce((a, m) => a + (m.lead_count || 0), 0);
+  const refl = members.reduce((a, m) => a + (m.lead_passed || 0) + (m.lead_alternative || 0), 0);
+  return `<p>제22대 국회의원 ${members.length}명이 대표발의한 법안은 ${lead.toLocaleString('ko-KR')}건이고, 이 가운데 ${refl.toLocaleString('ko-KR')}건이 가결되거나 위원회 대안에 반영됐습니다.
+    평가 대상 ${ev.length}명의 본회의 표결 참여율 중간값은 ${pct(median(ev.map((m) => m.participation_rate)))}, 본회의 출석률 중간값은 ${pct(median(ev.map((m) => m.attendance_rate)))}입니다.</p>
+    <p>종합 상위 5명: ${ev.slice(0, 5).map(link).join(', ')}. 종합 하위 5명: ${ev.slice(-5).reverse().map(link).join(', ')}.</p>`;
 }
 
 export function boardRows(members) {
