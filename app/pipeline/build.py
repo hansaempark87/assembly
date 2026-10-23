@@ -674,7 +674,8 @@ def audit_data(S, scores):
         m = json.load(open(path, encoding='utf-8')) if path.exists() else None
         y['meetings'].append({'id': r['id'], 'date': r['date'], 'committee': r['committee'], 'pdf': r['pdf'],
                               'status': 'done' if m else 'pending' if r['date'] <= today else 'upcoming',
-                              'agencies': m['agencies'] if m else '', 'speakers': len(m['members']) if m else 0})
+                              'agencies': m['agencies'] if m else '', 'speakers': len(m['members']) if m else 0,
+                              'sum': (APP / 'data' / 'source' / 'audit-summary' / f"{r['id']}.json").exists()})
         if not m:
             continue
         for mid, (turns, chars) in m['members'].items():
