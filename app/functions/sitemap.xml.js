@@ -4,7 +4,7 @@
 // are listed once they have a summary.
 import { run, allMembers } from '../lib/scoring.js';
 
-export const GUIDES = ['bill-process', 'vote', 'attendance', 'audit', 'grades', 'my-member'];
+export const GUIDES = ['bill-process', 'vote', 'attendance', 'audit'];
 
 export async function onRequestGet({ env, request }) {
   const origin = new URL(request.url).origin;

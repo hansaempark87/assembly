@@ -952,3 +952,4 @@ a.au-chip:hover { text-decoration: none; border-color: var(--accent); }
 .guide-item span { color: var(--text-3); font-size: 0.88rem; line-height: 1.6; }
 .prose-card p { line-height: 1.75; color: var(--text-2); }
 @media (max-width: 640px) { .guide-list { grid-template-columns: 1fr; } }
+.page-head .page-lead { color: var(--text-2); font-size: 0.98rem; margin-top: 6px; }
