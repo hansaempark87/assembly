@@ -2226,6 +2226,13 @@
   "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57472"
  },
  {
+  "id": "N054566",
+  "date": "2026-10-06",
+  "sess": "제439회",
+  "committee": "법제사법위원회",
+  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57426"
+ },
+ {
   "id": "N054593",
   "date": "2026-10-06",
   "sess": "제439회",
@@ -2394,13 +2401,6 @@
   "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57399"
  },
  {
-  "id": "N054556",
-  "date": "2026-10-15",
-  "sess": "제439회",
-  "committee": "재정경제기획위원회",
-  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57417"
- },
- {
   "id": "N054530",
   "date": "2026-10-16",
   "sess": "제439회",
@@ -2525,6 +2525,13 @@
   "sess": "제439회",
   "committee": "기후에너지환경노동위원회",
   "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57377"
+ },
+ {
+  "id": "N054681",
+  "date": "2026-10-23",
+  "sess": "제439회",
+  "committee": "농림축산식품해양수산위원회",
+  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57540"
  },
  {
   "id": "N054597",
