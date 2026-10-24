@@ -58,14 +58,18 @@ export function memberNarrative(m, members) {
   return s.join(' ');
 }
 
-export function homeSummary(members) {
-  const ev = members.filter((x) => x.eligible).sort((a, b) => a.rank - b.rank);
-  const link = (m) => `<a href="/member?id=${encodeURIComponent(m.id)}">${esc(m.name)}</a>(${esc(m.party || '')})`;
+// the four headline tiles of the home page, as the client script draws them
+export function homeKpis(members) {
+  const ev = members.filter((x) => x.eligible);
   const lead = members.reduce((a, m) => a + (m.lead_count || 0), 0);
   const refl = members.reduce((a, m) => a + (m.lead_passed || 0) + (m.lead_alternative || 0), 0);
-  return `<p>제22대 국회의원 ${members.length}명이 대표발의한 법안은 ${lead.toLocaleString('ko-KR')}건이고, 이 가운데 ${refl.toLocaleString('ko-KR')}건이 가결되거나 위원회 대안에 반영됐습니다.
-    평가 대상 ${ev.length}명의 본회의 표결 참여율 중간값은 ${pct(median(ev.map((m) => m.participation_rate)))}, 본회의 출석률 중간값은 ${pct(median(ev.map((m) => m.attendance_rate)))}입니다.</p>
-    <p>종합 상위 5명: ${ev.slice(0, 5).map(link).join(', ')}. 종합 하위 5명: ${ev.slice(-5).reverse().map(link).join(', ')}.</p>`;
+  const tile = (label, value, meta) => `<div class="card"><div class="kpi-label">${label}</div><div class="kpi-value num">${value}</div><div class="kpi-meta">${meta}</div></div>`;
+  return [
+    tile('평가 대상 의원', `${ev.length}<small>명</small>`, `전체 ${members.length}명`),
+    tile('법에 반영된 대표발의', `${refl.toLocaleString('ko-KR')}<small>건</small>`, `대표발의 ${lead.toLocaleString('ko-KR')}건 중 ${pct(refl / lead)}`),
+    tile('표결 참여율 중앙값', pct(median(ev.map((m) => m.participation_rate))), '본회의 기록표결 기준'),
+    tile('본회의 출석률 중앙값', pct(median(ev.map((m) => m.attendance_rate))), '본회의가 열린 날 기준'),
+  ].join('');
 }
 
 export function boardRows(members) {
