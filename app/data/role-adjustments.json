@@ -2,7 +2,7 @@
   "generated_from": {
     "roles": "member-roles.json",
     "source": "data/source",
-    "eval_end": "2026-11-03"
+    "eval_end": "2026-11-04"
   },
   "members": {
     "ARP89147": {
@@ -10,10 +10,10 @@
       "periods": [
         {
           "start": "2025-07-25",
-          "end": "2026-11-03"
+          "end": "2026-11-04"
         }
       ],
-      "role_days": 467,
+      "role_days": 468,
       "votes": {
         "eligible": 1121,
         "participated": 27,
@@ -41,10 +41,10 @@
       "periods": [
         {
           "start": "2026-06-05",
-          "end": "2026-11-03"
+          "end": "2026-11-04"
         }
       ],
-      "role_days": 152,
+      "role_days": 153,
       "votes": {
         "eligible": 316,
         "participated": 236,
@@ -103,10 +103,10 @@
       "periods": [
         {
           "start": "2025-07-19",
-          "end": "2026-11-03"
+          "end": "2026-11-04"
         }
       ],
-      "role_days": 473,
+      "role_days": 474,
       "votes": {
         "eligible": 1121,
         "participated": 70,
@@ -258,10 +258,10 @@
       "periods": [
         {
           "start": "2025-07-21",
-          "end": "2026-11-03"
+          "end": "2026-11-04"
         }
       ],
-      "role_days": 471,
+      "role_days": 472,
       "votes": {
         "eligible": 1121,
         "participated": 22,
