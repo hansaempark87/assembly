@@ -656,6 +656,17 @@ def law_data(S, vote_index):
 
 # committees renamed mid-term: compare under one name
 COMMITTEE_ALIAS = {'기획재정위원회': '재정경제기획위원회', '환경노동위원회': '기후에너지환경노동위원회', '여성가족위원회': '성평등가족위원회'}
+# short forms NATV uses in video titles
+COMMITTEE_SHORT = {
+    '법사위': '법제사법위원회', '정무위': '정무위원회', '기재위': '기획재정위원회', '재경위': '재정경제기획위원회',
+    '교육위': '교육위원회', '과방위': '과학기술정보방송통신위원회', '외통위': '외교통일위원회', '국방위': '국방위원회',
+    '행안위': '행정안전위원회', '문체위': '문화체육관광위원회', '농해수위': '농림축산식품해양수산위원회',
+    '산자위': '산업통상자원중소벤처기업위원회', '산자중기위': '산업통상자원중소벤처기업위원회',
+    '복지위': '보건복지위원회', '보건복지위': '보건복지위원회', '환노위': '환경노동위원회',
+    '기후노동위': '기후에너지환경노동위원회', '기후에너지노동위': '기후에너지환경노동위원회',
+    '국토위': '국토교통위원회', '정보위': '정보위원회', '운영위': '국회운영위원회', '여가위': '여성가족위원회',
+    '성평등위': '성평등가족위원회', '성평등가족위': '성평등가족위원회',
+}
 
 
 def audit_videos(listing):
@@ -669,13 +680,18 @@ def audit_videos(listing):
     if not path.exists():
         return {}
     canon = lambda c: COMMITTEE_ALIAS.get(c, c)
-    # the committee is whichever audit committee the title names (longest name first,
-    # so 예산결산특별위원회 is not read as a shorter name inside it)
-    names = sorted({r['committee'] for r in listing} | set(COMMITTEE_ALIAS), key=len, reverse=True)
+    # NATV titles name the committee by its short form ("2025년 국정감사 법사위 - 대검찰청");
+    # full names are matched too. Longest first, so a short form inside a longer one never wins.
+    names = {r['committee']: r['committee'] for r in listing}
+    names.update({k: k for k in COMMITTEE_ALIAS})
+    names.update(COMMITTEE_SHORT)
+    order = sorted(names, key=len, reverse=True)
     vids = collections.defaultdict(list)
     for line in open(path, encoding='utf-8'):
         v = json.loads(line)
-        hit = next((n for n in names if n in v['title']), None)
+        if '감사' not in v['title']:
+            continue  # only audit recordings; other streams of the same committee that day are not the audit
+        hit = next((names[n] for n in order if n in v['title']), None)
         if hit and not v.get('date') and v.get('live'):  # no date in the title: the stream's start, in KST
             v['date'] = (dt.datetime.fromisoformat(v['published'].replace('Z', '+00:00')) + dt.timedelta(hours=9)).date().isoformat()
         if hit and v.get('date'):
