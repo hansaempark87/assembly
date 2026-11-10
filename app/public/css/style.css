@@ -953,3 +953,15 @@ a.au-chip:hover { text-decoration: none; border-color: var(--accent); }
 .prose-card p { line-height: 1.75; color: var(--text-2); }
 @media (max-width: 640px) { .guide-list { grid-template-columns: 1fr; } }
 .page-head .page-lead { color: var(--text-2); font-size: 0.98rem; margin-top: 6px; }
+
+/* ---- audit meeting video ---- */
+.am-video { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+.am-video iframe, .am-vthumb { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.am-vthumb { padding: 0; cursor: pointer; background: #000; }
+.am-vthumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.92; }
+.am-vthumb:hover img { opacity: 1; }
+.am-vplay { position: absolute; left: 50%; top: 50%; width: 68px; height: 48px; margin: -24px 0 0 -34px; border-radius: 12px; background: rgba(0, 0, 0, 0.72); }
+.am-vplay::after { content: ""; position: absolute; left: 27px; top: 14px; border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #fff; }
+.am-vthumb:hover .am-vplay { background: #e00; }
+.am-vsrc { margin-top: 8px; }
+.au-vid { font-style: normal; font-size: 0.62rem; margin-left: 4px; color: var(--text-3); vertical-align: 1px; }
