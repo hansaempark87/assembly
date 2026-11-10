@@ -1,6 +1,6 @@
 """NATV (국회방송) YouTube uploads, for linking audit meetings to their video.
 
-NATV live-streams committee meetings and keeps the recordings on its channel,
+NATV (youtube.com/@NATV) live-streams committee meetings and keeps the recordings on its channel,
 titled like "[국회방송 생중계] 행정안전위원회 - 경찰청 등 (25.10.14.)", with
 "1부 - " / "2부 - " in front when a long meeting is split. This keeps a local
 list of the channel's uploads (data/source/natv-videos.jsonl): every video id,
@@ -25,10 +25,9 @@ import urllib.parse
 
 from common import SRC, _get, read_jsonl, write_jsonl
 
-CHANNEL = 'UCsWa6xl7KxOolVhROUJ4Ghw'  # NATV 국회방송
-UPLOADS = 'UU' + CHANNEL[2:]   # edited clips
-STREAMS = 'UULV' + CHANNEL[2:]  # finished live streams: the meeting recordings
+HANDLE = 'NATV'  # 국회방송 (youtube.com/@NATV); the Assembly's own channel carries only clips
 API = 'https://www.googleapis.com/youtube/v3/playlistItems'
+CHANNELS = 'https://www.googleapis.com/youtube/v3/channels'
 SINCE = '2024-06-01'  # the 22nd Assembly's first audit was in October 2024
 TITLE = re.compile(r'^(?:\[[^\]]*\]\s*)?(?:(\d)부\s*-\s*)?(.+?)\s*\((\d{2})\.(\d{1,2})\.(\d{1,2})\.?\)\s*$')
 
@@ -49,11 +48,19 @@ def main():
     if not key:
         print('YOUTUBE_API_KEY is not set: video list not updated')
         return
+    q = {'part': 'snippet,contentDetails', 'forHandle': HANDLE, 'key': key}
+    ch = json.loads(_get(f'{CHANNELS}?{urllib.parse.urlencode(q)}', tries=4)).get('items') or []
+    if not ch:
+        print(f'channel @{HANDLE} not found: video list not updated')
+        return
+    channel = ch[0]['id']
+    print(f"channel: {ch[0]['snippet']['title']} ({channel})")
     path = SRC / 'natv-videos.jsonl'
     have = read_jsonl('natv-videos.jsonl') if path.exists() else []
+    have = [v for v in have if v.get('ch') == channel]  # rows from another channel are dropped
     by_id = {v['id']: v for v in have}
     new = []
-    for playlist, live in ((UPLOADS, False), (STREAMS, True)):
+    for playlist, live in (('UU' + channel[2:], False), ('UULV' + channel[2:], True)):
         # a playlist is read back to the first video already taken from that same playlist
         # (a few recordings are in both lists; meeting one from the other list must not stop the walk)
         seen = {i for i, v in by_id.items() if bool(v.get('live')) == live}
@@ -62,7 +69,11 @@ def main():
             q = {'part': 'snippet', 'playlistId': playlist, 'maxResults': 50, 'key': key}
             if token:
                 q['pageToken'] = token
-            page = json.loads(_get(f'{API}?{urllib.parse.urlencode(q)}', tries=4))
+            try:
+                page = json.loads(_get(f'{API}?{urllib.parse.urlencode(q)}', tries=4))
+            except RuntimeError as e:  # a channel without live streams has no UULV list
+                print(f'{playlist}: {e}')
+                break
             total = page.get('pageInfo', {}).get('totalResults', total)
             for item in page.get('items', []):
                 read += 1
@@ -75,7 +86,7 @@ def main():
                     if live:
                         by_id[vid]['live'] = True
                     continue
-                row = {'id': vid, 'title': s['title'], 'published': s['publishedAt']}
+                row = {'id': vid, 'ch': channel, 'title': s['title'], 'published': s['publishedAt']}
                 if live:
                     row['live'] = True
                 row.update(parse(s['title']) or {})
