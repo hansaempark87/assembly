@@ -51,29 +51,40 @@ def main():
         return
     path = SRC / 'natv-videos.jsonl'
     have = read_jsonl('natv-videos.jsonl') if path.exists() else []
-    known = {v['id'] for v in have}
+    by_id = {v['id']: v for v in have}
     new = []
     for playlist, live in ((UPLOADS, False), (STREAMS, True)):
-        token, done = None, False
+        # a playlist is read back to the first video already taken from that same playlist
+        # (a few recordings are in both lists; meeting one from the other list must not stop the walk)
+        seen = {i for i, v in by_id.items() if bool(v.get('live')) == live}
+        token, done, read, total = None, False, 0, None
         while not done:
             q = {'part': 'snippet', 'playlistId': playlist, 'maxResults': 50, 'key': key}
             if token:
                 q['pageToken'] = token
             page = json.loads(_get(f'{API}?{urllib.parse.urlencode(q)}', tries=4))
+            total = page.get('pageInfo', {}).get('totalResults', total)
             for item in page.get('items', []):
+                read += 1
                 s = item['snippet']
                 vid = s['resourceId']['videoId']
-                if vid in known or s['publishedAt'][:10] < SINCE:
+                if vid in seen or s['publishedAt'][:10] < SINCE:
                     done = True
                     break
+                if vid in by_id:  # known from the other list: just mark it as a recording
+                    if live:
+                        by_id[vid]['live'] = True
+                    continue
                 row = {'id': vid, 'title': s['title'], 'published': s['publishedAt']}
                 if live:
                     row['live'] = True
                 row.update(parse(s['title']) or {})
                 new.append(row)
-                known.add(vid)
+                by_id[vid] = row
             token = page.get('nextPageToken')
             done = done or not token
+        print(f"{'live streams' if live else 'uploads'}: {read} read of {total} in the list")
+    have = [v for v in by_id.values() if v not in new]
     rows = sorted(new + have, key=lambda v: v['published'], reverse=True)
     write_jsonl('natv-videos.jsonl', rows)
     print(f'NATV videos: {len(new)} new, {len(rows)} kept')
