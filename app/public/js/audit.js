@@ -62,7 +62,7 @@
         <div class="au-dates">${by[c].sort((a, b) => a.date.localeCompare(b.date)).map((m) => {
           const [label, cls] = ST[m.status];
           const title = `${kdate(m.date)} · ${label}${m.agencies ? ` · ${m.agencies}` : ''}`;
-          const body = `<span class="au-d num">${m.date.slice(5).replace('-', '.')}</span>`;
+          const body = `<span class="au-d num">${m.date.slice(5).replace('-', '.')}${m.vid ? '<i class="au-vid" aria-label="영상 있음">▶</i>' : ''}</span>`;
           return m.status === 'upcoming'
             ? `<span class="au-chip ${cls}" title="${esc(title)}">${body}</span>`
             : `<a class="au-chip ${cls}" href="/audit-meeting?id=${encodeURIComponent(m.id)}" title="${esc(title)}">${body}</a>`;

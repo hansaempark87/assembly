@@ -62,6 +62,13 @@ jobs:
           AUDIT_SUMMARY_MAX: '40'
         run: python -u audit.py
 
+      - name: NATV videos
+        continue-on-error: true
+        working-directory: app/pipeline
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python -u videos.py
+
       - name: Anything new?
         id: changes
         run: |
