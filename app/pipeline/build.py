@@ -669,11 +669,17 @@ def audit_videos(listing):
     if not path.exists():
         return {}
     canon = lambda c: COMMITTEE_ALIAS.get(c, c)
+    # the committee is whichever audit committee the title names (longest name first,
+    # so 예산결산특별위원회 is not read as a shorter name inside it)
+    names = sorted({r['committee'] for r in listing} | set(COMMITTEE_ALIAS), key=len, reverse=True)
     vids = collections.defaultdict(list)
     for line in open(path, encoding='utf-8'):
         v = json.loads(line)
-        if v.get('committee') and v.get('date'):
-            vids[(canon(v['committee']), v['date'])].append(v)
+        hit = next((n for n in names if n in v['title']), None)
+        if hit and not v.get('date') and v.get('live'):  # no date in the title: the stream's start, in KST
+            v['date'] = (dt.datetime.fromisoformat(v['published'].replace('Z', '+00:00')) + dt.timedelta(hours=9)).date().isoformat()
+        if hit and v.get('date'):
+            vids[(canon(hit), v['date'])].append(v)
     meetings = collections.defaultdict(list)
     for r in listing:
         meetings[(canon(r['committee']), r['date'])].append(r)
