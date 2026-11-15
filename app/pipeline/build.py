@@ -656,68 +656,6 @@ def law_data(S, vote_index):
 
 # committees renamed mid-term: compare under one name
 COMMITTEE_ALIAS = {'기획재정위원회': '재정경제기획위원회', '환경노동위원회': '기후에너지환경노동위원회', '여성가족위원회': '성평등가족위원회'}
-# short forms NATV uses in video titles
-COMMITTEE_SHORT = {
-    '법사위': '법제사법위원회', '정무위': '정무위원회', '기재위': '기획재정위원회', '재경위': '재정경제기획위원회',
-    '교육위': '교육위원회', '과방위': '과학기술정보방송통신위원회', '외통위': '외교통일위원회', '국방위': '국방위원회',
-    '행안위': '행정안전위원회', '문체위': '문화체육관광위원회', '농해수위': '농림축산식품해양수산위원회',
-    '산자위': '산업통상자원중소벤처기업위원회', '산자중기위': '산업통상자원중소벤처기업위원회',
-    '복지위': '보건복지위원회', '보건복지위': '보건복지위원회', '환노위': '환경노동위원회',
-    '기후노동위': '기후에너지환경노동위원회', '기후에너지노동위': '기후에너지환경노동위원회',
-    '국토위': '국토교통위원회', '정보위': '정보위원회', '운영위': '국회운영위원회', '여가위': '여성가족위원회',
-    '성평등위': '성평등가족위원회', '성평등가족위': '성평등가족위원회',
-}
-
-
-def audit_videos(listing):
-    """NATV recordings for each audit meeting: same committee, same day.
-
-    When a committee held one audit meeting that day, every recording of the
-    committee that day belongs to it (parts 1, 2, ...). When it held several,
-    a recording is kept only if its title names one of that meeting's
-    agencies; otherwise it is left out rather than guessed."""
-    path = APP / 'data' / 'source' / 'natv-videos.jsonl'
-    if not path.exists():
-        return {}
-    canon = lambda c: COMMITTEE_ALIAS.get(c, c)
-    # NATV titles name the committee by its short form ("2025년 국정감사 법사위 - 대검찰청");
-    # full names are matched too. Longest first, so a short form inside a longer one never wins.
-    names = {r['committee']: r['committee'] for r in listing}
-    names.update({k: k for k in COMMITTEE_ALIAS})
-    names.update(COMMITTEE_SHORT)
-    order = sorted(names, key=len, reverse=True)
-    vids = collections.defaultdict(list)
-    for line in open(path, encoding='utf-8'):
-        v = json.loads(line)
-        if '감사' not in v['title']:
-            continue  # only audit recordings; other streams of the same committee that day are not the audit
-        hit = next((names[n] for n in order if n in v['title']), None)
-        if hit and not v.get('date') and v.get('live'):  # no date in the title: the stream's start, in KST
-            v['date'] = (dt.datetime.fromisoformat(v['published'].replace('Z', '+00:00')) + dt.timedelta(hours=9)).date().isoformat()
-        if hit and v.get('date'):
-            vids[(canon(hit), v['date'])].append(v)
-    meetings = collections.defaultdict(list)
-    for r in listing:
-        meetings[(canon(r['committee']), r['date'])].append(r)
-    out = {}
-    for key, ms in meetings.items():
-        cand = vids.get(key, [])
-        if not cand:
-            continue
-        for r in ms:
-            if len(ms) == 1:
-                mine = cand
-            else:
-                src = APP / 'data' / 'source' / 'audit' / f"{r['id']}.json"
-                ag = json.load(open(src, encoding='utf-8'))['agencies'] if src.exists() else ''
-                words = [w for w in re.split(r'[,·\s]+', ag) if len(w) >= 3]
-                mine = [v for v in cand if any(w in v['title'] for w in words)]
-            if mine:
-                out[r['id']] = [{'id': v['id'], 'title': v['title'], 'part': v.get('part')}
-                                for v in sorted(mine, key=lambda v: (v.get('part') or 0, v['published']))]
-    return out
-
-
 def audit_data(S, scores):
     """public/audit.json: audit schedule per year and how much each member spoke.
 
@@ -731,7 +669,6 @@ def audit_data(S, scores):
         return
     listing = json.load(open(lst, encoding='utf-8'))
     today = dt.date.today().isoformat()
-    videos = audit_videos(listing)
     years = {}
     for r in listing:
         y = years.setdefault(r['date'][:4], {'sess': r['sess'], 'meetings': [], 'members': {}, 'committees': {}})
@@ -740,8 +677,7 @@ def audit_data(S, scores):
         y['meetings'].append({'id': r['id'], 'date': r['date'], 'committee': r['committee'], 'pdf': r['pdf'],
                               'status': 'done' if m else 'pending' if r['date'] <= today else 'upcoming',
                               'agencies': m['agencies'] if m else '', 'speakers': len(m['members']) if m else 0,
-                              'sum': (APP / 'data' / 'source' / 'audit-summary' / f"{r['id']}.json").exists(),
-                              'vid': len(videos.get(r['id'], []))})
+                              'sum': (APP / 'data' / 'source' / 'audit-summary' / f"{r['id']}.json").exists()})
         if not m:
             continue
         for mid, (turns, chars) in m['members'].items():
@@ -777,7 +713,7 @@ def audit_data(S, scores):
             ppl = {mid: people.get(mid) or [names[mid]['name'], names[mid]['party'], scores.get(mid, {}).get('grade')]
                    if mid in names else [S.former.get(mid, mid), None, None] for mid, *_ in speakers}
             with open(out / f"{mt['id']}.json", 'w', encoding='utf-8') as f:
-                json.dump({**mt, 'sess': y['sess'], 'speakers': speakers, 'people': ppl, 'videos': videos.get(mt['id'], []),
+                json.dump({**mt, 'sess': y['sess'], 'speakers': speakers, 'people': ppl, 
                            'summary': summary and {'overview': summary['overview'], 'members': summary['members']}},
                           f, ensure_ascii=False, separators=(',', ':'))
 
