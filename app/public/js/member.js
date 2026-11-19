@@ -304,6 +304,7 @@
         ${summary}
         ${roleNote}
       </section>
+      <section class="card section poll" id="poll" hidden></section>
       <div class="grid grid-2 section">${cards}</div>
       <div class="grid grid-2 section">
         <section class="card metric-card" id="areas-card"><h2 class="card-title">관심 분야</h2><div class="skeleton">불러오는 중…</div></section>
@@ -322,7 +323,6 @@
         <div class="more" id="bill-more"></div>
       </section>
       <section class="card section list-anchor" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
-      <section class="card section poll" id="poll" hidden></section>
       ${regionCard(m, all)}
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
@@ -333,9 +333,10 @@
     shareBar(document.getElementById('share'), { title: `${m.name} 의원 실적 — 일하는 국회`, text: `${m.name} 의원 ${m.grade ? `${m.grade}등급 · 종합 ${m.rank}위` : ''} 의정활동 실적` });
     loadBills(m, all);
     window.NA.poll(document.getElementById('poll'), {
-      kind: 'member', target: m.id, question: `${m.name} 의원의 의정활동, 어떻게 보세요?`,
-      options: [{ c: 'y', label: '잘하고 있다' }, { c: 'n', label: '아쉽다' }],
-      note: '방문자 의견이며 등급·점수에는 반영하지 않습니다',
+      kind: 'member', target: m.id, question: `${m.name} 의원, 일 잘하고 있나요?`,
+      hook: '숫자로 본 기록 말고, 내 생각은 어떤가요? 누르면 다른 방문자들의 평가가 바로 보여요.',
+      options: [{ c: 'y', label: '잘하고 있다', color: 'var(--s-aqua)' }, { c: 'n', label: '아쉽다', color: 'var(--s-violet)' }],
+      note: '등급·점수에는 반영하지 않습니다',
     });
 
     content.querySelectorAll('.strip-host').forEach((el) => {

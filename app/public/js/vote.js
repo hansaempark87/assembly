@@ -74,8 +74,8 @@
 
     content.innerHTML = `
       ${notes.map((t) => `<div class="notice">${esc(t)}</div>`).join('')}
+      <section class="card poll" id="poll" hidden></section>
       ${kpis(v, total)}
-      <section class="card section poll" id="poll" hidden></section>
       <section class="card section">
         <div class="card-head">
           <div>
@@ -118,10 +118,10 @@
       });
     });
     NA.poll($('poll'), {
-      kind: 'vote', target: id, question: '이 안건, 나라면?',
-      options: [{ c: 'y', label: '찬성' }, { c: 'n', label: '반대' }],
-      note: '방문자 의견',
-      after: `실제 국회: 찬성 ${num(v.counts[0])} · 반대 ${num(v.counts[1])} · 기권 ${num(v.counts[2])}`,
+      kind: 'vote', target: id, question: '내가 국회의원이었다면?',
+      hook: `국회는 ${v.result || '결론'}: 찬성 ${num(v.counts[0])} · 반대 ${num(v.counts[1])}. 당신의 선택은 국회와 같을까요?`,
+      options: [{ c: 'y', label: '찬성', color: CHOICE.Y.color }, { c: 'n', label: '반대', color: CHOICE.N.color }],
+      compare: { label: '국회', values: { y: v.counts[0], n: v.counts[1] } },
     });
     reveal(content.querySelectorAll('.card'));
   }
