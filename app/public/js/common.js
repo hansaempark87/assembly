@@ -536,33 +536,54 @@
       return d;
     } catch { return (window.__naDev = window.__naDev || [...crypto.getRandomValues(new Uint8Array(12))].map((b) => b.toString(36).padStart(2, '0')).join('').slice(0, 24)); }
   }
-  function poll(el, { kind, target, question, options, note, after }) {
+  function poll(el, { kind, target, question, hook, options, note, compare }) {
     if (!el) return;
     const d = deviceId();
-    const draw = (st) => {
+    let st = null;
+    let picking = false; // reader pressed "다시 고르기"
+    const bar = (vals, total, label) => `<div class="poll-bar" role="img" aria-label="${esc(label)}: ${options.map((o) => `${o.label} ${total ? Math.round((vals[o.c] / total) * 100) : 0}%`).join(', ')}">
+        ${options.map((o) => {
+          const share = total ? (vals[o.c] / total) * 100 : 0;
+          return share ? `<span style="width:${share.toFixed(1)}%;background:${o.color}">${share >= 12 ? `${Math.round(share)}%` : ''}</span>` : '';
+        }).join('')}</div>`;
+    const draw = () => {
       const total = options.reduce((a, o) => a + (st.counts[o.c] || 0), 0);
-      const shown = !!st.mine;
+      const answered = !!st.mine && !picking;
       el.hidden = false;
-      el.innerHTML = `<div class="card-head"><div><h2 class="card-title">${esc(question)}</h2>
-          <p class="card-sub">${num(total)}명 참여${note ? ` · ${esc(note)}` : ''}</p></div></div>
-        <div class="poll-opts">${options.map((o) => {
-          const n = st.counts[o.c] || 0;
-          const share = total ? (n / total) * 100 : 0;
-          return `<button type="button" class="poll-opt${st.mine === o.c ? ' on' : ''}" data-c="${o.c}" aria-pressed="${st.mine === o.c}">
-            ${shown ? `<span class="poll-fill" style="width:${share.toFixed(1)}%"></span>` : ''}
-            <span class="poll-label">${esc(o.label)}</span>${shown ? `<span class="poll-val num">${share.toFixed(0)}%<small>${num(n)}명</small></span>` : ''}</button>`;
-        }).join('')}</div>
-        <p class="card-sub poll-foot">${shown ? `${after ? `${after} · ` : ''}다시 누르면 선택을 바꿀 수 있습니다` : '고르면 결과가 보입니다'} · 한 기기·한 인터넷 주소에서 한 번만 집계됩니다</p>`;
-      el.querySelectorAll('.poll-opt').forEach((b) => b.addEventListener('click', () => send(b.dataset.c)));
+      const head = `<div class="poll-head"><span class="poll-tag">방문자 투표</span>
+          <h2 class="poll-q">${esc(question)}</h2>
+          <p class="poll-hook">${answered ? `${num(total)}명이 참여했습니다` : esc(hook || '')}</p></div>`;
+      if (!answered) {
+        el.innerHTML = `${head}
+          <div class="poll-btns">${options.map((o) => `<button type="button" class="poll-btn" data-c="${o.c}" aria-pressed="${st.mine === o.c}" style="--c:${o.color}">
+            <i aria-hidden="true"></i><span>${esc(o.label)}</span></button>`).join('')}</div>
+          <p class="poll-foot">${total ? `지금까지 ${num(total)}명 참여 · ` : '첫 번째로 참여해 보세요 · '}누르면 바로 결과가 보입니다${note ? ` · ${esc(note)}` : ''}</p>`;
+        el.querySelectorAll('.poll-btn').forEach((b) => b.addEventListener('click', () => send(b.dataset.c)));
+        return;
+      }
+      const mine = options.find((o) => o.c === st.mine);
+      const cmpTotal = compare ? options.reduce((a, o) => a + (compare.values[o.c] || 0), 0) : 0;
+      el.innerHTML = `${head}
+        <div class="poll-result" aria-live="polite">
+          <div class="poll-row"><span class="poll-who">방문자</span>${bar(st.counts, total, '방문자 결과')}</div>
+          ${compare ? `<div class="poll-row"><span class="poll-who">${esc(compare.label)}</span>${bar(compare.values, cmpTotal, compare.label)}</div>` : ''}
+          <div class="poll-legend">${options.map((o) => {
+            const n = st.counts[o.c] || 0;
+            return `<div class="poll-stat${o.c === st.mine ? ' mine' : ''}"><span class="poll-stat-top"><i style="background:${o.color}"></i>${esc(o.label)}${o.c === st.mine ? '<span class="poll-mine">내 선택</span>' : ''}</span>
+              <b class="num">${total ? Math.round((n / total) * 100) : 0}%</b><small class="num">${num(n)}명${compare ? ` · ${esc(compare.label)} ${num(compare.values[o.c] || 0)}명` : ''}</small></div>`;
+          }).join('')}</div>
+        </div>
+        <p class="poll-foot">내 선택: <b>${esc(mine.label)}</b> · <button type="button" class="link-btn poll-again">다시 고르기</button>${note ? ` · ${esc(note)}` : ''} · 한 기기·한 인터넷 주소에서 한 번만 집계</p>`;
+      el.querySelector('.poll-again').addEventListener('click', () => { picking = true; draw(); });
     };
     const send = (c) => {
-      el.querySelectorAll('.poll-opt').forEach((b) => { b.disabled = true; });
+      el.querySelectorAll('.poll-btn').forEach((b) => { b.disabled = true; });
       fetch('/api/poll', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ k: kind, t: target, c, d }) })
-        .then((r) => (r.ok ? r.json() : Promise.reject(r))).then(draw)
-        .catch(() => { el.querySelectorAll('.poll-opt').forEach((b) => { b.disabled = false; }); });
+        .then((r) => (r.ok ? r.json() : Promise.reject(r))).then((x) => { st = x; picking = false; draw(); })
+        .catch(() => { el.querySelectorAll('.poll-btn').forEach((b) => { b.disabled = false; }); });
     };
     fetch(`/api/poll?k=${encodeURIComponent(kind)}&t=${encodeURIComponent(target)}&d=${d}`)
-      .then((r) => (r.ok ? r.json() : Promise.reject(r))).then(draw)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r))).then((x) => { st = x; draw(); })
       .catch(() => { el.hidden = true; });
   }
 
