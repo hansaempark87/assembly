@@ -322,6 +322,7 @@
         <div class="more" id="bill-more"></div>
       </section>
       <section class="card section list-anchor" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
+      <section class="card section poll" id="poll" hidden></section>
       ${regionCard(m, all)}
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
         기준일 ${esc(run.data_as_of || run.created_at.slice(0, 10))} · 등급은 정해진 비중에 따른 상대 지표입니다.
@@ -331,6 +332,11 @@
 
     shareBar(document.getElementById('share'), { title: `${m.name} 의원 실적 — 일하는 국회`, text: `${m.name} 의원 ${m.grade ? `${m.grade}등급 · 종합 ${m.rank}위` : ''} 의정활동 실적` });
     loadBills(m, all);
+    window.NA.poll(document.getElementById('poll'), {
+      kind: 'member', target: m.id, question: `${m.name} 의원의 의정활동, 어떻게 보세요?`,
+      options: [{ c: 'y', label: '잘하고 있다' }, { c: 'n', label: '아쉽다' }],
+      note: '방문자 의견이며 등급·점수에는 반영하지 않습니다',
+    });
 
     content.querySelectorAll('.strip-host').forEach((el) => {
       const mt = METRICS.find((x) => x.key === el.dataset.key);

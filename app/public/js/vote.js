@@ -75,6 +75,7 @@
     content.innerHTML = `
       ${notes.map((t) => `<div class="notice">${esc(t)}</div>`).join('')}
       ${kpis(v, total)}
+      <section class="card section poll" id="poll" hidden></section>
       <section class="card section">
         <div class="card-head">
           <div>
@@ -115,6 +116,12 @@
         const s = seats[+c.dataset.i];
         c.classList.toggle('hit', !!q && s.name.includes(q));
       });
+    });
+    NA.poll($('poll'), {
+      kind: 'vote', target: id, question: '이 안건, 나라면?',
+      options: [{ c: 'y', label: '찬성' }, { c: 'n', label: '반대' }],
+      note: '방문자 의견',
+      after: `실제 국회: 찬성 ${num(v.counts[0])} · 반대 ${num(v.counts[1])} · 기권 ${num(v.counts[2])}`,
     });
     reveal(content.querySelectorAll('.card'));
   }

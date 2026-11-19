@@ -527,5 +527,44 @@
     });
   }
 
-  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo };
+  // one-tap visitor opinion (no text). Results show after answering; the card
+  // stays hidden when the poll storage is not available.
+  function deviceId() {
+    try {
+      let d = localStorage.getItem('na-device');
+      if (!d) { d = [...crypto.getRandomValues(new Uint8Array(12))].map((b) => b.toString(36).padStart(2, '0')).join('').slice(0, 24); localStorage.setItem('na-device', d); }
+      return d;
+    } catch { return (window.__naDev = window.__naDev || [...crypto.getRandomValues(new Uint8Array(12))].map((b) => b.toString(36).padStart(2, '0')).join('').slice(0, 24)); }
+  }
+  function poll(el, { kind, target, question, options, note, after }) {
+    if (!el) return;
+    const d = deviceId();
+    const draw = (st) => {
+      const total = options.reduce((a, o) => a + (st.counts[o.c] || 0), 0);
+      const shown = !!st.mine;
+      el.hidden = false;
+      el.innerHTML = `<div class="card-head"><div><h2 class="card-title">${esc(question)}</h2>
+          <p class="card-sub">${num(total)}명 참여${note ? ` · ${esc(note)}` : ''}</p></div></div>
+        <div class="poll-opts">${options.map((o) => {
+          const n = st.counts[o.c] || 0;
+          const share = total ? (n / total) * 100 : 0;
+          return `<button type="button" class="poll-opt${st.mine === o.c ? ' on' : ''}" data-c="${o.c}" aria-pressed="${st.mine === o.c}">
+            ${shown ? `<span class="poll-fill" style="width:${share.toFixed(1)}%"></span>` : ''}
+            <span class="poll-label">${esc(o.label)}</span>${shown ? `<span class="poll-val num">${share.toFixed(0)}%<small>${num(n)}명</small></span>` : ''}</button>`;
+        }).join('')}</div>
+        <p class="card-sub poll-foot">${shown ? `${after ? `${after} · ` : ''}다시 누르면 선택을 바꿀 수 있습니다` : '고르면 결과가 보입니다'} · 한 기기·한 인터넷 주소에서 한 번만 집계됩니다</p>`;
+      el.querySelectorAll('.poll-opt').forEach((b) => b.addEventListener('click', () => send(b.dataset.c)));
+    };
+    const send = (c) => {
+      el.querySelectorAll('.poll-opt').forEach((b) => { b.disabled = true; });
+      fetch('/api/poll', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ k: kind, t: target, c, d }) })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r))).then(draw)
+        .catch(() => { el.querySelectorAll('.poll-opt').forEach((b) => { b.disabled = false; }); });
+    };
+    fetch(`/api/poll?k=${encodeURIComponent(kind)}&t=${encodeURIComponent(target)}&d=${d}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r))).then(draw)
+      .catch(() => { el.hidden = true; });
+  }
+
+  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo, poll };
 })();
