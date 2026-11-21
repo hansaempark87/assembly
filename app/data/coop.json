@@ -3,15 +3,15 @@
   "max_bonus": 3.0,
   "min_bills": 5,
   "min_party": 3,
-  "p90_excess": 0.10095091113973884,
+  "p90_excess": 0.09893754234728447,
   "party_medians": {
    "더불어민주당": 0.03712035995500562,
    "조국혁신당": 0.30664240218380345,
-   "국민의힘": 0.010368663594470046,
+   "국민의힘": 0.011461318051575931,
    "진보당": 0.7846674182638106,
    "개혁신당": 0.7946428571428571
   },
-  "cutoff": "2026-11-19"
+  "cutoff": "2026-11-20"
  },
  "members": {
   "YS38221N": {
@@ -22,7 +22,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.005830153583743211,
-   "bonus": 0.173
+   "bonus": 0.177
   },
   "6K79158C": {
    "cross": 220,
@@ -32,7 +32,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.07506729940246505,
-   "bonus": 2.231
+   "bonus": 2.276
   },
   "H5476989": {
    "cross": 42,
@@ -62,7 +62,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03769260762604176,
-   "bonus": 1.12
+   "bonus": 1.143
   },
   "NUB4941Z": {
    "cross": 52,
@@ -72,7 +72,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.003760143189648464,
-   "bonus": 0.112
+   "bonus": 0.114
   },
   "CCU1009B": {
    "cross": 14,
@@ -102,7 +102,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.050311334034065416,
-   "bonus": 1.495
+   "bonus": 1.526
   },
   "D6U6678O": {
    "cross": 17,
@@ -122,7 +122,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.039655071906798595,
-   "bonus": 1.178
+   "bonus": 1.202
   },
   "JC14718Q": {
    "cross": 57,
@@ -142,7 +142,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.004336926477155181,
-   "bonus": 0.129
+   "bonus": 0.132
   },
   "2S73768V": {
    "cross": 57,
@@ -162,17 +162,17 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.011763805826078333,
-   "bonus": 0.35
+   "bonus": 0.357
   },
   "X639721U": {
-   "cross": 111,
-   "base": 1415,
-   "bills": 104,
-   "index": 0.0784452296819788,
+   "cross": 114,
+   "base": 1433,
+   "bills": 106,
+   "index": 0.07955338450802513,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.041324869726973176,
-   "bonus": 1.228
+   "excess": 0.042433024553019505,
+   "bonus": 1.287
   },
   "1JI2689F": {
    "cross": 23,
@@ -222,7 +222,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.011167611950174364,
-   "bonus": 0.332
+   "bonus": 0.339
   },
   "OFE45081": {
    "cross": 62,
@@ -232,7 +232,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.04587830135690871,
-   "bonus": 1.363
+   "bonus": 1.391
   },
   "ZW43496R": {
    "cross": 35,
@@ -282,7 +282,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.002737921710184811,
-   "bonus": 0.081
+   "bonus": 0.083
   },
   "HXT76735": {
    "cross": 33,
@@ -312,7 +312,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.027528883511294247,
-   "bonus": 0.818
+   "bonus": 0.835
   },
   "CIZ8557P": {
    "cross": 46,
@@ -322,27 +322,27 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.04902196214237266,
-   "bonus": 1.457
+   "bonus": 1.486
   },
   "NXB3178C": {
    "cross": 37,
-   "base": 897,
-   "bills": 73,
-   "index": 0.04124860646599777,
+   "base": 907,
+   "bills": 74,
+   "index": 0.040793825799338476,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.0041282465109921465,
-   "bonus": 0.123
+   "excess": 0.0036734658443328544,
+   "bonus": 0.111
   },
   "MDC3257K": {
-   "cross": 57,
-   "base": 778,
-   "bills": 55,
-   "index": 0.07326478149100257,
+   "cross": 58,
+   "base": 799,
+   "bills": 56,
+   "index": 0.07259073842302878,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.03614442153599695,
-   "bonus": 1.074
+   "excess": 0.03547037846802316,
+   "bonus": 1.076
   },
   "6VC83722": {
    "cross": 33,
@@ -376,9 +376,9 @@
   },
   "GP07421U": {
    "cross": 24,
-   "base": 893,
-   "bills": 77,
-   "index": 0.026875699888017916,
+   "base": 918,
+   "bills": 80,
+   "index": 0.026143790849673203,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -386,9 +386,9 @@
   },
   "RKS3658I": {
    "cross": 6,
-   "base": 747,
-   "bills": 60,
-   "index": 0.008032128514056224,
+   "base": 792,
+   "bills": 63,
+   "index": 0.007575757575757576,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -396,9 +396,9 @@
   },
   "RG972910": {
    "cross": 37,
-   "base": 1301,
-   "bills": 106,
-   "index": 0.02843966179861645,
+   "base": 1348,
+   "bills": 109,
+   "index": 0.02744807121661721,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -412,7 +412,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.029646331717912602,
-   "bonus": 0.881
+   "bonus": 0.899
   },
   "3CC88975": {
    "cross": 14,
@@ -492,7 +492,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.006715256483350543,
-   "bonus": 0.2
+   "bonus": 0.204
   },
   "7YC6702R": {
    "cross": 11,
@@ -512,7 +512,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.023855249801091938,
-   "bonus": 0.709
+   "bonus": 0.723
   },
   "5KV96424": {
    "cross": 41,
@@ -522,7 +522,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.004759108890755356,
-   "bonus": 0.141
+   "bonus": 0.144
   },
   "5762459L": {
    "cross": 32,
@@ -532,7 +532,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.006715256483350543,
-   "bonus": 0.2
+   "bonus": 0.204
   },
   "DMP1439I": {
    "cross": 379,
@@ -552,7 +552,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.01314419030954464,
-   "bonus": 0.391
+   "bonus": 0.399
   },
   "GRP3908I": {
    "cross": 61,
@@ -562,7 +562,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.01367064753874958,
-   "bonus": 0.406
+   "bonus": 0.415
   },
   "T2T8225E": {
    "cross": 337,
@@ -592,7 +592,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.017933791669543113,
-   "bonus": 0.533
+   "bonus": 0.544
   },
   "FOK3459D": {
    "cross": 25,
@@ -620,7 +620,7 @@
    "bills": 121,
    "index": 0.002508361204013378,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -636,9 +636,9 @@
   },
   "3C23171A": {
    "cross": 14,
-   "base": 656,
-   "bills": 64,
-   "index": 0.021341463414634148,
+   "base": 672,
+   "bills": 65,
+   "index": 0.020833333333333332,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -646,23 +646,23 @@
   },
   "RBM5454A": {
    "cross": 142,
-   "base": 799,
-   "bills": 54,
-   "index": 0.17772215269086358,
+   "base": 833,
+   "bills": 56,
+   "index": 0.17046818727490998,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.14060179273585796,
+   "excess": 0.13334782731990436,
    "bonus": 3.0
   },
   "GJ56729D": {
    "cross": 108,
-   "base": 1729,
-   "bills": 135,
-   "index": 0.06246385193753615,
+   "base": 1738,
+   "bills": 136,
+   "index": 0.06214039125431531,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.025343491982530525,
-   "bonus": 0.753
+   "excess": 0.025020031299309686,
+   "bonus": 0.759
   },
   "W3U3344O": {
    "cross": 40,
@@ -672,7 +672,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03835133815820192,
-   "bonus": 1.14
+   "bonus": 1.163
   },
   "8P37634C": {
    "cross": 46,
@@ -682,7 +682,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03332374417975702,
-   "bonus": 0.99
+   "bonus": 1.01
   },
   "OSV9142K": {
    "cross": 2,
@@ -690,7 +690,7 @@
    "bills": 148,
    "index": 0.0013183915622940012,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -702,17 +702,17 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.05223325221229476,
-   "bonus": 1.552
+   "bonus": 1.584
   },
   "C7E79345": {
    "cross": 44,
-   "base": 931,
-   "bills": 89,
-   "index": 0.047261009667024706,
+   "base": 939,
+   "bills": 90,
+   "index": 0.046858359957401494,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.010140649712019084,
-   "bonus": 0.301
+   "excess": 0.009738000002395872,
+   "bonus": 0.295
   },
   "ZDR63255": {
    "cross": 64,
@@ -722,7 +722,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.02811919152307797,
-   "bonus": 0.836
+   "bonus": 0.853
   },
   "RUZ25800": {
    "cross": 1,
@@ -737,7 +737,7 @@
   "CC78321E": {
    "cross": 0,
    "base": 0,
-   "bills": 71,
+   "bills": 72,
    "index": 0.0,
    "eligible": false,
    "party_median": null,
@@ -762,7 +762,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0037387285730195244,
-   "bonus": 0.111
+   "bonus": 0.113
   },
   "D9I3309M": {
    "cross": 37,
@@ -772,7 +772,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.007946631518806799,
-   "bonus": 0.236
+   "bonus": 0.241
   },
   "A494529E": {
    "cross": 6,
@@ -796,9 +796,9 @@
   },
   "9HE7226N": {
    "cross": 7,
-   "base": 758,
-   "bills": 53,
-   "index": 0.009234828496042216,
+   "base": 778,
+   "bills": 54,
+   "index": 0.008997429305912597,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -820,7 +820,7 @@
    "bills": 82,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -842,7 +842,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03066206682323705,
-   "bonus": 0.911
+   "bonus": 0.93
   },
   "2NV6751W": {
    "cross": 61,
@@ -852,7 +852,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03397521114056547,
-   "bonus": 1.01
+   "bonus": 1.03
   },
   "WCD5518S": {
    "cross": 75,
@@ -862,7 +862,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.051637036494698516,
-   "bonus": 1.535
+   "bonus": 1.566
   },
   "KNP22261": {
    "cross": 93,
@@ -902,7 +902,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.009698367535990779,
-   "bonus": 0.288
+   "bonus": 0.294
   },
   "9LD2641Q": {
    "cross": 59,
@@ -912,7 +912,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0106529193972211,
-   "bonus": 0.317
+   "bonus": 0.323
   },
   "XEF29171": {
    "cross": 19,
@@ -932,7 +932,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.025379640044994378,
-   "bonus": 0.754
+   "bonus": 0.77
   },
   "W8L9421K": {
    "cross": 4,
@@ -952,7 +952,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0405193915977894,
-   "bonus": 1.204
+   "bonus": 1.229
   },
   "RJH6314D": {
    "cross": 33,
@@ -962,7 +962,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.00397553045595328,
-   "bonus": 0.118
+   "bonus": 0.121
   },
   "FYI20317": {
    "cross": 33,
@@ -972,7 +972,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.01806358653328869,
-   "bonus": 0.537
+   "bonus": 0.548
   },
   "GX38539O": {
    "cross": 1,
@@ -996,13 +996,13 @@
   },
   "YM42715P": {
    "cross": 88,
-   "base": 647,
-   "bills": 56,
-   "index": 0.13601236476043277,
+   "base": 669,
+   "bills": 58,
+   "index": 0.13153961136023917,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.09889200480542715,
-   "bonus": 2.939
+   "excess": 0.09441925140523355,
+   "bonus": 2.863
   },
   "OIA3741M": {
    "cross": 16,
@@ -1012,15 +1012,15 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.010357384852116042,
-   "bonus": 0.308
+   "bonus": 0.314
   },
   "NX534083": {
    "cross": 0,
-   "base": 1507,
-   "bills": 147,
+   "base": 1538,
+   "bills": 150,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1042,7 +1042,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.02047126308164359,
-   "bonus": 0.608
+   "bonus": 0.621
   },
   "8O34202I": {
    "cross": 34,
@@ -1052,7 +1052,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.021098818127186156,
-   "bonus": 0.627
+   "bonus": 0.64
   },
   "4019850M": {
    "cross": 54,
@@ -1062,7 +1062,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.009754640044994378,
-   "bonus": 0.29
+   "bonus": 0.296
   },
   "TJW93720": {
    "cross": 42,
@@ -1072,7 +1072,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.005868381089006662,
-   "bonus": 0.174
+   "bonus": 0.178
   },
   "NPD75153": {
    "cross": 474,
@@ -1082,7 +1082,7 @@
    "eligible": true,
    "party_median": 0.30664240218380345,
    "excess": 0.047088941099778625,
-   "bonus": 1.399
+   "bonus": 1.428
   },
   "1A82234K": {
    "cross": 165,
@@ -1092,7 +1092,7 @@
    "eligible": true,
    "party_median": 0.30664240218380345,
    "excess": 0.03999625327838141,
-   "bonus": 1.189
+   "bonus": 1.213
   },
   "CNZ51556": {
    "cross": 178,
@@ -1100,8 +1100,8 @@
    "bills": 154,
    "index": 0.11131957473420888,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.10095091113973884,
+   "party_median": 0.011461318051575931,
+   "excess": 0.09985825668263294,
    "bonus": 3.0
   },
   "7GW5372Y": {
@@ -1116,13 +1116,13 @@
   },
   "DWK26447": {
    "cross": 20,
-   "base": 827,
-   "bills": 84,
-   "index": 0.02418379685610641,
+   "base": 858,
+   "bills": 87,
+   "index": 0.023310023310023312,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.013815133261636362,
-   "bonus": 0.411
+   "party_median": 0.011461318051575931,
+   "excess": 0.01184870525844738,
+   "bonus": 0.359
   },
   "04T3751T": {
    "cross": 98,
@@ -1132,7 +1132,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.04571987673138492,
-   "bonus": 1.359
+   "bonus": 1.386
   },
   "M7O7878U": {
    "cross": 37,
@@ -1142,7 +1142,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.009715083082969062,
-   "bonus": 0.289
+   "bonus": 0.295
   },
   "FU53642G": {
    "cross": 20,
@@ -1155,10 +1155,10 @@
    "bonus": 0.0
   },
   "ATB59635": {
-   "cross": 26,
-   "base": 848,
-   "bills": 87,
-   "index": 0.030660377358490566,
+   "cross": 30,
+   "base": 883,
+   "bills": 90,
+   "index": 0.03397508493771234,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -1170,7 +1170,7 @@
    "bills": 87,
    "index": 0.004273504273504274,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1182,7 +1182,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03214370930906364,
-   "bonus": 0.955
+   "bonus": 0.975
   },
   "88O1334C": {
    "cross": 18,
@@ -1192,7 +1192,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.029300304251636447,
-   "bonus": 0.871
+   "bonus": 0.888
   },
   "I7R13867": {
    "cross": 15,
@@ -1210,7 +1210,7 @@
    "bills": 66,
    "index": 0.001519756838905775,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1222,7 +1222,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.02527132115417982,
-   "bonus": 0.751
+   "bonus": 0.766
   },
   "6AU2417B": {
    "cross": 72,
@@ -1232,7 +1232,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.047785300422352864,
-   "bonus": 1.42
+   "bonus": 1.449
   },
   "WTR5885Y": {
    "cross": 9,
@@ -1270,7 +1270,7 @@
    "bills": 145,
    "index": 0.004281636536631779,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1300,7 +1300,7 @@
    "bills": 187,
    "index": 0.0011435105774728416,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1310,9 +1310,9 @@
    "bills": 58,
    "index": 0.024390243902439025,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.014021580307968979,
-   "bonus": 0.417
+   "party_median": 0.011461318051575931,
+   "excess": 0.012928925850863094,
+   "bonus": 0.392
   },
   "FU87526G": {
    "cross": 24,
@@ -1320,15 +1320,15 @@
    "bills": 64,
    "index": 0.03380281690140845,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.0234341533069384,
-   "bonus": 0.696
+   "party_median": 0.011461318051575931,
+   "excess": 0.022341498849832518,
+   "bonus": 0.677
   },
   "0YT3774N": {
    "cross": 327,
-   "base": 1353,
-   "bills": 129,
-   "index": 0.24168514412416853,
+   "base": 1362,
+   "bills": 130,
+   "index": 0.24008810572687225,
    "eligible": true,
    "party_median": 0.30664240218380345,
    "excess": 0.0,
@@ -1340,7 +1340,7 @@
    "bills": 52,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1350,17 +1350,17 @@
    "bills": 114,
    "index": 0.03889789303079417,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.028529229436324122,
-   "bonus": 0.848
+   "party_median": 0.011461318051575931,
+   "excess": 0.02743657497921824,
+   "bonus": 0.832
   },
   "ROS6754L": {
    "cross": 0,
-   "base": 764,
-   "bills": 75,
+   "base": 784,
+   "bills": 77,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1400,7 +1400,7 @@
    "bills": 41,
    "index": 0.007722007722007722,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1412,15 +1412,15 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.039802716968071306,
-   "bonus": 1.183
+   "bonus": 1.207
   },
   "LCZ1711I": {
    "cross": 3,
-   "base": 1426,
-   "bills": 138,
-   "index": 0.0021037868162692847,
+   "base": 1446,
+   "bills": 140,
+   "index": 0.002074688796680498,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1442,7 +1442,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.008526301076270795,
-   "bonus": 0.253
+   "bonus": 0.259
   },
   "5K93695T": {
    "cross": 16,
@@ -1450,9 +1450,9 @@
    "bills": 81,
    "index": 0.018369690011481057,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.00800102641701101,
-   "bonus": 0.238
+   "party_median": 0.011461318051575931,
+   "excess": 0.006908371959905126,
+   "bonus": 0.209
   },
   "2KM3589W": {
    "cross": 268,
@@ -1480,15 +1480,15 @@
    "bills": 112,
    "index": 0.008130081300813009,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
   "LT72093S": {
    "cross": 3,
-   "base": 718,
-   "bills": 63,
-   "index": 0.004178272980501393,
+   "base": 727,
+   "bills": 64,
+   "index": 0.0041265474552957355,
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0,
@@ -1500,7 +1500,7 @@
    "bills": 80,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1512,7 +1512,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.08124079330751334,
-   "bonus": 2.414
+   "bonus": 2.463
   },
   "2385336L": {
    "cross": 7,
@@ -1526,13 +1526,13 @@
   },
   "CAA7713A": {
    "cross": 4,
-   "base": 259,
-   "bills": 25,
-   "index": 0.015444015444015444,
+   "base": 269,
+   "bills": 26,
+   "index": 0.01486988847583643,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.005075351849545398,
-   "bonus": 0.151
+   "party_median": 0.011461318051575931,
+   "excess": 0.0034085704242604997,
+   "bonus": 0.103
   },
   "ME83002L": {
    "cross": 0,
@@ -1540,29 +1540,29 @@
    "bills": 55,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
   "1Y73132H": {
    "cross": 43,
-   "base": 1665,
-   "bills": 120,
-   "index": 0.025825825825825825,
+   "base": 1714,
+   "bills": 125,
+   "index": 0.025087514585764293,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.015457162231355778,
-   "bonus": 0.459
+   "party_median": 0.011461318051575931,
+   "excess": 0.013626196534188362,
+   "bonus": 0.413
   },
   "WMT66995": {
-   "cross": 0,
-   "base": 36,
-   "bills": 4,
-   "index": 0.0,
-   "eligible": false,
+   "cross": 5,
+   "base": 84,
+   "bills": 9,
+   "index": 0.05952380952380952,
+   "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.0,
-   "bonus": 0.0
+   "excess": 0.0224034495688039,
+   "bonus": 0.679
   },
   "GP21946O": {
    "cross": 2,
@@ -1570,7 +1570,7 @@
    "bills": 62,
    "index": 0.003003003003003003,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1590,9 +1590,9 @@
    "bills": 52,
    "index": 0.04744525547445255,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.03707659187998251,
-   "bonus": 1.102
+   "party_median": 0.011461318051575931,
+   "excess": 0.03598393742287662,
+   "bonus": 1.091
   },
   "80C5885Z": {
    "cross": 132,
@@ -1610,9 +1610,9 @@
    "bills": 97,
    "index": 0.0693359375,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.05896727390552996,
-   "bonus": 1.752
+   "party_median": 0.011461318051575931,
+   "excess": 0.05787461944842407,
+   "bonus": 1.755
   },
   "LYY5513O": {
    "cross": 197,
@@ -1620,8 +1620,8 @@
    "bills": 65,
    "index": 0.23734939759036144,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.2269807339958914,
+   "party_median": 0.011461318051575931,
+   "excess": 0.2258880795387855,
    "bonus": 3.0
   },
   "X1K3667J": {
@@ -1646,22 +1646,22 @@
   },
   "8348421R": {
    "cross": 155,
-   "base": 1385,
-   "bills": 135,
-   "index": 0.11191335740072202,
+   "base": 1404,
+   "bills": 137,
+   "index": 0.1103988603988604,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.10154469380625197,
+   "party_median": 0.011461318051575931,
+   "excess": 0.09893754234728447,
    "bonus": 3.0
   },
   "YN160848": {
-   "cross": 342,
-   "base": 697,
-   "bills": 64,
-   "index": 0.49067431850789095,
+   "cross": 351,
+   "base": 715,
+   "bills": 66,
+   "index": 0.4909090909090909,
    "eligible": true,
    "party_median": 0.30664240218380345,
-   "excess": 0.1840319163240875,
+   "excess": 0.18426668872528745,
    "bonus": 3.0
   },
   "HHB5652A": {
@@ -1672,7 +1672,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.057019889804840684,
-   "bonus": 1.694
+   "bonus": 1.729
   },
   "UOS16250": {
    "cross": 94,
@@ -1680,9 +1680,9 @@
    "bills": 100,
    "index": 0.09812108559498957,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.08775242200051953,
-   "bonus": 2.608
+   "party_median": 0.011461318051575931,
+   "excess": 0.08665976754341363,
+   "bonus": 2.628
   },
   "QQP4727N": {
    "cross": 39,
@@ -1690,9 +1690,9 @@
    "bills": 84,
    "index": 0.046263345195729534,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.035894681601259484,
-   "bonus": 1.067
+   "party_median": 0.011461318051575931,
+   "excess": 0.034802027144153605,
+   "bonus": 1.055
   },
   "MQK9493H": {
    "cross": 30,
@@ -1702,7 +1702,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.019059415325893253,
-   "bonus": 0.566
+   "bonus": 0.578
   },
   "W4X85128": {
    "cross": 0,
@@ -1710,7 +1710,7 @@
    "bills": 46,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1720,17 +1720,17 @@
    "bills": 126,
    "index": 0.03274760383386582,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.02237894023939577,
-   "bonus": 0.665
+   "party_median": 0.011461318051575931,
+   "excess": 0.021286285782289888,
+   "bonus": 0.645
   },
   "1SR94244": {
    "cross": 1,
-   "base": 1704,
-   "bills": 119,
-   "index": 0.0005868544600938967,
+   "base": 1716,
+   "bills": 120,
+   "index": 0.0005827505827505828,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1740,7 +1740,7 @@
    "bills": 62,
    "index": 0.0032948929159802307,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1750,9 +1750,9 @@
    "bills": 72,
    "index": 0.047865459249676584,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.03749679565520654,
-   "bonus": 1.114
+   "party_median": 0.011461318051575931,
+   "excess": 0.036404141198100655,
+   "bonus": 1.104
   },
   "1S05899F": {
    "cross": 6,
@@ -1782,27 +1782,27 @@
    "eligible": true,
    "party_median": 0.7846674182638106,
    "excess": 0.002398827792971736,
-   "bonus": 0.071
+   "bonus": 0.073
   },
   "L7J93733": {
    "cross": 17,
-   "base": 528,
-   "bills": 52,
-   "index": 0.032196969696969696,
+   "base": 544,
+   "bills": 53,
+   "index": 0.03125,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.02182830610249965,
-   "bonus": 0.649
+   "party_median": 0.011461318051575931,
+   "excess": 0.01978868194842407,
+   "bonus": 0.6
   },
   "E1J8836Y": {
-   "cross": 0,
-   "base": 1182,
-   "bills": 83,
-   "index": 0.0,
+   "cross": 143,
+   "base": 1390,
+   "bills": 96,
+   "index": 0.10287769784172662,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.0,
-   "bonus": 0.0
+   "party_median": 0.011461318051575931,
+   "excess": 0.09141637979015069,
+   "bonus": 2.772
   },
   "6I88973D": {
    "cross": 35,
@@ -1812,7 +1812,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.04908653659671852,
-   "bonus": 1.459
+   "bonus": 1.488
   },
   "BCQ55105": {
    "cross": 7,
@@ -1830,9 +1830,9 @@
    "bills": 59,
    "index": 0.03119584055459272,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.020827176960122675,
-   "bonus": 0.619
+   "party_median": 0.011461318051575931,
+   "excess": 0.019734522503016792,
+   "bonus": 0.598
   },
   "L2I9861C": {
    "cross": 0,
@@ -1840,7 +1840,7 @@
    "bills": 90,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1862,7 +1862,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.056896734062088394,
-   "bonus": 1.691
+   "bonus": 1.725
   },
   "VZA76236": {
    "cross": 13,
@@ -1872,7 +1872,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.005502590864666507,
-   "bonus": 0.164
+   "bonus": 0.167
   },
   "S9U45255": {
    "cross": 16,
@@ -1880,17 +1880,17 @@
    "bills": 46,
    "index": 0.03611738148984198,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.025748717895371937,
-   "bonus": 0.765
+   "party_median": 0.011461318051575931,
+   "excess": 0.024656063438266054,
+   "bonus": 0.748
   },
   "WJG74792": {
    "cross": 9,
-   "base": 868,
-   "bills": 84,
-   "index": 0.010368663594470046,
+   "base": 877,
+   "bills": 85,
+   "index": 0.010262257696693273,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1910,9 +1910,9 @@
    "bills": 160,
    "index": 0.018469656992084433,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.008100993397614387,
-   "bonus": 0.241
+   "party_median": 0.011461318051575931,
+   "excess": 0.007008338940508502,
+   "bonus": 0.213
   },
   "EVH1507C": {
    "cross": 21,
@@ -1920,9 +1920,9 @@
    "bills": 91,
    "index": 0.01948051948051948,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.009111855886049434,
-   "bonus": 0.271
+   "party_median": 0.011461318051575931,
+   "excess": 0.00801920142894355,
+   "bonus": 0.243
   },
   "TCP9838Y": {
    "cross": 4,
@@ -1930,7 +1930,7 @@
    "bills": 72,
    "index": 0.005571030640668524,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -1942,7 +1942,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.014859838064796356,
-   "bonus": 0.442
+   "bonus": 0.451
   },
   "8L52480G": {
    "cross": 74,
@@ -1950,9 +1950,9 @@
    "bills": 54,
    "index": 0.10632183908045977,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.09595317548598972,
-   "bonus": 2.851
+   "party_median": 0.011461318051575931,
+   "excess": 0.09486052102888383,
+   "bonus": 2.876
   },
   "9VR65006": {
    "cross": 29,
@@ -1960,9 +1960,9 @@
    "bills": 76,
    "index": 0.03766233766233766,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.027293674067867615,
-   "bonus": 0.811
+   "party_median": 0.011461318051575931,
+   "excess": 0.026201019610761732,
+   "bonus": 0.794
   },
   "ZRF3039U": {
    "cross": 24,
@@ -1970,9 +1970,9 @@
    "bills": 65,
    "index": 0.03827751196172249,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.02790884836725244,
-   "bonus": 0.829
+   "party_median": 0.011461318051575931,
+   "excess": 0.026816193910146557,
+   "bonus": 0.813
   },
   "25G2571T": {
    "cross": 42,
@@ -1982,7 +1982,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.003895265044994378,
-   "bonus": 0.116
+   "bonus": 0.118
   },
   "7XY7109I": {
    "cross": 9,
@@ -1990,9 +1990,9 @@
    "bills": 59,
    "index": 0.014802631578947368,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.004433967984477321,
-   "bonus": 0.132
+   "party_median": 0.011461318051575931,
+   "excess": 0.0033413135273714367,
+   "bonus": 0.101
   },
   "TQP7167T": {
    "cross": 37,
@@ -2000,19 +2000,19 @@
    "bills": 49,
    "index": 0.060955518945634266,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.05058685535116422,
-   "bonus": 1.503
+   "party_median": 0.011461318051575931,
+   "excess": 0.049494200894058336,
+   "bonus": 1.501
   },
   "3LP22204": {
    "cross": 33,
-   "base": 422,
-   "bills": 35,
-   "index": 0.07819905213270142,
+   "base": 431,
+   "bills": 36,
+   "index": 0.0765661252900232,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.0410786921776958,
-   "bonus": 1.221
+   "excess": 0.03944576533501758,
+   "bonus": 1.196
   },
   "MNZ4401T": {
    "cross": 15,
@@ -2040,7 +2040,7 @@
    "bills": 83,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2050,9 +2050,9 @@
    "bills": 59,
    "index": 0.04821150855365474,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.03784284495918469,
-   "bonus": 1.125
+   "party_median": 0.011461318051575931,
+   "excess": 0.03675019050207881,
+   "bonus": 1.114
   },
   "N4R2421C": {
    "cross": 0,
@@ -2060,7 +2060,7 @@
    "bills": 92,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2070,7 +2070,7 @@
    "bills": 60,
    "index": 0.00505902192242833,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2082,17 +2082,17 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.0003796400449943768,
-   "bonus": 0.011
+   "bonus": 0.012
   },
   "GF286398": {
    "cross": 58,
-   "base": 541,
-   "bills": 45,
-   "index": 0.10720887245841035,
+   "base": 559,
+   "bills": 47,
+   "index": 0.1037567084078712,
    "eligible": true,
    "party_median": 0.03712035995500562,
-   "excess": 0.07008851250340473,
-   "bonus": 2.083
+   "excess": 0.06663634845286558,
+   "bonus": 2.021
   },
   "RMC1840P": {
    "cross": 10,
@@ -2100,9 +2100,9 @@
    "bills": 50,
    "index": 0.01968503937007874,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.009316375775608694,
-   "bonus": 0.277
+   "party_median": 0.011461318051575931,
+   "excess": 0.008223721318502809,
+   "bonus": 0.249
   },
   "REG96285": {
    "cross": 31,
@@ -2110,9 +2110,9 @@
    "bills": 83,
    "index": 0.03202479338842975,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.021656129793959703,
-   "bonus": 0.644
+   "party_median": 0.011461318051575931,
+   "excess": 0.02056347533685382,
+   "bonus": 0.624
   },
   "WI719547": {
    "cross": 250,
@@ -2130,9 +2130,9 @@
    "bills": 48,
    "index": 0.06847697756788666,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.05810831397341662,
-   "bonus": 1.727
+   "party_median": 0.011461318051575931,
+   "excess": 0.057015659516310734,
+   "bonus": 1.729
   },
   "CGW7415Z": {
    "cross": 1,
@@ -2140,7 +2140,7 @@
    "bills": 39,
    "index": 0.002583979328165375,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2160,7 +2160,7 @@
    "bills": 96,
    "index": 0.00558659217877095,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2170,7 +2170,7 @@
    "bills": 61,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2186,13 +2186,13 @@
   },
   "NQO7187X": {
    "cross": 8,
-   "base": 531,
-   "bills": 56,
-   "index": 0.015065913370998116,
+   "base": 541,
+   "bills": 57,
+   "index": 0.014787430683918669,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.00469724977652807,
-   "bonus": 0.14
+   "party_median": 0.011461318051575931,
+   "excess": 0.003326112632342738,
+   "bonus": 0.101
   },
   "7469929V": {
    "cross": 17,
@@ -2200,9 +2200,9 @@
    "bills": 98,
    "index": 0.015596330275229359,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.005227666680759312,
-   "bonus": 0.155
+   "party_median": 0.011461318051575931,
+   "excess": 0.004135012223653428,
+   "bonus": 0.125
   },
   "CNW5754J": {
    "cross": 42,
@@ -2210,9 +2210,9 @@
    "bills": 49,
    "index": 0.06930693069306931,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.05893826709859927,
-   "bonus": 1.751
+   "party_median": 0.011461318051575931,
+   "excess": 0.057845612641493384,
+   "bonus": 1.754
   },
   "DAY6557K": {
    "cross": 38,
@@ -2220,9 +2220,9 @@
    "bills": 63,
    "index": 0.061488673139158574,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.051120009544688524,
-   "bonus": 1.519
+   "party_median": 0.011461318051575931,
+   "excess": 0.050027355087582645,
+   "bonus": 1.517
   },
   "WXJ8352N": {
    "cross": 28,
@@ -2230,9 +2230,9 @@
    "bills": 53,
    "index": 0.040995607613469986,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.03062694401899994,
-   "bonus": 0.91
+   "party_median": 0.011461318051575931,
+   "excess": 0.029534289561894057,
+   "bonus": 0.896
   },
   "HRG9655C": {
    "cross": 4,
@@ -2240,7 +2240,7 @@
    "bills": 61,
    "index": 0.004790419161676647,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2252,7 +2252,7 @@
    "eligible": true,
    "party_median": 0.30664240218380345,
    "excess": 0.09335759781619657,
-   "bonus": 2.774
+   "bonus": 2.831
   },
   "MR210505": {
    "cross": 0,
@@ -2260,7 +2260,7 @@
    "bills": 34,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2290,9 +2290,9 @@
    "bills": 74,
    "index": 0.03792667509481669,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.027558011500346643,
-   "bonus": 0.819
+   "party_median": 0.011461318051575931,
+   "excess": 0.02646535704324076,
+   "bonus": 0.802
   },
   "IN328264": {
    "cross": 23,
@@ -2310,9 +2310,9 @@
    "bills": 23,
    "index": 0.08641975308641975,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.0760510894919497,
-   "bonus": 2.26
+   "party_median": 0.011461318051575931,
+   "excess": 0.07495843503484381,
+   "bonus": 2.273
   },
   "8SV6917G": {
    "cross": 25,
@@ -2320,9 +2320,9 @@
    "bills": 59,
    "index": 0.04187604690117253,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.03150738330670248,
-   "bonus": 0.936
+   "party_median": 0.011461318051575931,
+   "excess": 0.030414728849596603,
+   "bonus": 0.922
   },
   "9901388T": {
    "cross": 1,
@@ -2330,7 +2330,7 @@
    "bills": 82,
    "index": 0.0010893246187363835,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2350,7 +2350,7 @@
    "bills": 51,
    "index": 0.004838709677419355,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2360,9 +2360,9 @@
    "bills": 47,
    "index": 0.10193321616871705,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.091564552574247,
-   "bonus": 2.721
+   "party_median": 0.011461318051575931,
+   "excess": 0.09047189811714111,
+   "bonus": 2.743
   },
   "JQA21112": {
    "cross": 76,
@@ -2370,8 +2370,8 @@
    "bills": 26,
    "index": 0.2111111111111111,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.20074244751664105,
+   "party_median": 0.011461318051575931,
+   "excess": 0.19964979305953517,
    "bonus": 3.0
   },
   "6U243644": {
@@ -2380,7 +2380,7 @@
    "bills": 44,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2392,7 +2392,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.005634984463046631,
-   "bonus": 0.167
+   "bonus": 0.171
   },
   "X7I4680R": {
    "cross": 20,
@@ -2400,9 +2400,9 @@
    "bills": 56,
    "index": 0.026737967914438502,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.016369304319968456,
-   "bonus": 0.486
+   "party_median": 0.011461318051575931,
+   "excess": 0.015276649862862571,
+   "bonus": 0.463
   },
   "S824682L": {
    "cross": 18,
@@ -2412,7 +2412,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.011137012699149872,
-   "bonus": 0.331
+   "bonus": 0.338
   },
   "0VU8517U": {
    "cross": 36,
@@ -2422,7 +2422,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.022779806434345462,
-   "bonus": 0.677
+   "bonus": 0.691
   },
   "JZV5283U": {
    "cross": 6,
@@ -2430,9 +2430,9 @@
    "bills": 18,
    "index": 0.031088082901554404,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.020719419307084357,
-   "bonus": 0.616
+   "party_median": 0.011461318051575931,
+   "excess": 0.019626764849978474,
+   "bonus": 0.595
   },
   "8BF5855P": {
    "cross": 33,
@@ -2442,7 +2442,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.03508970569050861,
-   "bonus": 1.043
+   "bonus": 1.064
   },
   "RC885085": {
    "cross": 1,
@@ -2460,8 +2460,8 @@
    "bills": 57,
    "index": 0.13590844062947066,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.1255397770350006,
+   "party_median": 0.011461318051575931,
+   "excess": 0.12444712257789473,
    "bonus": 3.0
   },
   "MU69217P": {
@@ -2470,7 +2470,7 @@
    "bills": 48,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2480,9 +2480,9 @@
    "bills": 42,
    "index": 0.022026431718061675,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.011657768123591629,
-   "bonus": 0.346
+   "party_median": 0.011461318051575931,
+   "excess": 0.010565113666485744,
+   "bonus": 0.32
   },
   "JZY9937U": {
    "cross": 2,
@@ -2510,7 +2510,7 @@
    "bills": 22,
    "index": 0.008298755186721992,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2526,13 +2526,13 @@
   },
   "N378078V": {
    "cross": 25,
-   "base": 545,
-   "bills": 56,
-   "index": 0.045871559633027525,
+   "base": 565,
+   "bills": 58,
+   "index": 0.04424778761061947,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.03550289603855748,
-   "bonus": 1.055
+   "party_median": 0.011461318051575931,
+   "excess": 0.03278646955904354,
+   "bonus": 0.994
   },
   "M2Q9024I": {
    "cross": 16,
@@ -2550,8 +2550,8 @@
    "bills": 48,
    "index": 0.29130434782608694,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.2809356842316169,
+   "party_median": 0.011461318051575931,
+   "excess": 0.27984302977451103,
    "bonus": 3.0
   },
   "UQ282145": {
@@ -2562,7 +2562,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.010956563121917458,
-   "bonus": 0.326
+   "bonus": 0.332
   },
   "42K7317Y": {
    "cross": 4,
@@ -2570,19 +2570,19 @@
    "bills": 32,
    "index": 0.011461318051575931,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.0010926544571058846,
-   "bonus": 0.032
+   "party_median": 0.011461318051575931,
+   "excess": 0.0,
+   "bonus": 0.0
   },
   "IWK63872": {
    "cross": 12,
-   "base": 313,
-   "bills": 26,
-   "index": 0.038338658146964855,
+   "base": 323,
+   "bills": 27,
+   "index": 0.03715170278637771,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.02796999455249481,
-   "bonus": 0.831
+   "party_median": 0.011461318051575931,
+   "excess": 0.02569038473480178,
+   "bonus": 0.779
   },
   "LG63087O": {
    "cross": 0,
@@ -2590,7 +2590,7 @@
    "bills": 32,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2600,9 +2600,9 @@
    "bills": 51,
    "index": 0.016150740242261104,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.0057820766477910575,
-   "bonus": 0.172
+   "party_median": 0.011461318051575931,
+   "excess": 0.004689422190685173,
+   "bonus": 0.142
   },
   "YOG1280B": {
    "cross": 4,
@@ -2610,7 +2610,7 @@
    "bills": 44,
    "index": 0.009070294784580499,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2620,18 +2620,18 @@
    "bills": 50,
    "index": 0.007984031936127744,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
   "ZYP7962W": {
    "cross": 100,
-   "base": 462,
-   "bills": 27,
-   "index": 0.21645021645021645,
+   "base": 485,
+   "bills": 29,
+   "index": 0.20618556701030927,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.2060815528557464,
+   "party_median": 0.011461318051575931,
+   "excess": 0.19472424895873333,
    "bonus": 3.0
   },
   "6EN68926": {
@@ -2640,19 +2640,19 @@
    "bills": 59,
    "index": 0.0037243947858473,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
   "57B28032": {
    "cross": 6,
-   "base": 444,
-   "bills": 44,
-   "index": 0.013513513513513514,
+   "base": 454,
+   "bills": 45,
+   "index": 0.013215859030837005,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.003144849919043468,
-   "bonus": 0.093
+   "party_median": 0.011461318051575931,
+   "excess": 0.0017545409792610739,
+   "bonus": 0.053
   },
   "X7E7893P": {
    "cross": 0,
@@ -2660,7 +2660,7 @@
    "bills": 40,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2670,7 +2670,7 @@
    "bills": 34,
    "index": 0.005037783375314861,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2680,7 +2680,7 @@
    "bills": 46,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2690,9 +2690,9 @@
    "bills": 39,
    "index": 0.023622047244094488,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.013253383649624442,
-   "bonus": 0.394
+   "party_median": 0.011461318051575931,
+   "excess": 0.012160729192518557,
+   "bonus": 0.369
   },
   "XSP20229": {
    "cross": 17,
@@ -2710,7 +2710,7 @@
    "bills": 41,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2720,7 +2720,7 @@
    "bills": 29,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2750,7 +2750,7 @@
    "bills": 7,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2770,7 +2770,7 @@
    "bills": 25,
    "index": 0.004048582995951417,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2780,7 +2780,7 @@
    "bills": 24,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2790,7 +2790,7 @@
    "bills": 31,
    "index": 0.0015174506828528073,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2800,7 +2800,7 @@
    "bills": 21,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2820,7 +2820,7 @@
    "bills": 37,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2830,7 +2830,7 @@
    "bills": 17,
    "index": 0.005076142131979695,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2840,7 +2840,7 @@
    "bills": 54,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2852,7 +2852,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.034512877867343944,
-   "bonus": 1.026
+   "bonus": 1.047
   },
   "QHL3248U": {
    "cross": 2,
@@ -2892,7 +2892,7 @@
    "eligible": true,
    "party_median": 0.03712035995500562,
    "excess": 0.011660127849872429,
-   "bonus": 0.347
+   "bonus": 0.354
   },
   "7ZS19508": {
    "cross": 0,
@@ -2900,7 +2900,7 @@
    "bills": 7,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2940,7 +2940,7 @@
    "bills": 4,
    "index": 0.0851063829787234,
    "eligible": false,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2950,7 +2950,7 @@
    "bills": 7,
    "index": 0.0,
    "eligible": true,
-   "party_median": 0.010368663594470046,
+   "party_median": 0.011461318051575931,
    "excess": 0.0,
    "bonus": 0.0
   },
@@ -2970,9 +2970,9 @@
    "bills": 7,
    "index": 0.011627906976744186,
    "eligible": true,
-   "party_median": 0.010368663594470046,
-   "excess": 0.0012592433822741396,
-   "bonus": 0.037
+   "party_median": 0.011461318051575931,
+   "excess": 0.000166588925168255,
+   "bonus": 0.005
   },
   "JVK71445": {
    "cross": 1,
