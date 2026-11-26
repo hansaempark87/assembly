@@ -2471,6 +2471,13 @@
   "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57498"
  },
  {
+  "id": "N054552",
+  "date": "2026-10-13",
+  "sess": "제439회",
+  "committee": "보건복지위원회",
+  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57413"
+ },
+ {
   "id": "N054582",
   "date": "2026-10-13",
   "sess": "제439회",
@@ -2485,11 +2492,32 @@
   "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57411"
  },
  {
+  "id": "N054608",
+  "date": "2026-10-13",
+  "sess": "제439회",
+  "committee": "행정안전위원회",
+  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57456"
+ },
+ {
+  "id": "N054609",
+  "date": "2026-10-13",
+  "sess": "제439회",
+  "committee": "행정안전위원회",
+  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57474"
+ },
+ {
   "id": "N054668",
   "date": "2026-10-14",
   "sess": "제439회",
   "committee": "농림축산식품해양수산위원회",
   "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57532"
+ },
+ {
+  "id": "N054689",
+  "date": "2026-10-15",
+  "sess": "제439회",
+  "committee": "국토교통위원회",
+  "pdf": "https://record.assembly.go.kr/assembly/viewer/minutes/download/pdf.do?id=57547"
  },
  {
   "id": "N054520",
