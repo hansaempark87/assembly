@@ -9,6 +9,6 @@ export async function onRequestGet({ next }) {
   const members = loadAll();
   return new HTMLRewriter()
     .on('#meta', setText(`${run.data_as_of} 기준 · 제22대 국회의원 ${members.length}명`))
-    .on('#parties', setHtml(partyCards(members)))
+    .on('#parties', setHtml(`<div class="grid grid-2">${partyCards(members)}</div>`))
     .transform(res);
 }
