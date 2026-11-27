@@ -109,12 +109,77 @@
     }
   }
 
+  // monthly line chart: this member against the average of members in office
+  const TREND = [
+    ['att', '본회의 출석률', (v) => `${Math.round(v * 100)}%`, true],
+    ['vote', '표결 참여율', (v) => `${Math.round(v * 100)}%`, true],
+    ['bills', '대표발의 법안 수', (v) => `${Math.round(v * 10) / 10}건`, false],
+  ];
+  function renderTrend(t) {
+    const el = document.getElementById('trend-card');
+    let cur = 'att';
+    const draw = () => {
+      const [key, label, fmt, isRate] = TREND.find((x) => x[0] === cur);
+      const mine = t[key] || [];
+      const avg = t.avg[key] || [];
+      const idx = t.months.map((_, i) => i).filter((i) => mine[i] !== null && mine[i] !== undefined || avg[i] !== null && avg[i] !== undefined);
+      const first = idx.length ? idx[0] : 0;
+      const last = idx.length ? idx[idx.length - 1] : t.months.length - 1;
+      const months = t.months.slice(first, last + 1);
+      const A = mine.slice(first, last + 1), B = avg.slice(first, last + 1);
+      const W = Math.max(300, Math.min(900, el.clientWidth - 40)), H = W < 500 ? 200 : 240, L = 40, R = 10, T = 14, Bm = 30;
+      const vals = [...A, ...B].filter((v) => v !== null && v !== undefined);
+      const max = isRate ? 1 : Math.max(1, ...vals) * 1.15;
+      // rates start at 50% or lower (never cut off a value), so month-to-month changes stay visible
+      const lo = isRate ? Math.min(0.5, Math.floor(Math.min(...vals, 1) * 10) / 10) : 0;
+      const x = (i) => L + (months.length > 1 ? (i * (W - L - R)) / (months.length - 1) : (W - L - R) / 2);
+      const y = (v) => T + (1 - (v - lo) / (max - lo)) * (H - T - Bm);
+      const path = (arr) => arr.map((v, i) => (v === null || v === undefined ? null : [x(i), y(v)]))
+        .reduce((acc, p, i, all) => (p ? `${acc}${i === 0 || !all[i - 1] ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}` : acc), '');
+      const ticks = (isRate ? [lo, (lo + 1) / 2, 1] : [0, max / 2, max]).map((v) => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" class="tr-grid"/>
+        <text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" class="tr-tick">${isRate ? `${Math.round(v * 100)}%` : Math.round(v)}</text>`).join('');
+      const xl = months.map((mo, i) => (mo.endsWith('-01') || i === 0 || (i === months.length - 1 && W >= 500))
+        ? `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" class="tr-tick">${mo.endsWith('-01') || i === 0 ? mo.slice(2, 4) + '.' : ''}${Number(mo.slice(5))}월</text>` : '').join('');
+      const dots = A.map((v, i) => (v === null || v === undefined ? '' : `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="3" class="tr-dot"><title>${months[i]} · ${esc(m0.name)} ${fmt(v)}${B[i] !== null && B[i] !== undefined ? ` · 평균 ${fmt(B[i])}` : ''}</title></circle>`)).join('');
+      const lastV = [...A].reverse().find((v) => v !== null && v !== undefined);
+      el.innerHTML = `<div class="card-head"><div><h2 class="card-title">월별 활동 추이</h2>
+          <p class="card-sub">한 달 단위 · 점선은 같은 달 재임 의원 평균 · 이번 달은 진행 중인 값${cur === 'att' ? ' · 본회의 출석은 국회가 공개한 달까지' : ''}</p></div>
+          <div class="tabs" role="tablist">${TREND.map(([k, l]) => `<button type="button" class="tab" role="tab" data-k="${k}" aria-selected="${k === cur}">${l}</button>`).join('')}</div></div>
+        <svg viewBox="0 0 ${W} ${H}" class="trend" role="img" aria-label="${esc(`${label} 월별 추이, 최근 ${lastV === undefined ? '-' : fmt(lastV)}`)}">
+          ${ticks}${xl}
+          <path d="${path(B)}" class="tr-avg"/><path d="${path(A)}" class="tr-me"/>${dots}
+        </svg>
+        <div class="legend"><span><i class="tr-key me"></i>${esc(m0.name)}</span><span><i class="tr-key avg"></i>재임 의원 평균</span></div>`;
+      el.querySelectorAll('.tab').forEach((b) => b.addEventListener('click', () => { cur = b.dataset.k; draw(); }));
+    };
+    draw();
+  }
+
+  // audit questioning: topic chips and yearly totals from the audit special
+  function renderAudit(m, topics) {
+    const el = document.getElementById('audit-card');
+    fetch('/audit.json').then((r) => (r.ok ? r.json() : Promise.reject(r))).then((d) => {
+      const years = Object.entries(d.years).map(([y, v]) => [y, (v.members || {})[m.id]]).filter(([, r]) => r).sort((a, b) => b[0].localeCompare(a[0]));
+      if (!years.length && !(topics && topics.length)) { el.remove(); return; }
+      el.hidden = false;
+      el.innerHTML = `<div class="card-head"><div><h2 class="card-title">국정감사</h2>
+          <p class="card-sub">공식 회의록 기준 · 주제는 회의 요약을 바탕으로 AI가 고른 것입니다</p></div>
+          <a class="btn" href="/audit">국감 특집 보기 →</a></div>
+        ${topics && topics.length ? `<div class="kpi-label">국감에서 주로 다룬 주제</div><div class="chips audit-topics">${topics.map((t) => `<span class="chip">${esc(t)}</span>`).join('')}</div>` : ''}
+        ${years.length ? `<div class="facts">${years.map(([y, [turns, chars, days]]) => `<div class="fact"><span>${esc(y)}년</span><b class="num">${num(chars)}자</b><small>${num(days)}일 · ${num(turns)}회 발언</small></div>`).join('')}</div>` : ''}`;
+    }).catch(() => el.remove());
+  }
+
+  let m0 = null;
   function loadBills(m, all) {
+    m0 = m;
     const listEl = document.getElementById('bill-list');
     fetch(`/bills/${encodeURIComponent(m.id)}.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-      .then(({ bills, cutoff, areas, partners, coop, votes }) => {
+      .then(({ bills, cutoff, areas, partners, coop, votes, trend, audit_topics: auditTopics }) => {
         if (votes) renderVotes(votes);
+        if (trend) renderTrend(trend);
+        renderAudit(m, auditTopics);
         let areaFilter = null;
         let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
         let page = 1;
@@ -306,6 +371,7 @@
       </section>
       <section class="card section poll" id="poll" hidden></section>
       <div class="grid grid-2 section">${cards}</div>
+      <section class="card section" id="trend-card"><h2 class="card-title">월별 활동 추이</h2><div class="skeleton">불러오는 중…</div></section>
       <div class="grid grid-2 section">
         <section class="card metric-card" id="areas-card"><h2 class="card-title">관심 분야</h2><div class="skeleton">불러오는 중…</div></section>
         <section class="card metric-card" id="coop-card"><h2 class="card-title">초당적 협력</h2><div class="skeleton">불러오는 중…</div></section>
@@ -322,6 +388,7 @@
         <ul class="bill-list" id="bill-list"><li class="skeleton">불러오는 중…</li></ul>
         <div class="more" id="bill-more"></div>
       </section>
+      <section class="card section" id="audit-card" hidden></section>
       <section class="card section list-anchor" id="votes-card"><h2 class="card-title">본회의 표결 기록</h2><div class="skeleton">불러오는 중…</div></section>
       ${regionCard(m, all)}
       <p class="muted" style="font-size:0.8rem;margin-top:16px">
