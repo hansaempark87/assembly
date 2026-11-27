@@ -2,10 +2,10 @@
 
 For every pledge in data/source/pledges.json: the model writes two or three news
 search queries (place + project) and a few keywords (law or project names). The
-model then reads three kinds of records — the Assembly's own bill records (status
-and dates of bills naming a keyword), this member's audit questions naming one,
-and Naver news (title, snippet, date, link) — and gives one status, with the
-items it relied on (official records come first):
+model then reads the Assembly's own bill records (status and dates of bills naming
+a keyword) and Naver news (title, snippet, date, link) and gives one status — what
+actually happened — with the items it relied on. This member's audit questions on
+the subject are kept beside the pledge as context only; they never decide a status:
 
   done      완료        opened, completed, in force, enacted
   progress  진행 중     budget secured, plan approved, design or works under way
@@ -58,9 +58,9 @@ JUDGE_PROMPT = """너는 공약 이행 상황을 확인하는 중립적인 조�
 공약: [{district}] {title}
 내용: {body}
 
-아래는 찾은 자료다 (번호, 날짜, 출처 종류, 제목, 요약). 출처는 세 종류다:
-[뉴스] 언론 보도 / [국회 의안] 국회 의안정보의 법안과 처리 결과(공식 기록) / [국정감사] 국정감사 회의록의 질의·답변 요지(공식 기록).
-공식 기록이 있으면 뉴스보다 우선한다. 이 공약 사업이 지금 어디까지 왔는지 판정하라.
+아래는 찾은 자료다 (번호, 날짜, 출처 종류, 제목, 요약). 출처는 두 종류다:
+[뉴스] 언론 보도 / [국회 의안] 국회 의안정보의 법안과 처리 결과(공식 기록).
+법의 통과·처리 결과는 국회 의안 기록을 뉴스보다 우선한다. 판정은 사업이나 법이 실제로 어떻게 됐는지(결과)로만 한다. 이 공약 사업이 지금 어디까지 왔는지 판정하라.
 
 판정 기준:
 - done: 개통·준공·완공·시행·법 통과 등 사업이 끝났다는 자료가 있다.
@@ -119,7 +119,8 @@ _AUDIT = None
 
 
 def assembly_items(keywords, mid):
-    """Assembly records that name a keyword: bills (status, dates) and this member's audit questions"""
+    """Assembly records that name a keyword: bills (status, dates; kind 'bill') and this member's audit
+    questions (kind 'audit'). Bills are evidence of a result; audit questions are context only."""
     global _BILLS, _AUDIT
     if _BILLS is None:
         _BILLS = [json.loads(l) for l in open(SRC / 'bills.jsonl', encoding='utf-8')]
@@ -214,7 +215,9 @@ def main():
                         continue
                     seen.add(it['link'])
                     found.append(it)
-            found = assembly_items(keywords.get(p['ord'], []), m['id']) + found[:20]
+            records = assembly_items(keywords.get(p['ord'], []), m['id'])
+            context = [r for r in records if r['kind'] == 'audit'][:3]  # shown beside the pledge, never judged on
+            found = [r for r in records if r['kind'] == 'bill'] + found[:20]
             tag = lambda it: '' if it['kind'] in ('bill', 'audit') else '[뉴스] '
             listing = '\n'.join(f"[{i}] {it['date'] or '날짜 없음'} | {tag(it)}{it['title']} | {it['desc']}" for i, it in enumerate(found)) or '(자료 없음)'
             try:
@@ -235,6 +238,8 @@ def main():
             results.append({'ord': p['ord'], 'title': p['title'], 'realm': p['realm'], 'status': j['status'], 'reason': j['reason'],
                             'evidence': [{'title': e['title'], 'date': e['date'], 'link': e['link'], 'kind': e.get('kind', 'news')} for e in ev],
                             'keywords': keywords.get(p['ord'], []),
+                            'context': [{'title': c['title'].replace('[국정감사] ', ''), 'answer': c['desc'].replace('답변: ', ''),
+                                         'date': c['date'], 'link': c['link']} for c in context],
                             'queries': queries.get(p['ord'], []), 'searched': len(found)})
         have[m['id']] = {'name': m['name'], 'district': m['district'], 'checked': today.isoformat(), 'model': model, 'items': results}
         c = {s: sum(r['status'] == s for r in results) for s in STATUS}
