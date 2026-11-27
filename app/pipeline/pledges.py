@@ -188,6 +188,9 @@ def main():
         ps = news_pledges(name, m['district'], w.get('sdName', ''), w.get('jdName', ''))
         have[m['id']] = {'huboid': w['huboid'], 'name': name, 'district': m['district'], 'party_2024': w.get('jdName'), 'pledges': ps}
         matched += 1
+        if matched % 20 == 0:  # keep what is done if the run is stopped
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(dict(sorted(have.items())), f, ensure_ascii=False, indent=1)
         if matched == 1:
             print('sample pledge count:', len(ps), (ps[0]['title'] if ps else '-'))
     with open(path, 'w', encoding='utf-8') as f:

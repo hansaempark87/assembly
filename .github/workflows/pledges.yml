@@ -21,7 +21,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 340  # a full run checks ~240 members at about a minute each
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,6 +34,8 @@ jobs:
       - name: Install
         run: pip install -r app/pipeline/requirements.txt
       - name: Pledges (election commission winners, campaign news)
+        timeout-minutes: 60
+        continue-on-error: true
         working-directory: app/pipeline
         env:
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
@@ -44,6 +46,10 @@ jobs:
           PLEDGE_SCOPE: ${{ inputs.scope }}
         run: python -u pledges.py
       - name: Where each pledge stands
+        # stops before the job limit so what was checked is still saved; a rerun continues
+        # (members checked in the last 25 days are skipped)
+        timeout-minutes: 240
+        continue-on-error: true
         working-directory: app/pipeline
         env:
           NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
@@ -53,6 +59,7 @@ jobs:
           PLEDGE_SCOPE: ${{ inputs.scope }}
         run: python -u pledge_check.py
       - name: Save
+        if: always()
         run: |
           git config user.name 'data-update-bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
