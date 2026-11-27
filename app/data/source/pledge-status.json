@@ -10,8 +10,14 @@
     "title": "대학생 천원의 아침 지원 확대",
     "realm": "복지",
     "status": "progress",
-    "reason": "2026학년도 2학기 경산 지역 천원의 아침밥 운영과 혜택 확대 방침이 확인됨",
+    "reason": "2026학년도 천원의 아침밥 사업이 경산 지역 대학에서 운영 중이며 예산이 공동 부담되고 있음",
     "evidence": [
+     {
+      "title": "대구한의대, ‘천원의 아침밥’ 1만8천 식 제공…학생 복지 강화",
+      "date": "2026-11-19",
+      "link": "https://www.kbsm.net/news/view.php?idx=542422",
+      "kind": "news"
+     },
      {
       "title": "[패트롤]경산시-칠곡군-칠곡군의회-대구대-수성구-영남이공대",
       "date": "2026-09-16",
@@ -23,21 +29,16 @@
       "date": "2026-10-28",
       "link": "https://ilyo.co.kr/?ac=article_view&entry_id=513350",
       "kind": "news"
-     },
-     {
-      "title": "대구한의대, ‘천원의 아침밥’ 1만8천 식 제공…학생 복지 강화",
-      "date": "2026-11-19",
-      "link": "https://www.kbsm.net/news/view.php?idx=542422",
-      "kind": "news"
      }
     ],
     "keywords": [
      "천원의 아침",
-     "대학생 식사 지원"
+     "대학생 아침식사"
     ],
+    "context": [],
     "queries": [
-     "경산 대학생 천원의 아침 확대",
-     "경산 천원의 아침 대학 지원"
+     "경산 대학생 천원의 아침 지원 확대",
+     "경산 천원의 아침 대학 확대 사업"
     ],
     "searched": 20
    },
@@ -52,18 +53,19 @@
      "헬스케어타운",
      "종합건강서비스"
     ],
+    "context": [],
     "queries": [
      "경산 권역별 종합헬스케어타운 조성",
-     "경산 헬스케어타운 필라테스 물리치료"
+     "경산 종합헬스케어타운 건립"
     ],
-    "searched": 1
+    "searched": 6
    },
    {
     "ord": 3,
     "title": "사통팔달 교통혁신 추진",
     "realm": "교통",
     "status": "progress",
-    "reason": "경산 진량하이패스IC 설치공사와 지식산업지구 진입도로 개설에 예산이 편성·투입되어 사업이 진행 중이다.",
+    "reason": "진량하이패스IC 공사 기공과 도로 개설 예산 편성, 진입도로 사업비 투입이 확인됨",
     "evidence": [
      {
       "title": "[패트롤] 경주시-영천시-청도군-경산시-칠곡군-대구시교육청",
@@ -86,11 +88,12 @@
     ],
     "keywords": [
      "만성정체구간",
-     "경산 교통혁신"
+     "경산 도로 개설"
     ],
+    "context": [],
     "queries": [
      "경산 만성정체구간 도로 개선",
-     "경산 도로 개설 교통혁신 사업"
+     "경산 교통혁신 도로 개설 사업"
     ],
     "searched": 20
    },
@@ -105,6 +108,7 @@
      "시스템반도체",
      "반도체 생산기지"
     ],
+    "context": [],
     "queries": [
      "경산 시스템반도체 생산기지 구축",
      "경산 반도체 생산기지 유치"
@@ -115,26 +119,14 @@
     "ord": 5,
     "title": "기회발전특구 유치 및 관광지 조성",
     "realm": "경제·일자리",
-    "status": "done",
-    "reason": "2026년 6월 기사에 경산이 미래첨단소재·부품 기회발전특구로 지정됐다고 나온다.",
-    "evidence": [
-     {
-      "title": "[오늘의 분양 소식] 장위뉴타운 대단지·밀양 브랜드타운·경산 초고층...",
-      "date": "2026-06-25",
-      "link": "http://www.ftoday.co.kr/news/articleView.html?idxno=361088",
-      "kind": "news"
-     },
-     {
-      "title": "[국회 의안] 기회발전특구 조성 및 육성에 관한 특별법안",
-      "date": "2025-04-03",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_G2G5O0P4N0O1M1K1L0T4T5R3S9Q2R4",
-      "kind": "bill"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "기회발전특구",
-     "관광지 조성"
+     "경산 관광지"
     ],
+    "context": [],
     "queries": [
      "경산 기회발전특구 지정",
      "경산 기회발전특구 관광지 조성"
@@ -146,7 +138,7 @@
     "title": "경산지식산업지구 대형 아울렛 유치",
     "realm": "경제·일자리",
     "status": "progress",
-    "reason": "2025-02-19 현대백화점 계열 투자 확정과 유통상업시설용지 낙찰 뒤 2028년 오픈 예정으로 진행 중이다.",
+    "reason": "2025년 2월 현대백화점 계열 아울렛 투자와 유통상업시설용지 낙찰이 확정되어 사업이 진행 중이다.",
     "evidence": [
      {
       "title": "경산시, 지식산업지구 내 대형 프리미엄 쇼핑몰 유치 성공…‘한무쇼핑...",
@@ -161,9 +153,9 @@
       "kind": "news"
      },
      {
-      "title": "경산지식산업지구, 현대백화점 계열사 대형 아울렛 유치 확정",
-      "date": "2025-02-19",
-      "link": "https://news.bbsi.co.kr/news/articleView.html?idxno=4018940",
+      "title": "경산지식산업지구, 대형아울렛 유치 확정",
+      "date": "2024-04-25",
+      "link": "https://news.bbsi.co.kr/news/articleView.html?idxno=3153890",
       "kind": "news"
      }
     ],
@@ -171,9 +163,10 @@
      "지식산업지구",
      "대형 아울렛"
     ],
+    "context": [],
     "queries": [
      "경산지식산업지구 대형 아울렛 유치",
-     "경산 지식산업지구 아울렛 입점"
+     "경산지식산업지구 아울렛 입점"
     ],
     "searched": 20
    },
@@ -188,59 +181,48 @@
      "반다비 국민체육센터",
      "장애인 체육"
     ],
+    "context": [],
     "queries": [
      "경산 반다비 국민체육센터 건립",
-     "경산 장애인 5대 공약 반다비"
+     "경산 장애인 체육센터 착공"
     ],
-    "searched": 5
+    "searched": 12
    },
    {
     "ord": 8,
     "title": "통합키움센터 및 경산형 달빛어린이병원 조성",
     "realm": "복지",
-    "status": "progress",
-    "reason": "경산형 달빛어린이병원 운영을 내년 예산안에 편성했다는 자료가 있음",
-    "evidence": [
-     {
-      "title": "경산시, 내년 예산 1조 5,277억 원 편성…조현일 시장, 시정연설서 5대 ...",
-      "date": "2026-11-26",
-      "link": "https://www.mhns.co.kr/news/articleView.html?idxno=770803",
-      "kind": "news"
-     },
-     {
-      "title": "[기획특집] 경산시, 보건의료 분야 9관왕...'빛나는 노력'",
-      "date": "2025-02-18",
-      "link": "http://www.kbsm.net/news/view.php?idx=464573",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "통합키움센터",
      "달빛어린이병원"
     ],
+    "context": [],
     "queries": [
-     "경산 통합키움센터 설치",
-     "경산형 달빛어린이병원 조성"
+     "경산 통합키움센터 조성",
+     "경산형 달빛어린이병원 개원"
     ],
-    "searched": 20
+    "searched": 4
    },
    {
     "ord": 9,
     "title": "국회의원 특권 내려놓기",
     "realm": "입법·정책",
     "status": "progress",
-    "reason": "2024-06-10 무노동·무임금 원칙을 담은 '일하는 국회법' 개정안이 대표발의되어 법안 심사 단계에 있음",
+    "reason": "국회의원 무노동·무임금, 불체포특권 포기 등을 담은 법안이 발의됐으나 처리 결과는 확인되지 않음.",
     "evidence": [
      {
-      "title": "황정아, '무노동·무임금' 원칙 담은 국회법 개정안 대표발의",
+      "title": "황정아 국회의원, 국회의원 ‘무노동→무임금’ 담은 법안 대표 발의",
       "date": "2024-06-10",
-      "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003037200&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+      "link": "https://www.ebn.co.kr/news/view/1625637/?sc=Naver",
       "kind": "news"
      },
      {
-      "title": "황정아 의원, 무노동·무임금 원칙 담은 '일하는 국회법' 대표발의",
-      "date": "2024-06-10",
-      "link": "https://www.gukjenews.com/news/articleView.html?idxno=3015400",
+      "title": "김기현 '정치 쇄신3법' 발의…\"의원수 축소·불체포특권 포기·무노동 무...",
+      "date": "2024-07-08",
+      "link": "https://www.dailian.co.kr/news/view/1380909/?sc=Naver",
       "kind": "news"
      }
     ],
@@ -248,11 +230,12 @@
      "무노동 무임금",
      "불체포특권"
     ],
+    "context": [],
     "queries": [
-     "국회의원 무노동 무임금 법 개정",
-     "국회의원 불체포특권 포기 개헌 논의"
+     "국회의원 무노동 무임금 법안",
+     "국회의원 불체포특권 포기 개정안 세비 반납"
     ],
-    "searched": 20
+    "searched": 11
    },
    {
     "ord": 10,
@@ -265,11 +248,12 @@
      "교육특별시",
      "지역균형발전 교육"
     ],
+    "context": [],
     "queries": [
      "경산 교육특별시 실현",
-     "교육특별시 경산 지정 추진"
+     "교육특별시 경산 추진 사업"
     ],
-    "searched": 13
+    "searched": 20
    }
   ]
  },
@@ -283,29 +267,17 @@
     "ord": 1,
     "title": "조치원 북세종권 스마트 산업밸리 조성",
     "realm": "경제·일자리",
-    "status": "progress",
-    "reason": "연서면 스마트 국가산단 기반시설 설계에 착수했다는 2026년 1월 보도가 있음",
-    "evidence": [
-     {
-      "title": "세종, 'AI 융합' 신산업 키운다…정보보호클러스터 본격 가동",
-      "date": "2026-01-08",
-      "link": "https://www.thebk.co.kr/news/articleView.html?idxno=306118",
-      "kind": "news"
-     },
-     {
-      "title": "세종시, 투자유치·스마트 인프라 확충… 자족기능 강화",
-      "date": "2026-01-08",
-      "link": "https://www.newsis.com/view/NISX20260108_0003469926",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "스마트 산업밸리",
      "북세종권"
     ],
+    "context": [],
     "queries": [
-     "조치원 북세종권 스마트 산업밸리 조성",
-     "세종 조치원 스마트 산업밸리 사업"
+     "조치원 북세종권 스마트 산업밸리",
+     "세종 스마트 산업밸리 조성 사업"
     ],
     "searched": 20
    },
@@ -320,18 +292,19 @@
      "K-마스터 산업단지",
      "연동면"
     ],
+    "context": [],
     "queries": [
-     "연동면 K-마스터 산업단지 조성",
-     "세종 연동면 K-마스터 산업단지"
+     "연동면 K-마스터 산업단지",
+     "세종 K-마스터 산업단지 조성"
     ],
-    "searched": 0
+    "searched": 11
    },
    {
     "ord": 3,
     "title": "국회 세종시 완전 이전 추진",
     "realm": "입법·정책",
     "status": "progress",
-    "reason": "황운하 의원이 국회 세종시 완전 이전을 위한 국회법 일부개정법률안을 발의해 법안 단계가 진행 중이다.",
+    "reason": "국회 완전 이전을 위한 국회법 일부개정법률안이 발의되어 심사 단계에 있음",
     "evidence": [
      {
       "title": "황운하 의원, 국회 세종시 완전 이전 위한 법률적 기반 정비",
@@ -340,25 +313,26 @@
       "kind": "news"
      },
      {
-      "title": "황운하, 국회 세종 완전이전 위한 국회법 개정안 발의",
-      "date": "2026-11-23",
-      "link": "http://www.dtnews24.com/news/articleView.html?idxno=817492",
-      "kind": "news"
-     },
-     {
       "title": "\"국회, 세종으로 완전 이전\" 황운하 의원 국회법 발의",
       "date": "2026-11-23",
       "link": "http://www.yonhapnewstv.co.kr/news/AKR202611231654541VU",
       "kind": "news"
+     },
+     {
+      "title": "황운하 대표발의 '행정수도특별법', 28일 국토소위 상정… 완전한 행정...",
+      "date": "2026-10-28",
+      "link": "http://www.cctimes.kr/news/articleView.html?idxno=934346",
+      "kind": "news"
      }
     ],
     "keywords": [
-     "국회 세종시 이전",
-     "세종의사당"
+     "국회 세종의사당",
+     "국회 완전 이전"
     ],
+    "context": [],
     "queries": [
-     "국회 세종시 완전 이전 추진",
-     "국회 세종의사당 완전 이전 법안"
+     "국회 세종시 완전 이전",
+     "세종 국회 분원 완전이전 법안"
     ],
     "searched": 20
    },
@@ -367,18 +341,24 @@
     "title": "행정수도 세종 완성 및 3부 기능 강화",
     "realm": "입법·정책",
     "status": "progress",
-    "reason": "행정수도 관련 특별법안이 발의되어 국회에서 심사 중이다.",
+    "reason": "세종지방법원 건립이 본격화됐고 행정수도 완성 특별법안이 심사 중이라 3부 완성은 아직 진행 중이다.",
     "evidence": [
      {
-      "title": "[국회 의안] 행정수도의 완성을 위한 특별법안",
-      "date": "2025-11-11",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_X2X5V1U1V0Q3R1P8Q3O4P2N3V7W2U6",
-      "kind": "bill"
+      "title": "세종지방법원 건립 사업 본격화…강준현 의원 “입법·사법·행정 3부 갖...",
+      "date": "2026-03-13",
+      "link": "https://biz.heraldcorp.com/article/10693331?ref=naver",
+      "kind": "news"
      },
      {
       "title": "[국회 의안] 행정수도 건설을 위한 특별법안",
       "date": "2025-12-23",
       "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_J2K5I1J1H2I8G1G1P0N9N2M6M6L5L4",
+      "kind": "bill"
+     },
+     {
+      "title": "[국회 의안] 행정수도의 완성을 위한 특별법안",
+      "date": "2025-11-11",
+      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_X2X5V1U1V0Q3R1P8Q3O4P2N3V7W2U6",
       "kind": "bill"
      }
     ],
@@ -386,18 +366,38 @@
      "행정수도",
      "3부 기능"
     ],
-    "queries": [
-     "행정수도 세종 완성 3부 기능 이전",
-     "세종 행정수도 완성 국회 대법원 이전"
+    "context": [
+     {
+      "title": "2023년 성과지표에서 행정수도 완성 항목이 삭제된 것을 지적하고 세종시 탄생 의미 훼손을 우려함",
+      "answer": "방기선 국무조정실장은 국회세종의사당과 대통령 세종집무실이 성과로 측정하기 거대해 지표를 바꾼 것 같다고 답함",
+      "date": "2024-10-07",
+      "link": "https://assembly-korea.com/audit-summary?id=054227"
+     },
+     {
+      "title": "세종시지원단이 특별자치시 도지원단으로 통합되며 인력과 예산이 줄고 서면회의만 열려 행정수도 세종 정책이 후퇴했다고 지적함",
+      "answer": "국무조정실장 윤창렬은 조직 통합 과정과 여러 상황 때문에 더 노력해야 할 부분이 있다고 답함",
+      "date": "2025-10-13",
+      "link": "https://assembly-korea.com/audit-summary?id=N053537"
+     },
+     {
+      "title": "세종시지원단을 6명으로 운영하는 것이 행정수도 세종 같은 큰 과제를 수행하기에 적절한지 문제를 제기하고 세종추진단 부활 검토를 요구함",
+      "answer": "국무조정실장 윤창렬은 인원 증원 등을 포함해 필요하면 검토하겠다고 답함",
+      "date": "2025-10-13",
+      "link": "https://assembly-korea.com/audit-summary?id=N053537"
+     }
     ],
-    "searched": 29
+    "queries": [
+     "행정수도 세종 완성 3부 기능",
+     "세종 입법 사법 행정 3부 행정수도 특별법"
+    ],
+    "searched": 26
    },
    {
     "ord": 5,
     "title": "장애인 교통권 보장 및 탈시설 지원",
     "realm": "복지",
     "status": "progress",
-    "reason": "장애인 탈시설 지원 법률안이 발의되어 국회에서 심사 중이다.",
+    "reason": "장애인 탈시설 지원 법률안이 발의되어 심사 중이다.",
     "evidence": [
      {
       "title": "[국회 의안] 장애인 탈시설 지원 등에 관한 법률안",
@@ -410,11 +410,12 @@
      "장애인 탈시설",
      "장애인 교통권"
     ],
+    "context": [],
     "queries": [
-     "장애인 이동권 교통권 보장 세종",
-     "장애인 탈시설 지원 세종시 교통부담 완화"
+     "장애인 이동권 보장 교통 바우처 세종",
+     "장애인 탈시설 지원 세종시"
     ],
-    "searched": 1
+    "searched": 21
    },
    {
     "ord": 6,
@@ -427,11 +428,12 @@
      "분양전환 공공임대",
      "소정면"
     ],
+    "context": [],
     "queries": [
-     "소정면 분양전환 공공임대아파트 건립",
-     "세종 소정면 공공임대아파트 분양전환"
+     "소정면 분양전환 공공임대아파트",
+     "세종 소정면 공공임대 건립"
     ],
-    "searched": 1
+    "searched": 2
    },
    {
     "ord": 7,
@@ -441,48 +443,50 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "행정중심복합도시건설청 별관",
-     "행복청 별관"
+     "행복청 별관",
+     "행정중심복합도시건설청"
     ],
+    "context": [],
     "queries": [
-     "행복청 별관 신축 세종",
-     "행정중심복합도시건설청 별관 건립"
+     "행복청 별관 신축",
+     "행정중심복합도시건설청 별관 건립 세종"
     ],
-    "searched": 16
+    "searched": 15
    },
    {
     "ord": 8,
     "title": "메가시티 충청권 구축",
     "realm": "행정",
     "status": "progress",
-    "reason": "세종~청주 고속도로 4공구 낙찰 등 메가시티 관련 교통 사업이 공사 단계로 진행 중이다.",
+    "reason": "충청광역연합 출범 후 충청권광역철도 예산 증액 등 메가시티 기반 사업이 진행 중이다.",
     "evidence": [
      {
-      "title": "HJ중공업, 세종~청주 고속도로 건설공사 최종 낙찰자 선정",
-      "date": "2026-11-26",
-      "link": "http://www.ttlnews.com/news/articleView.html?idxno=3166562",
+      "title": "충청권 광역철도 1단계 국비 80억원 대폭증액…청신호 켜나",
+      "date": "2026-11-18",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20261118010006453",
       "kind": "news"
      },
      {
-      "title": "HJ중공업, 25개사 경쟁 뚫고 2499억 '세종·청주 고속도로 4공구' 수주",
+      "title": "[사설] 충청광역연합 출범 2년…설립 취지 되새겨야",
       "date": "2026-11-26",
-      "link": "https://www.apnews.kr/news/articleView.html?idxno=3053627",
+      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2316680",
       "kind": "news"
      },
      {
-      "title": "충청권 4개 시·도, \"충청 메가시티, 이제 법으로 만든다\"",
-      "date": "2026-10-05",
-      "link": "https://www.tournews21.com/news/articleView.html?idxno=144944",
+      "title": "\"데이터·AI 입은 제5차 국가철도망, '메가시티' 미래 연다\"",
+      "date": "2026-11-26",
+      "link": "https://www.redaily.co.kr/news/articleView.html?idxno=18316",
       "kind": "news"
      }
     ],
     "keywords": [
      "메가시티",
-     "충청권 광역"
+     "충청권 광역연합"
     ],
+    "context": [],
     "queries": [
-     "메가시티 충청권 구축 세종",
-     "충청권 메가시티 광역교통 세종 거점"
+     "메가시티 충청권 구축",
+     "세종 중심 충청권 메가시티 추진"
     ],
     "searched": 20
    }
@@ -498,19 +502,19 @@
     "ord": 1,
     "title": "GTX-D노선 강동 유치",
     "realm": "교통",
-    "status": "delayed",
-    "reason": "국가철도망 계획이 1년 넘게 밀려 GTX-D 강동 경유 반영이 지연되고 있음",
+    "status": "progress",
+    "reason": "2024년 2기 GTX 추진계획에 강동 경유가 확정됐고, 제5차 국가철도망 반영 절차가 진행 중이다.",
     "evidence": [
      {
-      "title": "1년 넘게 밀린 국가철도망 계획…GTX 신설·연장 노선 운명은",
-      "date": "2026-11-13",
-      "link": "https://www.dailian.co.kr/news/view/1714720/?sc=Naver",
+      "title": "강동구, GTX-D 1단계 구간 국가철도망 반영 총력전",
+      "date": "2026-11-12",
+      "link": "https://www.siminilbo.co.kr/news/newsview.php?ncode=1160290159481276",
       "kind": "news"
      },
      {
-      "title": "강동구, GTX-D 1단계 국가철도망 반영 총력",
-      "date": "2026-11-11",
-      "link": "https://www.newsis.com/view/NISX20261111_0003864328",
+      "title": "강동 “250만 편의 위해”… ‘GTX-D 1단계’ 반영 총력",
+      "date": "2026-11-16",
+      "link": "https://www.seoul.co.kr/news/publicnews/seoul_local/news_seoul/2026/11/16/20261116020003?wlog_tag3=naver",
       "kind": "news"
      }
     ],
@@ -518,6 +522,7 @@
      "GTX-D",
      "GTX"
     ],
+    "context": [],
     "queries": [
      "강동구 GTX-D 노선 유치",
      "GTX-D 노선 강동 경유 추진"
@@ -529,18 +534,12 @@
     "title": "9호선 4단계 연장 추진",
     "realm": "교통",
     "status": "progress",
-    "reason": "9호선 4단계 연장 2공구 공사가 진행 중이며 2028년 준공을 목표로 한다.",
+    "reason": "9호선 4단계 연장사업이 2공구 공사 중이며 2028년 준공을 목표로 진행 중이다.",
     "evidence": [
      {
-      "title": "강동구의회, 지하철 9호선 연장공사 현장 점검…안전관리 확인",
-      "date": "2026-10-21",
-      "link": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5074507",
-      "kind": "news"
-     },
-     {
-      "title": "강동구의회 도시건설위원회, 지하철 9호선 4단계 건설공사 현장 방문",
-      "date": "2026-10-21",
-      "link": "https://www.gukjenews.com/news/articleView.html?idxno=3728281",
+      "title": "강동구 \"JYP 빠져도 고덕 개발 순항\"…차질 우려 일축",
+      "date": "2026-10-27",
+      "link": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1305687",
       "kind": "news"
      },
      {
@@ -548,14 +547,21 @@
       "date": "2026-10-28",
       "link": "https://www.cnbizm.com/news/articleView.html?idxno=319499",
       "kind": "news"
+     },
+     {
+      "title": "강동구의회 도시건설委, 지하철 9호선 4단계 연장사업 현장점검",
+      "date": "2026-10-22",
+      "link": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1304062",
+      "kind": "news"
      }
     ],
     "keywords": [
      "9호선 4단계",
      "9호선 연장"
     ],
+    "context": [],
     "queries": [
-     "9호선 4단계 연장 강동 추진",
+     "9호선 4단계 연장 강동구 추진",
      "지하철 9호선 4단계 연장 착공"
     ],
     "searched": 20
@@ -571,6 +577,7 @@
      "도시철도 강동선",
      "경전철"
     ],
+    "context": [],
     "queries": [
      "도시철도 강동선 경전철 추진",
      "강동 경전철 노선 3·5·8·9호선 환승"
@@ -585,9 +592,10 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "제2청사",
-     "강동구청"
+     "강동구청 제2청사",
+     "제2청사"
     ],
+    "context": [],
     "queries": [
      "강동구청 제2청사 신축",
      "강동구 제2청사 건립 추진"
@@ -599,36 +607,31 @@
     "title": "노후 주택 정비사업 추진",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "강동구 상일동 통합재건축 설계자 입찰 공고 등 정비사업 단계가 진행 중이다.",
+    "reason": "강동구 천호동 일대가 신속통합기획 재개발 후보지로 선정되어 사업이 진행 중이다.",
     "evidence": [
      {
-      "title": "새집 배정·정산 방식부터 합의…통합재건축 ‘갈등 불씨’ 미리 끈다",
-      "date": "2026-11-25",
-      "link": "https://www.sedaily.com/article/20118985?ref=naver",
-      "kind": "news"
-     },
-     {
-      "title": "서울시, 신통기획 재개발 후보지 6곳 추가 선정…정비기간 18.5년서 12년...",
+      "title": "서울시, 독산·대림·천호동 등 6곳 ‘신통기획 후보지’ 선정…정비사...",
       "date": "2026-11-13",
-      "link": "https://www.pennmike.com/news/articleView.html?idxno=131742",
+      "link": "https://www.viva100.com/article/20261113500389",
       "kind": "news"
      },
      {
-      "title": "명일·천호동 노후 주거지역 정비 '잰걸음'",
-      "date": "2026-10-15",
-      "link": "https://www.fnnews.com/news/202610151820010709",
+      "title": "서울 독산·대림·쌍문 등 6곳 재개발 후보지 선정 … 2년 내 정비구역 ...",
+      "date": "2026-11-13",
+      "link": "https://www.newdaily.co.kr/site/data/html/2026/11/13/2026111300065.html",
       "kind": "news"
      }
     ],
     "keywords": [
-     "도시 및 주거환경정비법",
+     "도시및주거환경정비법",
      "정비사업"
     ],
+    "context": [],
     "queries": [
-     "강동구 노후 주택 정비사업",
-     "강동 재개발 재건축 정비사업 추진"
+     "강동구 노후 주택 정비사업 추진",
+     "강동구 재개발 재건축 정비사업 진행"
     ],
-    "searched": 26
+    "searched": 20
    },
    {
     "ord": 6,
@@ -638,12 +641,13 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "고덕역",
-     "에스컬레이터"
+     "고덕역 에스컬레이터",
+     "고덕역"
     ],
+    "context": [],
     "queries": [
      "고덕역 에스컬레이터 설치",
-     "고덕역 엘리베이터 에스컬레이터 설치 공사"
+     "강동 고덕역 엘리베이터 에스컬레이터 설치 완료"
     ],
     "searched": 7
    },
@@ -651,25 +655,33 @@
     "ord": 7,
     "title": "교육 공약 추진",
     "realm": "교육",
-    "status": "notfound",
-    "reason": "",
-    "evidence": [],
+    "status": "progress",
+    "reason": "강동구 학군 일대 학교용지 관련 중간보고와 학교 설립 논의가 진행 중이다.",
+    "evidence": [
+     {
+      "title": "‘강동엄마’ 박춘선 서울시의원 “학교용지엔 학교를… 강현중 반드시...",
+      "date": "2026-09-23",
+      "link": "https://www.seoul.co.kr/news/publicnews/local_govern/smc_movement/2026/09/23/20260923500164?wlog_tag3=naver",
+      "kind": "news"
+     }
+    ],
     "keywords": [
-     "강동구 교육",
+     "강동갑 교육",
      "학교 신설"
     ],
+    "context": [],
     "queries": [
      "강동갑 교육 현안 해결 추진",
-     "강동구 학교 교육 문제 대책"
+     "강동구 교육 문제 대책 발표"
     ],
-    "searched": 20
+    "searched": 13
    },
    {
     "ord": 8,
     "title": "남녀동수 공천 실현",
     "realm": "입법·정책",
     "status": "progress",
-    "reason": "공직선거법 일부개정법률안이 2026-11-24 발의되어 현재 계류(심사 중)이다.",
+    "reason": "공직선거법 일부개정법률안이 발의되어 현재 국회에서 심사 중이다.",
     "evidence": [
      {
       "title": "[국회 의안] 공직선거법 일부개정법률안",
@@ -682,23 +694,19 @@
       "date": "2026-11-19",
       "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_75598305B0484647B86910AE3ECBFA",
       "kind": "bill"
-     },
-     {
-      "title": "[국회 의안] 공직선거법 일부개정법률안",
-      "date": "2026-11-18",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_36395D46F13643BC851B08050D4D3D",
-      "kind": "bill"
      }
     ],
     "keywords": [
+     "남녀동수",
      "공직선거법",
-     "남녀동수"
+     "성평등"
     ],
+    "context": [],
     "queries": [
-     "정당 남녀동수 공천 의무화 법안",
-     "공직선거법 남녀 공천 성평등 개정"
+     "남녀동수 공천 법제화",
+     "공직선거법 남녀동수 공천 정당 의무화"
     ],
-    "searched": 14
+    "searched": 16
    }
   ]
  },
@@ -716,75 +724,72 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "지방소멸 대응",
-     "지방소멸 방지 특별법",
-     "인구소멸"
+     "지방소멸",
+     "인구소멸",
+     "특별법"
     ],
+    "context": [],
     "queries": [
-     "지방소멸 대응 특별법 국회 통과",
-     "인구소멸 지방소멸 방지 특별법안 발의"
+     "지방소멸 대응 특별법 제정",
+     "울산 동구 인구소멸 대응 특별법",
+     "지방소멸 방지 특별법안 국회 심사"
     ],
-    "searched": 20
+    "searched": 26
    },
    {
     "ord": 2,
     "title": "대왕암공원 울산 제1호 관광지 지정 추진",
     "realm": "문화·체육",
-    "status": "progress",
-    "reason": "대왕암공원 체류형 관광지 지정 용역이 진행 중이라는 자료가 있다.",
-    "evidence": [
-     {
-      "title": "김수종 울산시의원 \"관광개발 시 성끝마을 주민 정주권 보장해야\"",
-      "date": "2024-10-29",
-      "link": "https://www.news1.kr/local/ulsan/5583232",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "대왕암공원",
-     "관광지 지정",
-     "울산 제1호 관광지"
+     "관광지 지정"
     ],
+    "context": [],
     "queries": [
      "대왕암공원 울산 제1호 관광지 지정",
-     "대왕암공원 관광지 지정 추진"
+     "대왕암공원 관광지 지정 추진",
+     "울산 동구 대왕암공원 관광지 지정 신청"
     ],
-    "searched": 10
+    "searched": 20
    },
    {
     "ord": 3,
     "title": "노란봉투법 재추진",
     "realm": "입법·정책",
-    "status": "progress",
-    "reason": "2026년 노란봉투법 개정안이 발의되어 국회에서 심사 중인 상태다.",
+    "status": "done",
+    "reason": "노란봉투법이 2025년 8월 국회 본회의를 통과했고 2026년 3월 10일부터 시행됐다.",
     "evidence": [
      {
-      "title": "[국회 의안] 노동조합 및 노동관계조정법 일부개정법률안",
-      "date": "2026-10-27",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_48CB9C5855D84CEA8F3C96400CBBCB",
-      "kind": "bill"
+      "title": "6개월 유예 마친 노란봉투법 시행…재계 \"혼란 가중\" vs 노동계 \"교섭력...",
+      "date": "2026-03-10",
+      "link": "https://www.youthdaily.co.kr/news/article.html?no=215018",
+      "kind": "news"
      },
      {
-      "title": "[국회 의안] 노동조합 및 노동관계조정법 일부개정법률안",
-      "date": "2026-07-16",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_O2P6N0O7W1U0V1T6U3S4S2A4B0Z4X3",
-      "kind": "bill"
+      "title": "[기획] 노란봉투법 시행 후폭풍…기업들 '사용자성' 촉각 (상)",
+      "date": "2026-03-20",
+      "link": "http://www.rightknow.co.kr/news/articleView.html?idxno=33919",
+      "kind": "news"
      },
      {
-      "title": "[국회 의안] 노동조합 및 노동관계조정법 일부개정법률안",
-      "date": "2026-07-13",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_S2S6O0M7N0L6M1K6L1T4R1S8Q8R0P3",
-      "kind": "bill"
+      "title": "4만7000원이 쏘아올린 노란봉투법, 어쩌다 갈등의 뇌관 됐나",
+      "date": "2026-04-25",
+      "link": "https://www.sisajournal.com/news/articleView.html?idxno=369809",
+      "kind": "news"
      }
     ],
     "keywords": [
      "노란봉투법",
-     "노동조합 및 노동관계조정법",
-     "손해배상 청구 제한"
+     "노동조합 및 노동관계조정법"
     ],
+    "context": [],
     "queries": [
-     "노란봉투법 국회 본회의 통과",
-     "노란봉투법 재발의 노동조합 및 노동관계조정법 개정"
+     "노란봉투법 국회 재추진",
+     "노란봉투법 노동조합 및 노동관계조정법 개정",
+     "노란봉투법 국회 본회의 통과"
     ],
     "searched": 26
    },
@@ -793,23 +798,30 @@
     "title": "하청노동자 임금 보호 법안 제안",
     "realm": "경제·일자리",
     "status": "progress",
-    "reason": "하청노동자 임금 직접지급제 도입 법안이 발의된 상태로 확인됨.",
+    "reason": "하청노동자 보호를 내세운 법안(이진숙 1호 법안)이 발의되어 논의 단계에 있다는 보도가 있다.",
     "evidence": [
      {
-      "title": "\"원청 안 거치고 하청·근로자에 바로\"… 직접지급제, 임금체불 차단 기...",
-      "date": "2026-09-10",
-      "link": "https://www.ajunews.com/view/20260910143815150",
+      "title": "방통위원장 출신 이진숙의 1호 법안, '미디어'가 아니었다",
+      "date": "2026-06-29",
+      "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003247140&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+      "kind": "news"
+     },
+     {
+      "title": "시행 108일 '노란봉투법' 정면 수정···이진숙 1호 법안, 파업 대체인...",
+      "date": "2026-06-29",
+      "link": "https://www.womaneconomy.co.kr/news/articleView.html?idxno=255540",
       "kind": "news"
      }
     ],
     "keywords": [
      "하청노동자",
-     "임금 보호",
-     "원청 책임"
+     "임금 보호"
     ],
+    "context": [],
     "queries": [
-     "하청노동자 임금 보호 법안 발의",
-     "원청 책임 하청노동자 임금 보호법 국회"
+     "하청노동자 임금 보호법 제정",
+     "원청 사용자 책임 하청노동자 임금 법안",
+     "하청노동자 임금 보호 법안 국회 발의"
     ],
     "searched": 20
    }
@@ -825,36 +837,50 @@
     "ord": 1,
     "title": "고양은평선 식사·도래울 구간 추진",
     "realm": "교통",
-    "status": "notfound",
-    "reason": "",
-    "evidence": [],
+    "status": "progress",
+    "reason": "고양은평선 기본설계안에 도래울역 출입구 반영 방안이 논의되며 설계 단계가 진행 중이다.",
+    "evidence": [
+     {
+      "title": "고양시, 광역교통망 확충 가속… 고양은평선으로 ‘시간혁명’ 잇는다",
+      "date": "2026-03-12",
+      "link": "https://www.kyeongin.com/article/1760153",
+      "kind": "news"
+     },
+     {
+      "title": "[인터뷰] 이동환 고양시장, \"교통혁명으로 삶이 변화된 고양시 일자리 ...",
+      "date": "2026-02-25",
+      "link": "https://www.dailian.co.kr/news/view/1614322/?sc=Naver",
+      "kind": "news"
+     }
+    ],
     "keywords": [
      "고양은평선",
      "도래울역"
     ],
+    "context": [],
     "queries": [
-     "고양은평선 식사 일산 연장 추진",
-     "고양은평선 도래울역 환승주차장"
+     "고양은평선 식사 일산 연장 도래울역",
+     "고양은평선 도래울역 환승주차장 추진"
     ],
-    "searched": 20
+    "searched": 4
    },
    {
     "ord": 2,
     "title": "식사~고양신청사~대곡역 트램 조속 추진",
     "realm": "교통",
     "status": "progress",
-    "reason": "대곡고양시청식사선 트램이 국가 도시철도망 계획에 반영되어 계획 단계가 진행됨",
+    "reason": "대곡고양시청식사선 등 고양 트램이 도시철도망 구축계획에 반영되어 계획 단계가 진행됨.",
     "evidence": [
-     {
-      "title": "[위클리오늘] 신현철 고양시의원, 고양 트램 조속 추진 요구 \"계획 아닌...",
-      "date": "2026-01-23",
-      "link": "http://www.weeklytoday.com/news/articleView.html?idxno=753949",
-      "kind": "news"
-     },
      {
       "title": "동탄 이어 고양까지 이어진 GTX 열풍… ‘더샵 일산센트로’ 민간임대 ...",
       "date": "2026-11-24",
       "link": "https://sports.donga.com/economy/article/all/20261124/135080335/1",
+      "kind": "news"
+     },
+     {
+      "title": "[위클리오늘] 신현철 고양시의원, 고양 트램 조속 추진 요구 \"계획 아닌...",
+      "date": "2026-01-23",
+      "link": "http://www.weeklytoday.com/news/articleView.html?idxno=753949",
       "kind": "news"
      }
     ],
@@ -862,6 +888,7 @@
      "트램",
      "대곡역"
     ],
+    "context": [],
     "queries": [
      "고양 식사 고양신청사 대곡역 트램",
      "고양 트램 대곡역 연결 추진"
@@ -873,14 +900,8 @@
     "title": "고양 신청사 원당 건립 원안 사수",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "행안부에 타당성 재조사를 의뢰하는 등 원당 원안 건립의 행정절차가 진행 중이다.",
+    "reason": "원당 신청사 타당성 재조사 의뢰와 행정절차가 진행 중이다.",
     "evidence": [
-     {
-      "title": "고양신청사 원안 추진...시민은 어떤 청사를 원할까",
-      "date": "2026-11-12",
-      "link": "http://www.mygoyang.com/news/articleView.html?idxno=91180",
-      "kind": "news"
-     },
      {
       "title": "고양시 신청사 '원당 건립' 본격화...타당성 재조사 착수",
       "date": "2026-08-11",
@@ -895,8 +916,16 @@
      }
     ],
     "keywords": [
-     "고양 신청사",
+     "신청사",
      "원당"
+    ],
+    "context": [
+     {
+      "title": "고양시 신청사 이전 사업 백지화와 절차상 문제를 지적하며 경기도의 입장을 물음",
+      "answer": "경기도지사 김동연이 시의회 의견 수렴과 시민 의견 반영이 없었다며 투자심사를 네 차례 반려했고 도의 입장은 확고하다고 답함",
+      "date": "2025-10-21",
+      "link": "https://assembly-korea.com/audit-summary?id=N053582"
+     }
     ],
     "queries": [
      "고양 신청사 원당 건립",
@@ -912,42 +941,44 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "메가시티",
-     "서울 편입"
+     "서울 편입",
+     "메가시티"
     ],
+    "context": [],
     "queries": [
-     "고양시 서울 편입 추진",
-     "메가시티 서울 편입 고양시"
+     "고양시 서울 편입 메가시티",
+     "고양시 서울시 편입 추진"
     ],
-    "searched": 20
+    "searched": 12
    },
    {
     "ord": 5,
     "title": "고양특례시 권한 강화 법안 추진",
     "realm": "입법·정책",
-    "status": "done",
-    "reason": "특례시 지원 특별법이 2026년 5월 국회 본회의를 통과해 제정됨.",
+    "status": "progress",
+    "reason": "국회 의안은 대안반영 단계이며, 관련 특별법은 공포돼 내년 6월 시행을 앞둔 상태다.",
     "evidence": [
      {
-      "title": "'특례시 지원 특별법' 내년 시행…5개 특례시, 행정·재정 권한 확보 '논...",
-      "date": "2026-08-13",
-      "link": "http://www.fnnews.com/news/202608131024546744",
-      "kind": "news"
+      "title": "[국회 의안] 특례시 지원에 관한 특별법안",
+      "date": "2026-05-07",
+      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_N2F4X0G6V0N4R1A0J1X9Q5Z0W2L3A3",
+      "kind": "bill"
      },
      {
-      "title": "수원·용인·고양·화성 권한 커진다…특례시 특별법 본회의 통과",
-      "date": "2026-05-07",
-      "link": "https://www.kyeonggi.com/article/20260507580460",
+      "title": "5개 특례시, 정부에 실질적 자치권 확대 촉구…공동 대응 강화",
+      "date": "2026-11-12",
+      "link": "https://www.ppss.kr/news/articleView.html?idxno=320736",
       "kind": "news"
      }
     ],
     "keywords": [
      "특례시",
-     "지방자치법"
+     "고양특례시"
     ],
+    "context": [],
     "queries": [
-     "고양특례시 권한 강화 법안",
-     "특례시 지정 특별법 개정 권한"
+     "고양특례시 권한 강화 특례시 지원 특별법",
+     "특례시 권한 강화 법안 개발제한 해제"
     ],
     "searched": 26
    },
@@ -956,7 +987,7 @@
     "title": "주민 희망 반영 재개발·재건축 및 원도심 정비",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "고양 원도심 정비 관련 특별법안이 발의되어 심사 중이며, 행신동 미래타운 조성 착수와 재개발 수주가 확인됨.",
+    "reason": "원도심 정비 특별법안이 발의되어 심사 중이고, 고양 원도심 사업도 착수·수주 단계다.",
     "evidence": [
      {
       "title": "[국회 의안] 원도심 정비 및 지원에 관한 특별법안",
@@ -981,9 +1012,10 @@
      "재개발",
      "원도심 정비"
     ],
+    "context": [],
     "queries": [
-     "고양 원도심 재개발 재건축 정비",
-     "고양 주민 희망 재개발 재건축 추진"
+     "고양 원도심 재개발 재건축 정비사업",
+     "고양 일산 원도심 정비 주민 희망"
     ],
     "searched": 26
    },
@@ -991,28 +1023,16 @@
     "ord": 7,
     "title": "시내버스 준공영제 전면 실시",
     "realm": "교통",
-    "status": "progress",
-    "reason": "고양시 시내버스 공공관리제 운영 예산 및 마을버스 재정지원 편성 자료가 있음",
-    "evidence": [
-     {
-      "title": "[패트롤] 고양시-동두천시-양주시-연천군-의정부시",
-      "date": "2026-11-22",
-      "link": "https://www.ekn.kr/web/view.php?key=20261122020492890",
-      "kind": "news"
-     },
-     {
-      "title": "[패트롤] 고양시-김포시-남양주시-양주시-파주시",
-      "date": "2026-08-25",
-      "link": "https://www.ekn.kr/web/view.php?key=20260825023186031",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "준공영제",
      "시내버스"
     ],
+    "context": [],
     "queries": [
-     "고양시 시내버스 준공영제 시행",
+     "고양시 시내버스 준공영제 전면 실시",
      "고양 마을버스 준공영제 증차"
     ],
     "searched": 20
@@ -1026,8 +1046,9 @@
     "evidence": [],
     "keywords": [
      "식사",
-     "백석 도로"
+     "백석"
     ],
+    "context": [],
     "queries": [
      "고양 식사 백석 도로 확장",
      "식사동 백석 연결도로 확장 공사"
@@ -1039,18 +1060,24 @@
     "title": "관산동·고양동 쓰레기소각장 설치 반대",
     "realm": "환경",
     "status": "delayed",
-    "reason": "고양시 소각시설 설치가 주민 반대로 지지부진하다는 보도가 있다.",
+    "reason": "2025년 3월 기준 고양시 소각장 신규·광역화가 모두 불투명하고 최종 입지가 정해지지 않음",
     "evidence": [
      {
-      "title": "[고양·파주·김포 소각장] 하. 소각시설 설치 지지부진⋯행정·주민 갈...",
-      "date": "2025-10-21",
-      "link": "https://www.incheonilbo.com/news/articleView.html?idxno=1306510",
+      "title": "돌파구 못 찾는 고양시... 소각장 신규도 광역도 '불투명'",
+      "date": "2025-03-18",
+      "link": "http://www.mygoyang.com/news/articleView.html?idxno=83372",
       "kind": "news"
      },
      {
-      "title": "지방전가 반발에도 소각장 건립 지지부진",
-      "date": "2026-02-02",
-      "link": "https://www.naeil.com/news/read/576712?ref=naver",
+      "title": "늘어나는 쓰레기, 갈 곳이 없다… 전국 곳곳 소각장 건립 ‘몸살’",
+      "date": "2024-09-20",
+      "link": "https://www.seoul.co.kr/news/publicnews/local_govern/news_local/2024/09/20/20240920028001?wlog_tag3=naver",
+      "kind": "news"
+     },
+     {
+      "title": "\"결사반대\"…고양 쓰레기 소각장 후보지 선정 연기(종합)",
+      "date": "2024-05-29",
+      "link": "https://www.newsis.com/view/?id=NISX20240529_0002753140&cID=10817&pID=14000",
       "kind": "news"
      }
     ],
@@ -1058,29 +1085,30 @@
      "쓰레기소각장",
      "관산동"
     ],
+    "context": [],
     "queries": [
-     "관산동 고양동 쓰레기소각장 반대",
-     "고양 쓰레기소각장 설치 주민 반대"
+     "고양 관산동 고양동 쓰레기소각장 설치 반대",
+     "고양 쓰레기소각장 주민 동의 설치"
     ],
-    "searched": 20
+    "searched": 17
    },
    {
     "ord": 10,
     "title": "고양 교통 체계 획기적 개선",
     "realm": "교통",
     "status": "progress",
-    "reason": "고양형 급행버스 운송사업자 모집, 고양은평선 사전타당성 검토 착수 등 교통 사업이 추진 단계에 있다.",
+    "reason": "고양시 도시교통정비 중기계획 용역 착수와 생활교통 개선, 도시철도망 확정 등 진행 단계 자료가 있다.",
     "evidence": [
      {
-      "title": "탄현-킨텍스역 무정차 연결 '고양형급행버스'…내년 1분기 운행 시작",
-      "date": "2026-11-26",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03437446645649656&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
+      "title": "고양시, 택시·경찰과 생활교통 개선…출퇴근 정체 해소 나선다",
+      "date": "2026-09-29",
+      "link": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1297261",
       "kind": "news"
      },
      {
-      "title": "고양시, '고양은평선 화수역 신설' 속도…사전타당성 검토 착수",
-      "date": "2026-08-18",
-      "link": "https://www.ppss.kr/news/articleView.html?idxno=306058",
+      "title": "고양시, 교통안전기본계획 용역 착수",
+      "date": "2026-05-13",
+      "link": "http://www.metroseoul.co.kr/article/20260512500282",
       "kind": "news"
      },
      {
@@ -1091,14 +1119,15 @@
      }
     ],
     "keywords": [
-     "교통체계",
+     "교통 체계",
      "고양시 교통"
     ],
+    "context": [],
     "queries": [
-     "고양시 교통체계 개선 대책",
-     "고양 교통 체계 개선 사업"
+     "고양시 교통 체계 개선 대책",
+     "고양 교통난 해소 광역교통 개선"
     ],
-    "searched": 24
+    "searched": 20
    }
   ]
  },
@@ -1113,7 +1142,7 @@
     "title": "대덕구 관통 철도 지하화",
     "realm": "교통",
     "status": "progress",
-    "reason": "대전조차장 철도지하화 통합개발이 기본계획·용역 등 추진 단계에 있다는 자료가 있다.",
+    "reason": "대전조차장 철도지하화 사업이 선도사업으로 선정되어 타당성조사와 기본계획 단계에 있다.",
     "evidence": [
      {
       "title": "대전역·조차장 철도 입체화 시동…원도심 개발 돌파구 될까",
@@ -1122,15 +1151,15 @@
       "kind": "news"
      },
      {
-      "title": "'부산은 속도전, 대전은 용역 중'… 철도지하화 온도차",
-      "date": "2026-06-01",
-      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2278828",
-      "kind": "news"
-     },
-     {
       "title": "철도로 갈라진 도시 연결…대전조차장 철도 지하화 착수",
       "date": "2026-01-29",
       "link": "http://www.yonhapnewstv.co.kr/AKR20260129144431fxy",
+      "kind": "news"
+     },
+     {
+      "title": "'철도로 갈라진 대전' 다시 잇는다… 대전조차장 철도지하화 통합개발 ...",
+      "date": "2026-01-29",
+      "link": "https://www.bzeronews.com/news/articleView.html?idxno=809975",
       "kind": "news"
      }
     ],
@@ -1138,23 +1167,43 @@
      "철도 지하화",
      "대덕구"
     ],
+    "context": [
+     {
+      "title": "대전 대덕구 지구대·파출소가 전국 노후 순위에서 상위권에 있어 문제라고 지적함",
+      "answer": "대전광역시경찰청장 최주원이 파악 중이라며 해결하겠다고 답함",
+      "date": "2025-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=N053587"
+     }
+    ],
     "queries": [
      "대전 대덕구 철도 지하화 추진",
      "대전 대덕구 경부선 철도 지하화 사업"
     ],
-    "searched": 21
+    "searched": 20
    },
    {
     "ord": 2,
     "title": "연축혁신도시 구축과 공공기관 이전",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "연축지구 공공기관 이전용지 3만㎡가 확보되어 있다는 자료가 있다.",
+    "reason": "연축지구 공공기관 이전 공간 확보와 신청사 활용을 계획·검토 중이라는 자료가 있음",
     "evidence": [
      {
-      "title": "대전 공공기관 유치, R&D 명분에 '분산·복합형 혁신도시' 구상 더한다",
-      "date": "2026-11-23",
-      "link": "https://www.cctoday.co.kr/news/articleView.html?idxno=2240796",
+      "title": "공공기관 이전은 신 ‘성장동력’…대전시 ‘이전 대응 TF’ 가동",
+      "date": "2025-11-10",
+      "link": "https://www.seoul.co.kr/news/politics/2025/11/10/20251110500107?wlog_tag3=naver",
+      "kind": "news"
+     },
+     {
+      "title": "대덕구, '대덕형 온통대전 2.0' 추진…신청사 활용 공공기관 유치도",
+      "date": "2026-11-20",
+      "link": "https://www.newspim.com/news/view/20261120000976",
+      "kind": "news"
+     },
+     {
+      "title": "[취임 인터뷰] 지역화폐부터 공공산후조리원까지…김찬술號 ‘든든 대덕...",
+      "date": "2026-07-30",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20260730010009152",
       "kind": "news"
      }
     ],
@@ -1162,9 +1211,10 @@
      "연축혁신도시",
      "공공기관 이전"
     ],
+    "context": [],
     "queries": [
-     "연축혁신도시 조성 공공기관 이전",
-     "대전 연축지구 혁신도시 구축"
+     "연축혁신도시 구축 공공기관 이전",
+     "대전 연축지구 혁신도시 조성"
     ],
     "searched": 22
    },
@@ -1172,65 +1222,42 @@
     "ord": 3,
     "title": "과학기술 공공기관 유치",
     "realm": "경제·일자리",
-    "status": "progress",
-    "reason": "2차 공공기관 이전 대응 TF 가동과 혁신도시 기관 배정 개정안 발의가 진행 단계다.",
-    "evidence": [
-     {
-      "title": "대전 공공기관 유치, R&D 명분에 '분산·복합형 혁신도시' 구상 더한다",
-      "date": "2026-11-23",
-      "link": "https://www.cctoday.co.kr/news/articleView.html?idxno=2240796",
-      "kind": "news"
-     },
-     {
-      "title": "\"혁신도시지만 기능군은 없다\"…대전·충남 공공기관 이전 '출발선 격차...",
-      "date": "2026-09-06",
-      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2299104",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "과학기술 공공기관",
-     "대덕구"
+     "대덕"
+    ],
+    "context": [
+     {
+      "title": "대전 대덕구 지구대·파출소가 전국 노후 순위에서 상위권에 있어 문제라고 지적함",
+      "answer": "대전광역시경찰청장 최주원이 파악 중이라며 해결하겠다고 답함",
+      "date": "2025-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=N053587"
+     }
     ],
     "queries": [
      "대덕구 과학기술 공공기관 유치",
-     "대덕 과학기술 공공기관 이전 추진"
+     "대덕특구 과학기술 공공기관 이전 추진"
     ],
-    "searched": 21
+    "searched": 20
    },
    {
     "ord": 4,
     "title": "대덕을 충청권 핵심성장거점도시로 육성",
     "realm": "개발·주거",
-    "status": "progress",
-    "reason": "충청권 메가시티 관련 광역교통망과 CTX 등 계획 추진 자료가 있으나 대덕 핵심거점 자체의 단계 자료는 부족하다.",
-    "evidence": [
-     {
-      "title": "허태정 대전시장, 국토부 장관 찾아 2차 공공기관 유치와 서대전역 국비...",
-      "date": "2026-11-11",
-      "link": "https://www.newsworker.co.kr/news/articleView.html?idxno=513580",
-      "kind": "news"
-     },
-     {
-      "title": "[75창간기획 충청의 길] 수도권 블랙홀에 맞서는 '메가시티' 전략",
-      "date": "2025-11-10",
-      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2237927",
-      "kind": "news"
-     },
-     {
-      "title": "[윤준의 부동산수첩] 충청권 철도 CTX의 진짜 수혜 지역",
-      "date": "2026-04-13",
-      "link": "https://www.nbntv.kr/news/articleView.html?idxno=339760",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "충청권 메가시티",
      "성장거점도시"
     ],
+    "context": [],
     "queries": [
-     "충청권 메가시티 핵심 성장거점도시 대덕",
-     "대전 대덕 충청권 광역급행철도 메가시티"
+     "대덕 충청권 핵심성장거점도시 육성",
+     "충청권 메가시티 대전 대덕 성장거점"
     ],
     "searched": 20
    },
@@ -1242,12 +1269,12 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "공공병원",
-     "국민건강권"
+     "공공병원"
     ],
+    "context": [],
     "queries": [
-     "대전 공공병원 설립 추진",
-     "대덕구 공공병원 건립 사업"
+     "대전 대덕구 공공병원 설립",
+     "대전 공공병원 설립 추진 현황"
     ],
     "searched": 20
    },
@@ -1262,9 +1289,17 @@
      "그린뉴딜",
      "대덕구"
     ],
+    "context": [
+     {
+      "title": "대전 대덕구 지구대·파출소가 전국 노후 순위에서 상위권에 있어 문제라고 지적함",
+      "answer": "대전광역시경찰청장 최주원이 파악 중이라며 해결하겠다고 답함",
+      "date": "2025-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=N053587"
+     }
+    ],
     "queries": [
      "먼지없는 대덕 그린뉴딜 사업",
-     "대전 대덕구 그린뉴딜 추진 미세먼지"
+     "대전 대덕구 그린뉴딜 추진"
     ],
     "searched": 1
    },
@@ -1272,61 +1307,63 @@
     "ord": 7,
     "title": "대청호 규제 완화",
     "realm": "환경",
-    "status": "delayed",
-    "reason": "대청호 규제 완화 특례가 법안 심사에서 막혀 국회에 계류 중이라는 보도가 있음.",
+    "status": "progress",
+    "reason": "상수원관리규칙 개정안이 입법예고되어 규제 완화 절차가 진행 중이다.",
     "evidence": [
      {
-      "title": "충북지역 발전 현안 핵심 법안 제·개정 '하세월'",
-      "date": "2026-06-21",
-      "link": "https://www.cctoday.co.kr/news/articleView.html?idxno=2231897",
+      "title": "대청호 수변구역 22년만에 해제… '레이크파크 르네상스' 본격화",
+      "date": "2024-04-29",
+      "link": "http://www.jbnews.com/news/articleView.html?idxno=1434514",
       "kind": "news"
      },
      {
-      "title": "대청호 규제 완화 요지부동… \"광역 단위 협력체계 필요해\"",
-      "date": "2025-01-20",
-      "link": "https://www.joongdo.co.kr/web/view.php?key=20250119010005269",
-      "kind": "news"
-     },
-     {
-      "title": "44년간 주민 괴롭힌 대청호 환경 규제, 정국 혼란에 완화 좌초되나",
-      "date": "2024-12-23",
-      "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02604326639121472",
+      "title": "\"청남대 모노레일 들어설까?\".. 대청호 규제 완화 첫발",
+      "date": "2024-04-29",
+      "link": "http://news.mbccb.co.kr/home/sub.php?menukey=61&mod=view&RECEIVE_DATE=20240429&SEQUENCE=4473",
       "kind": "news"
      }
     ],
     "keywords": [
-     "대청호",
-     "규제 완화"
+     "대청호 규제",
+     "수변구역"
     ],
+    "context": [],
     "queries": [
-     "대청호 규제 완화 법안",
-     "대청호 주변 규제 완화 대전 상수원보호구역"
+     "대청호 규제 완화 방안",
+     "대청호 주변 규제 완화 추진"
     ],
-    "searched": 19
+    "searched": 20
    },
    {
     "ord": 8,
     "title": "풀뿌리 공동체 3법 입법 추진",
     "realm": "입법·정책",
-    "status": "done",
-    "reason": "주민자치회 법제화 지방자치법 개정안이 2026년 3월 31일 국회 본회의를 통과함",
+    "status": "progress",
+    "reason": "주민자치회 법제화 지방자치법 개정안은 본회의를 통과했으나 마을공동체 관련 법안은 아직 심사 단계다.",
     "evidence": [
      {
       "title": "충북 시민단체 \"주민자치회 조례, 주민 주도 제·개정 시급\"",
       "date": "2026-08-13",
       "link": "https://www.ccreview.co.kr/news/articleView.html?idxno=354996",
       "kind": "news"
+     },
+     {
+      "title": "주민자치회 법제화, 1500일의 기록",
+      "date": "2026-07-09",
+      "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003249010&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+      "kind": "news"
      }
     ],
     "keywords": [
      "풀뿌리 공동체",
-     "입법"
+     "법안"
     ],
+    "context": [],
     "queries": [
      "풀뿌리 공동체 3법 입법",
      "풀뿌리 공동체 활성화 법안 국회 통과"
     ],
-    "searched": 24
+    "searched": 26
    }
   ]
  },
@@ -1345,13 +1382,15 @@
     "evidence": [],
     "keywords": [
      "생활쓰레기 전처리",
-     "소각장"
+     "소각장",
+     "탄소중립"
     ],
+    "context": [],
     "queries": [
      "대구 달서구 소각장 생활쓰레기 전처리 시설",
      "대구 소각장 생활쓰레기 전처리 탄소중립"
     ],
-    "searched": 1
+    "searched": 7
    },
    {
     "ord": 2,
@@ -1362,21 +1401,29 @@
     "evidence": [],
     "keywords": [
      "AI 교육특구",
-     "산업특구"
+     "AI 산업특구",
+     "인력양성"
     ],
+    "context": [],
     "queries": [
-     "달서구 AI 교육 산업특구",
-     "대구 달서구 AI 산업특구 지정"
+     "대구 달서구 AI 교육특구",
+     "달서구 AI 산업특구 조성"
     ],
-    "searched": 25
+    "searched": 20
    },
    {
     "ord": 3,
     "title": "호산중학교 신설",
     "realm": "교육",
     "status": "progress",
-    "reason": "2027년 3월 개교 예정 호산중학교의 교명 공모 등 설립 절차가 진행 중이다.",
+    "reason": "호산중학교 신설이 계획 단계를 넘어 2027년 3월 개교를 위해 교명 공모가 진행 중이다.",
     "evidence": [
+     {
+      "title": "대구시교육청, 2027년 개교 호산중학교 교명 공모…학부모위원도 공개 ...",
+      "date": "2026-07-13",
+      "link": "https://www.kbmaeil.com/article/20260713500421",
+      "kind": "news"
+     },
      {
       "title": "대구교육청, 내년 3월 개교 '호산중' 교명 공모",
       "date": "2026-07-14",
@@ -1384,24 +1431,20 @@
       "kind": "news"
      },
      {
-      "title": "대구교육청, '호산고 통합운영' 신설 중학교 교명 공모",
+      "title": "'내년 3월 개교' 가칭 '호산중학교' 교명 공모",
       "date": "2026-07-13",
-      "link": "https://daily.hankooki.com/news/articleView.html?idxno=1385455",
-      "kind": "news"
-     },
-     {
-      "title": "대구시교육청, 2027년 개교 호산중학교 교명 공모…학부모위원도 공개 ...",
-      "date": "2026-07-13",
-      "link": "https://www.kbmaeil.com/article/20260713500421",
+      "link": "https://news.skbroadband.com/news/articleView.html?idxno=231968",
       "kind": "news"
      }
     ],
     "keywords": [
-     "호산중학교"
+     "호산중학교",
+     "중학교 신설"
     ],
+    "context": [],
     "queries": [
-     "달서구 호산중학교 신설",
-     "대구 호산중학교 개교"
+     "대구 달서구 호산중학교 신설",
+     "호산중학교 개교 대구"
     ],
     "searched": 20
    },
@@ -1409,13 +1452,13 @@
     "ord": 4,
     "title": "주민 복합문화센터 건립",
     "realm": "문화·체육",
-    "status": "progress",
-    "reason": "달서구 송현복합센터가 2024년 9월 착공식을 열고 건립에 들어갔다는 자료가 있다.",
+    "status": "done",
+    "reason": "달서구 달비골복합문화센터 건립이 완료된 사업으로 소개되어 있다.",
     "evidence": [
      {
-      "title": "'도시재생거점' 송현복합센터 건립 '첫 삽'",
-      "date": "2024-09-01",
-      "link": "https://www.kbmaeil.com/news/articleView.html?idxno=1009878",
+      "title": "달서구, 도시재생 가치 공유 '달서동행' 강연 개최",
+      "date": "2026-07-08",
+      "link": "https://www.dkilbo.com/news/articleView.html?idxno=548106",
       "kind": "news"
      },
      {
@@ -1426,8 +1469,10 @@
      }
     ],
     "keywords": [
-     "복합문화센터"
+     "복합문화센터",
+     "문화센터 건립"
     ],
+    "context": [],
     "queries": [
      "대구 달서구 주민 복합문화센터 건립",
      "달서구 복합문화센터 착공"
@@ -1442,13 +1487,15 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "장애인 자립자활센터"
+     "장애인 자립",
+     "자활센터"
     ],
+    "context": [],
     "queries": [
      "대구 달서구 장애인 자립 자활센터 건립",
-     "달서구 장애인 자립자활센터 개관"
+     "대구 장애인 자립자활센터 개관"
     ],
-    "searched": 1
+    "searched": 8
    },
    {
     "ord": 6,
@@ -1458,13 +1505,15 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "갈산공원"
+     "갈산공원",
+     "은행나무"
     ],
+    "context": [],
     "queries": [
      "대구 달서구 갈산공원 조성",
-     "갈산공원 은행나무 조성 사업"
+     "갈산공원 은행나무 조성 대구"
     ],
-    "searched": 7
+    "searched": 3
    },
    {
     "ord": 7,
@@ -1477,6 +1526,7 @@
      "박정희 컨벤션센터",
      "성서행정타운"
     ],
+    "context": [],
     "queries": [
      "성서행정타운 박정희 컨벤션센터",
      "대구 성서행정타운 컨벤션센터 건립"
@@ -1499,13 +1549,14 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "미 해군",
      "옥포",
+     "미 해군",
      "상업시설"
     ],
+    "context": [],
     "queries": [
      "옥포 미 해군 상업시설 조성",
-     "거제 옥포 미해군 부대시설 조성 사업"
+     "거제 옥포 미해군 부대시설 건립"
     ],
     "searched": 0
    },
@@ -1517,21 +1568,29 @@
     "reason": "",
     "evidence": [],
     "keywords": [
-     "사곡 국가산단",
-     "사곡일반산업단지"
+     "사곡 국가산업단지",
+     "거제"
+    ],
+    "context": [
+     {
+      "title": "조선업 호황에도 거제·울산 등 지역 경기가 체감되지 않는 이유를 물음, 이에 대한 생각을 장관에게 질문함",
+      "answer": "안덕근 산업통상자원부장관은 외국인 노동자들이 많이 들어와 있는 것으로 알고 있다고 답함",
+      "date": "2024-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=054267"
+     }
     ],
     "queries": [
      "거제 사곡 국가산업단지 조성",
-     "사곡일반산업단지 거제 착공"
+     "사곡일반산업단지 사곡 국가산단 추진"
     ],
-    "searched": 1
+    "searched": 5
    },
    {
     "ord": 3,
     "title": "거제 가덕신공항 경제권 비즈니스 중심 도시",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "거제 공항배후도시 경제자유구역 지정 타당성 검토 용역이 진행 중이라는 보도가 있다.",
+    "reason": "거제 공항배후 경제자유구역 지정 타당성 검토 용역이 진행 중이다.",
     "evidence": [
      {
       "title": "[경제인칼럼] 거가대교를 바라보며- 박성호(부산진해경제자유구역 청장...",
@@ -1540,33 +1599,41 @@
       "kind": "news"
      },
      {
-      "title": "경남 거제까지 판 늘리는 부산진해경제자유구역",
-      "date": "2026-08-24",
-      "link": "https://www.sedaily.com/article/20082616?ref=naver",
+      "title": "거제시, 장목면 일대 경제자유구역 확대 추진…부진경자청과 타당성 용...",
+      "date": "2026-01-15",
+      "link": "https://www.newspim.com/news/view/20260115000282",
       "kind": "news"
      }
     ],
     "keywords": [
      "가덕신공항",
-     "경제권"
+     "거제"
+    ],
+    "context": [
+     {
+      "title": "조선업 호황에도 거제·울산 등 지역 경기가 체감되지 않는 이유를 물음, 이에 대한 생각을 장관에게 질문함",
+      "answer": "안덕근 산업통상자원부장관은 외국인 노동자들이 많이 들어와 있는 것으로 알고 있다고 답함",
+      "date": "2024-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=054267"
+     }
     ],
     "queries": [
-     "가덕신공항 거제 경제권 비즈니스 도시",
-     "가덕신공항 경제권 거제 비즈니스 중심 도시 사업"
+     "가덕신공항 경제권 거제 비즈니스",
+     "거제 가덕신공항 배후도시 개발"
     ],
-    "searched": 4
+    "searched": 9
    },
    {
     "ord": 4,
     "title": "해양웰니스관광 휴양 도시 조성",
     "realm": "경제·일자리",
     "status": "progress",
-    "reason": "해양 웰니스 관광 조례가 마련됐고 정부 5대 관광권에 거제가 포함됐다는 자료가 있다.",
+    "reason": "문체부 지방공항 중심 관광권에 거제가 포함되어 해양휴양·웰니스 관광 연계가 추진 단계에 있음",
     "evidence": [
      {
-      "title": "이재순 거제시의원, \"조례만 있고 예산은 없다\" 해양 웰니스 관광 육성...",
-      "date": "2026-11-08",
-      "link": "https://www.newsgn.com/news/articleView.html?idxno=584134",
+      "title": "거제시, 문체부 '지방공항 중심 5대 관광권'에 포함",
+      "date": "2026-09-15",
+      "link": "https://www.newsgn.com/news/articleView.html?idxno=573698",
       "kind": "news"
      },
      {
@@ -1578,11 +1645,19 @@
     ],
     "keywords": [
      "해양웰니스관광",
-     "휴양도시"
+     "거제"
+    ],
+    "context": [
+     {
+      "title": "조선업 호황에도 거제·울산 등 지역 경기가 체감되지 않는 이유를 물음, 이에 대한 생각을 장관에게 질문함",
+      "answer": "안덕근 산업통상자원부장관은 외국인 노동자들이 많이 들어와 있는 것으로 알고 있다고 답함",
+      "date": "2024-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=054267"
+     }
     ],
     "queries": [
-     "거제 해양웰니스관광 휴양도시 조성",
-     "거제 해양웰니스 관광 사업 추진"
+     "거제 해양웰니스관광 휴양도시",
+     "거제 해양웰니스 관광 조성 사업"
     ],
     "searched": 20
    },
@@ -1591,7 +1666,7 @@
     "title": "거가대교 통행료 인하",
     "realm": "교통",
     "status": "delayed",
-    "reason": "거가대교 통행료 인하가 재원과 시행 일정 미확정으로 지연됐다는 최신 보도가 있음",
+    "reason": "거가대로 통행료 인하가 지지부진하며 재원·실행계획 마련이 요구되고 있음",
     "evidence": [
      {
       "title": "거가대로·마창대교 통행료 인하 실행계획 주문",
@@ -1606,9 +1681,9 @@
       "kind": "news"
      },
      {
-      "title": "박봉희 경남도의원 \"거가대교 통행료 반값 공약 후퇴…꿩 대신 닭\"",
+      "title": "경남도 거가대로 반값 공약, 20% 인하 우선 추진으로… 시행 시기 미제...",
       "date": "2026-11-11",
-      "link": "https://www.newspim.com/news/view/20261111001454",
+      "link": "https://www.newscj.com/news/articleView.html?idxno=3447845",
       "kind": "news"
      }
     ],
@@ -1616,9 +1691,10 @@
      "거가대교",
      "통행료"
     ],
+    "context": [],
     "queries": [
      "거가대교 통행료 인하",
-     "거가대교 통행료 인하 추진 현황"
+     "거가대교 통행료 인하 국토교통부"
     ],
     "searched": 20
    },
@@ -1626,16 +1702,37 @@
     "ord": 6,
     "title": "거제~통영 고속도로 연장",
     "realm": "교통",
-    "status": "notfound",
-    "reason": "",
-    "evidence": [],
+    "status": "progress",
+    "reason": "거제~통영 고속도로 연장 사업이 예비타당성조사를 통과해 계획 단계가 진행됐다.",
+    "evidence": [
+     {
+      "title": "변광용 거제시장 \"조선업 호황 발판 청년이 정착하는 도시 만들 것\"",
+      "date": "2026-10-16",
+      "link": "https://www.sidae.com/article/2026101610510620612",
+      "kind": "news"
+     },
+     {
+      "title": "변광용 거제시장 험지에서 일군 '3선 신화'",
+      "date": "2026-07-20",
+      "link": "http://news.lghellovision.net/news/articleView.html?idxno=548638",
+      "kind": "news"
+     }
+    ],
     "keywords": [
      "거제 통영 고속도로",
-     "고속도로 연장"
+     "거제"
+    ],
+    "context": [
+     {
+      "title": "조선업 호황에도 거제·울산 등 지역 경기가 체감되지 않는 이유를 물음, 이에 대한 생각을 장관에게 질문함",
+      "answer": "안덕근 산업통상자원부장관은 외국인 노동자들이 많이 들어와 있는 것으로 알고 있다고 답함",
+      "date": "2024-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=054267"
+     }
     ],
     "queries": [
-     "거제 통영 고속도로 연장 사업",
-     "거제~통영 고속도로 건설 추진"
+     "거제 통영 고속도로 연장",
+     "거제~통영 고속도로 건설 사업"
     ],
     "searched": 20
    },
@@ -1644,28 +1741,36 @@
     "title": "교통중심 도시 거제 조성",
     "realm": "교통",
     "status": "progress",
-    "reason": "남부내륙철도 착공과 거제~통영 고속도로 예비타당성조사 등 거제 교통망 사업이 진행 중이다.",
+    "reason": "거제 종점 남부내륙철도(김천~거제)가 2026년 2월 착공해 추진 중이라는 자료가 있다.",
     "evidence": [
      {
-      "title": "[민선9기 新동남권 시대] 조선·휴양·교통 날개 단 거제, 청년 유입·1....",
-      "date": "2026-07-23",
-      "link": "https://www.hankookilbo.com/news/article/A2026070915010004800?did=NA",
+      "title": "[기획특집]경북, 5,749억 규모 도로 5개 사업 확정…'초광역 교통망' 본...",
+      "date": "2026-11-25",
+      "link": "https://www.wikitree.co.kr/articles/1177605",
       "kind": "news"
      },
      {
-      "title": "현대엔지니어링, 거제 최대 규모 '힐스테이트 거제시그니처' 공급",
-      "date": "2026-11-20",
-      "link": "http://www.finomy.com/news/articleView.html?idxno=267241",
+      "title": "경북도, 2026년 건설·도시 분야 성과…광역교통망 확충·지역균형발전...",
+      "date": "2026-11-25",
+      "link": "https://www.pressian.com/pages/articles/2026112516021527483?utm_source=naver&utm_medium=search",
       "kind": "news"
      }
     ],
     "keywords": [
-     "교통중심도시",
-     "남해안 관광"
+     "교통중심 도시",
+     "거제"
+    ],
+    "context": [
+     {
+      "title": "조선업 호황에도 거제·울산 등 지역 경기가 체감되지 않는 이유를 물음, 이에 대한 생각을 장관에게 질문함",
+      "answer": "안덕근 산업통상자원부장관은 외국인 노동자들이 많이 들어와 있는 것으로 알고 있다고 답함",
+      "date": "2024-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=054267"
+     }
     ],
     "queries": [
-     "거제 교통중심도시 조성 사업",
-     "남해안 관광 거제 교통 인프라 확충"
+     "거제 교통중심도시 조성",
+     "남해안 관광 거제 교통 인프라 사업"
     ],
     "searched": 20
    },
@@ -1673,29 +1778,17 @@
     "ord": 8,
     "title": "한화오션 임금피크제 적용 완화",
     "realm": "경제·일자리",
-    "status": "delayed",
-    "reason": "한화오션 임단협에서 임금피크제 폐지 요구를 사측이 수용하지 않아 교섭이 평행선을 달리는 상태다.",
-    "evidence": [
-     {
-      "title": "[현장] 삼성중공업도 임단협 파열음, 노동자 측 \"그룹이 직접 교섭에 임...",
-      "date": "2026-09-10",
-      "link": "https://www.businesspost.co.kr/BP?command=article_view&num=446916",
-      "kind": "news"
-     },
-     {
-      "title": "조선 업계도 ‘영업이익 N% 성과급’ 뉴 노멀 되나? 삼성重, 첫 도입 파...",
-      "date": "2026-09-23",
-      "link": "https://www.busan.com/view/busan/view.php?code=2026092316453860633",
-      "kind": "news"
-     }
-    ],
+    "status": "notfound",
+    "reason": "",
+    "evidence": [],
     "keywords": [
      "임금피크제",
      "노동조합"
     ],
+    "context": [],
     "queries": [
-     "한화오션 임금피크제 개편 노사 협의",
-     "한화오션 임금피크제 적용 완화 노조"
+     "한화오션 임금피크제 개편",
+     "한화오션 노사 임금피크제 협상"
     ],
     "searched": 26
    },
@@ -1704,37 +1797,44 @@
     "title": "영유아 무상보육 실현",
     "realm": "복지",
     "status": "progress",
-    "reason": "영유아보육법 일부개정법률안이 발의되어 국회에서 심사 중이다.",
+    "reason": "5세 무상교육 시행 후 3·4세 확대와 유보통합 법안 심사가 진행 중이다.",
     "evidence": [
      {
-      "title": "[국회 의안] 영유아보육법 일부개정법률안",
-      "date": "2026-11-09",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_C688DDC83E6D46A8A1AFCFDE93A64B",
-      "kind": "bill"
+      "title": "최교진 \"교부금, 영유아·고등·평생교육 투자…AI 서·논술형 평가 지원...",
+      "date": "2026-08-12",
+      "link": "https://www.newsis.com/view/NISX20260812_0003745970",
+      "kind": "news"
      },
      {
-      "title": "[국회 의안] 영유아보육법 일부개정법률안",
-      "date": "2026-04-23",
-      "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_O2V4U1T0B2A2X0T9H4G3A5Z7Z5X8E3",
-      "kind": "bill"
+      "title": "5세 무상교육 실시…2027년까지 3·4세로 단계적 확대",
+      "date": "2025-07-29",
+      "link": "https://www.newspim.com/news/view/20250728000955",
+      "kind": "news"
+     },
+     {
+      "title": "한국어린이집총연합회, 임오경 의원 대표발의 「영유아보육법과 유아교...",
+      "date": "2025-09-23",
+      "link": "https://www.ibabynews.com/news/articleView.html?idxno=139894",
+      "kind": "news"
      }
     ],
     "keywords": [
      "영유아 무상보육",
-     "보육"
+     "보육료"
     ],
+    "context": [],
     "queries": [
      "영유아 무상보육 실현 법안",
-     "영유아 무상보육 국회 추진 현황"
+     "영유아 무상보육 확대 국회 논의"
     ],
-    "searched": 14
+    "searched": 20
    },
    {
     "ord": 10,
     "title": "조선업 지원 방안 마련",
     "realm": "경제·일자리",
     "status": "progress",
-    "reason": "조선업 지원 특별법안이 2025-07-07 발의되어 현재 심사 중(계류)이다.",
+    "reason": "조선업 지원 특별법안이 발의되어 국회에서 심사 중이다.",
     "evidence": [
      {
       "title": "[국회 의안] 미래조선업의 경쟁력 강화 및 지원에 관한 특별법안",
@@ -1747,17 +1847,37 @@
       "date": "2025-03-25",
       "link": "https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Q2O5N0V3U2U4T1R1N5O9N3L1K0S2T9",
       "kind": "bill"
+     },
+     {
+      "title": "정진욱, 여야 공동 '조선산업 특별법' 발의…중소조선사 지원 강화",
+      "date": "2026-10-14",
+      "link": "https://www.namdonews.com/news/articleView.html?idxno=926112",
+      "kind": "news"
      }
     ],
     "keywords": [
      "조선업",
-     "조선업 상생발전"
+     "조선업 상생"
+    ],
+    "context": [
+     {
+      "title": "조선업 호황에도 거제·울산 등 지역 경기가 체감되지 않는 이유를 물음, 이에 대한 생각을 장관에게 질문함",
+      "answer": "안덕근 산업통상자원부장관은 외국인 노동자들이 많이 들어와 있는 것으로 알고 있다고 답함",
+      "date": "2024-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=054267"
+     },
+     {
+      "title": "서일준 위원이 조선업 인력 부족과 외국인 근로자 증가, 최저임금 차등화 및 주 52시간 유연화 필요성을 지적함",
+      "answer": "김정관 산업통상부장관이 주 52시간 관련 아쉬움을 느꼈다고 하고, 외국인 최저임금 차등은 ILO 협약상 제약이 있다고 답함",
+      "date": "2025-10-24",
+      "link": "https://assembly-korea.com/audit-summary?id=N053621"
+     }
     ],
     "queries": [
-     "조선업 위기 대응 지원 방안 법",
-     "조선업 상생발전 지원 특별법 국회"
+     "조선업 지원 특별법 국회",
+     "조선업 경기 위기 대응 지원 방안"
     ],
-    "searched": 24
+    "searched": 22
    }
   ]
  },
@@ -1772,12 +1892,12 @@
     "title": "동해·삼척 수소 및 저탄소 녹색산업 기회발전특구 지정",
     "realm": "경제·일자리",
     "status": "done",
-    "reason": "2024년 11월 동해·삼척 수소특화단지 및 기회발전특구 지정이 이뤄졌다는 보도가 있다.",
+    "reason": "2024년 11월 동해·삼척 수소 및 저탄소 녹색산업 기회발전특구 지정이 이뤄졌다는 보도가 있다.",
     "evidence": [
      {
-      "title": "동해·삼척, 400억 원 규모 '수소도시' 선정…동해안 수소산업 거점 도약...",
-      "date": "2026-10-28",
-      "link": "https://www.ppss.kr/news/articleView.html?idxno=317678",
+      "title": "동해·삼척, 국토부 ‘수소도시’ 선정…이철규 “수소 중심도시 도약 ...",
+      "date": "2026-10-27",
+      "link": "https://www.kwnews.co.kr/article/20261027500344",
       "kind": "news"
      },
      {
@@ -1787,20 +1907,21 @@
       "kind": "news"
      },
      {
-      "title": "삼척 '수소계량 신뢰성 센터' 건립 탄력",
-      "date": "2025-08-26",
-      "link": "https://www.kado.net/news/articleView.html?idxno=2001416",
+      "title": "동해·삼척, 400억 원 규모 '수소도시' 선정…동해안 수소산업 거점 도약...",
+      "date": "2026-10-28",
+      "link": "https://www.ppss.kr/news/articleView.html?idxno=317678",
       "kind": "news"
      }
     ],
     "keywords": [
      "기회발전특구",
      "액화수소",
-     "수소 산업"
+     "수소산업"
     ],
+    "context": [],
     "queries": [
      "동해 삼척 수소 저탄소 녹색산업 기회발전특구 지정",
-     "동해 삼척 액화수소 산업 특구"
+     "동해 삼척 액화수소 산업 기회발전특구"
     ],
     "searched": 21
    },
@@ -1813,11 +1934,12 @@
     "evidence": [],
     "keywords": [
      "공공기관 이전",
-     "동해 공공기관"
+     "미래 먹거리 산업"
     ],
+    "context": [],
     "queries": [
-     "강원 동해 공공기관 유치 미래 먹거리",
-     "동해 삼척 공공기관 이전 이슈"
+     "동해 삼척 공공기관 이전 미래 먹거리 산업 유치",
+     "강원 동해 공공기관 유치 미래산업"
     ],
     "searched": 22
    },
@@ -1826,7 +1948,7 @@
     "title": "동서고속도로 삼척~영월 구간 및 동해선 고속화철도 예타 통과 추진",
     "realm": "교통",
     "status": "progress",
-    "reason": "영월~삼척 동서고속도로는 예타 통과 후 타당성 용역 단계가 진행 중이다.",
+    "reason": "영월~삼척 고속도로는 예타 통과 후 타당성 조사 단계이고, 동해선 고속화철도 자료는 확인되지 않음.",
     "evidence": [
      {
       "title": "삼척~영월 동서고속도로 타당성 조사 본격화",
@@ -1835,26 +1957,26 @@
       "kind": "news"
      },
      {
-      "title": "제천∼영월 고속도로 첫 삽…동서 횡단 물류·관광 핵심축",
-      "date": "2026-07-21",
-      "link": "https://www.ccdailynews.com/news/articleView.html?idxno=2429317",
-      "kind": "news"
-     },
-     {
       "title": "동해시, 동서고속도로 영월~삼척 구간 예비타당성 조사 통과",
       "date": "2025-01-30",
       "link": "http://www.shinailbo.co.kr/news/articleView.html?idxno=1998122",
+      "kind": "news"
+     },
+     {
+      "title": "영월~삼척 고속도로 건설 예타 통과..총 5조6167억 투자",
+      "date": "2025-01-23",
+      "link": "http://www.fnnews.com/news/202501231431315647",
       "kind": "news"
      }
     ],
     "keywords": [
      "동서고속도로",
-     "동해선 고속화",
-     "예비타당성"
+     "동해선 고속화"
     ],
+    "context": [],
     "queries": [
      "동서고속도로 삼척 영월 구간 예비타당성 조사",
-     "동해선 고속화철도 예타 통과"
+     "동해선 고속화철도 예비타당성 통과"
     ],
     "searched": 20
    },
@@ -1863,35 +1985,35 @@
     "title": "사통팔달 교통망 확충",
     "realm": "교통",
     "status": "progress",
-    "reason": "삼척~동해~강릉 철도 고속화·동서고속도로 예타 통과 등 사업 추진 자료가 있다.",
+    "reason": "평창~정선선 KTX의 국가철도망 반영 추진과 강릉~삼척 철도 예타 통과 등 계획 단계가 진행 중이다.",
     "evidence": [
      {
-      "title": "길 잇고 미래 그린다…'수도권 강원시대' 눈앞에",
-      "date": "2026-11-26",
-      "link": "https://www.kado.net/news/articleView.html?idxno=2087262",
+      "title": "정선군, 1조941억 '평창~정선~사북 KTX' 제5차 국가철도망 반영 총력",
+      "date": "2026-08-24",
+      "link": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1286656",
       "kind": "news"
      },
      {
-      "title": "이철규 ''태백 성과 종합 발표… 강원랜드·URL·광부의 날''",
-      "date": "2026-02-05",
-      "link": "https://www.gukjenews.com/news/articleView.html?idxno=3498882",
+      "title": "석탄·시멘트 다음은 '수소'…동해·삼척 '동북아 수소 허브' 시동",
+      "date": "2026-02-28",
+      "link": "https://www.news1.kr/local/kangwon/6086050",
       "kind": "news"
      },
      {
-      "title": "“수소·의료·교통으로 도시 바꾼다”…박상수 삼척시장, 전환 전략 제...",
-      "date": "2026-04-02",
-      "link": "https://www.kukinews.com/article/view/kuk202604020155",
+      "title": "[人베스트②] 이상호 태백시장 “1조원 국책사업, 청정에너지 메카로 대...",
+      "date": "2026-07-24",
+      "link": "https://www.dailian.co.kr/news/view/1669065/?sc=Naver",
       "kind": "news"
      }
     ],
     "keywords": [
      "동서고속도로",
-     "동해선",
-     "교통망"
+     "교통망 확충"
     ],
+    "context": [],
     "queries": [
-     "동해 태백 삼척 정선 교통망 확충",
-     "동서고속도로 동해선 강원 남부 교통망"
+     "동해 태백 삼척 정선 교통망 확충 고속도로",
+     "태백 정선 삼척 동해 철도 도로 교통망"
     ],
     "searched": 20
    },
@@ -1900,49 +2022,49 @@
     "title": "폐광지역 경제진흥계획 예타 통과 및 대체산업 육성",
     "realm": "경제·일자리",
     "status": "progress",
-    "reason": "태백 폐광지역 경제진흥사업이 예타를 통과해 계획 수립·사업 추진 단계에 있다.",
+    "reason": "태백·삼척 폐광지역 경제진흥사업이 예타 통과 후 2026~2030년 투입 계획 등 계획·예산 단계로 진행 중이다.",
     "evidence": [
      {
-      "title": "이철규 의원, 태백·삼척 '폐광지역 경제진흥 개발사업' 예타 통과",
-      "date": "2025-08-20",
-      "link": "https://www.kukinews.com/article/view/kuk202508200146",
+      "title": "임지락 화순군수, 석탄산업의 터전서 첨단바이오 도시로…6,490억 원 규...",
+      "date": "2026-11-25",
+      "link": "https://www.geconomy.co.kr/news/article.html?no=326032",
       "kind": "news"
      },
      {
-      "title": "폐광지역서 석탄산업전환지역 변경…\"태백시 도약의 날개 활짝 펴다\"",
-      "date": "2026-01-20",
-      "link": "https://www.kukinews.com/article/view/kuk202601200194",
-      "kind": "news"
-     },
-     {
-      "title": "태백시, 청정메탄올 거점 도시 도약…글로벌녹색성장기구와 파트너십 구...",
+      "title": "태백시, ‘청정메탄올’ 거점 도시 도약… 글로벌녹색성장기구와 전략...",
       "date": "2026-03-04",
-      "link": "https://www.kukinews.com/article/view/kuk202603040231",
+      "link": "http://www.cfnews.kr/news/view.php?no=105699",
+      "kind": "news"
+     },
+     {
+      "title": "이철규 의원, 태백·삼척 폐광지역 경제진흥 개발사업 예비타당성조사...",
+      "date": "2025-08-20",
+      "link": "https://www.fntoday.co.kr/news/articleView.html?idxno=361053",
       "kind": "news"
      }
     ],
     "keywords": [
-     "폐광지역 경제진흥계획",
-     "폐광지역",
+     "폐광지역 경제진흥",
      "대체산업"
     ],
+    "context": [],
     "queries": [
      "태백 폐광지역 경제진흥계획 예비타당성",
-     "태백 폐광지역 대체산업 육성 계획"
+     "태백 폐광지역 대체산업 육성 사업"
     ],
-    "searched": 24
+    "searched": 21
    },
    {
     "ord": 6,
     "title": "연구용 지하시설 유치",
     "realm": "경제·일자리",
     "status": "progress",
-    "reason": "2027년 예산안에 태백 연구용 지하연구시설 건설 사업이 편성되어 진행 중이다.",
+    "reason": "연구용 지하연구시설(태백 URL)은 2027년 기반조성계획과 2029년 운영계획 단계로 건설이 추진 중이다.",
     "evidence": [
      {
-      "title": "태백시, 2027년 예산안 5,536억 원 편성…전년 대비 471억 원 감소",
-      "date": "2026-11-23",
-      "link": "https://www.newstnt.com/news/articleView.html?idxno=730045",
+      "title": "2조 원대 태백 URL 시동…이상호 시장 \"국제규격 수영장·컨벤션 먼저 짓...",
+      "date": "2026-11-18",
+      "link": "https://www.pressian.com/pages/articles/2026111818292573018?utm_source=naver&utm_medium=search",
       "kind": "news"
      },
      {
@@ -1952,19 +2074,20 @@
       "kind": "news"
      },
      {
-      "title": "2조 원대 태백 URL 시동…이상호 시장 \"국제규격 수영장·컨벤션 먼저 짓...",
-      "date": "2026-11-18",
-      "link": "https://www.pressian.com/pages/articles/2026111818292573018?utm_source=naver&utm_medium=search",
+      "title": "태백시, 2027년 예산안 5,536억 원 편성…전년 대비 471억 원 감소",
+      "date": "2026-11-23",
+      "link": "https://www.newstnt.com/news/articleView.html?idxno=730045",
       "kind": "news"
      }
     ],
     "keywords": [
      "연구용 지하시설",
-     "지하시설"
+     "지하연구시설"
     ],
+    "context": [],
     "queries": [
      "태백 연구용 지하시설 유치",
-     "태백 지하연구시설 구축 사업"
+     "태백 지하 연구시설 국가 유치"
     ],
     "searched": 20
    },
@@ -1973,21 +2096,28 @@
     "title": "정선 도암댐 문제 해결",
     "realm": "환경",
     "status": "progress",
-    "reason": "도암댐 수질개선 대규모 예산이 정부 가뭄 대책에 반영됐다는 자료가 있다.",
+    "reason": "도암댐 긴급방류 시동과 양수발전 전환 검토 등 실행·검토 단계가 확인됨.",
     "evidence": [
      {
-      "title": "강릉 가뭄 재발 막는다…연곡 지하수댐·도암댐 수질개선에 대규모 예산",
-      "date": "2026-01-28",
-      "link": "https://www.hani.co.kr/arti/society/environment/1242103.html",
+      "title": "도암댐 긴급방류 시동… 이르면 20일 공급 시작",
+      "date": "2025-09-09",
+      "link": "https://www.kado.net/news/articleView.html?idxno=2004257",
+      "kind": "news"
+     },
+     {
+      "title": "[도암댐 활용방안 포럼]다양한 도암댐 활용 방안 모색…에너지 허브·통...",
+      "date": "2026-02-06",
+      "link": "https://www.kwnews.co.kr/page/view/2026020415293327747",
       "kind": "news"
      }
     ],
     "keywords": [
      "도암댐"
     ],
+    "context": [],
     "queries": [
-     "정선 도암댐 문제 해결",
-     "정선 도암댐 방류 피해 대책"
+     "정선 도암댐 문제 해결 방류",
+     "정선 도암댐 수질 개선 대책"
     ],
     "searched": 20
    },
@@ -1996,7 +2126,7 @@
     "title": "정선읍 LPG 배관망 구축 및 국가광물정보센터 연구기관 승격",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "정선읍 LPG 중규모 배관망 구축 사업이 2026년도 국·도비 신규 사업으로 예산 확보 대상에 올랐다.",
+    "reason": "정선읍 LPG 중규모 배관망 구축 사업이 내년 국·도비 신규 사업으로 206억 원 확보 대상에 올랐다.",
     "evidence": [
      {
       "title": "정선군, '국·도비 확보 총력'추진계획 보고회 개최",
@@ -2005,19 +2135,19 @@
       "kind": "news"
      },
      {
-      "title": "정선군, 내년 국도비 2787억원 확보 만전",
-      "date": "2025-02-17",
-      "link": "http://www.kado.net/news/articleView.html?idxno=1293723",
+      "title": "올해 국도비 2,787억 확보에 총력 대응",
+      "date": "2025-02-16",
+      "link": "https://www.kwnews.co.kr/page/view/2025021413042964234",
       "kind": "news"
      }
     ],
     "keywords": [
      "LPG 배관망",
-     "국가광물정보센터",
-     "정선"
+     "국가광물정보센터"
     ],
+    "context": [],
     "queries": [
-     "정선읍 LPG 배관망 구축 사업",
+     "정선읍 LPG 배관망 구축사업",
      "국가광물정보센터 연구기관 승격 정선"
     ],
     "searched": 6
@@ -2026,34 +2156,29 @@
     "ord": 9,
     "title": "가리왕산 활용 방안 마련",
     "realm": "문화·체육",
-    "status": "progress",
-    "reason": "가리왕산 합리적 보전·활용 방안이 확정됐고 올림픽 국가정원 조성사업과 케이블카 조성사업이 추진 중이다.",
+    "status": "done",
+    "reason": "2025년 3월 협의체가 가리왕산 보전·활용 방안을 최종 합의하고 서명식을 열었다.",
     "evidence": [
      {
-      "title": "최승준 정선군수‧우상호 도지사 당선인, '도정과 군정 원팀 협력 본격...",
-      "date": "2026-06-24",
-      "link": "https://www.eroun.net/news/articleView.html?idxno=83889",
-      "kind": "news"
-     },
-     {
-      "title": "정선군, 가리왕산 합리적 보전·활용 방안 확정",
+      "title": "‘가리왕산 보전･활용 협의체’ 최종 합의… 서명식 개최",
       "date": "2025-03-24",
-      "link": "https://www.newsis.com/view/NISX20250324_0003110929",
+      "link": "http://www.lak.co.kr/news/boardview.php?id=19737",
       "kind": "news"
      },
      {
-      "title": "올림픽 끝난 정선 가리왕산에 관광객 60만명…케이블카 명소로 안착",
-      "date": "2026-09-24",
-      "link": "https://www.news1.kr/local/kangwon/6300798",
+      "title": "정선 ‘가리왕산 케이블카’ 조건부 존치 합의···상당 기간 운영 지속...",
+      "date": "2025-03-24",
+      "link": "https://www.khan.co.kr/article/202503241726001",
       "kind": "news"
      }
     ],
     "keywords": [
      "가리왕산"
     ],
+    "context": [],
     "queries": [
-     "가리왕산 활용 방안 정선",
-     "가리왕산 복원 활용 사업"
+     "정선 가리왕산 활용 방안 사업",
+     "가리왕산 복원 활용 정선 알파인 경기장"
     ],
     "searched": 20
    },
@@ -2062,7 +2187,7 @@
     "title": "삼척 석탄 산업 이후 미래 발전 공약",
     "realm": "개발·주거",
     "status": "progress",
-    "reason": "삼척시 첨단가속기 의료산업 클러스터 구축이 추진 단계이며 2026년도 예산 심사 자료가 있음.",
+    "reason": "삼척시가 석탄산업 전환 대안으로 첨단가속기 의료 클러스터 구축을 추진 중이라는 보도가 있다.",
     "evidence": [
      {
       "title": "삼척시, '첨단가속기 의료산업 클러스터' 구축 박차…유럽 현지 방문, 기...",
@@ -2073,12 +2198,12 @@
     ],
     "keywords": [
      "삼척 석탄산업",
-     "탈석탄",
-     "삼척"
+     "석탄산업 지역 발전"
     ],
+    "context": [],
     "queries": [
      "삼척 석탄산업 이후 발전 방안",
-     "삼척 탈석탄 미래 발전 계획"
+     "삼척 탄광 지역 미래 발전 사업"
     ],
     "searched": 20
    }
