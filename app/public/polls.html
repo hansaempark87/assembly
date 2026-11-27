@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>여론조사 한눈에 — 대통령 직무평가·정당 지지도·정책 여론 | 일하는 국회</title>
+<meta name="description" content="한국갤럽 데일리 오피니언 주간 조사로 보는 대통령 직무평가, 정당 지지도 추이와 정책·사회 현안 여론을 한곳에 모았습니다.">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일하는 국회">
+<meta property="og:title" content="여론조사 한눈에 — 일하는 국회">
+<meta property="og:description" content="대통령 직무평가, 정당 지지도, 정책 여론을 주간 조사로 한눈에">
+<meta property="og:image" content="https://assembly-korea.com/og/party.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/style.css?v=86039268">
+<meta name="google-adsense-account" content="ca-pub-5233299197407834">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233299197407834" crossorigin="anonymous"></script>
+<link rel="canonical" href="https://assembly-korea.com/polls">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">홈</a>
+      <a href="/members">의원</a>
+      <a href="/party">정당</a>
+      <a href="/polls" aria-current="page">여론</a>
+      <a href="/laws">법안·표결</a>
+      <a href="/quiz" class="nav-hot">성향 테스트</a>
+      <a href="/about">소개</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
+</header>
+
+<main>
+  <div class="page-head">
+    <div>
+      <h1>여론 한눈에</h1>
+      <p id="meta">불러오는 중…</p>
+    </div>
+  </div>
+  <div class="grid grid-3" id="po-kpis"></div>
+  <section class="card section" id="po-pres"><h2 class="card-title">대통령 직무 평가</h2><div class="skeleton">불러오는 중…</div></section>
+  <section class="card section" id="po-party"><h2 class="card-title">정당 지지도</h2><div class="skeleton">불러오는 중…</div></section>
+  <section class="card section list-anchor" id="po-topics-card">
+    <div class="card-head">
+      <div><h2 class="card-title">정책·현안 여론</h2><p class="card-sub" id="po-sub"></p></div>
+      <input class="input" id="po-q" type="search" placeholder="주제 검색 (예: 부동산, 탄핵, 의대)" aria-label="여론조사 주제 검색">
+    </div>
+    <div class="chips" id="po-cats" role="group" aria-label="분야"></div>
+    <div class="po-list" id="po-topics"></div>
+    <div class="more" id="po-more"></div>
+  </section>
+  <section class="card section">
+    <h2 class="card-title">조사 정보</h2>
+    <p class="card-sub" id="po-info"></p>
+    <p class="card-sub">여론조사 결과는 표본오차 범위 안에서 해석해야 하며, 몇 %포인트의 변동은 의미 있는 변화가 아닐 수 있습니다. 숫자는 보고서 원문에서 그대로 옮겼고, 정리는 AI가 했습니다. 각 결과의 원문 링크에서 질문 문구와 세부 결과를 확인할 수 있습니다. 그 밖의 사항은 중앙선거여론조사심의위원회 홈페이지를 참조하세요.</p>
+  </section>
+</main>
+
+<footer class="site">
+  <nav class="foot-links" aria-label="사이트 정보">
+    <a href="/guide">국회 이해하기</a>
+    <a href="/about">서비스 소개</a>
+    <a href="/method">평가 방법</a>
+    <a href="/notes">데이터 처리 기준</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+    <a href="/about#contact">문의·정정 요청</a>
+  </nav>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></p>
+  <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
+</footer>
+
+<script src="/js/common.js?v=5b77ec58"></script>
+<script src="/js/polls.js?v=f1cdf339"></script>
+</body>
+</html>

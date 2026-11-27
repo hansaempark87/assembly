@@ -1129,3 +1129,21 @@ a.au-chip:hover { text-decoration: none; border-color: var(--accent); }
   .pl-brow .pl-bar { grid-column: 2 / 4; grid-row: 2; }
 }
 .plain-list { margin: 8px 0 12px; padding-left: 1.2em; display: grid; gap: 4px; }
+
+/* ---- polls ---- */
+#po-cats { margin: 4px 0 14px; }
+.po-cat { cursor: pointer; border: 1px solid var(--border); background: var(--surface); font: inherit; font-size: 0.82rem; }
+.po-cat.on { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 700; }
+.po-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.po-item { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+.po-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.8rem; }
+.po-item h3 { margin: 8px 0 2px; font-size: 1.02rem; line-height: 1.4; }
+.po-q { margin: 0 0 10px; font-size: 0.84rem; color: var(--text-3); }
+.po-bars { display: grid; gap: 6px; }
+.po-bar { display: grid; grid-template-columns: minmax(70px, 34%) minmax(0, 1fr) 42px; gap: 8px; align-items: center; font-size: 0.86rem; }
+.po-lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.po-trk { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.po-trk i { display: block; height: 100%; border-radius: 999px; }
+.po-bar b { text-align: right; }
+.po-foot { margin: 10px 0 0; font-size: 0.8rem; color: var(--text-3); }
+@media (max-width: 760px) { .po-list { grid-template-columns: 1fr; } }

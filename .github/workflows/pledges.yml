@@ -82,7 +82,7 @@ jobs:
       - name: Publish
         if: steps.build.outcome == 'success'
         run: |
-          git add app/data app/lib app/public/bills app/public/pledge-data.json app/public/vote-data app/public/weekly.json app/public/og app/public/law-data app/public/quiz-data.json app/public/audit.json app/public/audit-data app/public/party-data.json
+          git add app/data app/lib app/public/bills app/public/pledge-data.json app/public/vote-data app/public/weekly.json app/public/og app/public/law-data app/public/quiz-data.json app/public/audit.json app/public/audit-data app/public/party-data.json app/public/poll-data.json
           git add -u app/public
           if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
           git commit -q -m "data: pledge pages"

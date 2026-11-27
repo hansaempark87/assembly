@@ -827,6 +827,48 @@ def law_data(S, vote_index):
 COMMITTEE_ALIAS = {'기획재정위원회': '재정경제기획위원회', '환경노동위원회': '기후에너지환경노동위원회', '여성가족위원회': '성평등가족위원회'}
 
 
+
+# ---------- opinion polls ----------
+
+# upcoming national elections (YYYY-MM-DD). Party support is not shown from six days before one
+# (election law art. 108). Keep this list current; dates past are ignored.
+ELECTIONS = ['2028-04-12']
+
+
+def poll_data(S):
+    """public/poll-data.json from data/source/polls/gallup/*.json (pipeline/polls.py): presidential job
+    approval and party support by week, and every policy question with its overall results."""
+    d = APP / 'data' / 'source' / 'polls' / 'gallup'
+    reports = [json.load(open(f, encoding='utf-8')) for f in sorted(d.glob('*.json'))] if d.exists() else []
+    reports = [r for r in reports if r.get('period_end')]
+    if not reports:  # still write the file, so the page and the publish step always find it
+        with open(APP / 'public' / 'poll-data.json', 'w', encoding='utf-8') as f:
+            json.dump({'latest': None, 'weeks': 0, 'blackout': False, 'president': [], 'party_names': [], 'parties': [], 'topics': []}, f)
+        return
+    reports.sort(key=lambda r: r['period_end'])
+    today = dt.date.today()
+    blackout = any(0 <= (dt.date.fromisoformat(e) - today).days <= 6 for e in ELECTIONS)
+    pres = [[r['period_end'], r['president']['approve'], r['president']['disapprove'], r['president']['name']]
+            for r in reports if r.get('president') and r['president'].get('approve') is not None]
+    totals = collections.Counter()
+    for r in reports[-26:]:
+        for p in r.get('parties', []):
+            totals[p['party']] += p['pct']
+    names = [n for n, _ in totals.most_common() if n != '무당층'][:5] + (['무당층'] if '무당층' in totals else [])
+    parties = [] if blackout else [[r['period_end'], {p['party']: p['pct'] for p in r.get('parties', []) if p['party'] in names}]
+                                   for r in reports if r.get('parties')]
+    topics = []
+    for r in reports:
+        for t in r.get('topics', []):
+            if t.get('results'):
+                topics.append({'date': r['period_end'], 'no': r.get('no'), 'url': r['url'], **{k: t[k] for k in ('title', 'question', 'category', 'results', 'summary')}})
+    topics.sort(key=lambda t: t['date'], reverse=True)
+    last = reports[-1]
+    meta = {k: last.get(k) for k in ('source', 'sponsor', 'method', 'sample', 'margin', 'response_rate', 'period_start', 'period_end', 'no', 'url')}
+    with open(APP / 'public' / 'poll-data.json', 'w', encoding='utf-8') as f:
+        json.dump({'latest': meta, 'weeks': len(reports), 'blackout': blackout, 'president': pres, 'party_names': names,
+                   'parties': parties, 'topics': topics}, f, ensure_ascii=False, separators=(',', ':'))
+
 # ---------- pledges ----------
 
 PLEDGE_ORDER = ['done', 'progress', 'delayed', 'notfound']
@@ -960,6 +1002,7 @@ def main():
     party_data(S)
     audit_data(S, load_module(APP / 'lib' / 'score-run.js')['scores'])
     pledge_data(S, load_module(APP / 'lib' / 'score-run.js')['scores'])
+    poll_data(S)
     import og
     og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
     import stamp
