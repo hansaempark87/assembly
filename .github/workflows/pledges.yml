@@ -1,0 +1,58 @@
+# Pledge check: the 22nd election district pledges (NEC open API) and where each
+# stands, judged from news and web search. Run by hand; scope 'pilot' checks ten
+# members, 'all' every district member. Results are committed to main under
+# app/data/source (they show on the site only once the page uses them).
+name: pledges
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "pilot, all, or comma-separated member codes"
+        default: pilot
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-update
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: app/pipeline/requirements.txt
+      - name: Install
+        run: pip install -r app/pipeline/requirements.txt
+      - name: Pledges from the election commission
+        working-directory: app/pipeline
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: python -u pledges.py
+      - name: Where each pledge stands
+        working-directory: app/pipeline
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PLEDGE_MODEL: claude-haiku-5-5
+          PLEDGE_SCOPE: ${{ inputs.scope }}
+        run: python -u pledge_check.py
+      - name: Save
+        run: |
+          git config user.name 'data-update-bot'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add app/data/source/pledges.json app/data/source/pledge-status.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
+          git commit -q -m "data: pledges (${{ inputs.scope }})"
+          git pull -q --rebase origin main
+          git push origin HEAD:main
