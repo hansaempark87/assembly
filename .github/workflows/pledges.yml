@@ -33,10 +33,15 @@ jobs:
           cache-dependency-path: app/pipeline/requirements.txt
       - name: Install
         run: pip install -r app/pipeline/requirements.txt
-      - name: Pledges from the election commission
+      - name: Pledges (election commission winners, campaign news)
         working-directory: app/pipeline
         env:
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PLEDGE_MODEL: claude-haiku-5-5
+          PLEDGE_SCOPE: ${{ inputs.scope }}
         run: python -u pledges.py
       - name: Where each pledge stands
         working-directory: app/pipeline
@@ -51,7 +56,7 @@ jobs:
         run: |
           git config user.name 'data-update-bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add app/data/source/pledges.json app/data/source/pledge-status.json 2>/dev/null || true
+          for f in app/data/source/pledges.json app/data/source/pledge-status.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
           git commit -q -m "data: pledges (${{ inputs.scope }})"
           git pull -q --rebase origin main

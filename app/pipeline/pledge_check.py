@@ -102,9 +102,9 @@ def naver(kind, query, n=10):
     return out
 
 
-def pilot(members, pledges):
-    """ten district members with pledges: by seat share of party, spread over regions"""
-    pool = [m for m in members if m['id'] in pledges and pledges[m['id']]['pledges']]
+def pilot(members, pledges=None):
+    """ten district members: by seat share of party, spread over regions (with pledges, when given)"""
+    pool = [m for m in members if not m['district'].startswith('비례') and (pledges is None or pledges.get(m['id'], {}).get('pledges'))]
     want = {'더불어민주당': 5, '국민의힘': 4}
     out, regions = [], set()
     for m in sorted(pool, key=lambda m: (m['district'], m['id'])):
