@@ -1,0 +1,1459 @@
+{
+ "3NI5978A": {
+  "huboid": "100151712",
+  "name": "조지연",
+  "district": "경북 경산시",
+  "party_2024": "국민의힘",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "복지",
+    "title": "대학생 천원의 아침 지원 확대",
+    "body": "경산 지역 대학 전체로 천원의 아침 지원을 확대해 대학생에게 저렴하고 건강한 아침식사를 제공하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "조지연 후보, 청년 생활밀착형 공약 발표",
+      "date": "2024-04-08",
+      "link": "https://www.idaegu.co.kr/news/articleView.html?idxno=456494"
+     },
+     {
+      "title": "경산 국민의힘 조지연 후보, 청년 생활밀착형 공약 발표",
+      "date": "2024-04-08",
+      "link": "https://www.kbmaeil.com/news/articleView.html?idxno=991650"
+     },
+     {
+      "title": "조지연 경산시 국민의힘 국회의원 후보, 청년 생활밀착형 공약 발표",
+      "date": "2024-04-09",
+      "link": "https://www.nbntv.co.kr/news/articleView.html?idxno=3014751"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "복지",
+    "title": "권역별 종합헬스케어타운 조성",
+    "body": "물리치료와 필라테스 등 종합 건강서비스를 제공하는 권역별 종합헬스케어타운을 조성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "조지연 경산시 국민의힘 국회의원 후보, 어르신 행복 5대 공약 발표",
+      "date": "2024-04-08",
+      "link": "https://www.nbntv.co.kr/news/articleView.html?idxno=3014619"
+     },
+     {
+      "title": "조지연 경산 국민의힘 후보, 5대 어르신 공약 발표",
+      "date": "2024-04-08",
+      "link": "http://www.kyongbuk.co.kr/news/articleView.html?idxno=4005857"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "교통",
+    "title": "사통팔달 교통혁신 추진",
+    "body": "만성정체구간 도로 개선과 도로 개설 등으로 경산의 교통 문제를 해결해 산업·물류 중심도시로 도약하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "경산시 조지연 후보 “사통팔달 교통혁신 속도 낼 것”",
+      "date": "2024-03-08",
+      "link": "http://www.kukinews.com/newsView/kuk202403080106"
+     },
+     {
+      "title": "[22대 총선 누가 뛰나] 조지연 예비후보 \"사통팔달 '산업·물류 중심도시...",
+      "date": "2024-03-09",
+      "link": "http://www.kbsm.net/news/view.php?idx=425338"
+     },
+     {
+      "title": "경산 조지연 예비후보 \"사통팔달 교통혁신 속도 낼 것\"",
+      "date": "2024-03-08",
+      "link": "https://www.ajunews.com/view/20240308173007724"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "경제·일자리",
+    "title": "대규모 시스템반도체 생산기지 구축",
+    "body": "경산에 대규모 시스템반도체 생산기지를 구축해 미래 반도체 수도로 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "경산 국민의힘 조지연 후보, 경산을 미래 반도체 수도로",
+      "date": "2024-04-02",
+      "link": "https://www.kbmaeil.com/news/articleView.html?idxno=990686"
+     },
+     {
+      "title": "경산시 조지연 후보, 제22대 총선 후보자 등록 마쳐",
+      "date": "2024-03-21",
+      "link": "http://www.kukinews.com/newsView/kuk202403210178"
+     },
+     {
+      "title": "조지연 경산시 국민의힘 후보, 총선 후보자등록 마쳐",
+      "date": "2024-03-21",
+      "link": "http://www.inews24.com/view/1699721"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "경제·일자리",
+    "title": "기회발전특구 유치 및 관광지 조성",
+    "body": "기회발전특구를 유치하고 관광지를 조성해 지역경제를 활성화하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "조지연 경북 경산시 국회의원 후보, 지역경제 살릴 공약 발표",
+      "date": "2024-04-02",
+      "link": "https://www.viva100.com/main/view.php?key=20240402010000842"
+     },
+     {
+      "title": "경산 국민의힘 조지연 후보, 경산을 미래 반도체 수도로",
+      "date": "2024-04-02",
+      "link": "https://www.kbmaeil.com/news/articleView.html?idxno=990686"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "경제·일자리",
+    "title": "경산지식산업지구 대형 아울렛 유치",
+    "body": "경산지식산업지구 내에 대형 아울렛을 유치해 관광 활성화와 인구 유입을 이루겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "조지연 경산 예비후보, 경산지식산업지구 내 '대형 아울렛 유치' 공약",
+      "date": "2024-03-05",
+      "link": "http://www.kyongbuk.co.kr/news/articleView.html?idxno=4002791"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "복지",
+    "title": "차별없는 따뜻한 경산 장애인 공약",
+    "body": "반다비 국민체육센터 건립 등 5대 장애인 공약으로 장애인 차별을 없애겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "조지연, '차별없는 따뜻한 경산' 위한 5대 장애인 공약 발표",
+      "date": "2024-04-01",
+      "link": "http://www.hidomin.com/news/articleView.html?idxno=544262"
+     },
+     {
+      "title": "조지연 국힘 후보, “차별없는 따뜻한 경산 만들겠다”",
+      "date": "2024-04-01",
+      "link": "http://www.kukinews.com/newsView/kuk202404010174"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "복지",
+    "title": "통합키움센터 및 경산형 달빛어린이병원 조성",
+    "body": "돌봄공백을 메우는 통합키움센터와 경산형 달빛어린이병원을 조성해 아이 키우기 좋은 경산을 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "조지연 경산시 예비후보, '통합키움센터·달빛어린이병원' 조성 공약 발...",
+      "date": "2024-02-15",
+      "link": "http://www.kyongbuk.co.kr/news/articleView.html?idxno=4001265"
+     }
+    ]
+   },
+   {
+    "ord": 9,
+    "realm": "입법·정책",
+    "title": "국회의원 특권 내려놓기",
+    "body": "국회의원 무노동 무임금, 불체포 특권 포기, 금고이상 형 확정 시 세비 반납 등 특권을 내려놓겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[22대 총선 누가 뛰나] 조지연 경산시 예비후보, 국회의원 특권 내려놓...",
+      "date": "2024-01-15",
+      "link": "http://www.kbsm.net/news/view.php?idx=419100"
+     },
+     {
+      "title": "경산시 총선 조지연 예비후보 \"의원 불체포 특권 포기·무노동 무임금 ...",
+      "date": "2024-01-05",
+      "link": "http://www.newsis.com/view/?id=NISX20240105_0002582131&cID=10810&pID=10800"
+     },
+     {
+      "title": "조지연 예비후보, \"정치혁신의 핵심은 국회의원 특권 내려놓는 것\"",
+      "date": "2024-01-15",
+      "link": "http://www.breaknews.com/1009852"
+     }
+    ]
+   },
+   {
+    "ord": 10,
+    "realm": "교육",
+    "title": "교육특별시 경산 실현",
+    "body": "지역균형발전의 핵심인 교육을 바탕으로 교육특별시 경산을 실현하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "'교육특별시 경산' 공약한 조지연 예비후보, 후원회 공식 출범..후원회...",
+      "date": "2024-01-09",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=540367"
+     },
+     {
+      "title": "우동기 지방시대위원장, 조지연 경산시 총선 국힘 예비후보 후원회장 맡...",
+      "date": "2024-01-09",
+      "link": "https://www.imaeil.com/page/view/2024010911544714463"
+     }
+    ]
+   }
+  ]
+ },
+ "5KV96424": {
+  "huboid": "100152549",
+  "name": "강준현",
+  "district": "세종특별자치시을",
+  "party_2024": "더불어민주당",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "경제·일자리",
+    "title": "조치원 북세종권 스마트 산업밸리 조성",
+    "body": "조치원을 중심으로 북세종권에 스마트 산업밸리를 조성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "강준현 더불어민주당 후보, 제22대 총선 '세종을' 발전공약...\"3·2·1 프로...",
+      "date": "2024-03-06",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=552532"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "경제·일자리",
+    "title": "연동면 K-마스터 산업단지 조성",
+    "body": "연동면 일대에 K-마스터 산업단지를 조성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "세종을 후보 행정수도 해법·행복청 놓고 공방",
+      "date": "2024-03-27",
+      "link": "http://www.dynews.co.kr/news/articleView.html?idxno=745599"
+     },
+     {
+      "title": "세종을 후보 TV 토론회…행정수도 해법·행복청 존치 여부 공방",
+      "date": "2024-03-27",
+      "link": "https://www.yna.co.kr/view/AKR20240326145800063?input=1195m"
+     },
+     {
+      "title": "세종시(을) 강준현-이준배-이태환 토론회 '난타전'",
+      "date": "2024-03-27",
+      "link": "https://www.viva100.com/main/view.php?key=20240327010009162"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "입법·정책",
+    "title": "국회 세종시 완전 이전 추진",
+    "body": "국회 세종시 완전 이전을 추진해 행정수도 기능을 완성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "한동훈의 깜짝공약 \"국회, 세종으로 완전 이전하겠다\"",
+      "date": "2024-03-28",
+      "link": "https://www.ajunews.com/view/20240327154221267"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "입법·정책",
+    "title": "행정수도 세종 완성 및 3부 기능 강화",
+    "body": "세종을 입법·사법·행정 3부를 갖춘 명실상부한 행정수도로 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "강준현 더불어민주당 후보, 제22대 총선 '세종을' 발전공약...\"3·2·1 프로...",
+      "date": "2024-03-06",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=552532"
+     },
+     {
+      "title": "제22대 총선 사전투표 하루 앞둔 세종시 나성동에 울려퍼진 \"1번 강준현...",
+      "date": "2024-04-04",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=559905"
+     },
+     {
+      "title": "\"행정수도 완성\" 너도나도 공약… 세종 표심 어디로",
+      "date": "2024-03-20",
+      "link": "https://www.ccdailynews.com/news/articleView.html?idxno=2263599"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "복지",
+    "title": "장애인 교통권 보장 및 탈시설 지원",
+    "body": "장애인의 교통권을 보장하고 교통부담을 완화하며 장애인 탈시설을 지원하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "강준현 국회의원, \"장애인 권익 보호에 앞장서겠다\"",
+      "date": "2024-03-19",
+      "link": "http://www.ccnnews.co.kr/news/articleView.html?idxno=328911"
+     },
+     {
+      "title": "강준현 국회의원, 장애인단체연합회와 복지증진 및 권익 보호 위한 소통...",
+      "date": "2024-03-19",
+      "link": "http://www.newsworker.co.kr/news/articleView.html?idxno=323889"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "개발·주거",
+    "title": "소정면 분양전환 공공임대아파트 건립",
+    "body": "소정면에 분양전환 공공임대아파트를 건립하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "세종시 '을구 후보군' 공약 봇물...4월 10일 유권자 선택은",
+      "date": "2024-04-09",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20240409010002706"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "행정",
+    "title": "행복청 별관 건립 재추진",
+    "body": "행정중심복합도시건설청 별관을 신축하는 방안을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "2030년 '행복청 해체'가 정답? 을구 후보 3인 설전",
+      "date": "2024-03-27",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20240327010008497"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "행정",
+    "title": "메가시티 충청권 구축",
+    "body": "세종을 거점으로 메가시티 충청권을 제2의 수도권 수준으로 육성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "제22대 총선 사전투표 하루 앞둔 세종시 나성동에 울려퍼진 \"1번 강준현...",
+      "date": "2024-04-04",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=559905"
+     }
+    ]
+   }
+  ]
+ },
+ "68P7228G": {
+  "huboid": "100152762",
+  "name": "진선미",
+  "district": "서울 강동구갑",
+  "party_2024": "더불어민주당",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "교통",
+    "title": "GTX-D노선 강동 유치",
+    "body": "GTX-D 노선을 강동구에 유치해 광역 교통 발전을 이어가겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[인터뷰] '4선 도전' 진선미 \"'GTX-D노선 강동 유치' 교통 발전 이어갈 ...",
+      "date": "2024-01-18",
+      "link": "https://www.womennews.co.kr/news/articleView.html?idxno=244456"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "교통",
+    "title": "9호선 4단계 연장 추진",
+    "body": "지역 최대 현안인 9호선 4단계 연장을 추진하겠다는 교통 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "'강동갑' 진선미·전주혜, '신강일역' 놓고 충돌…막판엔 '네거티브' 공...",
+      "date": "2024-04-04",
+      "link": "https://www.dailian.co.kr/news/view/1347264/?sc=Naver"
+     },
+     {
+      "title": "[총선 격전지] 강동갑, 진선미 vs 전주혜 '女법조인' 대결…스윙보터 표...",
+      "date": "2024-03-30",
+      "link": "https://www.newspim.com/news/view/20240329000542"
+     },
+     {
+      "title": "현역·女 법조인 맞붙은 서울 강동구갑…\"진짜 모르겠다\" 팽팽[총선 격전...",
+      "date": "2024-04-02",
+      "link": "https://view.asiae.co.kr/article/2024040117074509374"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "교통",
+    "title": "경전철(도시철도 강동선) 노선 추진",
+    "body": "지하철 3·5·8·9호선과 환승 가능한 경전철(도시철도 강동선) 노선을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[격전지 민심] ‘강동댁’ 진선미 vs ‘與 스피커’ 전주혜…강동갑 ‘...",
+      "date": "2024-04-04",
+      "link": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202404030224010000330"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "행정",
+    "title": "제2 강동구청 신축",
+    "body": "강동구청 제2청사를 신축해 행정 수요에 대응하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[4·10 총선 격전지] 강동갑, ‘3선 강동댁’ 진선미 대 ‘보수 탈환’ ...",
+      "date": "2024-04-02",
+      "link": "https://www.womennews.co.kr/news/articleView.html?idxno=246975"
+     },
+     {
+      "title": "현역·女 법조인 맞붙은 서울 강동구갑…\"진짜 모르겠다\" 팽팽[총선 격전...",
+      "date": "2024-04-02",
+      "link": "https://view.asiae.co.kr/article/2024040117074509374"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "개발·주거",
+    "title": "노후 주택 정비사업 추진",
+    "body": "노후 주택 정비사업을 추진해 주거 환경을 개선하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[4·10 총선 격전지] 강동갑, ‘3선 강동댁’ 진선미 대 ‘보수 탈환’ ...",
+      "date": "2024-04-02",
+      "link": "https://www.womennews.co.kr/news/articleView.html?idxno=246975"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "교통",
+    "title": "고덕역 에스컬레이터 설치",
+    "body": "신축 대단지 입주민 편의를 위해 고덕역에 에스컬레이터를 설치하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "한강벨트 총선 변수는 ‘신축 대단지’…1만8000세대 새로 입주",
+      "date": "2024-03-29",
+      "link": "https://www.joongang.co.kr/article/25238970"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "교육",
+    "title": "교육 공약 추진",
+    "body": "강동갑 지역의 교육 문제 해결을 위한 교육 공약을 내세웠다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선 격전지] 강동갑, 진선미 vs 전주혜 '女법조인' 대결…스윙보터 표...",
+      "date": "2024-03-30",
+      "link": "https://www.newspim.com/news/view/20240329000542"
+     },
+     {
+      "title": "[격전지 르포]‘강동갑’ 전주혜·진선미 여성율사 맞대결… 교통·교육...",
+      "date": "2024-03-22",
+      "link": "https://www.munhwa.com/news/view.html?no=2024032201039930288001"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "입법·정책",
+    "title": "남녀동수 공천 실현",
+    "body": "총선에서 남녀동수 공천을 실현하고 성평등 정책을 강화하겠다는 입법·정책 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[인터뷰] '4선 도전' 진선미 \"'GTX-D노선 강동 유치' 교통 발전 이어갈 ...",
+      "date": "2024-01-18",
+      "link": "https://www.womennews.co.kr/news/articleView.html?idxno=244456"
+     }
+    ]
+   }
+  ]
+ },
+ "6WK3815W": {
+  "huboid": "100151177",
+  "name": "김태선",
+  "district": "울산 동구",
+  "party_2024": "더불어민주당",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "입법·정책",
+    "title": "지방소멸 대응 정책 추진",
+    "body": "출산·육아·교육·주택 등을 포함한 지방소멸 방지 특별법안을 추진해 동구의 인구소멸 위기에 대응하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선기획]울산 후보 1호 공약 뜯어보기 - (2) 더불어민주당",
+      "date": "2024-04-03",
+      "link": "http://www.ujeil.com/news/articleView.html?idxno=345171"
+     },
+     {
+      "title": "더민주 김태선 울산동구 예비후보, '지방소멸 대응정책' 공약발표",
+      "date": "2024-03-14",
+      "link": "https://www.ajunews.com/view/20240314152943557"
+     },
+     {
+      "title": "김태선 동구 예비후보 공약 발표",
+      "date": "2024-01-23",
+      "link": "https://www.iusm.co.kr/news/articleView.html?idxno=1032725"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "문화·체육",
+    "title": "대왕암공원 울산 제1호 관광지 지정 추진",
+    "body": "대왕암공원 일대를 울산 제1호 관광지로 지정하도록 추진해 관광 동구를 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "김태선 \"동구 대왕암공원, 울산 제1호 관광지 지정 추진\" 공약",
+      "date": "2024-03-25",
+      "link": "https://www.iusm.co.kr/news/articleView.html?idxno=1036789"
+     },
+     {
+      "title": "[4·10 울산의 선택]더불어민주당 김태선 후보, 대왕암공원 인근 '울산 ...",
+      "date": "2024-04-02",
+      "link": "https://www.ksilbo.co.kr/news/articleView.html?idxno=995796"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "입법·정책",
+    "title": "노란봉투법 재추진",
+    "body": "노란봉투법을 다시 추진해 노동자의 권리를 보장하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[D-1]울산동구 '노동자 표심잡기'…권명호·김태선, 현대중 퇴근길 유세",
+      "date": "2024-04-09",
+      "link": "https://www.news1.kr/articles/5378979"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "경제·일자리",
+    "title": "하청노동자 임금 보호 법안 제안",
+    "body": "하청노동자의 임금을 보호하는 법안을 제안하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[D-1]울산동구 '노동자 표심잡기'…권명호·김태선, 현대중 퇴근길 유세",
+      "date": "2024-04-09",
+      "link": "https://www.news1.kr/articles/5378979"
+     }
+    ]
+   }
+  ]
+ },
+ "88O1334C": {
+  "huboid": "100151732",
+  "name": "김성회",
+  "district": "경기 고양시갑",
+  "party_2024": "더불어민주당",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "교통",
+    "title": "고양은평선 식사·도래울 구간 추진",
+    "body": "고양은평선 식사 및 일산 연장(2단계)과 도래울역·환승주차장 조속 추진을 내걸었다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "김성회 민주당 고양갑 후보 \"고양은평선 도래울역 및 환승주차장 건립 ...",
+      "date": "2024-03-23",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363642916"
+     },
+     {
+      "title": "[4.10 총선] 민주당 고양시갑 김성회 후보 \"식사동 트램 조속히 추진\"",
+      "date": "2024-03-19",
+      "link": "http://www.g-enews.com/ko-kr/news/article/news_all/202403182353558011f0f3e23044_1/article.html"
+     },
+     {
+      "title": "더불어민주당 김성회(고양시 갑) 후보, 지역정책 공약 3차 발표",
+      "date": "2024-03-18",
+      "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=194169"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "교통",
+    "title": "식사~고양신청사~대곡역 트램 조속 추진",
+    "body": "식사, 고양신청사, 대곡역을 잇는 트램을 조속히 추진하겠다고 공약했다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[4.10 총선] 민주당 고양시갑 김성회 후보 \"식사동 트램 조속히 추진\"",
+      "date": "2024-03-19",
+      "link": "http://www.g-enews.com/ko-kr/news/article/news_all/202403182353558011f0f3e23044_1/article.html"
+     },
+     {
+      "title": "더불어민주당 김성회(고양시 갑) 후보, 지역정책 공약 3차 발표",
+      "date": "2024-03-18",
+      "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=194169"
+     },
+     {
+      "title": "더불어민주당 고양시갑 김성회 후보, 지역정책 3차 공약 발표",
+      "date": "2024-03-19",
+      "link": "http://www.shinailbo.co.kr/news/articleView.html?idxno=1844759"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "개발·주거",
+    "title": "고양 신청사 원당 건립 원안 사수",
+    "body": "고양시청 이전 논란 속에서 신청사를 원당에 원안대로 건립하겠다고 약속했다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "고양갑 김성회 vs 한창섭 vs 심상정 공약 전쟁",
+      "date": "2024-03-24",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363643049"
+     },
+     {
+      "title": "[4·10=한다면 한다] 김성회 민주당 고양갑 예비후보, 시청사 원안 건립...",
+      "date": "2024-03-14",
+      "link": "https://www.incheonilbo.com/news/articleView.html?idxno=1238934"
+     },
+     {
+      "title": "[총선맞수-고양갑] \"다선의 힘 vs 초선의 힘\"… 진보정치 1번지 어디로 ...",
+      "date": "2024-03-27",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363643883"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "행정",
+    "title": "고양시 서울 편입 추진",
+    "body": "고양시를 서울에 편입시키는 메가시티 서울 편입을 제1공약으로 내걸었다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[고양갑 판세] 진보 강세 고양시갑, 심상정 5선 가능할까",
+      "date": "2024-03-18",
+      "link": "http://www.mygoyang.com/news/articleView.html?idxno=78380"
+     },
+     {
+      "title": "[총선 격전지 인터뷰] '진보정치 1번가' 고양갑 3파전…보수 '어부지리...",
+      "date": "2024-03-27",
+      "link": "https://www.ajunews.com/view/20240326090440807"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "입법·정책",
+    "title": "고양특례시 권한 강화 법안 추진",
+    "body": "특례시 권한을 키우는 법안을 통해 예산 자율성과 개발 제한 해제 권한을 확대하겠다고 했다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "'진보 1번가' 3파전…김성회·한창섭·심상정 [격전지를 가다]",
+      "date": "2024-03-27",
+      "link": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007589452&plink=ORI&cooper=NAVER"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "개발·주거",
+    "title": "주민 희망 반영 재개발·재건축 및 원도심 정비",
+    "body": "주민 희망을 반영한 재개발·재건축과 원도심 정비를 적극 추진하겠다고 밝혔다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "고양갑 김성회 vs 한창섭 vs 심상정 공약 전쟁",
+      "date": "2024-03-24",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363643049"
+     },
+     {
+      "title": "[총선 격전지 인터뷰] '진보정치 1번가' 고양갑 3파전…보수 '어부지리...",
+      "date": "2024-03-27",
+      "link": "https://www.ajunews.com/view/20240326090440807"
+     },
+     {
+      "title": "[총선맞수-고양갑] \"다선의 힘 vs 초선의 힘\"… 진보정치 1번지 어디로 ...",
+      "date": "2024-03-27",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363643883"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "교통",
+    "title": "시내버스 준공영제 전면 실시",
+    "body": "시내(마을)버스 준공영제를 전면 실시해 버스 증차와 정시 운영을 하겠다고 했다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[4.10 총선] 민주당 고양시갑 김성회 후보 \"식사동 트램 조속히 추진\"",
+      "date": "2024-03-19",
+      "link": "http://www.g-enews.com/ko-kr/news/article/news_all/202403182353558011f0f3e23044_1/article.html"
+     },
+     {
+      "title": "더불어민주당 김성회(고양시 갑) 후보, 지역정책 공약 3차 발표",
+      "date": "2024-03-18",
+      "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=194169"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "교통",
+    "title": "식사~백석간 도로 확장",
+    "body": "식사동과 백석을 잇는 도로를 확장하겠다고 공약했다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[4.10 총선] 민주당 고양시갑 김성회 후보 \"식사동 트램 조속히 추진\"",
+      "date": "2024-03-19",
+      "link": "http://www.g-enews.com/ko-kr/news/article/news_all/202403182353558011f0f3e23044_1/article.html"
+     },
+     {
+      "title": "더불어민주당 김성회(고양시 갑) 후보, 지역정책 공약 3차 발표",
+      "date": "2024-03-18",
+      "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=194169"
+     },
+     {
+      "title": "더불어민주당 고양시갑 김성회 후보, 지역정책 3차 공약 발표",
+      "date": "2024-03-19",
+      "link": "http://www.shinailbo.co.kr/news/articleView.html?idxno=1844759"
+     }
+    ]
+   },
+   {
+    "ord": 9,
+    "realm": "환경",
+    "title": "관산동·고양동 쓰레기소각장 설치 반대",
+    "body": "주민 동의 없는 쓰레기소각장 설치를 막겠다고 밝혔다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "더불어민주당 고양시갑 김성회 예비후보, 지역정책 공약 2차 발표",
+      "date": "2024-03-16",
+      "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=193974"
+     },
+     {
+      "title": "[총선맞수-고양갑] \"다선의 힘 vs 초선의 힘\"… 진보정치 1번지 어디로 ...",
+      "date": "2024-03-27",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363643883"
+     }
+    ]
+   },
+   {
+    "ord": 10,
+    "realm": "교통",
+    "title": "고양 교통 체계 획기적 개선",
+    "body": "고양시 교통 체계를 획기적으로 개선하겠다고 공약했다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선 격전지 인터뷰] '진보정치 1번가' 고양갑 3파전…보수 '어부지리...",
+      "date": "2024-03-27",
+      "link": "https://www.ajunews.com/view/20240326090440807"
+     },
+     {
+      "title": "[총선맞수-고양갑] \"다선의 힘 vs 초선의 힘\"… 진보정치 1번지 어디로 ...",
+      "date": "2024-03-27",
+      "link": "http://www.joongboo.com/news/articleView.html?idxno=363643883"
+     }
+    ]
+   }
+  ]
+ },
+ "HVV5250J": {
+  "huboid": "100152462",
+  "name": "박정현",
+  "district": "대전 대덕구",
+  "party_2024": "더불어민주당",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "교통",
+    "title": "대덕구 관통 철도 지하화",
+    "body": "대덕구를 관통하는 철도를 지하화해 철도로 갈라진 지역을 연결하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "(R))[선택 2024]3자 대결 대덕구 표심 어디로?",
+      "date": "2024-03-11",
+      "link": "http://www.tjb.co.kr/news05/bodo/view/id/67860"
+     },
+     {
+      "title": "[총선열전] 박정현 \"대덕을 충청권 핵심성장 거점도시로\"… 22대 총선 출...",
+      "date": "2024-03-11",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20240311010003117"
+     },
+     {
+      "title": "[총선열전] 박정현 \"대덕을 충청의 핵심도시로\"… 교통.산업.생태.교육...",
+      "date": "2024-03-25",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20240325010007945"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "개발·주거",
+    "title": "연축혁신도시 구축과 공공기관 이전",
+    "body": "연축혁신도시를 구축하고 공공기관 이전을 이끌어 인구를 늘리고 지역경제를 활성화하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선열전] 박정현 \"대덕을 충청권 핵심성장 거점도시로\"… 22대 총선 출...",
+      "date": "2024-03-11",
+      "link": "https://www.joongdo.co.kr/web/view.php?key=20240311010003117"
+     },
+     {
+      "title": "[4·10 총선 공약매치] 현역vs전직 구청장vs검사 출신 신진… 대덕구 3파...",
+      "date": "2024-03-13",
+      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2119189"
+     },
+     {
+      "title": "민주 박정현, 대덕구 출사표...박영순 향해 \"늘 기다릴 것\"",
+      "date": "2024-03-11",
+      "link": "http://www.ccnnews.co.kr/news/articleView.html?idxno=327980"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "경제·일자리",
+    "title": "과학기술 공공기관 유치",
+    "body": "과학기술 분야 공공기관을 대덕구에 유치하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "(R))[선택 2024]3자 대결 대덕구 표심 어디로?",
+      "date": "2024-03-11",
+      "link": "http://www.tjb.co.kr/news05/bodo/view/id/67860"
+     },
+     {
+      "title": "[4·10 총선 공약매치] 현역vs전직 구청장vs검사 출신 신진… 대덕구 3파...",
+      "date": "2024-03-13",
+      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2119189"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "개발·주거",
+    "title": "대덕을 충청권 핵심성장거점도시로 육성",
+    "body": "수도권 과밀에 대응해 대덕을 충청권 메가시티의 핵심 성장거점도시로 만들겠다는 비전 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "박정현 후보 ‘대덕구 발전 삼삼한(3·3·1) 공약' 발표",
+      "date": "2024-03-25",
+      "link": "http://www.kukinews.com/newsView/kuk202403250256"
+     },
+     {
+      "title": "박정현 \"대덕을 충청권 핵심성장거점도시로 만들겠다\"",
+      "date": "2024-03-25",
+      "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003013901&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news"
+     },
+     {
+      "title": "[4·10 총선 레이더] 박정현, '삼삼한(3·3·1) 공약' 발표…\"대덕을 충청...",
+      "date": "2024-03-25",
+      "link": "https://www.daejonilbo.com/news/articleView.html?idxno=2121422"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "복지",
+    "title": "공공병원 설립",
+    "body": "공공병원을 설립해 국민건강권을 지키겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "대전 대덕구 박정현·박경호·박영순, 방탄·갈라치기·찐윤 언급하며 ...",
+      "date": "2024-04-03",
+      "link": "https://www.newsis.com/view/?id=NISX20240403_0002686928&cID=10320&pID=12000"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "환경",
+    "title": "먼지없는 대덕 그린뉴딜 추진",
+    "body": "먼지없는 대덕을 목표로 그린뉴딜 사업을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "(R))[선택 2024]3자 대결 대덕구 표심 어디로?",
+      "date": "2024-03-11",
+      "link": "http://www.tjb.co.kr/news05/bodo/view/id/67860"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "환경",
+    "title": "대청호 규제 완화",
+    "body": "대청호 주변 규제를 완화하겠다는 환경 분야 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "대전 총선 후보들 성평등·노동·환경공약 3% 불과 …여전히 경제개발 ...",
+      "date": "2024-04-08",
+      "link": "http://www.segye.com/newsView/20240408520054?OutUrl=naver"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "입법·정책",
+    "title": "풀뿌리 공동체 3법 입법 추진",
+    "body": "풀뿌리 공동체 활성화를 위한 3개 법안의 입법을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "대전 대덕구 박정현, 공동체 3법 입법 추진 공약",
+      "date": "2024-02-16",
+      "link": "http://www.newstnt.com/news/articleView.html?idxno=345058"
+     }
+    ]
+   }
+  ]
+ },
+ "JZV5283U": {
+  "huboid": "100152311",
+  "name": "유영하",
+  "district": "대구 달서구갑",
+  "party_2024": "국민의힘",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "환경",
+    "title": "소각장 생활쓰레기 전처리 시설로 탄소중립 실현",
+    "body": "소각장 내 생활쓰레기 전처리 시설을 두어 지역 특성에 맞게 탄소중립을 실현하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[기후로운 투표생활] ⑩ 대구·경북 후보 74명 중 21명만 기후위기 공약",
+      "date": "2024-04-02",
+      "link": "https://www.newsmin.co.kr/news/101240/"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "교육",
+    "title": "달서구 AI 교육·산업특구 조성",
+    "body": "달서구를 AI 교육 및 산업특구로 조성해 신산업 및 인력양성 인프라를 구축하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "유영하 예비후보 “달서구를 AI 교육·산업특구로 조성하겠다”",
+      "date": "2024-02-25",
+      "link": "http://www.inews24.com/view/1690572"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "교육",
+    "title": "호산중학교 신설",
+    "body": "달서구갑 지역에 호산중학교를 새로 세우겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[심층] \"맞춤형 일꾼\" vs \"박근혜 복심\"···선택 2024 대구·경북-대구...",
+      "date": "2024-04-04",
+      "link": "https://dgmbc.com/article/ZrPBTaFPDY9P_"
+     },
+     {
+      "title": "[선택 2024 대구·경북] 대구 달서구갑",
+      "date": "2024-04-03",
+      "link": "https://dgmbc.com/article/jN2-0KyK4JHpSfI1sR8GBt"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "문화·체육",
+    "title": "주민 복합문화센터 건립",
+    "body": "주민들이 이용할 복합문화센터를 짓겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[심층] \"맞춤형 일꾼\" vs \"박근혜 복심\"···선택 2024 대구·경북-대구...",
+      "date": "2024-04-04",
+      "link": "https://dgmbc.com/article/ZrPBTaFPDY9P_"
+     },
+     {
+      "title": "[선택 2024 대구·경북] 대구 달서구갑",
+      "date": "2024-04-03",
+      "link": "https://dgmbc.com/article/jN2-0KyK4JHpSfI1sR8GBt"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "복지",
+    "title": "장애인 자립 자활센터 건립",
+    "body": "장애인의 자립과 자활을 돕는 센터를 건립하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[심층] \"맞춤형 일꾼\" vs \"박근혜 복심\"···선택 2024 대구·경북-대구...",
+      "date": "2024-04-04",
+      "link": "https://dgmbc.com/article/ZrPBTaFPDY9P_"
+     },
+     {
+      "title": "[선택 2024 대구·경북] 대구 달서구갑",
+      "date": "2024-04-03",
+      "link": "https://dgmbc.com/article/jN2-0KyK4JHpSfI1sR8GBt"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "환경",
+    "title": "갈산공원 조성",
+    "body": "은행나무 숲이 우거진 갈산공원을 조성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[기후로운 투표생활] ⑩ 대구·경북 후보 74명 중 21명만 기후위기 공약",
+      "date": "2024-04-02",
+      "link": "https://www.newsmin.co.kr/news/101240/"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "개발·주거",
+    "title": "박정희 컨벤션센터 성서행정타운 건립 제안",
+    "body": "성서행정타운 부지에 박정희 컨벤션센터를 세우자고 제안한 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "성서행정타운에 '박정희 컨벤션센터'?...'달서갑' 유영하 제안, 권택흥 ...",
+      "date": "2024-03-29",
+      "link": "https://www.pn.or.kr/news/articleView.html?idxno=30278"
+     },
+     {
+      "title": "대구 달서갑 '박정희 컨벤션 센터 건립' 등 공약 온도차",
+      "date": "2024-03-28",
+      "link": "http://www.kyongbuk.co.kr/news/articleView.html?idxno=4004929"
+     }
+    ]
+   }
+  ]
+ },
+ "MR210505": {
+  "huboid": "100152755",
+  "name": "서일준",
+  "district": "경남 거제시",
+  "party_2024": "국민의힘",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "경제·일자리",
+    "title": "옥포 미 해군 이용 상업·부대시설 조성",
+    "body": "옥포 지역 경기 활성화를 위해 미 해군이 이용할 수 있는 상업·부대시설을 조성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "서일준 후보 \"옥포에 미해군 이용시설 조성해 경제 살리겠다\"",
+      "date": "2024-04-05",
+      "link": "https://www.asiatoday.co.kr/view.php?key=20240405010003282"
+     },
+     {
+      "title": "거제 서일준 후보, 美해군용 상업·부대시설 조성 공약",
+      "date": "2024-04-05",
+      "link": "https://www.newsis.com/view/?id=NISX20240405_0002689981&cID=10320&pID=12000"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "개발·주거",
+    "title": "사곡 국가산단 계속 추진",
+    "body": "사곡 국가산업단지 조성 사업을 중단 없이 계속 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "서일준 의원 \"사곡 국가산단 계속 추진하겠다\"",
+      "date": "2024-03-12",
+      "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003009926&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news"
+     },
+     {
+      "title": "[총선 D-30]격전지 거제시, 2강 1약 구도…서일준-변광용 리턴매치",
+      "date": "2024-03-10",
+      "link": "http://www.newsis.com/view/?id=NISX20240310_0002654723&cID=10320&pID=12000"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "개발·주거",
+    "title": "거제 가덕신공항 경제권 비즈니스 중심 도시",
+    "body": "가덕신공항 경제권에 속하는 거제를 비즈니스 중심 도시로 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "서일준, 거제시 선거구 출마 \"다시한번 시민과 뛰겠다\"",
+      "date": "2024-03-12",
+      "link": "http://www.newsis.com/view/?id=NISX20240312_0002657540&cID=10320&pID=12000"
+     },
+     {
+      "title": "거제시 국민의힘 서일준 의원 '재선 도전'",
+      "date": "2024-03-12",
+      "link": "http://www.gndomin.com/news/articleView.html?idxno=385716"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "경제·일자리",
+    "title": "해양웰니스관광 휴양 도시 조성",
+    "body": "거제를 해양웰니스관광 휴양 도시로 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "서일준, 거제시 선거구 출마 \"다시한번 시민과 뛰겠다\"",
+      "date": "2024-03-12",
+      "link": "http://www.newsis.com/view/?id=NISX20240312_0002657540&cID=10320&pID=12000"
+     },
+     {
+      "title": "/출마합니다/ 서일준 국회의원 ‘거제시’",
+      "date": "2024-03-13",
+      "link": "http://www.knnews.co.kr/news/articleView.php?idxno=1427622"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "교통",
+    "title": "거가대교 통행료 인하",
+    "body": "지역 주민 부담을 줄이기 위해 거가대교 통행료를 인하하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선핫스팟] 요동치는 거제, '민주당계 첫 시장' 변광용 vs '친윤 현역'...",
+      "date": "2024-04-01",
+      "link": "https://www.businesspost.co.kr/BP?command=article_view&num=347608"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "교통",
+    "title": "거제~통영 고속도로 연장",
+    "body": "거제와 통영을 잇는 고속도로를 연장하겠다는 지역 밀착형 교통 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선핫스팟] 요동치는 거제, '민주당계 첫 시장' 변광용 vs '친윤 현역'...",
+      "date": "2024-04-01",
+      "link": "https://www.businesspost.co.kr/BP?command=article_view&num=347608"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "교통",
+    "title": "교통중심 도시 거제 조성",
+    "body": "남해안 관광시대를 이끌 교통중심 도시로 거제를 만들겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "/출마합니다/ 서일준 국회의원 ‘거제시’",
+      "date": "2024-03-13",
+      "link": "http://www.knnews.co.kr/news/articleView.php?idxno=1427622"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "경제·일자리",
+    "title": "한화오션 임금피크제 적용 완화",
+    "body": "현재 한화오션이 시행 중인 임금피크제의 적용을 완화하도록 노사 협의를 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "국민의힘 서일준 후보 \"한화오션, 임금피크제 적용 완화해야\"",
+      "date": "2024-03-24",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=556796"
+     },
+     {
+      "title": "[총선돋보기-거제] 서일준 후보, \"한화오션, 임금피크제 적용 완화해야...",
+      "date": "2024-03-24",
+      "link": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2105673"
+     },
+     {
+      "title": "서일준 \"한화오션, 임금피크제 적용 완화해야\"",
+      "date": "2024-03-25",
+      "link": "https://www.kfenews.co.kr/news/articleView.html?idxno=620099"
+     }
+    ]
+   },
+   {
+    "ord": 9,
+    "realm": "복지",
+    "title": "영유아 무상보육 실현",
+    "body": "중앙당이 발표한 영유아 무상보육 공약을 거제에서 최대한 빨리 실현하도록 노력하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "국민의힘 서일준 후보, \"거제의 모든 아이들 행복 위해 '영유아 무상보...",
+      "date": "2024-04-01",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=558612"
+     },
+     {
+      "title": "[총선돋보기-거제] 서일준 후보, \"'영유아 무상보육' 공약 실현 최선 다...",
+      "date": "2024-04-01",
+      "link": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2109341"
+     }
+    ]
+   },
+   {
+    "ord": 10,
+    "realm": "경제·일자리",
+    "title": "조선업 지원 방안 마련",
+    "body": "조선업 경기 위기에 대응하는 지원 방안을 마련하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "거제시 국민의힘 서일준 의원 '재선 도전'",
+      "date": "2024-03-12",
+      "link": "http://www.gndomin.com/news/articleView.html?idxno=385716"
+     }
+    ]
+   }
+  ]
+ },
+ "TZP9391O": {
+  "huboid": "100153139",
+  "name": "이철규",
+  "district": "강원 동해시태백시삼척시정선군",
+  "party_2024": "국민의힘",
+  "pledges": [
+   {
+    "ord": 1,
+    "realm": "경제·일자리",
+    "title": "동해·삼척 수소 및 저탄소 녹색산업 기회발전특구 지정",
+    "body": "동해·삼척을 수소 및 저탄소 녹색산업 기회발전특구로 지정해 액화수소산업 메카를 완성하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 국회의원, 22대 총선 출마 선언...3대 비전 5대 공약 제시",
+      "date": "2024-03-08",
+      "link": "https://www.newspim.com/news/view/20240308000420"
+     },
+     {
+      "title": "제22대 총선 동해·태백·삼척·정선 선거구 예비후보 4명 등록",
+      "date": "2024-03-08",
+      "link": "https://www.newspim.com/news/view/20240308000752"
+     },
+     {
+      "title": "이철규 국회의원, 동해시·태백시·삼척시·정선군 선거구 공식 출마 선...",
+      "date": "2024-03-08",
+      "link": "https://www.ajunews.com/view/20240308153808614"
+     }
+    ]
+   },
+   {
+    "ord": 2,
+    "realm": "경제·일자리",
+    "title": "미래 먹거리 산업 공공기관 유치",
+    "body": "미래 먹거리 산업의 마중물이 될 공공기관을 지역에 유치하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 국회의원, 22대 총선 출마 선언...3대 비전 5대 공약 제시",
+      "date": "2024-03-08",
+      "link": "https://www.newspim.com/news/view/20240308000420"
+     },
+     {
+      "title": "제22대 총선 동해·태백·삼척·정선 선거구 예비후보 4명 등록",
+      "date": "2024-03-08",
+      "link": "https://www.newspim.com/news/view/20240308000752"
+     },
+     {
+      "title": "한호연·이철규 후보, 현정부 국정평가 놓고 치열한 공방",
+      "date": "2024-03-30",
+      "link": "http://www.kado.net/news/articleView.html?idxno=1236198"
+     }
+    ]
+   },
+   {
+    "ord": 3,
+    "realm": "교통",
+    "title": "동서고속도로 삼척~영월 구간 및 동해선 고속화철도 예타 통과 추진",
+    "body": "동서고속도로 삼척~영월 구간과 동해선 고속화 철도의 예비타당성 조사 통과를 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "[총선] 동태삼정, 지역 경제 살리기…4명 공약은?",
+      "date": "2024-03-21",
+      "link": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=7919249&ref=A"
+     },
+     {
+      "title": "[총선] 동태삼정, 지역 경제 살리기…4명 공약은?",
+      "date": "2024-03-20",
+      "link": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=7918997&ref=A"
+     },
+     {
+      "title": "[총선] 동태삼정, 지역 경제 살리기…4명 공약은?",
+      "date": "2024-03-20",
+      "link": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=7918779&ref=A"
+     }
+    ]
+   },
+   {
+    "ord": 4,
+    "realm": "교통",
+    "title": "사통팔달 교통망 확충",
+    "body": "동해·태백·삼척·정선의 교통망을 사통팔달로 확충하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "한호연·이철규 후보, 현정부 국정평가 놓고 치열한 공방",
+      "date": "2024-03-30",
+      "link": "http://www.kado.net/news/articleView.html?idxno=1236198"
+     },
+     {
+      "title": "제22대 총선 동해·태백·삼척·정선 선거구 예비후보 4명 등록",
+      "date": "2024-03-08",
+      "link": "https://www.newspim.com/news/view/20240308000752"
+     },
+     {
+      "title": "[나는 후보자다]동해시태백시삼척시정선군 선거구",
+      "date": "2024-04-05",
+      "link": "http://news.lghellovision.net/news/articleView.html?idxno=462417"
+     }
+    ]
+   },
+   {
+    "ord": 5,
+    "realm": "경제·일자리",
+    "title": "폐광지역 경제진흥계획 예타 통과 및 대체산업 육성",
+    "body": "태백시 폐광지역 경제진흥계획의 예타 통과와 계획 수립, 대체산업 발굴·육성을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 후보 집중유세 '북적'...\"압도적 승리로 다시 뛰는 태백\"",
+      "date": "2024-03-30",
+      "link": "http://www.kukinews.com/newsView/kuk202403300043"
+     },
+     {
+      "title": "한호연·이철규 후보, 현정부 국정평가 놓고 치열한 공방",
+      "date": "2024-03-30",
+      "link": "http://www.kado.net/news/articleView.html?idxno=1236198"
+     },
+     {
+      "title": "제22대 총선 동해·태백·삼척·정선 선거구 예비후보 4명 등록",
+      "date": "2024-03-08",
+      "link": "https://www.newspim.com/news/view/20240308000752"
+     }
+    ]
+   },
+   {
+    "ord": 6,
+    "realm": "경제·일자리",
+    "title": "연구용 지하시설 유치",
+    "body": "태백시에 연구용 지하시설을 유치하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 후보 집중유세 '북적'...\"압도적 승리로 다시 뛰는 태백\"",
+      "date": "2024-03-30",
+      "link": "http://www.kukinews.com/newsView/kuk202403300043"
+     }
+    ]
+   },
+   {
+    "ord": 7,
+    "realm": "환경",
+    "title": "정선 도암댐 문제 해결",
+    "body": "정선의 오랜 숙원인 도암댐 문제를 해결하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 국회의원 기자회견, 정선의 100년 미래 완성하겠다",
+      "date": "2024-03-26",
+      "link": "https://www.kwnews.co.kr/page/view/2024032614062627185"
+     }
+    ]
+   },
+   {
+    "ord": 8,
+    "realm": "개발·주거",
+    "title": "정선읍 LPG 배관망 구축 및 국가광물정보센터 연구기관 승격",
+    "body": "정선읍 LPG 배관망 구축사업을 추진하고 국가광물정보센터를 연구기관으로 승격시키겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 국회의원 기자회견, 정선의 100년 미래 완성하겠다",
+      "date": "2024-03-26",
+      "link": "https://www.kwnews.co.kr/page/view/2024032614062627185"
+     }
+    ]
+   },
+   {
+    "ord": 9,
+    "realm": "문화·체육",
+    "title": "가리왕산 활용 방안 마련",
+    "body": "가리왕산을 활용하는 맞춤형 방안을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 후보 “3선 국회의원이 되어 정선의 100년 미래완성”",
+      "date": "2024-03-26",
+      "link": "https://www.pressian.com/pages/articles/2024032615454294458?utm_source=naver&utm_medium=search"
+     }
+    ]
+   },
+   {
+    "ord": 10,
+    "realm": "개발·주거",
+    "title": "삼척 석탄 산업 이후 미래 발전 공약",
+    "body": "과거 석탄으로 에너지를 책임졌던 삼척의 미래를 위한 발전 방안을 추진하겠다는 공약이다.",
+    "from": "news",
+    "sources": [
+     {
+      "title": "이철규 후보, 삼척서 총력 유세...\"이번 총선 나라의 앞날 달려\"",
+      "date": "2024-04-08",
+      "link": "http://www.kukinews.com/newsView/kuk202404080321"
+     },
+     {
+      "title": "이철규 후보, 막판 총력 유세 펼치며 '표심 굳히기' 나서",
+      "date": "2024-04-09",
+      "link": "https://www.ajunews.com/view/20240409104559715"
+     }
+    ]
+   }
+  ]
+ }
+}
