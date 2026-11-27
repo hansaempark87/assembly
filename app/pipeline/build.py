@@ -223,6 +223,59 @@ def role_adjustments(S, recs):
     return {'generated_from': {'roles': 'member-roles.json', 'source': 'data/source', 'eval_end': S.cutoff}, 'members': result}
 
 
+# ---------- monthly trend ----------
+
+def monthly_trend(S):
+    """Per member and month: plenary attendance, recorded-vote participation and
+    lead bills, plus the month's average over members in office. Shown as a
+    plain line chart on the member page; no interpretation is attached."""
+    end = S.cutoff[:7]
+    months, y, mo = [], 2024, 6
+    while f'{y}-{mo:02d}' <= end:
+        months.append(f'{y}-{mo:02d}')
+        y, mo = (y + 1, 1) if mo == 12 else (y, mo + 1)
+    att = collections.defaultdict(lambda: collections.defaultdict(lambda: [0, 0]))
+    for f in S.plenary:
+        for i, r in f['rows'].items():
+            for d, st in zip(f['dates'], r['status']):
+                if st in STATUSES and d <= S.cutoff:
+                    a = att[i][d[:7]]
+                    a[0] += st == '출석'
+                    a[1] += 1
+    vote = collections.defaultdict(lambda: collections.defaultdict(lambda: [0, 0]))
+    for v in S.votes:
+        if v['status'] not in SCORED_VOTE or v['date'] > S.cutoff:
+            continue
+        cast = set(v['Y']) | set(v['N']) | set(v['A'])
+        for m in S.members:
+            if in_term(m, v['date']):
+                a = vote[m['id']][v['date'][:7]]
+                a[0] += m['id'] in cast
+                a[1] += 1
+    bills = collections.defaultdict(collections.Counter)
+    for b in S.bills:
+        if b['PROPOSE_DT'] <= S.cutoff:
+            for lead in ids(b['RST_MONA_CD']):
+                bills[lead][b['PROPOSE_DT'][:7]] += 1
+    rate = lambda a: round(a[0] / a[1], 4) if a and a[1] else None
+    out = {}
+    for m in S.members:
+        i = m['id']
+        on = [m['term_start'][:7] <= mo <= (m['term_end'] or '9999')[:7] for mo in months]
+        out[i] = {
+            'att': [rate(att[i].get(mo)) if ok else None for mo, ok in zip(months, on)],
+            'vote': [rate(vote[i].get(mo)) if ok else None for mo, ok in zip(months, on)],
+            'bills': [bills[i].get(mo, 0) if ok else None for mo, ok in zip(months, on)],
+        }
+    def avg(key):
+        res = []
+        for k in range(len(months)):
+            xs = [out[i][key][k] for i in out if out[i][key][k] is not None]
+            res.append(round(sum(xs) / len(xs), 4) if xs else None)
+        return res
+    return {'months': months, 'members': out, 'avg': {k: avg(k) for k in ('att', 'vote', 'bills')}}
+
+
 # ---------- bill lists, policy areas, collaboration ----------
 
 def bill_lists_and_coop(S, recs, vote_strings):
@@ -307,6 +360,9 @@ def bill_lists_and_coop(S, recs, vote_strings):
             area_counts[ar].append(n)
 
     rec = {r['id']: r for r in recs}
+    trend = monthly_trend(S)
+    tp = APP / 'data' / 'source' / 'audit-topics.json'
+    audit_topics = json.load(open(tp, encoding='utf-8')) if tp.exists() else {}
     out_dir = APP / 'public' / 'bills'
     os.makedirs(out_dir, exist_ok=True)
     bad = []
@@ -333,7 +389,10 @@ def bill_lists_and_coop(S, recs, vote_strings):
             'partners': {'same': [p for p in top if p['same_party']][:5], 'other': [p for p in top if not p['same_party']][:5]},
             'coop': {k: c[k] for k in ('cross', 'base', 'bills', 'index', 'eligible', 'party_median', 'excess', 'bonus')},
             'votes': vote_strings.get(mid, ''),
+            'trend': {'months': trend['months'], **trend['members'].get(mid, {}), 'avg': trend['avg']},
         }
+        if mid in audit_topics:
+            data['audit_topics'] = audit_topics[mid]['topics']
         with open(out_dir / f'{mid}.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
     if bad:
