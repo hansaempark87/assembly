@@ -12,18 +12,39 @@ this service. The key is read from DATA_GO_KR_KEY and sent only to data.go.kr.
 """
 import json
 import os
+import re
+import time
+import urllib.error
 import urllib.parse
+import urllib.request
 
-from common import SRC, _get
+from common import SRC, UA
 
 BASE = 'https://apis.data.go.kr/9760000'
 SG_ID, SG_TYPE = '20240410', '2'  # 22nd general election, district seats
 
 
+def fetch(url):
+    """body of a data.go.kr response; on an error status the body still says why (key not registered, ...)"""
+    for i in range(4):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=60) as r:
+                return r.read().decode('utf-8', 'ignore')
+        except urllib.error.HTTPError as e:
+            body = e.read().decode('utf-8', 'ignore')
+            reason = re.search(r'errMsg\W+([A-Z_]+)', body)
+            raise SystemExit(f"{url.split('?')[0].rsplit('/', 2)[-2]}: HTTP {e.code} {reason.group(1) if reason else body[:200]}"
+                             + (' (check that this API is approved for the key; a new key can take an hour to work)' if e.code in (401, 403) else ''))
+        except Exception:  # connection resets: try again
+            time.sleep(3 * (i + 1))
+    raise SystemExit(f"{url.split('?')[0]}: no response")
+
+
 def call(path, **params):
-    key = os.environ['DATA_GO_KR_KEY']
+    # the portal shows the key twice, URL-encoded and decoded; either may be stored, so decode first
+    key = urllib.parse.unquote(os.environ['DATA_GO_KR_KEY'].strip())
     q = urllib.parse.urlencode({'serviceKey': key, 'resultType': 'json', 'pageNo': 1, 'numOfRows': 100, **params})
-    raw = _get(f'{BASE}/{path}?{q}', tries=4).decode('utf-8', 'ignore')
+    raw = fetch(f'{BASE}/{path}?{q}')
     try:
         data = json.loads(raw)
     except json.JSONDecodeError:
