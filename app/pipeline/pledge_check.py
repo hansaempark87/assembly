@@ -1,9 +1,11 @@
 """Where each pledge stands, judged from what can be found about it online.
 
 For every pledge in data/source/pledges.json: the model writes two or three news
-search queries (place + project), the Naver news and web-document search APIs are
-asked, and the model reads the results (title, snippet, date, link) and gives one
-status, with the items it relied on:
+search queries (place + project) and a few keywords (law or project names). The
+model then reads three kinds of records — the Assembly's own bill records (status
+and dates of bills naming a keyword), this member's audit questions naming one,
+and Naver news (title, snippet, date, link) — and gives one status, with the
+items it relied on (official records come first):
 
   done      완료        opened, completed, in force, enacted
   progress  진행 중     budget secured, plan approved, design or works under way
@@ -42,19 +44,23 @@ QUERY_PROMPT = """다음은 {district} 지역구 국회의원 {name}의 22대 �
 - 지역명(시·군·구, 동네, 노선명)과 사업의 고유한 이름을 넣는다. 예: "남양주 GTX-B 착공", "왕숙 신도시 지하철 9호선 연장".
 - 의원 이름은 넣지 않는다 (사업 자체의 진행을 찾는 것이므로).
 - 전국 단위 입법 공약이면 법 이름이나 제도 이름으로 만든다.
+- keywords: 국회 의안·회의록에서 찾을 핵심어 1~3개. 법 이름의 핵심 부분이나 사업·제도의 고유 이름 (예: "특례시", "노동조합", "철도 지하화", "GTX"). 너무 흔한 말(지원, 개발, 확대)은 쓰지 않는다.
 
 공약:
 {items}"""
 
 QUERY_SCHEMA = {'type': 'object', 'additionalProperties': False, 'required': ['pledges'], 'properties': {
-    'pledges': {'type': 'array', 'items': {'type': 'object', 'additionalProperties': False, 'required': ['ord', 'queries'],
-                'properties': {'ord': {'type': 'integer'}, 'queries': {'type': 'array', 'items': {'type': 'string'}}}}}}}
+    'pledges': {'type': 'array', 'items': {'type': 'object', 'additionalProperties': False, 'required': ['ord', 'queries', 'keywords'],
+                'properties': {'ord': {'type': 'integer'}, 'queries': {'type': 'array', 'items': {'type': 'string'}},
+                               'keywords': {'type': 'array', 'items': {'type': 'string'}}}}}}}
 
 JUDGE_PROMPT = """너는 공약 이행 상황을 확인하는 중립적인 조사원이다.
 공약: [{district}] {title}
 내용: {body}
 
-아래는 검색으로 찾은 자료다 (번호, 날짜, 제목, 요약). 이 공약 사업이 지금 어디까지 왔는지 판정하라.
+아래는 찾은 자료다 (번호, 날짜, 출처 종류, 제목, 요약). 출처는 세 종류다:
+[뉴스] 언론 보도 / [국회 의안] 국회 의안정보의 법안과 처리 결과(공식 기록) / [국정감사] 국정감사 회의록의 질의·답변 요지(공식 기록).
+공식 기록이 있으면 뉴스보다 우선한다. 이 공약 사업이 지금 어디까지 왔는지 판정하라.
 
 판정 기준:
 - done: 개통·준공·완공·시행·법 통과 등 사업이 끝났다는 자료가 있다.
@@ -71,7 +77,7 @@ JUDGE_PROMPT = """너는 공약 이행 상황을 확인하는 중립적인 조�
 - reason과 status가 서로 맞아야 한다. 진행 자료가 없다고 쓰면 status는 notfound다.
 - 여러 단계 자료가 있으면 가장 최근 상태를 고른다.
 - 누구의 공로인지는 판단하지 않는다. 사업의 상태만 본다.
-- reason: 판정 이유 한 문장, 60자 이내, 평가 표현 없이.
+- reason: 판정 이유 한 문장, 50자 이내, 평가 표현 없이. notfound면 빈 문자열.
 - evidence: 근거로 쓴 자료 번호 1~3개 (notfound면 빈 배열).
 
 자료:
@@ -104,6 +110,43 @@ def naver(kind, query, n=10):
         out.append({'title': clean(it.get('title')), 'desc': clean(it.get('description'))[:220], 'date': date,
                     'link': it.get('originallink') or it.get('link'), 'kind': kind})
     return out
+
+
+PASSED = {'원안가결', '수정가결'}
+ALT = {'대안반영폐기', '수정안반영폐기'}
+_BILLS = None
+_AUDIT = None
+
+
+def assembly_items(keywords, mid):
+    """Assembly records that name a keyword: bills (status, dates) and this member's audit questions"""
+    global _BILLS, _AUDIT
+    if _BILLS is None:
+        _BILLS = [json.loads(l) for l in open(SRC / 'bills.jsonl', encoding='utf-8')]
+        _AUDIT = []
+        sdir = SRC / 'audit-summary'
+        for f in sorted(sdir.glob('*.json')) if sdir.exists() else []:
+            meta = SRC / 'audit' / f.name
+            date = json.load(open(meta, encoding='utf-8'))['date'] if meta.exists() else ''
+            for who, items in json.load(open(f, encoding='utf-8')).get('members', {}).items():
+                for t in items:
+                    _AUDIT.append((who, date, f.stem, t['q'], t['a']))
+    kws = [k.strip() for k in keywords if len(k.strip()) >= 2][:3]
+    if not kws:
+        return []
+    out = []
+    bills = [b for b in _BILLS if any(k in b['BILL_NAME'] for k in kws) and b['PROPOSE_DT'] >= ELECTION]
+    for b in sorted(bills, key=lambda b: b.get('PROC_DT') or b['PROPOSE_DT'], reverse=True)[:6]:
+        r = b.get('PROC_RESULT')
+        state = '가결' if r in PASSED else '대안반영' if r in ALT else r or '계류(심사 중)'
+        out.append({'title': f"[국회 의안] {b['BILL_NAME']}", 'desc': f"발의 {b['PROPOSE_DT']} · 결과 {state}{' ' + b['PROC_DT'] if b.get('PROC_DT') else ''}",
+                    'date': b.get('PROC_DT') or b['PROPOSE_DT'], 'kind': 'bill',
+                    'link': f"https://likms.assembly.go.kr/bill/billDetail.do?billId={b['BILL_ID']}"})
+    for who, date, mtg, q, a in _AUDIT:
+        if who == mid and any(k in q for k in kws):
+            out.append({'title': f'[국정감사] {q[:80]}', 'desc': f'답변: {a[:120]}', 'date': date, 'kind': 'audit',
+                        'link': f'https://assembly-korea.com/audit-summary?id={urllib.parse.quote(mtg)}'})
+    return out[:10]
 
 
 def pilot(members, pledges=None):
@@ -161,6 +204,7 @@ def main():
             print(f'stop: {e}')
             break
         queries = {q['ord']: q['queries'][:3] for q in (qs or {}).get('pledges', [])}
+        keywords = {q['ord']: q.get('keywords', [])[:3] for q in (qs or {}).get('pledges', [])}
         results = []
         for p in ps:
             found, seen = [], set()
@@ -170,23 +214,27 @@ def main():
                         continue
                     seen.add(it['link'])
                     found.append(it)
-            found = found[:24]
-            listing = '\n'.join(f"[{i}] {it['date'] or '날짜 없음'} | {it['title']} | {it['desc']}" for i, it in enumerate(found)) or '(검색 결과 없음)'
+            found = assembly_items(keywords.get(p['ord'], []), m['id']) + found[:20]
+            tag = lambda it: '' if it['kind'] in ('bill', 'audit') else '[뉴스] '
+            listing = '\n'.join(f"[{i}] {it['date'] or '날짜 없음'} | {tag(it)}{it['title']} | {it['desc']}" for i, it in enumerate(found)) or '(자료 없음)'
             try:
                 j = ask(client, model, JUDGE_PROMPT.format(district=m['district'], title=p['title'], body=p['body'][:400],
                                                            election=ELECTION, items=listing), JUDGE_SCHEMA) if found else None
             except RuntimeError as e:
                 print(f'stop: {e}')
                 j = None
-            j = j or {'status': 'notfound', 'reason': '같은 사업을 다룬 자료를 찾지 못함', 'evidence': []}
+            j = j or {'status': 'notfound', 'reason': '', 'evidence': []}
             ev = [found[i] for i in j['evidence'] if isinstance(i, int) and 0 <= i < len(found)][:3]
             if j['status'] != 'notfound' and not ev:
-                j = {'status': 'notfound', 'reason': '근거 자료를 확인하지 못함', 'evidence': []}
-            if j['status'] != 'notfound' and re.search(r'자료(가|는) 없|확인할 수 없|판단(할|하기) 어렵|공약 단계', j['reason']):
-                j = {'status': 'notfound', 'reason': j['reason'], 'evidence': []}  # the reason itself says nothing moved
+                j = {'status': 'notfound', 'reason': '', 'evidence': []}
+            if j['status'] == 'notfound':
+                j['reason'], ev = '', []
+            elif re.search(r'자료(가|는) 없|확인할 수 없|판단(할|하기) 어렵|공약 단계', j['reason']):
+                j = {'status': 'notfound', 'reason': '', 'evidence': []}  # the reason itself says nothing moved
                 ev = []
             results.append({'ord': p['ord'], 'title': p['title'], 'realm': p['realm'], 'status': j['status'], 'reason': j['reason'],
-                            'evidence': [{'title': e['title'], 'date': e['date'], 'link': e['link']} for e in ev],
+                            'evidence': [{'title': e['title'], 'date': e['date'], 'link': e['link'], 'kind': e.get('kind', 'news')} for e in ev],
+                            'keywords': keywords.get(p['ord'], []),
                             'queries': queries.get(p['ord'], []), 'searched': len(found)})
         have[m['id']] = {'name': m['name'], 'district': m['district'], 'checked': today.isoformat(), 'model': model, 'items': results}
         c = {s: sum(r['status'] == s for r in results) for s in STATUS}
