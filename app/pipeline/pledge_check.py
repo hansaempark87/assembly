@@ -208,7 +208,7 @@ def main():
             break
         queries = {q['ord']: q['queries'][:3] for q in (qs or {}).get('pledges', [])}
         keywords = {q['ord']: q.get('keywords', [])[:3] for q in (qs or {}).get('pledges', [])}
-        results = []
+        results, stopped = [], False
         for p in ps:
             found, seen = [], set()
             for q in queries.get(p['ord'], [p['title']]):
@@ -225,9 +225,10 @@ def main():
             try:
                 j = ask(client, model, JUDGE_PROMPT.format(district=m['district'], title=p['title'], body=p['body'][:400],
                                                            election=ELECTION, items=listing), JUDGE_SCHEMA) if found else None
-            except RuntimeError as e:
+            except RuntimeError as e:  # e.g. out of API credit: stop, and leave this member unchecked
                 print(f'stop: {e}')
-                j = None
+                stopped = True
+                break
             j = j or {'status': 'notfound', 'reason': '', 'evidence': []}
             ev = [found[i] for i in j['evidence'] if isinstance(i, int) and 0 <= i < len(found)][:3]
             if j['status'] != 'notfound' and not ev:
@@ -243,6 +244,8 @@ def main():
                             'context': [{'title': c['title'].replace('[국정감사] ', ''), 'answer': c['desc'].replace('답변: ', ''),
                                          'date': c['date'], 'link': c['link']} for c in context],
                             'queries': queries.get(p['ord'], []), 'searched': len(found)})
+        if stopped:
+            break  # a half-checked member would read as 'no data'; the next run checks them again
         have[m['id']] = {'name': m['name'], 'district': m['district'], 'checked': today.isoformat(), 'model': model, 'items': results}
         c = {s: sum(r['status'] == s for r in results) for s in STATUS}
         print(f"{m['name']} ({m['district']}): {c}")
