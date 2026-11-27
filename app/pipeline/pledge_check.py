@@ -60,11 +60,15 @@ JUDGE_PROMPT = """너는 공약 이행 상황을 확인하는 중립적인 조�
 - done: 개통·준공·완공·시행·법 통과 등 사업이 끝났다는 자료가 있다.
 - progress: 예산 반영, 계획 승인·고시, 설계·용역 착수, 착공, 공사 중, 법안 발의·심사 중 등 진행 자료가 있다.
 - delayed: 지연, 보류, 무산, 백지화, 예산 삭감 등 막혔다는 자료가 있다.
-- notfound: 이 공약과 같은 지역의 같은 사업을 다룬 자료가 없다.
+- notfound: 이 공약 사업의 진행을 보여주는 자료가 없다.
 
 규칙:
 - {election} 이후 날짜의 자료만 근거로 쓴다.
-- 같은 지역의 같은 사업인지 꼭 확인한다. 비슷한 다른 지역 사업은 근거가 아니다.
+- 근거 자료의 제목이나 요약에 그 사업(또는 법·제도)의 이름이나 대상이 직접 나와야 한다. 지역 소식 모음, 다른 주제 기사는 근거가 아니다.
+- 지역 사업이면 같은 지역의 같은 사업인지 꼭 확인한다. 비슷한 다른 지역 사업은 근거가 아니다.
+- 입법·전국 정책 공약(법 제정·개정, 전국 제도)이면 지역과 상관없이 그 법이나 제도의 진행(발의, 심사, 통과, 시행)으로 판정한다.
+- 공약 발표, 재다짐, 요구·촉구, "추진하겠다"는 계획 발언만 있으면 notfound다. 실제로 예산, 계획, 공사, 법안 처리 같은 단계가 움직였다는 자료가 있어야 progress다.
+- reason과 status가 서로 맞아야 한다. 진행 자료가 없다고 쓰면 status는 notfound다.
 - 여러 단계 자료가 있으면 가장 최근 상태를 고른다.
 - 누구의 공로인지는 판단하지 않는다. 사업의 상태만 본다.
 - reason: 판정 이유 한 문장, 60자 이내, 평가 표현 없이.
@@ -143,7 +147,7 @@ def main():
     path = SRC / 'pledge-status.json'
     have = json.load(open(path, encoding='utf-8')) if path.exists() else {}
     today = dt.date.today()
-    recheck = int(os.environ.get('PLEDGE_RECHECK_DAYS', '25'))
+    recheck = 0 if scope == 'pilot' else int(os.environ.get('PLEDGE_RECHECK_DAYS', '25'))
     print(f'members to check: {len(chosen)} ({", ".join(m["name"] for m in chosen[:12])})')
     for m in chosen:
         prev = have.get(m['id'], {}).get('checked')
@@ -161,8 +165,8 @@ def main():
         for p in ps:
             found, seen = [], set()
             for q in queries.get(p['ord'], [p['title']]):
-                for it in naver('news', q) + naver('webkr', q, 5):
-                    if it['link'] in seen or (it['date'] and it['date'] < ELECTION):
+                for it in naver('news', q, 20):  # web documents carry no date, so only news counts
+                    if it['link'] in seen or not it['date'] or it['date'] < ELECTION:  # undated pages can't show when
                         continue
                     seen.add(it['link'])
                     found.append(it)
@@ -178,6 +182,9 @@ def main():
             ev = [found[i] for i in j['evidence'] if isinstance(i, int) and 0 <= i < len(found)][:3]
             if j['status'] != 'notfound' and not ev:
                 j = {'status': 'notfound', 'reason': '근거 자료를 확인하지 못함', 'evidence': []}
+            if j['status'] != 'notfound' and re.search(r'자료(가|는) 없|확인할 수 없|판단(할|하기) 어렵|공약 단계', j['reason']):
+                j = {'status': 'notfound', 'reason': j['reason'], 'evidence': []}  # the reason itself says nothing moved
+                ev = []
             results.append({'ord': p['ord'], 'title': p['title'], 'realm': p['realm'], 'status': j['status'], 'reason': j['reason'],
                             'evidence': [{'title': e['title'], 'date': e['date'], 'link': e['link']} for e in ev],
                             'queries': queries.get(p['ord'], []), 'searched': len(found)})
