@@ -51,6 +51,7 @@
       <div class="law-main">
         <a class="law-name" href="${likms(b.id)}" target="_blank" rel="noopener">${esc(b.name)}</a>
         <small>${when} · 대표발의 ${leads || '-'}${b.count > 1 ? ` · 같은 법 개정안 ${num(b.count)}건을 합쳐 처리` : b.co ? ` 외 공동발의 ${num(b.co)}명` : ''}${b.area ? ` · ${esc(b.area)}` : ''}</small>
+        ${window.NA.billSum(b.sum)}
       </div>
       ${b.vote ? `<a class="btn btn-sm" href="/vote?id=${encodeURIComponent(b.id)}">표결 보기</a>` : ''}
     </div>`;

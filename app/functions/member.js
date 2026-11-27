@@ -25,7 +25,7 @@ async function extra(env, url, m) {
     const pick = [...done.slice(0, 5), ...lead.filter((b) => !done.includes(b)).slice(0, 10 - Math.min(5, done.length))];
     out += `<section class="card"><h2>${esc(m.name)} 의원이 대표발의한 법안</h2>
       <p>대표발의 ${lead.length}건 가운데 법에 반영된 법안과 최근 발의한 법안입니다.</p><ul>${pick.map((b) =>
-        `<li><b>${esc(b.name)}</b> <span class="muted">${esc(b.area || '')} · 발의 ${esc(b.proposed || '')} · ${esc(RESULT[b.status] || b.status || '')}${b.decided ? ` ${esc(b.decided)}` : ''}</span></li>`).join('')}</ul></section>`;
+        `<li><b>${esc(b.name)}</b> <span class="muted">${esc(b.area || '')} · 발의 ${esc(b.proposed || '')} · ${esc(RESULT[b.status] || b.status || '')}${b.decided ? ` ${esc(b.decided)}` : ''}</span>${b.sum ? `<br><small>${b.sum.map(esc).join(' ')}</small>` : ''}</li>`).join('')}</ul></section>`;
   }
   const rows = audit ? Object.entries(audit.years).map(([y, v]) => [y, v.members?.[m.id]]).filter(([, r]) => r) : [];
   if (rows.length) {

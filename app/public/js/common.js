@@ -1,6 +1,20 @@
 // Shared helpers for every page: data loading, formatting, grade badges,
 // small HTML/CSS charts, tooltip and member autocomplete.
 (function () {
+  // Data requests (our own .json files and /api/*) are checked before the page
+  // reads them: a cut-off or failed response ("Unexpected end of JSON input",
+  // e.g. while a new version is being deployed) is fetched once more, skipping
+  // the cache, so a passing network hiccup does not leave a page empty.
+  const nativeFetch = window.fetch.bind(window);
+  const isData = (u) => { try { const x = new URL(u, location.href); return x.origin === location.origin && (/\.json$/.test(x.pathname) || x.pathname.startsWith('/api/')); } catch { return false; } };
+  const settle = async (res) => { const text = await res.text(); JSON.parse(text); return new Response(text, { status: res.status, statusText: res.statusText, headers: res.headers }); };
+  window.fetch = (input, init) => {
+    const url = typeof input === 'string' ? input : input.url;
+    if ((init && init.method && init.method !== 'GET') || !isData(url)) return nativeFetch(input, init);
+    const once = (opts) => nativeFetch(url, { ...init, ...opts }).then((r) => (r.status >= 500 ? Promise.reject(r) : r.ok ? settle(r) : r));
+    return once({}).catch(() => new Promise((ok) => setTimeout(ok, 600)).then(() => once({ cache: 'reload' })));
+  };
+
   const esc = (v) =>
     String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -527,6 +541,12 @@
     });
   }
 
+  // a bill's three plain lines (AI summary of the official summary), folded by default
+  const billSum = (lines) => (lines && lines.length
+    ? `<details class="bill-sum"><summary>3줄 요약</summary><ol>${lines.map((l) => `<li>${esc(l)}</li>`).join('')}</ol>
+        <p>국회 공식 요약문을 AI가 쉽게 줄인 글입니다. 정확한 내용은 원문을 확인하세요.</p></details>`
+    : '');
+
   // one-tap visitor opinion (no text). Results show after answering; the card
   // stays hidden when the poll storage is not available.
   function deviceId() {
@@ -587,5 +607,5 @@
       .catch(() => { el.hidden = true; });
   }
 
-  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo, poll };
+  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo, poll, billSum };
 })();
