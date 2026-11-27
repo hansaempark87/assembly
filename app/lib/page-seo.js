@@ -41,7 +41,7 @@ const RESULT = { passed: '가결', alt: '대안반영', withdrawn: '철회', rej
 function lawItem(b) {
   const who = (b.leads || []).map(([id, name]) => `<a href="/member?id=${encodeURIComponent(id)}">${esc(name)}</a>`).join(', ');
   const tail = b.decided ? `${esc(b.result || '')} ${esc(b.decided)}` : `발의 ${esc(b.proposed || '')}`;
-  return `<li><b>${esc(b.name)}</b> <span class="muted">${who ? `대표발의 ${who} · ` : ''}${tail}${b.co ? ` · 공동발의 ${num(b.co)}명` : ''}</span></li>`;
+  return `<li><b>${esc(b.name)}</b> <span class="muted">${who ? `대표발의 ${who} · ` : ''}${tail}${b.co ? ` · 공동발의 ${num(b.co)}명` : ''}</span>${b.sum ? `<br><small>${b.sum.map(esc).join(' ')}</small>` : ''}</li>`;
 }
 
 export function lawsHome(d) {

@@ -135,7 +135,7 @@
             ? list.slice((page - 1) * SIZE, page * SIZE).map((b) => `<li>
                 <span class="bill-st st-${b.status}">${BILL_LABEL[b.status]}</span>
                 <div><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.name)}</a>
-                <small>발의 ${esc(b.proposed)}${b.decided ? ` · ${esc(b.result)} ${esc(b.decided)}` : ''}${b.committee ? ` · ${esc(b.committee)}` : ''}${b.co ? ' · 공동 대표발의' : ''}</small></div>
+                <small>발의 ${esc(b.proposed)}${b.decided ? ` · ${esc(b.result)} ${esc(b.decided)}` : ''}${b.committee ? ` · ${esc(b.committee)}` : ''}${b.co ? ' · 공동 대표발의' : ''}</small>${window.NA.billSum(b.sum)}</div>
               </li>`).join('')
             : '<li class="skeleton">해당하는 법안이 없습니다.</li>';
           pager(document.getElementById('bill-more'), { total: list.length, page, size: SIZE, anchor: document.getElementById('bills'), onGo: (p) => { page = p; paint(); } });

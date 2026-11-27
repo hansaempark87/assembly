@@ -56,6 +56,23 @@ def ids(s):
     return [x.strip() for x in (s or '').split(',') if x.strip()]
 
 
+_SUMS = None
+
+
+def bill_sums():
+    """bill number -> three plain lines (data/source/bill-summary.jsonl, written by billsum.py)"""
+    global _SUMS
+    if _SUMS is None:
+        path = APP / 'data' / 'source' / 'bill-summary.jsonl'
+        _SUMS = {}
+        if path.exists():
+            for line in open(path, encoding='utf-8'):
+                r = json.loads(line)
+                if r.get('s'):
+                    _SUMS[r['no']] = r['s']
+    return _SUMS
+
+
 def bill_status(b, cutoff):
     pr, d = b.get('PROC_RESULT'), b.get('PROC_DT')
     if not pr or not d or d > cutoff:
@@ -243,6 +260,8 @@ def bill_lists_and_coop(S, recs, vote_strings):
             'url': f"https://likms.assembly.go.kr/bill/billDetail.do?billId={b['BILL_ID']}",
             'area': area_of(b.get('COMMITTEE')),
         }
+        if b['BILL_NO'] in bill_sums():
+            item['sum'] = bill_sums()[b['BILL_NO']]
         for lead in leads:
             by[lead].append(item)
             a = areas[lead][item['area']]
@@ -618,7 +637,10 @@ def law_data(S, vote_index):
                      'co': len(set(ids(b['PUBL_MONA_CD'])) - set(leads)), 'vote': b['BILL_ID'] in voted})
 
     def card(r):
-        return {**r, 'leads': [[i, names.get(i) or S.former.get(i) or ''] for i in r['leads']]}
+        c = {**r, 'leads': [[i, names.get(i) or S.former.get(i) or ''] for i in r['leads']]}
+        if r['no'] in bill_sums():
+            c['sum'] = bill_sums()[r['no']]
+        return c
 
     topics = []
     for key, label, words in TOPICS:
