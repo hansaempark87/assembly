@@ -120,6 +120,62 @@
     return side;
   }
 
+  // a 1080x1350 picture of the result for stories and chats, drawn in neutral
+  // greys (no party colours); shared as a file where the browser can, else saved
+  function resultImage(me, top) {
+    const W = 1080, H = 1350, c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const g = c.getContext('2d');
+    const F = getComputedStyle(document.body).fontFamily || 'sans-serif';
+    const f = (px, w = 800) => `${w} ${px}px ${F}`;
+    g.fillStyle = '#f3f4f6'; g.fillRect(0, 0, W, H);
+    g.fillStyle = '#ffffff'; g.beginPath(); g.roundRect(60, 60, W - 120, H - 120, 48); g.fill();
+    g.fillStyle = '#2a78d6'; g.beginPath(); g.roundRect(120, 130, 64, 64, 14); g.fill();
+    g.fillStyle = '#fff'; g.font = f(38); g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('국', 152, 163);
+    g.textAlign = 'left'; g.fillStyle = '#111827'; g.font = f(40); g.fillText('일하는 국회', 204, 163);
+    g.textBaseline = 'alphabetic';
+    g.fillStyle = '#4b5563'; g.font = f(54, 700); g.fillText('나의 표결 성향은', 120, 360);
+    g.fillStyle = '#111827'; g.font = f(124); g.fillText(`'${lean(me)}'`, 112, 510);
+    // left-right line with "나"
+    const x0 = 140, x1 = W - 140, y = 650;
+    g.fillStyle = '#e6e9ee'; g.beginPath(); g.roundRect(x0, y, x1 - x0, 22, 11); g.fill();
+    g.fillStyle = '#9ca3af'; g.fillRect((x0 + x1) / 2 - 2, y - 12, 4, 46);
+    g.fillStyle = '#6b7280'; g.font = f(32, 500); g.fillText('진보 성향', x0, y + 84);
+    g.textAlign = 'right'; g.fillText('보수 성향', x1, y + 84); g.textAlign = 'left';
+    if (me !== null) {
+      const x = x0 + ((me + 1) / 2) * (x1 - x0);
+      g.fillStyle = '#111827'; g.beginPath(); g.arc(x, y + 11, 38, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = '#fff'; g.lineWidth = 6; g.stroke();
+      g.fillStyle = '#fff'; g.font = f(34); g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('나', x, y + 12);
+      g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+    }
+    if (top) {
+      g.fillStyle = '#f3f4f6'; g.beginPath(); g.roundRect(120, 840, W - 240, 230, 28); g.fill();
+      g.fillStyle = '#4b5563'; g.font = f(36, 600); g.fillText('나와 가장 비슷하게 투표한 의원', 170, 915);
+      g.fillStyle = '#111827'; g.font = f(76); g.fillText(`${D.members[top.id][0]} 의원`, 170, 1015);
+      g.textAlign = 'right'; g.font = f(76); g.fillText(`${Math.round(top.rate * 100)}%`, W - 170, 1015); g.textAlign = 'left';
+    }
+    g.fillStyle = '#6b7280'; g.font = f(32, 500); g.fillText('찬반이 갈렸던 실제 법안 10개로 계산', 120, 1170);
+    g.fillStyle = '#2a78d6'; g.font = f(38); g.fillText('assembly-korea.com/quiz', 120, 1230);
+    return c;
+  }
+
+  function saveImage(me, top) {
+    const c = resultImage(me, top);
+    c.toBlob((blob) => {
+      if (!blob) return;
+      const file = new File([blob], 'my-quiz-result.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: '나의 표결 성향' }).catch(() => {});
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = file.name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    }, 'image/png');
+  }
+
   function result(shared) {
     const { qs, me, people, parties } = compute();
     const top = people.slice(0, 3);
@@ -165,6 +221,7 @@
         <div class="recap-row recap-head"><span>질문</span><span>나의 선택</span><span>양당 다수의 실제 표결 (질문 기준)</span></div>${recap}</div></div>
       <div class="quiz-actions section">
         <div id="share"></div>
+        <button type="button" class="btn btn-primary" id="save-img">결과 이미지 저장 · 스토리 공유</button>
         <button type="button" class="btn" id="again">다시 하기</button>
       </div>
       <p class="muted quiz-note">계산 방법: 각 의원과 정당(그날 소속 의원 다수의 선택)이 같은 법안에 실제로 찬성·반대한 기록과 비교했습니다. 성향 위치는 여야가 갈린 본회의 표결 123건 전체에서 의원들의 표결 패턴을 한 줄로 요약한 값이며, 왼쪽·오른쪽 이름은 실제 정당 위치를 따랐습니다. 재미로 보는 참고 자료입니다. 기준일 ${kdate(D.as_of)}.</p>
@@ -172,6 +229,7 @@
     shareBar(document.getElementById('share'), { title: '나와 닮은 국회의원 찾기', text: `내 표결 성향은 "${lean(me)}". 나와 가장 비슷한 의원은 ${top[0] ? D.members[top[0].id][0] : '?'} 의원! 너도 해봐` });
     const restart = () => { history.replaceState(null, '', location.pathname); intro(); };
     document.getElementById('again').addEventListener('click', restart);
+    document.getElementById('save-img').addEventListener('click', () => saveImage(me, top[0] || null));
     document.getElementById('mine')?.addEventListener('click', restart);
     root.scrollIntoView({ block: 'start' });
   }
