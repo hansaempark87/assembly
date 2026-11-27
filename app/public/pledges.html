@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>국회의원 공약 이행률 — 22대 총선 지역구 공약 추적 | 일하는 국회</title>
+<meta name="description" content="22대 총선 지역구 국회의원 공약이 어디까지 왔는지 국회 의안 기록과 언론 보도로 하나씩 확인해 추적합니다. 의원별 공약 이행률과 공약별 근거.">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일하는 국회">
+<meta property="og:title" content="국회의원 공약 이행률 — 일하는 국회">
+<meta property="og:description" content="우리 지역 의원 공약, 어디까지 왔을까? 의원별 공약 이행률과 공약별 근거">
+<meta property="og:image" content="https://assembly-korea.com/og/site.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/style.css?v=02f5f433">
+<meta name="google-adsense-account" content="ca-pub-5233299197407834">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233299197407834" crossorigin="anonymous"></script>
+<link rel="canonical" href="https://assembly-korea.com/pledges">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">국</span><span class="brand-text">일하는 국회</span></a>
+    <nav class="nav">
+      <a href="/">홈</a>
+      <a href="/members" aria-current="page">의원</a>
+      <a href="/party">정당</a>
+      <a href="/laws">법안·표결</a>
+      <a href="/quiz" class="nav-hot">성향 테스트</a>
+      <a href="/about">소개</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="테마 전환">☾</button>
+  </div>
+</header>
+
+<main>
+  <nav class="subnav" aria-label="하위 메뉴"><a href="/members">전체 순위</a><a href="/pledges" aria-current="page">공약 이행</a><a href="/compare">의원 비교</a><a href="/region">지역별</a><a href="/audit">국정감사</a></nav>
+  <div class="page-head">
+    <div>
+      <h1>공약, 어디까지 왔나</h1>
+      <p>22대 총선 지역구 공약을 데이터로 하나씩 확인해 추적합니다.</p>
+    </div>
+  </div>
+  <section class="card" id="pl-summary"><div class="skeleton">불러오는 중…</div></section>
+  <section class="card section" id="pl-board-card">
+    <div class="card-head">
+      <div><h2 class="card-title">의원별 공약 이행률</h2><p class="card-sub" id="pl-sub"></p></div>
+      <div class="toolbar">
+        <select class="select" id="pl-party" aria-label="정당"></select>
+        <select class="select" id="pl-region" aria-label="지역"></select>
+        <input class="input" id="pl-q" type="search" placeholder="의원 이름" aria-label="의원 이름 검색">
+      </div>
+    </div>
+    <div class="pl-board" id="pl-board"></div>
+    <div class="more" id="pl-more"></div>
+  </section>
+  <section class="card section">
+    <h2 class="card-title">판정 기준</h2>
+    <ul class="plain-list">
+      <li><b>완료</b>: 개통·준공·시행·법 통과 등 결과가 확인된 공약</li>
+      <li><b>진행 중</b>: 예산 반영, 계획 승인, 착공, 법안 심사 등 실제 단계가 확인된 공약</li>
+      <li><b>지연·보류</b>: 지연, 보류, 무산, 예산 삭감이 확인된 공약</li>
+      <li><b>데이터 없음</b>: 진행을 보여주는 자료를 찾을 수 없는 공약</li>
+    </ul>
+    <p class="card-sub">공약 이행률 = 완료된 공약 ÷ 전체 공약. 공약은 2024년 총선 기간 보도에서 모았고, 상태는 국회 의안 기록(법안 처리 결과)과 이후 언론 보도로 AI가 판정합니다. 국정감사 질의는 판정에 쓰지 않고 참고로만 보여 드립니다. 매달 다시 확인합니다. 비례대표 의원은 지역구 공약이 없어 제외됩니다.</p>
+  </section>
+</main>
+
+<footer class="site">
+  <nav class="foot-links" aria-label="사이트 정보">
+    <a href="/guide">국회 이해하기</a>
+    <a href="/about">서비스 소개</a>
+    <a href="/method">평가 방법</a>
+    <a href="/notes">데이터 처리 기준</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+    <a href="/about#contact">문의·정정 요청</a>
+  </nav>
+  <p>데이터 출처: <a href="https://open.assembly.go.kr" target="_blank" rel="noopener">열린국회정보</a> · <a href="https://record.assembly.go.kr" target="_blank" rel="noopener">국회회의록</a></p>
+  <p>일하는 국회는 국회·정부·정당과 관계없는 독립 프로젝트입니다. 모든 수치는 국회가 공개한 공식 기록에서 계산합니다.</p>
+</footer>
+
+<script src="/js/common.js?v=5b77ec58"></script>
+<script src="/js/pledges.js?v=f8a0cd9e"></script>
+</body>
+</html>

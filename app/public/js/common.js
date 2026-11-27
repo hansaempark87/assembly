@@ -541,6 +541,35 @@
     });
   }
 
+  // ---------- pledges ----------
+  const PL = ['done', 'progress', 'delayed', 'notfound'];
+  const PL_LABEL = { done: '완료', progress: '진행 중', delayed: '지연·보류', notfound: '데이터 없음' };
+  const PL_COL = { done: 'var(--pl-done)', progress: 'var(--pl-prog)', delayed: 'var(--pl-late)', notfound: 'var(--pl-track)' };
+  const safeUrl = (u) => (/^https?:\/\//.test(u || '') ? u : '#');
+  // counts: [done, progress, delayed, notfound]
+  function pledgeRing(counts, label = '공약 이행률') {
+    const n = counts.reduce((a, b) => a + b, 0) || 1;
+    let a = 0;
+    const seg = PL.map((k, i) => { const from = a; a += (counts[i] / n) * 360; return `${PL_COL[k]} ${from.toFixed(1)}deg ${a.toFixed(1)}deg`; }).join(',');
+    const rate = Math.round((counts[0] / n) * 100);
+    return `<div class="pl-ring" style="background:conic-gradient(${seg})" role="img" aria-label="${label} ${rate}%, ${PL.map((k, i) => `${PL_LABEL[k]} ${counts[i]}`).join(', ')}"><div><b>${rate}<small>%</small></b><span>${label}</span></div></div>`;
+  }
+  function pledgeRows(counts) {
+    const n = counts.reduce((a, b) => a + b, 0) || 1;
+    return `<div class="pl-rows">${PL.map((k, i) => `<div class="pl-row"><span class="lbl"><i class="pl-dot ${k}"></i>${PL_LABEL[k]}</span><span class="trk"><i style="width:${((counts[i] / n) * 100).toFixed(1)}%;background:${k === 'notfound' ? 'var(--pl-none)' : PL_COL[k]}"></i></span><b class="num">${num(counts[i])}</b></div>`).join('')}</div>`;
+  }
+  function pledgeItems(items) {
+    return items.map((i) => `<article class="pl-item"><i class="pl-dot ${i.s}" aria-hidden="true"></i>
+      <h3>${esc(i.t)}<span class="pl-st ${i.s}">${PL_LABEL[i.s]}</span></h3>
+      ${i.body ? `<p class="body">${esc(i.body)}</p>` : ''}
+      ${i.why ? `<p class="why">${esc(i.why)}</p>` : ''}
+      ${i.ev && i.ev.length ? `<div class="pl-ev">${i.ev.map(([d, t, u]) => `<div><span class="num">${esc((d || '').replace(/-/g, '.'))}</span><a href="${esc(safeUrl(u))}" target="_blank" rel="noopener">${esc(t)}</a></div>`).join('')}</div>` : ''}
+      ${i.ctx && i.ctx.length ? `<details class="pl-ctx"><summary>참고: 관련 국감 질의 ${i.ctx.length}건</summary>${i.ctx.map(([d, q, ans, u]) => `<div><span class="num">${esc((d || '').replace(/-/g, '.'))}</span><a href="${esc(safeUrl(u))}">${esc(q)}</a><small>${esc(ans)}</small></div>`).join('')}</details>` : ''}
+      ${i.src && i.src.length ? `<div class="pl-src">공약 출처: <a href="${esc(safeUrl(i.src[0][2]))}" target="_blank" rel="noopener">${esc(i.src[0][1])}</a></div>` : ''}
+    </article>`).join('');
+  }
+  const pledgeLegend = () => `<div class="pl-legend">${PL.map((k) => `<span><i class="pl-dot ${k}"></i>${PL_LABEL[k]}</span>`).join('')}</div>`;
+
   // a bill's three plain lines (AI summary of the official summary), folded by default
   const billSum = (lines) => (lines && lines.length
     ? `<details class="bill-sum"><summary>3줄 요약</summary><ol>${lines.map((l) => `<li>${esc(l)}</li>`).join('')}</ol>
@@ -607,5 +636,5 @@
       .catch(() => { el.hidden = true; });
   }
 
-  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo, poll, billSum };
+  window.NA = { shareBar, PARTY_COLOR, partyColor, pager, view, kdate, CHOICE, partyOrder, hemicycle, loadVoteIndex, reveal, esc, num, pct, topText, GRADE_BAND, rankText, statusText, roleText, gradeBadge, median, mean, loadMembers, METRICS, tip, stripPlot, stackedBar, meter, memberCombo, poll, billSum, PL, PL_LABEL, PL_COL, pledgeRing, pledgeRows, pledgeItems, pledgeLegend };
 })();
