@@ -16,7 +16,7 @@ export async function onRequestGet({ env, request }) {
     summarised = [];
   }
   const lastmod = (run.data_as_of || run.created_at).slice(0, 10);
-  const urls = ['/', '/members', '/guide/', '/audit', '/votes', '/laws', '/quiz', '/region', '/party', '/compare', '/method', '/notes', '/about', '/privacy', '/terms']
+  const urls = ['/', '/members', '/pledges', '/guide/', '/audit', '/votes', '/laws', '/quiz', '/region', '/party', '/compare', '/method', '/notes', '/about', '/privacy', '/terms']
     .map((p) => [`${origin}${p}`, lastmod])
     .concat(GUIDES.map((g) => [`${origin}/guide/${g}`, lastmod]))
     .concat(allMembers().map((m) => [`${origin}/member?id=${encodeURIComponent(m.id)}`, lastmod]))

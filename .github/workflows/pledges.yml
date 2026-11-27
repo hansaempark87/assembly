@@ -31,6 +31,9 @@ jobs:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: app/pipeline/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Install
         run: pip install -r app/pipeline/requirements.txt
       - name: Pledges (election commission winners, campaign news)
@@ -66,5 +69,22 @@ jobs:
           for f in app/data/source/pledges.json app/data/source/pledge-status.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
           git commit -q -m "data: pledges (${{ inputs.scope }})"
+          git pull -q --rebase origin main
+          git push origin HEAD:main
+      - name: Rebuild the site data
+        id: build
+        if: always()
+        continue-on-error: true
+        working-directory: app/pipeline
+        run: |
+          python -u build.py
+          python -u check.py
+      - name: Publish
+        if: steps.build.outcome == 'success'
+        run: |
+          git add app/data app/lib app/public/bills app/public/pledge-data.json app/public/vote-data app/public/weekly.json app/public/og app/public/law-data app/public/quiz-data.json app/public/audit.json app/public/audit-data app/public/party-data.json
+          git add -u app/public
+          if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
+          git commit -q -m "data: pledge pages"
           git pull -q --rebase origin main
           git push origin HEAD:main

@@ -170,15 +170,43 @@
     }).catch(() => el.remove());
   }
 
+  // election pledges: completion rate (done / all) and every pledge with its evidence
+  function renderPledges(m, P) {
+    const el = document.getElementById('pledges');
+    const NA = window.NA;
+    const counts = NA.PL.map((k) => P.items.filter((i) => i.s === k).length);
+    fetch('/pledge-data.json').then((r) => (r.ok ? r.json() : null)).catch(() => null).then((D) => {
+      const row = D && D.members.find((x) => x.id === m.id);
+      const rank = row ? D.members.indexOf(row) + 1 : null;
+      const rate = Math.round((counts[0] / (P.items.length || 1)) * 100);
+      const SHOW = 4;
+      el.hidden = false;
+      el.innerHTML = `<div class="card-head"><div><h2 class="card-title">공약 이행</h2>
+          <p class="card-sub">22대 총선 지역구 공약 · 국회 의안 기록과 언론 보도로 확인 · ${esc((P.checked || '').replace(/-/g, '.'))} 확인 · AI 판정</p></div>
+          <a class="btn" href="/pledges">전체 의원 보기 →</a></div>
+        <div class="pl-hero">${NA.pledgeRing(counts)}
+          <div><div class="pl-name">${esc(m.name)} 의원</div><div class="pl-meta">공약 ${num(P.items.length)}개</div>${NA.pledgeRows(counts)}</div></div>
+        ${D ? `<div class="pl-chips"><span class="pl-chip">${num(D.members.length)}명 중 <b>${num(rank)}위</b></span><span class="pl-chip">의원 평균 <b>${D.avg}%</b></span>${rate > 0 && rank <= Math.ceil(D.members.length * 0.1) ? '<span class="pl-chip good">이행률 상위 10%</span>' : rate === 0 ? '<span class="pl-chip low">완료된 공약 없음</span>' : ''}</div>` : ''}
+        <div class="pl-list">${NA.pledgeItems(P.items.slice(0, SHOW))}</div>
+        ${P.items.length > SHOW ? `<button type="button" class="btn pl-more">공약 ${P.items.length - SHOW}개 더 보기</button>` : ''}`;
+      el.querySelector('.pl-more')?.addEventListener('click', (e) => {
+        el.querySelector('.pl-list').innerHTML = NA.pledgeItems(P.items);
+        e.target.remove();
+      });
+      if (location.hash === '#pledges') el.scrollIntoView();
+    });
+  }
+
   let m0 = null;
   function loadBills(m, all) {
     m0 = m;
     const listEl = document.getElementById('bill-list');
     fetch(`/bills/${encodeURIComponent(m.id)}.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
-      .then(({ bills, cutoff, areas, partners, coop, votes, trend, audit_topics: auditTopics }) => {
+      .then(({ bills, cutoff, areas, partners, coop, votes, trend, audit_topics: auditTopics, pledges }) => {
         if (votes) renderVotes(votes);
         if (trend) renderTrend(trend);
+        if (pledges) renderPledges(m, pledges);
         renderAudit(m, auditTopics);
         let areaFilter = null;
         let cur = bills.some(BILL_TABS[0][2]) ? 'reflected' : 'all';
@@ -369,6 +397,7 @@
         ${summary}
         ${roleNote}
       </section>
+      <section class="card section list-anchor" id="pledges" hidden></section>
       <section class="card section poll" id="poll" hidden></section>
       <div class="grid grid-2 section">${cards}</div>
       <section class="card section" id="trend-card"><h2 class="card-title">월별 활동 추이</h2><div class="skeleton">불러오는 중…</div></section>

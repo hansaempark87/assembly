@@ -825,6 +825,53 @@ def law_data(S, vote_index):
 
 # committees renamed mid-term: compare under one name
 COMMITTEE_ALIAS = {'기획재정위원회': '재정경제기획위원회', '환경노동위원회': '기후에너지환경노동위원회', '여성가족위원회': '성평등가족위원회'}
+
+
+# ---------- pledges ----------
+
+PLEDGE_ORDER = ['done', 'progress', 'delayed', 'notfound']
+
+
+def pledge_data(S, scores):
+    """public/pledge-data.json (every checked member: completion rate and status counts) and a
+    'pledges' list in each member's public/bills/<id>.json, from data/source/pledges.json and
+    pledge-status.json (pipeline/pledges.py, pledge_check.py). Completion rate = done / all."""
+    src, st = APP / 'data' / 'source' / 'pledges.json', APP / 'data' / 'source' / 'pledge-status.json'
+    if not (src.exists() and st.exists()):
+        return
+    pledges, status = json.load(open(src, encoding='utf-8')), json.load(open(st, encoding='utf-8'))
+    members = {m['id']: m for m in S.members}
+    rows = []
+    for mid, v in status.items():
+        m = members.get(mid)
+        if not m or not v.get('items'):
+            continue
+        by_ord = {p['ord']: p for p in pledges.get(mid, {}).get('pledges', [])}
+        c = {k: sum(i['status'] == k for i in v['items']) for k in PLEDGE_ORDER}
+        n = len(v['items'])
+        rows.append({'id': mid, 'name': m['name'], 'party': m['party'], 'district': m['district'], 'n': n,
+                     'c': [c[k] for k in PLEDGE_ORDER], 'rate': round(c['done'] / n * 100) if n else 0,
+                     'grade': (scores.get(mid) or {}).get('grade'), 'checked': v['checked']})
+        detail = [{'t': i['title'], 'r': i.get('realm', ''), 's': i['status'], 'why': i['reason'] if i['status'] != 'notfound' else '',
+                   'ev': [[e['date'], e['title'], e['link']] for e in i['evidence'][:2]] if i['status'] != 'notfound' else [],
+                   'body': by_ord.get(i['ord'], {}).get('body', ''),
+                   'src': [[x['date'], x['title'], x['link']] for x in by_ord.get(i['ord'], {}).get('sources', [])[:1]],
+                   'ctx': [[x['date'], x['title'], x['answer'], x['link']] for x in i.get('context', [])[:3]]}
+                  for i in sorted(v['items'], key=lambda i: (PLEDGE_ORDER.index(i['status']), i['ord']))]
+        bf = APP / 'public' / 'bills' / f'{mid}.json'
+        if bf.exists():
+            d = json.load(open(bf, encoding='utf-8'))
+            d['pledges'] = {'checked': v['checked'], 'items': detail}
+            with open(bf, 'w', encoding='utf-8') as f:
+                json.dump(d, f, ensure_ascii=False, separators=(',', ':'))
+    rows.sort(key=lambda r: (-r['rate'], -(r['c'][1] / r['n'] if r['n'] else 0), r['name']))
+    total = [sum(r['c'][k] for r in rows) for k in range(4)]
+    avg = round(sum(r['rate'] for r in rows) / len(rows)) if rows else 0
+    with open(APP / 'public' / 'pledge-data.json', 'w', encoding='utf-8') as f:
+        json.dump({'checked': max((r['checked'] for r in rows), default=None), 'avg': avg, 'total': total, 'members': rows},
+                  f, ensure_ascii=False, separators=(',', ':'))
+
+
 def audit_data(S, scores):
     """public/audit.json: audit schedule per year and how much each member spoke.
 
@@ -912,6 +959,7 @@ def main():
     law_data(S, vote_index)
     party_data(S)
     audit_data(S, load_module(APP / 'lib' / 'score-run.js')['scores'])
+    pledge_data(S, load_module(APP / 'lib' / 'score-run.js')['scores'])
     import og
     og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
     import stamp
