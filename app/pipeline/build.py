@@ -225,6 +225,9 @@ def role_adjustments(S, recs):
 
 # ---------- monthly trend ----------
 
+_TREND = None
+
+
 def monthly_trend(S):
     """Per member and month: plenary attendance, recorded-vote participation and
     lead bills, plus the month's average over members in office. Shown as a
@@ -273,7 +276,9 @@ def monthly_trend(S):
             xs = [out[i][key][k] for i in out if out[i][key][k] is not None]
             res.append(round(sum(xs) / len(xs), 4) if xs else None)
         return res
-    return {'months': months, 'members': out, 'avg': {k: avg(k) for k in ('att', 'vote', 'bills')}}
+    global _TREND
+    _TREND = {'months': months, 'members': out, 'avg': {k: avg(k) for k in ('att', 'vote', 'bills')}}
+    return _TREND
 
 
 # ---------- bill lists, policy areas, collaboration ----------
@@ -473,6 +478,89 @@ def vote_pages(S):
     with open(out_dir / 'dissent.json', 'w', encoding='utf-8') as f:
         json.dump(dissent, f, separators=(',', ':'))
     return {mid: ''.join(acc) for mid, acc in strings.items()}, index
+
+
+# ---------- parties ----------
+
+def party_data(S):
+    """public/party-data.json: what the party page shows beyond member averages.
+
+    Per party (current members, current party): lead bills and how many became
+    law, policy areas of those bills, monthly averages, vote cohesion (share of
+    the party's cast votes that matched its majority that day) and how often each
+    pair of parties' majorities chose the same on recorded votes."""
+    party_now = {m['id']: m['party'] for m in S.members}
+    groups = collections.defaultdict(list)
+    for m in S.members:
+        groups[m['party'] or INDEPENDENT].append(m['id'])
+    # bills
+    bills = collections.defaultdict(lambda: {'lead': 0, 'passed': 0, 'alt': 0, 'areas': collections.Counter()})
+    for b in S.bills:
+        st, _ = bill_status(b, S.cutoff)
+        for p in {party_now[i] for i in ids(b['RST_MONA_CD']) if i in party_now}:
+            x = bills[p]
+            x['lead'] += 1
+            x['passed'] += st == 'passed'
+            x['alt'] += st == 'alt'
+            x['areas'][area_of(b.get('COMMITTEE'))] += 1
+    # votes: cohesion and pairwise agreement of majorities (party on the day)
+    coh = collections.defaultdict(lambda: [0, 0])
+    pair = collections.defaultdict(lambda: [0, 0])
+    split = collections.defaultdict(lambda: [0, 0])  # only votes where the majorities did not all agree
+    for v in S.votes:
+        if v['status'] not in SCORED_VOTE:
+            continue
+        choice = {i: k for k in 'YNA' for i in v[k]}
+        maj = {}
+        for p, ids_ in v['party'].items():
+            c = collections.Counter(choice[i] for i in ids_ if i in choice)
+            if not p or p == INDEPENDENT or sum(c.values()) < 3:
+                continue
+            top = c.most_common(2)
+            coh[p][0] += top[0][1]
+            coh[p][1] += sum(c.values())
+            if len(top) == 1 or top[0][1] > top[1][1]:
+                maj[p] = top[0][0]
+        ps = sorted(maj)
+        for a_ in range(len(ps)):
+            for b_ in range(a_ + 1, len(ps)):
+                for acc in ((pair,) if len(set(maj.values())) == 1 else (pair, split)):
+                    x = acc[(ps[a_], ps[b_])]
+                    x[0] += maj[ps[a_]] == maj[ps[b_]]
+                    x[1] += 1
+    trend = _TREND or monthly_trend(S)
+    def series(ids_, key, total=False):
+        out = []
+        for k in range(len(trend['months'])):
+            xs = [trend['members'][i][key][k] for i in ids_ if i in trend['members'] and trend['members'][i][key][k] is not None]
+            out.append(None if not xs else round(sum(xs) if total else sum(xs) / len(xs), 4))
+        return out
+    order = sorted(groups, key=lambda p: -len(groups[p]))
+    parties = []
+    for p in order:
+        b = bills.get(p, {'lead': 0, 'passed': 0, 'alt': 0, 'areas': collections.Counter()})
+        tot = sum(b['areas'].values()) or 1
+        parties.append({
+            'party': p, 'seats': len(groups[p]),
+            'bills': {'lead': b['lead'], 'passed': b['passed'], 'alt': b['alt'],
+                      'areas': [[a, n, round(n / tot, 4)] for a, n in b['areas'].most_common(6)]},
+            'cohesion': round(coh[p][0] / coh[p][1], 4) if coh[p][1] else None,
+            'votes_counted': coh[p][1],
+            'trend': {'att': series(groups[p], 'att'), 'vote': series(groups[p], 'vote'), 'bills': series(groups[p], 'bills')},
+        })
+    named = [x['party'] for x in parties if x['party'] != INDEPENDENT and x['cohesion'] is not None]
+    def rows(acc):
+        out = []
+        for i, a in enumerate(named):
+            for b in named[i + 1:]:
+                x = acc[tuple(sorted((a, b)))]
+                if x[1] >= 20:
+                    out.append([a, b, round(x[0] / x[1], 4), x[1]])
+        return out
+    agree, agree_split = rows(pair), rows(split)
+    with open(APP / 'public' / 'party-data.json', 'w', encoding='utf-8') as f:
+        json.dump({'as_of': S.meta['data_as_of'], 'months': trend['months'], 'parties': parties, 'agree': agree, 'agree_split': agree_split},
+                  f, ensure_ascii=False, separators=(',', ':'))
 
 
 # ---------- what changed since the previous update ----------
@@ -822,6 +910,7 @@ def main():
     weekly(S, cov, vote_index)
     quiz_data(S, vote_index, load_module(APP / 'lib' / 'score-run.js')['scores'])
     law_data(S, vote_index)
+    party_data(S)
     audit_data(S, load_module(APP / 'lib' / 'score-run.js')['scores'])
     import og
     og.build_all(recs, load_module(APP / 'lib' / 'score-run.js'), vote_index, APP / 'public' / 'vote-data', S.meta['data_as_of'])
