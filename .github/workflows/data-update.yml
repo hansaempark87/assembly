@@ -122,6 +122,7 @@ jobs:
           date=$(python -c "import json;print(json.load(open('app/data/source/meta.json'))['data_as_of'])")
           { echo "data: update ${date}"; echo; cat app/data/build/summary.md; } > /tmp/msg
           git commit -q -F /tmp/msg
+          git pull -q --rebase origin main   # main may have moved while this ran
           git push origin HEAD:main
 
       - name: Hold for review
