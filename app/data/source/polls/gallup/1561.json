@@ -1,0 +1,18 @@
+{
+ "source": "한국갤럽",
+ "seq": 1561,
+ "no": 624,
+ "title": "데일리 오피니언 제624호(2025년 6월 1주) - 제21대 대통령선거 D-6, D-2 후보 지지도, D+2 사후 조사 #대선",
+ "posted": "2025-06-06",
+ "url": "https://www.gallup.co.kr/gallupdb/reportContent.asp?seqNo=1561",
+ "sponsor": "한국갤럽조사연구소 자체 조사",
+ "period_start": "2025-06-04",
+ "period_end": "2025-06-05",
+ "sample": 1003,
+ "method": "무선전화 RDD 표본 프레임에서 무작위 추출, 전화조사원 인터뷰(CATI), 대상: 전국 제21대 대통령선거 투표자",
+ "margin": "±3.1%포인트(95% 신뢰수준)",
+ "response_rate": "12.3%(총통화 8,126명 중 1,003명 응답 완료)",
+ "president": null,
+ "parties": [],
+ "topics": []
+}

@@ -1,0 +1,72 @@
+{
+ "source": "한국갤럽",
+ "seq": 1508,
+ "no": 596,
+ "title": "데일리 오피니언 제596호(2024년 9월 2주) - 국민연금개혁 정부안, 미국 대선 선호 후보",
+ "posted": "2024-09-13",
+ "url": "https://www.gallup.co.kr/gallupdb/reportContent.asp?seqNo=1508",
+ "sponsor": "한국갤럽조사연구소 자체 조사",
+ "period_start": "2024-09-10",
+ "period_end": "2024-09-12",
+ "sample": 1002,
+ "method": "이동통신 3사 제공 무선전화 가상번호 무작위 추출, 전화조사원 인터뷰(CATI)",
+ "margin": "±3.1%포인트(95% 신뢰수준)",
+ "response_rate": "10.4%(총통화 9,615명 중 1,002명 응답 완료)",
+ "president": {
+  "name": "윤석열",
+  "approve": 20,
+  "disapprove": 70
+ },
+ "parties": [
+  {
+   "party": "국민의힘",
+   "pct": 28
+  },
+  {
+   "party": "더불어민주당",
+   "pct": 33
+  },
+  {
+   "party": "조국혁신당",
+   "pct": 8
+  },
+  {
+   "party": "개혁신당",
+   "pct": 2
+  },
+  {
+   "party": "진보당",
+   "pct": 1
+  },
+  {
+   "party": "이외 정당/단체",
+   "pct": 1
+  },
+  {
+   "party": "무당층",
+   "pct": 26
+  }
+ ],
+ "topics": [
+  {
+   "title": "국민연금개혁 정부안 찬반",
+   "question": "보험료율 9%→13%, 소득대체율 40%→42% 등 국민연금개혁 정부안에 대한 찬반",
+   "category": "노동·복지",
+   "summary": "찬성 37%, 반대 41%로 비슷하게 갈림",
+   "results": [
+    {
+     "label": "찬성",
+     "pct": 37
+    },
+    {
+     "label": "반대",
+     "pct": 41
+    },
+    {
+     "label": "의견 유보",
+     "pct": 21
+    }
+   ]
+  }
+ ]
+}

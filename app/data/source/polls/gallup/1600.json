@@ -1,0 +1,51 @@
+{
+ "source": "한국갤럽",
+ "seq": 1600,
+ "no": 643,
+ "title": "데일리 오피니언 제643호(2025년 11월 4주) - 전직 대통령 11인 개별 공과(功過) 평가 (11월 통합 포함)",
+ "posted": "2025-11-28",
+ "url": "https://www.gallup.co.kr/gallupdb/reportContent.asp?seqNo=1600",
+ "sponsor": "한국갤럽조사연구소 자체 조사",
+ "period_start": "2025-11-25",
+ "period_end": "2025-11-27",
+ "sample": 1000,
+ "method": "이동통신 3사 제공 무선전화 가상번호 무작위 추출, 전화조사원 인터뷰(CATI)",
+ "margin": "±3.1%포인트(95% 신뢰수준)",
+ "response_rate": "11.9%",
+ "president": {
+  "name": "이재명",
+  "approve": 60,
+  "disapprove": 31
+ },
+ "parties": [
+  {
+   "party": "더불어민주당",
+   "pct": 42
+  },
+  {
+   "party": "국민의힘",
+   "pct": 24
+  },
+  {
+   "party": "조국혁신당",
+   "pct": 3
+  },
+  {
+   "party": "개혁신당",
+   "pct": 3
+  },
+  {
+   "party": "진보당",
+   "pct": 1
+  },
+  {
+   "party": "이외 정당/단체",
+   "pct": 1
+  },
+  {
+   "party": "무당층",
+   "pct": 26
+  }
+ ],
+ "topics": []
+}

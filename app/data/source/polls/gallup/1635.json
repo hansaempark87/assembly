@@ -1,0 +1,72 @@
+{
+ "source": "한국갤럽",
+ "seq": 1635,
+ "no": 660,
+ "title": "데일리 오피니언 제660호(2026년 4월 3주) - 지방선거 결과 기대",
+ "posted": "2026-04-17",
+ "url": "https://www.gallup.co.kr/gallupdb/reportContent.asp?seqNo=1635",
+ "sponsor": "한국갤럽조사연구소 자체 조사",
+ "period_start": "2026-04-14",
+ "period_end": "2026-04-16",
+ "sample": 1000,
+ "method": "이동통신 3사 제공 무선전화 가상번호 무작위 추출, 전화조사원 인터뷰(CATI)",
+ "margin": "±3.1%포인트(95% 신뢰수준)",
+ "response_rate": "13.8%",
+ "president": {
+  "name": "이재명",
+  "approve": 66,
+  "disapprove": 26
+ },
+ "parties": [
+  {
+   "party": "더불어민주당",
+   "pct": 48
+  },
+  {
+   "party": "국민의힘",
+   "pct": 19
+  },
+  {
+   "party": "조국혁신당",
+   "pct": 2
+  },
+  {
+   "party": "진보당",
+   "pct": 2
+  },
+  {
+   "party": "개혁신당",
+   "pct": 2
+  },
+  {
+   "party": "기타 정당/단체",
+   "pct": 1
+  },
+  {
+   "party": "무당층",
+   "pct": 26
+  }
+ ],
+ "topics": [
+  {
+   "title": "지방선거 결과 기대(여당 vs 야당 다수 당선)",
+   "question": "지방선거에서 여당 후보가 많이 당선돼야 하는지, 야당 후보가 많이 당선돼야 하는지",
+   "category": "정치·국회",
+   "summary": "여당 다수 당선 45%, 야당 다수 당선 28%로 여당 쪽 기대가 높음",
+   "results": [
+    {
+     "label": "여당 후보가 많이 당선돼야 한다",
+     "pct": 45
+    },
+    {
+     "label": "야당 후보가 많이 당선돼야 한다",
+     "pct": 28
+    },
+    {
+     "label": "의견 유보",
+     "pct": 26
+    }
+   ]
+  }
+ ]
+}

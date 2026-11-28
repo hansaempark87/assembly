@@ -1,0 +1,51 @@
+{
+ "source": "한국갤럽",
+ "seq": 1496,
+ "no": 589,
+ "title": "데일리 오피니언 제589호(2024년 7월 1주) - 장래 정치 지도자 선호도",
+ "posted": "2024-07-05",
+ "url": "https://www.gallup.co.kr/gallupdb/reportContent.asp?seqNo=1496",
+ "sponsor": "한국갤럽조사연구소 자체 조사",
+ "period_start": "2024-07-02",
+ "period_end": "2024-07-04",
+ "sample": 1002,
+ "method": "이동통신 3사 제공 무선전화 가상번호 무작위 추출, 전화조사원 인터뷰(CATI)",
+ "margin": "±3.1%포인트(95% 신뢰수준)",
+ "response_rate": "12.7%(총통화 7,911명 중 1,002명 응답 완료)",
+ "president": {
+  "name": "윤석열",
+  "approve": 26,
+  "disapprove": 64
+ },
+ "parties": [
+  {
+   "party": "국민의힘",
+   "pct": 33
+  },
+  {
+   "party": "더불어민주당",
+   "pct": 29
+  },
+  {
+   "party": "조국혁신당",
+   "pct": 9
+  },
+  {
+   "party": "개혁신당",
+   "pct": 4
+  },
+  {
+   "party": "진보당",
+   "pct": 1
+  },
+  {
+   "party": "이외 정당/단체",
+   "pct": 1
+  },
+  {
+   "party": "무당층",
+   "pct": 23
+  }
+ ],
+ "topics": []
+}

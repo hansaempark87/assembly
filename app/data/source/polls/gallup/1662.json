@@ -1,0 +1,51 @@
+{
+ "source": "한국갤럽",
+ "seq": 1662,
+ "no": 678,
+ "title": "데일리 오피니언 제678호(2026년 10월 3주) - 내후년 국회의원선거 결과 기대, 정계 주요 인물별 호감 여부 #총선",
+ "posted": "2026-10-16",
+ "url": "https://www.gallup.co.kr/gallupdb/reportContent.asp?seqNo=1662",
+ "sponsor": "한국갤럽조사연구소 자체 조사",
+ "period_start": "2026-10-13",
+ "period_end": "2026-10-15",
+ "sample": 1003,
+ "method": "이동통신 3사 제공 무선전화 가상번호 무작위 추출, 전화조사원 인터뷰(CATI)",
+ "margin": "±3.1%포인트(95% 신뢰수준)",
+ "response_rate": "10.4%",
+ "president": {
+  "name": "이재명",
+  "approve": 39,
+  "disapprove": 52
+ },
+ "parties": [
+  {
+   "party": "더불어민주당",
+   "pct": 36
+  },
+  {
+   "party": "국민의힘",
+   "pct": 27
+  },
+  {
+   "party": "조국혁신당",
+   "pct": 3
+  },
+  {
+   "party": "개혁신당",
+   "pct": 2
+  },
+  {
+   "party": "진보당",
+   "pct": 1
+  },
+  {
+   "party": "이외 정당/단체",
+   "pct": 1
+  },
+  {
+   "party": "무당층",
+   "pct": 29
+  }
+ ],
+ "topics": []
+}
