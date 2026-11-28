@@ -5,6 +5,8 @@
 name: pledges
 
 on:
+  schedule:
+    - cron: '13 17 1 * *'   # the 1st of every month, 02:13 KST: re-check every member
   workflow_dispatch:
     inputs:
       scope:
@@ -46,7 +48,7 @@ jobs:
           NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PLEDGE_MODEL: claude-haiku-5-5
-          PLEDGE_SCOPE: ${{ inputs.scope }}
+          PLEDGE_SCOPE: ${{ inputs.scope || 'all' }}
         run: python -u pledges.py
       - name: Where each pledge stands
         # stops before the job limit so what was checked is still saved; a rerun continues
@@ -59,7 +61,7 @@ jobs:
           NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PLEDGE_MODEL: claude-haiku-5-5
-          PLEDGE_SCOPE: ${{ inputs.scope }}
+          PLEDGE_SCOPE: ${{ inputs.scope || 'all' }}
         run: python -u pledge_check.py
       - name: Save
         if: always()
@@ -68,7 +70,7 @@ jobs:
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           for f in app/data/source/pledges.json app/data/source/pledge-status.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if git diff --cached --quiet; then echo 'no changes'; exit 0; fi
-          git commit -q -m "data: pledges (${{ inputs.scope }})"
+          git commit -q -m "data: pledges (${{ inputs.scope || 'all' }})"
           git pull -q --rebase origin main
           git push origin HEAD:main
       - name: Rebuild the site data
