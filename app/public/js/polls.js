@@ -34,8 +34,10 @@
   }
 
   function charts() {
-    const P = D.president;
-    $('po-pres').innerHTML = `<div class="card-head"><div><h2 class="card-title">대통령 직무 평가</h2><p class="card-sub">매주 · "잘하고 있다" / "잘못하고 있다" · 한국갤럽</p></div></div>
+    // a gap where the president changes (or the post was vacant), so two presidents' lines never join
+    const P = [];
+    D.president.forEach((r, i) => { if (i && r[3] !== D.president[i - 1][3]) P.push([r[0], null, null, '']); P.push(r); });
+    $('po-pres').innerHTML = `<div class="card-head"><div><h2 class="card-title">대통령 직무 평가</h2><p class="card-sub">매주 · "잘하고 있다" / "잘못하고 있다" · 한국갤럽 · 끊긴 구간은 대통령 교체·직무정지 기간</p></div></div>
       ${lineChart($('po-pres'), { dates: P.map((r) => r[0]), series: [{ name: '잘하고 있다', color: 'var(--pl-done)', vals: P.map((r) => r[1]) }, { name: '잘못하고 있다', color: 'var(--pl-late)', vals: P.map((r) => r[2]) }], fmt: pct })}`;
     if (D.blackout || !D.parties.length) {
       $('po-party').innerHTML = '<h2 class="card-title">정당 지지도</h2><p class="muted">선거일 전 6일간은 정당 지지도를 공표할 수 없어 표시하지 않습니다.</p>';
